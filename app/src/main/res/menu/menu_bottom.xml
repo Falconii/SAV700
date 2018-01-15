@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SAVActivity">
+    <item
+        android:id="@+id/ac_carga"
+        android:orderInCategory="100"
+        android:icon="@drawable/refresh_01"
+        android:title="Carga"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_sales_order"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_order_sales_i"
+        android:title="Pedidos"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_google_plus"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_imobilizado"
+        android:title="NFs"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_linkedin"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_menu_send"
+        android:title="Teste"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_whatsapp"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="Notificações"
+        app:showAsAction="always" />
+</menu>

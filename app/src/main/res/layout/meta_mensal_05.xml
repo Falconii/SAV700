@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/meta_mensal_05"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D8BFD8"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        >
+
+        <TextView
+            android:id="@+id/lbl_titulo_05"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="5dip"
+            android:text=""
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/drilldown_05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/drilldown_24"
+            android:textColor="@color/red"/>
+
+
+    </RelativeLayout>
+
+
+    <TableLayout
+        android:id="@+id/tablemetas_05"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop = "05dp"
+        android:layout_marginLeft= "05dp"
+        android:layout_marginRight = "05dp"
+        android:shrinkColumns="*"  android:stretchColumns="*"
+        >
+
+        <TableRow
+            android:id="@+id/meta_05"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro"
+                >
+
+                <TextView
+                    android:id				= "@+id/lbl_Meta2_05"
+                    android:layout_height   ="wrap_content"
+                    android:layout_width    ="wrap_content"
+                    android:text			= "Meta"
+                    android:gravity			= "center"
+                    android:textSize        ="12sp"
+                    android:textColor="@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_Meta2_05"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_Meta2_05"
+                    android:layout_alignParentEnd="true"
+                    android:text			= "1400,00"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "right"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro"
+                >
+
+                <TextView
+                    android:id				="@+id/lbl_Realizado2_05"
+                    android:text			="Realizado"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:gravity			="center"
+                    android:textSize        ="12sp"
+                    android:textColor="@color/red"/>
+
+                <TextView
+                    android:id				="@+id/txt_Realizado2_05"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below="@+id/lbl_Realizado2_05"
+                    android:text			="800,00"
+                    android:layout_weight	="1"
+                    android:textColor		="#0000CC"
+                    android:gravity			="right"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro"
+                >
+                <TextView
+                    android:id				="@+id/lbl_Carteira2_05"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:text			="Carteira"
+                    android:gravity			="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/red"/>
+
+                <TextView
+                    android:id				="@+id/txt_Carteira2_05"
+                    android:text			="200,00"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below="@+id/lbl_Carteira2_05"
+                    android:textColor		="#0000CC"
+                    android:gravity			="right"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro">
+                <TextView
+                    android:id				= "@+id/lbl_total2_05"
+                    android:text			= "Total"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:gravity			= "center"
+                    android:textSize        = "12sp"
+                    android:textColor       = "@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_total2_05"
+                    android:text			= "90%"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_total2_05"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "center"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro">
+                <TextView
+                    android:id				= "@+id/lbl_perc2_05"
+                    android:text			= "% Perc."
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:gravity			= "center"
+                    android:textSize        = "12sp"
+                    android:textColor       = "@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_perc2_05"
+                    android:text			= "90%"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_perc2_05"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "center"
+                    android:layout_alignParentEnd="true"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro">
+                <TextView
+                    android:id				= "@+id/lbl_premio2_05"
+                    android:text			= "Prêmio"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:gravity			= "center"
+                    android:textSize        = "12sp"
+                    android:textColor       = "@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_premio2_05"
+                    android:text			= "1010"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_premio2_05"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "center"
+                    android:layout_alignParentEnd="true"
+                    />
+            </RelativeLayout>
+
+        </TableRow>
+
+
+
+    </TableLayout>
+
+
+
+</LinearLayout>

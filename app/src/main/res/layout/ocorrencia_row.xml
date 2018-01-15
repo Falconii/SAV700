@@ -1,0 +1,136 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/customfundo01">
+    <ImageView
+        android:id="@+id/img_20"
+        android:src="@drawable/ic_imobilizado"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        >
+    </ImageView>
+    <LinearLayout
+        android:id="@+id/linha01_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/img_20"
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+            android:id="@+id/tvLinha_01_20"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="wrap_content"
+            android:layout_marginLeft ="10dp"
+            android:text              =""
+            android:textColor         ="@color/colorPrimary"
+            android:textSize="16dp"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvLinha_01_02_20"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="wrap_content"
+            android:layout_marginLeft ="10dp"
+            android:text              =""
+            android:textColor         ="@color/colorPrimary"
+            android:textSize="14dp"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvLinha_01_03_20"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="wrap_content"
+            android:layout_marginLeft ="10dp"
+            android:textColor         ="@color/colorPrimary"
+            android:textSize="14dp"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            >
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linha02_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf  ="@+id/img_20"
+        android:layout_below="@+id/linha01_20"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tvLinha_02_20"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="match_parent"
+            android:layout_marginLeft ="10dp"
+            android:text              ="Conexão Interna"
+            android:textColor         ="@color/black"
+            android:textSize="12dp"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            >
+        </TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linha03_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf  ="@+id/img_20"
+        android:layout_below="@+id/linha02_20"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tvLinha_03_20"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="match_parent"
+            android:layout_marginLeft ="10dp"
+            android:text              ="Conexão Interna"
+            android:textColor         ="@color/black"
+            android:textSize="12dp"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            >
+        </TextView>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_20"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linha01_20"
+        android:layout_toLeftOf="@+id/ibProcessar_20"
+        android:background="@color/colorAccent"
+        android:visibility="invisible"/>
+
+    <ImageButton
+        android:id="@+id/ibProcessar_20"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linha01_20"
+        android:layout_toLeftOf="@+id/ibCancelar_20"
+        android:background="?android:selectableItemBackground"
+        android:src="@drawable/play_48"/>
+
+    <ImageButton
+        android:id="@+id/ibCancelar_20"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linha01_20"
+        android:layout_alignParentRight="true"
+        android:background="?android:selectableItemBackground"
+        android:src="@drawable/delete_48"/>
+</RelativeLayout>

@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
+    android:layout_marginTop="10sp"
+    android:layout_marginBottom="10sp"
+    android:background="@drawable/fundopedido"
+     >
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="05dp"
+        android:layout_marginBottom="05dp"
+        >
+    
+    <TextView
+        android:id="@+id/lbl_titulo_002"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="PEDIDO" />
+
+    <ImageView
+        android:id="@+id/item_trash_002"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="97dp"
+        android:background="@color/white"
+        android:src="@drawable/trash_24" />
+
+    <ImageView
+        android:id="@+id/item_information_002"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="61dp"
+        android:layout_toLeftOf="@+id/item_trash_002"
+        android:src="@drawable/about_24" />
+
+    <ImageView
+        android:id="@+id/item_max_min_002"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="24dp"
+        android:src="@drawable/maximize_24_azul" />
+    
+        <ImageView
+        android:id="@+id/img_flag_002"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/item_information_002"
+        android:layout_marginLeft="55dp"
+        android:src="@drawable/flag_24_vermelho" />
+
+	    <ImageView
+	        android:id="@+id/img_upload_002"
+	        android:layout_width="26dp"
+	        android:layout_height="26dp"
+	        android:layout_alignTop="@+id/img_flag_002"
+	        android:layout_marginLeft="46dp"
+	        android:layout_toRightOf="@+id/img_flag_002"
+	        android:src="@drawable/upload_24_vermelho" />
+	
+	    <TextView
+	        android:id="@+id/txt_upload_002"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:layout_toRightOf="@+id/img_upload_002"
+	        android:layout_marginLeft="05dp"
+	        android:text="12/12 as 12:12"
+	        android:textColor="@color/dark_blue"
+	        android:textSize="12sp" />
+    
+    
+    </RelativeLayout>
+        <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="05dp"
+        android:layout_marginBottom="05dp"
+        >
+    
+       <TableLayout
+	    android:id="@+id/table_002"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="#ffffff"
+	    android:shrinkColumns="*"
+	    android:stretchColumns="*" 
+	    >
+
+	    
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/lbl_cliente_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="CLIENTE"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	             />
+
+	          <TextView
+	            android:id="@+id/lbl_cnpj_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="CNPJ"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	            
+	             />
+	        	        
+	        
+	          <TextView
+	            android:id="@+id/lbl_ie_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="IE"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	            
+	             />
+
+
+	           <TextView
+	            android:id="@+id/lbl_pedcli_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="PED. CLIENTE"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	            
+	             />
+
+	           	           	           	          	        
+	    </TableRow>
+        
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/txt_cliente_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="left"
+	            android:text="000000-00-123456789012345678901234567890"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+
+	          <TextView
+	            android:id="@+id/txt_cnpj_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical|left"
+	            android:text="62.901.210/0001-08"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+	        	        
+	        
+	          <TextView
+	            android:id="@+id/txt_ie_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical|right"
+	            android:text="244.244.244.244"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+
+
+	           <TextView
+	            android:id="@+id/txt_pedcli_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical|right"
+	            android:text="123456789012345"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+
+	           	           	           	          	        
+	    </TableRow>
+
+	    </TableLayout>
+	    
+	    <TableLayout
+	    android:id="@+id/table_clienteentrega_002"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/table_002"
+	    android:layout_marginTop="5sp"
+	    android:background="#ffffff"
+	    android:shrinkColumns="*"
+	    android:stretchColumns="*" 
+	    >
+
+	    
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/lbl_clienteentrega_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="CLIENTE ENTREGA"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	             />
+
+	           	           	           	          	        
+	    </TableRow>
+        
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/txt_clienteentrega_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="left"
+	            android:text="KSJDKLJSDKLJSKLDJLKSJDLKSJDLKSJDLKJSLKDJ"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+	           	           	           	          	        
+	    </TableRow>
+
+       </TableLayout>
+
+
+        <TableLayout
+	    android:id="@+id/table_datas_002"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/table_clienteentrega_002"
+	    android:layout_marginTop="5sp"
+	    android:background="#ffffff"
+	    android:shrinkColumns="*"
+	    android:stretchColumns="*" 
+	    >
+
+	    
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/lbl_emissao_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="EMISSÃO"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	             />
+
+	          <TextView
+	            android:id="@+id/lbl_entrega_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="ENTREGA"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	            
+	             />
+	        	        
+
+	          <TextView
+	            android:id="@+id/lbl_condpagto_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="COND. PAGTO"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	            
+	             />
+	          	        
+	          <TextView
+	            android:id="@+id/lbl_tabpreco_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="TAB. PREÇO"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	            
+	             />
+
+
+	           <TextView
+	            android:id="@+id/lbl_retira_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="RETIRA"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	            
+	             />
+
+	           	           	           	          	        
+	    </TableRow>
+        
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/txt_emissao_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical|center"
+	            android:text="12/12/1212"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+
+	          <TextView
+	            android:id="@+id/txt_entrega_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical|center"
+	            android:text="12/12/12"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+	        	        
+	        
+	          <TextView
+	            android:id="@+id/txt_condpagto_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical|right"
+	            android:text="007- 40 DL"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+
+
+	           <TextView
+	            android:id="@+id/txt_tabpreco_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical|center"
+	            android:text="VAREJO"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+
+	           <TextView
+	            android:id="@+id/txt_retira_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical|center"
+	            android:text="123456789012345"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+	           
+	           	           	           	          	        
+	    </TableRow>
+
+       </TableLayout>
+
+       <TableLayout
+	    android:id="@+id/table_obsped_002"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/table_datas_002"
+	    android:layout_marginTop="5sp"
+	    android:background="#ffffff"
+	    android:shrinkColumns="*"
+	    android:stretchColumns="*" 
+	    >
+
+	    
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/lbl_obsped_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="OBSERVAÇÃO DO PEDIDO"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	             />
+
+	           	           	           	          	        
+	    </TableRow>
+        
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/txt_obsped_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="left"
+	            android:text="KSJDKLJSDKLJSKLDJLKSJDLKSJDLKSJDLKJSLKDJ"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+	           	           	           	          	        
+	    </TableRow>
+
+       </TableLayout>
+
+       <TableLayout
+	    android:id="@+id/table_obsnf_002"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/table_obsped_002"
+	    android:layout_marginTop="5sp"
+	    android:background="#ffffff"
+	    android:shrinkColumns="*"
+	    android:stretchColumns="*">
+
+	    
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/lbl_obsnf_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:text="OBSERVAÇÃO DA NOTA FISCAL"
+	            android:textColor="@color/red"
+	            android:textSize="12sp"
+	            android:background="@drawable/titleproduto"
+	             />
+
+	           	           	           	          	        
+	    </TableRow>
+        
+	    <TableRow
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	        
+	         <TextView
+	            android:id="@+id/txt_obsnf_002"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="left"
+	            android:text="KSJDKLJSDKLJSKLDJLKSJDLKSJDLKSJDLKJSLKDJ"
+	            android:textColor="@color/dark_blue"
+	            android:textSize="12sp"
+	            android:background="@drawable/detalheproduto"
+	             />
+	           	           	           	          	        
+	    </TableRow>
+
+       </TableLayout>
+       
+    </RelativeLayout>
+    
+
+</LinearLayout>

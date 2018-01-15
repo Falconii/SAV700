@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/lanca_pedido_menu_ok"
+        android:icon="@drawable/ok_24_branco"
+        app:showAsAction="ifRoom|withText"
+        android:title="Gravar"
+        android:titleCondensed="Gravar">
+    </item>
+
+    <item
+    android:id="@+id/lanca_pedido_menu_cancela"
+    android:icon="@drawable/cancel_24_branco"
+    app:showAsAction="ifRoom|withText"
+    android:title="Cancelar"
+    android:titleCondensed="Cancelar">
+</item>
+
+    <item
+        android:id="@+id/lanca_pedido_menu_duplica"
+        android:icon="@drawable/ic_id_verficado"
+        app:showAsAction="ifRoom|withText"
+        android:title="Copiar"
+        android:titleCondensed="Copiar">
+    </item>
+
+</menu>

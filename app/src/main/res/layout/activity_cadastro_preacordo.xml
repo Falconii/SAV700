@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="br.com.brotolegal.sav700.CadastroPreAcordoActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tbpreacordo_cadastro_713"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp">
+
+            <TextView
+                android:id="@+id/lbl_titulo_713"
+                style="?android:attr/textAppearanceLarge"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:gravity="center"
+                android:text="CADASTRO DE PRÉ-ACORDOS" />
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="05dp"
+                android:layout_marginBottom="05dp"
+                >
+
+                <LinearLayout
+                    android:id="@+id/linha_00_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- id -->
+                    <TextView
+                        android:id="@+id/lbl_mensagem_713"
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="MENSAGEM"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:layout_width="90sp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_mensagem_713"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="000035-20140505-1340"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3" >
+                    </TextView>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linha_01_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10sp"
+                    android:layout_below="@+id/linha_00_713">
+
+                    <!-- id -->
+                    <TextView
+                        android:id="@+id/lbl_id_713"
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="ID"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:layout_width="90sp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_id_713"
+                        android:layout_width="200sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="000035-20140505-1340"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3" >
+                    </TextView>
+
+
+                    <!-- emissao  -->
+                    <TextView
+                        android:id="@+id/lbl_emissao_713"
+                        android:layout_width="80sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="DATA"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:clickable="true"
+                        >
+                    </TextView>
+
+
+                    <TextView
+                        android:id="@+id/txt_emissao_713"
+                        android:layout_width="120sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="21/09/2016"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3"
+                        >
+                    </TextView>
+
+                    <!-- status  -->
+                    <TextView
+                        android:id="@+id/lbl_status_713"
+                        android:layout_marginLeft="10sp"
+                        android:layout_width="80sp"
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="Status"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:clickable="true">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_status_713"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="APROVADO !!!"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3"
+                        >
+                    </TextView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linha_02_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/linha_01_713">
+
+                    <!-- Codigo Protheus -->
+                    <TextView
+                        android:id="@+id/lbl_protheus_713"
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="PROTHEUS"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:layout_width="90sp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_protheus_713"
+                        android:layout_width="200sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="000000-01"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3" >
+                    </TextView>
+
+                    <Switch
+                        android:id="@+id/swClienteRede_713"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30sp"
+                        android:textOff="CLIENTE"
+                        android:textOn ="REDE"
+                        android:text   =""
+                        />
+                    <!-- codigo cliente -->
+                    <TextView
+                        android:id="@+id/lbl_codcli_713"
+                        android:layout_width="120sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="CÓDICO"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:clickable="true"
+                        android:onClick="clickCliente"
+
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_codcli_713"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="000000-00"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3" >
+                    </TextView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linha_03_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linha_02_713"
+                    android:layout_marginTop="10sp"
+                    android:orientation="horizontal">
+
+                    <!-- RAZAO SOCIAL-->
+                    <TextView
+                        android:id="@+id/lbl_razao_713"
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="RAZAO"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+
+                        android:layout_width="90sp">
+                    </TextView>
+
+
+                    <TextView
+                        android:id="@+id/txt_razao_713"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="BROTO LEGAL ALIMENTOS LTDA S/A"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3" >
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linha_04_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/linha_03_713"
+                    >
+
+                    <!-- cnpj  -->
+                    <TextView
+                        android:id="@+id/lbl_cnpj_713"
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="CNPJ/CPF"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+
+                        android:layout_width="90sp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_cnpj_713"
+                        android:layout_width="298dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="062.210.610/0001-89"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3"
+                        >
+                    </TextView>
+
+                    <!-- IE -->
+                    <TextView
+                        android:id="@+id/lbl_ie_713"
+                        android:layout_marginLeft="10sp"
+                        android:layout_width="80sp"
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="I.E."
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+
+                         >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_ie_713"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="244.123.123"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3" >
+                    </TextView>
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/linha_05_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linha_04_713"
+                    android:layout_marginTop="10sp"
+                    android:orientation="horizontal">
+
+                    <!-- verbas -->
+                    <Spinner
+                        android:id="@+id/sp_verba_713"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/fundo">
+                    </Spinner>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linha_06_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linha_05_713"
+                    android:layout_marginTop="10sp"
+                    android:orientation="horizontal">
+
+                    <!-- pagamento -->
+                    <Spinner
+                        android:id="@+id/sp_pagamento_713"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/fundo">
+                    </Spinner>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linha_07_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linha_06_713"
+                    android:layout_marginTop="10sp"
+                    android:orientation="horizontal">
+
+                    <!-- data inical -->
+                    <TextView
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="Dt. INICIAL"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:clickable="true"
+                        android:onClick="clickInicial"
+                        android:id="@+id/lbl_dtinicial_713"
+                        android:layout_width="90sp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_dtinicial_713"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="27/12/1964"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3"
+                        android:layout_width="180sp">
+                    </TextView>
+
+
+
+                    <!-- data final -->
+                    <TextView
+                        android:layout_width="80sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="Dt. FINAL"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:clickable="true"
+                        android:onClick="clickFinal"
+                        android:id="@+id/lbl_dtfinal_713">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_dtfinal_713"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="27/12/1964"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3"
+                        android:layout_width="180sp">
+                    </TextView>
+
+
+
+                    <!-- data pagamento -->
+                    <TextView
+                        android:layout_width="80sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="DT PAGTO"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:clickable="true"
+                        android:onClick="clickPagto"
+                        android:id="@+id/lbl_dtpagto_713">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_dtpagto_713"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="27/12/1964"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3"
+                        android:layout_width="match_parent">
+                    </TextView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linha_08_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linha_07_713"
+                    android:layout_marginTop="10sp"
+                    android:orientation="horizontal">
+
+                    <!-- Saldo Inicial -->
+                    <TextView
+                        android:id="@+id/lbl_valor_713"
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="VALOR"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:clickable="true"
+                        android:onClick="clickValor"
+                        android:layout_width="90sp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_valor_713"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="120,00"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3" >
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linha_09_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linha_08_713"
+                    android:layout_marginTop="10sp"
+                    android:orientation="horizontal">
+
+                    <!--Descricao -->
+                    <TextView
+                        android:id="@+id/lbl_obs_713"
+                        android:layout_height="30sp"
+                        android:gravity="center"
+                        android:text="OBS"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:clickable="true"
+                        android:onClick="clickObs"
+                        android:layout_width="90sp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_obs_713"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="AMAMAMAMAMAM"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3" >
+                    </TextView>
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/linha_10_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30sp"
+                    android:layout_below="@+id/linha_09_713"
+                    android:layout_marginTop="10sp"
+                    android:orientation="horizontal">
+
+                    <!-- DESCRICAO -->
+                    <TextView
+                        android:id="@+id/lbl_descricao_713"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="DESCRIÇÃO"
+                        android:textColor="@color/red"
+                        android:background="@drawable/fundo"
+                        android:clickable="true"
+                        android:onClick="clickDescricao"
+                        android:layout_width="match_parent">
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linha_11_713"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linha_10_713"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/txt_descricao_713"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:gravity="top"
+                        android:text="DESCRICAO"
+                        android:textColor="@color/dark_blue"
+                        android:background="@drawable/fundo3"
+                        android:scrollbars = "vertical"
+                        >
+                    </TextView>
+
+                    <Switch
+                        android:text="Switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/switch1"
+                        android:layout_weight="1" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+

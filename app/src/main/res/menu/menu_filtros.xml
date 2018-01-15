@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.brotolegal.sav700.Parametros_01Activity">
+    <item
+        android:id="@+id/ac_filtros_ok"
+        android:orderInCategory="100"
+        android:title="Relatório"
+        android:titleCondensed=" Relatório"
+        app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/ac_filtros_cancelar"
+        android:orderInCategory="100"
+        android:title="Voltar"
+        android:titleCondensed=" Voltar"
+        android:icon="@drawable/cancel_24_branco"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>

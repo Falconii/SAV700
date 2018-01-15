@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
+    android:layout_marginTop="10sp"
+    android:layout_marginBottom="10sp"
+    android:background="@drawable/fundopedido"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_categoria_025"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical|left"
+            android:text="ITEM 001 - JHSDJKHSJKDHJKSHDJKSHJKDHSAJDHJKSAHDJKSA FD "
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:background="@drawable/detalheproduto"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="05dp"
+        android:layout_marginBottom="05dp"
+        >
+
+        <TableLayout
+            android:id="@+id/table_025"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:shrinkColumns="*"
+            android:stretchColumns="*"
+            >
+
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lbl_meta_025"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="META"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/lbl_carteira_025"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="CARTEIRA"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/lbl_realizado_025"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="REAL"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+                <TextView
+                    android:id="@+id/lbl_cart_real_025"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="CART + REAL"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+
+
+                <TextView
+                    android:id="@+id/lbl_atingido_025"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="ATINGIDO"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/txt_meta_025"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+
+                <TextView
+                    android:id="@+id/txt_carteira_025"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|right"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|right"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    android:id="@+id/txt_realizado_025" />
+
+                <TextView
+                    android:id="@+id/txt_cart_real_025"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+
+                <TextView
+                    android:id="@+id/txt_atingido_025"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|right"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+            </TableRow>
+
+
+
+        </TableLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

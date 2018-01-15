@@ -1,0 +1,59 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fundo3">
+    <TextView
+        android:id="@+id/lbl_titulo_22"
+        android:layout_width="80sp"
+        android:layout_height="30sp"
+        android:layout_marginTop="2sp"
+        android:gravity="center"
+        android:text="Tipo Ped."
+        android:textColor="@color/red"
+        android:background="@drawable/fundo"
+        android:clickable="false"
+        >
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        android:layout_toRightOf="@+id/lbl_titulo_22">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/fundo3"
+            >
+            <ImageView
+                android:id="@+id/img_22"
+                android:layout_width="14sp"
+                android:layout_height="14sp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_action_order_sales_i"
+                android:adjustViewBounds="true"
+                >
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tvOpcao_22"
+                android:layout_width      ="match_parent"
+                android:layout_height     ="30sp"
+                android:layout_marginLeft ="0sp"
+                android:text              ="escolha"
+                android:textColor         ="@color/dark_blue"
+                android:layout_gravity    ="center_horizontal|center_vertical"
+                android:background="@drawable/fundo3"
+                android:gravity="center|center_vertical"
+                >
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/fundo"
+	>
+
+
+	<LinearLayout
+		android:id="@+id/parentLayout"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+
+		<LinearLayout
+			android:id="@+id/acordo_filtros_437"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:background="@color/barLightColor"
+			android:weightSum="1">
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_cadastro_437"
+				android:src="@drawable/cliente_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_alcadas_437"
+				android:src="@drawable/assinatura_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_financeiro_437"
+				android:src="@drawable/financeiro_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="20sp"
+				android:id="@+id/bt_pedidos_437"
+				android:src="@drawable/pedido_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="05sp"
+				android:id="@+id/bt_descricao_437"
+				android:src="@drawable/descricao_30"
+				/>
+
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="20sp"
+				android:id="@+id/bt_visualizar_437"
+				android:src="@drawable/pen_30"
+				/>
+
+			
+			<TextView
+				android:layout_width="200sp"
+				android:layout_height="match_parent"
+				android:layout_marginLeft="10sp"
+				android:text="15:00"
+				android:id="@+id/lbl_saldo_437"
+				android:gravity="center_vertical|center_horizontal"
+
+				android:textColor="@color/design_textinput_error_color_light">
+			</TextView>
+
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="15:00"
+				android:id="@+id/lbl_status_437"
+				android:gravity="center_vertical|center_horizontal"
+
+				android:textColor="@color/design_textinput_error_color_light">
+			</TextView>
+
+		</LinearLayout>
+
+
+
+		<TableLayout
+			android:id="@+id/table_437"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:shrinkColumns="*"
+			android:stretchColumns="*"
+			>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_mobile_437"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="Código Tablet: 999999-09"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+				<TextView
+					android:id="@+id/txt_emissao_437"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="Emissão: 24/03/2017"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+				<TextView
+					android:id="@+id/txt_protheus_437"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="Emissão: 24/03/2017"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent" >
+
+				<TextView
+					android:id="@+id/txt_cliente_437"
+					android:layout_span="3"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="000000-00 CARREFOUR CAMPINAS LTDA"
+					android:textColor="@color/black"
+					/>
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent" >
+
+				<TextView
+					android:id="@+id/txt_verba_437"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:layout_span="3"
+					android:text="Verba: 9393939-lkdjflkdjflkjdkfljdlkjflk"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent" >
+
+				<TextView
+					android:id="@+id/txt_tipopagto_437"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:layout_span="3"
+					android:gravity="left|center_vertical"
+					android:text="Pagto: kjkjdkfjkdjfkdjfkdjfk"
+					android:textColor="@color/black"
+					/>
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_dtinicio_437"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="Data Inicial: 99/99/99"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+				<TextView
+					android:id="@+id/txt_dtfim_437"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="Data Final: 24/03/2017"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+				<TextView
+					android:id="@+id/txt_dtpagto_437"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="Data Pagto: 24/03/2017"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent" >
+
+				<TextView
+					android:id="@+id/txt_obs_437"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:layout_span="3"
+					android:gravity="left|center_vertical"
+					android:text="Descrição"
+					android:textColor="@color/black"
+					/>
+
+			</TableRow>
+
+
+		</TableLayout>
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/fundo_preto"
+			android:orientation="horizontal" >
+
+		</LinearLayout>
+	</LinearLayout>
+
+</RelativeLayout>

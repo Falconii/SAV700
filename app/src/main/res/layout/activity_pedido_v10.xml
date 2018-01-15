@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_pedido_v10"
+    android:layout_width = "match_parent"
+    android:layout_height= "match_parent"
+    android:paddingBottom= "@dimen/activity_vertical_margin"
+    android:paddingLeft  = "@dimen/activity_horizontal_margin"
+    android:paddingRight = "@dimen/activity_horizontal_margin"
+    android:paddingTop   = "@dimen/activity_vertical_margin"
+    tools:context="br.com.brotolegal.sav700.PedidoV10Activity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarv10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_lanca_pedidov10"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_lanca_pedido_cabec"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5sp"
+        android:layout_below="@+id/appbarv10">
+
+        <include android:id="@+id/inc_pedidomb_cabec_row"
+            layout="@layout/pedidomb_cabec_row"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_lanca_pedido_detalhe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5sp"
+        android:layout_below="@+id/ll_lanca_pedido_cabec">
+
+        <include android:id="@+id/inc_pedidomb_xxxx"
+            layout="@layout/pedidomb_det_v1_row"/>
+
+        <include android:id="@+id/inc_pedidomb_filtro"
+            layout="@layout/filtro_pedido"/>
+
+        <ListView
+            android:id                 =  "@+id/lvpedidov10_100"
+            android:layout_marginTop   =  "05sp"
+            android:layout_marginLeft  =  "5sp"
+            android:layout_marginRight =  "5sp"
+            android:layout_width       =  "match_parent"
+            android:layout_height      =  "match_parent"
+            android:background="@drawable/fundopedido"
+            >
+        </ListView>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fundo"
+    android:layout_marginTop="05sp"
+    android:layout_marginLeft="05sp"
+    android:layout_marginRight="05sp">
+
+    <LinearLayout
+        android:id="@+id/pedido_filtros_400"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/barLightColor"
+        >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_enviar_111"
+            android:src="@drawable/cliente_30"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linha_01_805"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pedido_filtros_400"
+        android:orientation="horizontal">
+
+        <!-- id -->
+        <TextView
+            android:id="@+id/lbl_id_805"
+            android:layout_width="80sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="ID"
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_id_805"
+            android:layout_width="200sp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="000035-20140505-1340"
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3" >
+        </TextView>
+
+        <!-- protheus -->
+        <TextView
+            android:id="@+id/lbl_num_805"
+            android:layout_marginLeft="10sp"
+            android:layout_width="80sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="Protheus"
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_num_805"
+            android:layout_width="90sp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3"
+            >
+        </TextView>
+
+        <!-- status  -->
+        <TextView
+            android:id="@+id/lbl_status_805"
+            android:layout_marginLeft="10sp"
+            android:layout_width="80sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="Status"
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_status_805"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="APROVADO !!!"
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3"
+            >
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linha_02_805"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linha_01_805"
+        android:layout_marginTop="10sp"
+        android:orientation="horizontal">
+
+        <!-- CLIENTE -->
+        <TextView
+            android:id="@+id/lbl_cod_cli_805"
+            android:layout_width="80sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="CLIENTE"
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_cliente_805"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="067070-01 BROTO LEGAL ALIMENTOS LTDA S/A"
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3" >
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linha_03_805"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linha_02_805"
+        android:layout_marginTop="10sp"
+        android:orientation="horizontal">
+
+        <!-- CNPJ / IE -->
+        <TextView
+            android:id="@+id/lbl_cliente_cnpj_805"
+            android:layout_width="80sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="CNPJ"
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_cliente_cnpj_805"
+            android:layout_width="200sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="62.901.210.0001-08"
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/lbl_cliente_ie_805"
+            android:layout_marginLeft="10sp"
+            android:layout_width="120sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="I.E."
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_cliente_ie_805"
+            android:layout_width="200sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="244.244.244.244"
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3" >
+
+        </TextView>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linha_04_805"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linha_03_805"
+        android:layout_marginTop="10sp"
+        android:orientation="horizontal">
+
+        <!-- LIMITE ATUAL -->
+        <TextView
+            android:id="@+id/lbl_limite_Atual_805"
+            android:layout_width="80sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="Lim. Atual"
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_limite_atual_805"
+            android:layout_width="120sp"
+            android:layout_height="30sp"
+            android:gravity="right|center_vertical"
+            android:text="1200,00"
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3" >
+        </TextView>
+
+        <!--  LIMITE SOLICITADO -->
+        <TextView
+            android:id="@+id/lbl_limite_sol_805"
+            android:layout_marginLeft="15sp"
+            android:layout_width="80sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="Limite Sol."
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_limite_sol_805"
+            android:layout_width="120sp"
+            android:layout_height="30sp"
+            android:gravity="right|center_vertical"
+            android:text="1.000,00."
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3" >
+        </TextView>
+
+        <!--  LIMITE APROVADO -->
+        <TextView
+            android:id="@+id/lbl_limite_aprov_805"
+            android:layout_marginLeft="15sp"
+            android:layout_width="80sp"
+            android:layout_height="30sp"
+            android:gravity="center"
+            android:text="Lim. Aprov."
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_limite_aprov_805"
+            android:layout_width="120sp"
+            android:layout_height="30sp"
+            android:gravity="right|center_vertical"
+            android:text="1.000,00"
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3" >
+        </TextView>
+
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/bt_agenda_400"
+        android:src="@drawable/pen_30"
+        />
+
+</RelativeLayout>

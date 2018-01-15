@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SAV700</string>
+    <string name="app_versao">Versao 7.0.0 08/12/2017 08:00</string>
+    <string name="app_razao">Broto Legal Alimentos</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Configurações</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_cliente_view_ativity">ClienteViewAtivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_meta_view">MetaViewActivity</string>
+</resources>

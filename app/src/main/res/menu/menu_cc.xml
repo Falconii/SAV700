@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.brotolegal.sav700.PedidosProtheusGeralActivity">
+    <item
+        android:id="@+id/menu_cc_acordo"
+        android:orderInCategory="100"
+        android:title="Voltar"
+        android:titleCondensed=" Acordo"
+        android:icon="@drawable/plus_24_branco"
+        app:showAsAction="ifRoom|withText" />
+
+    android:id="@+id/menu_cc_cancelar"
+        android:orderInCategory="100"
+        android:title="Voltar"
+        android:titleCondensed=" Voltar"
+        android:icon="@drawable/cancel_24_branco"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>

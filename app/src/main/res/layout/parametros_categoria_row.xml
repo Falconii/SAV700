@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fundo"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/lbl_titulo_722"
+        android:layout_width="match_parent"
+        android:layout_height="35sp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="Filtro De Categoria"
+        android:textColor="@color/red"
+        android:background="@drawable/fundo"
+        >
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/ll_categoria_722"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/lbl_titulo_722"
+        android:layout_marginTop="20sp"
+        android:layout_height="30sp"
+        android:weightSum="10"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/rb_categorias_arroz_722"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="ARROZ"
+            />
+
+        <CheckBox
+            android:id="@+id/rb_categorias_feijao_722"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="FEIJÃO"
+            />
+
+        <CheckBox
+            android:id="@+id/rb_categorias_jb_722"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="J. BEEF"
+            />
+
+        <CheckBox
+            android:id="@+id/rb_categorias_azeite_722"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="AZEITE"
+            />
+
+        <CheckBox
+            android:id="@+id/rb_categorias_pescado_722"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="PESCADO"
+            />
+
+
+
+    </LinearLayout>
+
+
+    <!-- cb do filtro -->
+    <CheckBox
+        android:id="@+id/cb_filtro_722"
+        android:layout_width="180sp"
+        android:layout_height="30sp"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="Considera o Filtro"
+        android:textColor="@color/red"
+        android:clickable="true"
+        >
+    </CheckBox>
+
+</RelativeLayout>

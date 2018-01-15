@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/imageView_135"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="05dp"
+        android:src="@drawable/perfil">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/txt_texto1_135"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/imageView_135"
+        android:gravity="left"
+        android:text="Unidade Em Fardos"
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/sp_unidades_paletizacao_136" />
+
+    <TextView
+        android:id="@+id/txt_texto2_135"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_texto1_135"
+        android:gravity="left"
+        android:text="GRUPO FEIJAO 3.01"
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp"
+        android:layout_toLeftOf="@+id/sp_unidades_paletizacao_136"
+        android:layout_alignLeft="@+id/txt_texto1_135" />
+
+    <Spinner
+        android:id="@+id/sp_unidades_paletizacao_136"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/txt_texto2_135"
+        />
+
+
+</RelativeLayout>

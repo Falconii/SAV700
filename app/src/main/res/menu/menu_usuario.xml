@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.brotolegal.sav700.UsuarioActivity">
+    <item
+        android:id="@+id/menu_usuario_sincronizar"
+        android:orderInCategory="100"
+        android:icon="@drawable/refresh_30"
+        android:title="Sincronizar"
+        app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/menu_usuario_cancelar"
+        android:orderInCategory="100"
+        android:title="Voltar"
+        android:titleCondensed="  Voltar"
+        android:icon="@drawable/cancel_24_branco"
+        app:showAsAction="ifRoom|withText" />
+
+
+</menu>

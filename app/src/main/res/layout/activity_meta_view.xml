@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="br.com.brotolegal.sav700.MetaViewActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
+        android:orientation="horizontal"
+        android:layout_marginTop="5sp"
+        android:id="@+id/cabec">
+
+        <ImageView
+            android:id="@+id/img_conexao"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:scaleType="centerInside"
+            android:src="@drawable/conectado"
+            android:layout_gravity="center_vertical"/>
+
+        <Spinner
+            android:id="@+id/spConexao"
+            android:background="@drawable/fundo"
+            android:drawSelectorOnTop="true"
+            android:layout_width="170sp"
+            android:layout_height="50sp"
+            android:layout_marginLeft="5sp"
+            />
+
+
+        <ImageView
+            android:id="@+id/img_tabela"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="10sp"
+            android:scaleType="centerInside"
+            android:src="@drawable/financeiro_40"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/lbl_tabela"
+            android:layout_width ="200sp"
+            android:layout_height="50sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:text="TABELA DE PREÇO\natualizada"
+            android:textColor="@color/red"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@drawable/fundo" />
+
+        <ImageView
+            android:id="@+id/img_fechamento"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:scaleType="centerInside"
+            android:src="@drawable/calendar_30"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/lbl_fechamento"
+            android:layout_width ="200sp"
+            android:layout_height="50sp"
+            android:layout_marginLeft="10sp"
+            android:text="FECHAMENTO DO MÊS\n30/05/17 às 17:30"
+            android:textColor="@color/red"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@drawable/fundo" />
+
+        <ImageButton
+            android:id="@+id/img_refresh"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginLeft="5sp"
+            android:scaleType="centerInside"
+            android:src="@drawable/processo"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"/>
+
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cabec"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+
+</RelativeLayout>

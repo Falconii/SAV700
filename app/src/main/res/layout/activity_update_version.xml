@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="br.com.brotolegal.sav700.UpdateVersionActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_update_445"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_update"
+        android:layout_below="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/logo_100"
+            android:src="@drawable/imglogo"
+            />
+
+        <TextView
+            android:id="@+id/lbUser"
+            android:layout_width      = "wrap_content"
+            android:layout_height     = "wrap_content"
+            android:text              = "Código Usuário:"
+            android:textColor         = "@color/colorPrimary"
+            android:layout_gravity    = "center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="45dp"
+            android:layout_alignBottom="@+id/edUser_445"
+            android:layout_alignStart="@+id/edUser_445">
+        </TextView>
+
+
+        <EditText
+            android:id="@+id/edUser_445"
+            android:drawableLeft="@drawable/icuser"
+            android:background="@drawable/fundo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:fontFamily="Helvetica"
+            android:layout_marginTop="69dp"
+            android:layout_below="@+id/logo_100"
+            android:layout_alignStart="@+id/edPass_445"
+            android:layout_alignEnd="@+id/edPass_445" />
+
+
+        <TextView
+            android:id="@+id/lbSenha"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="wrap_content"
+            android:text              ="Senha:"
+            android:textColor         ="@color/colorPrimary"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="45dp"
+            android:layout_alignBottom="@+id/edPass_445"
+            android:layout_alignStart="@+id/edPass_445">
+        </TextView>
+        <EditText
+            android:id="@+id/edPass_445"
+            android:drawableLeft="@drawable/icpass"
+            android:background="@drawable/fundo"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_gravity="center"
+            android:fontFamily="Helvetica"
+            android:layout_below="@+id/edUser_445"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="43dp" />
+
+        <TextView
+            android:id="@+id/lbConexao"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="wrap_content"
+            android:text              ="Conexão:"
+            android:textColor         ="@color/colorPrimary"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="33dp"
+            android:layout_below="@+id/lbSenha"
+            android:layout_alignStart="@+id/spConexao_445">
+        </TextView>
+        <Spinner
+            android:id="@+id/spConexao_445"
+            android:background="@drawable/fundo"
+            android:drawSelectorOnTop="true"
+            android:layout_marginTop="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/edPass_445"
+            android:layout_alignStart="@+id/edPass_445"
+            android:layout_below="@+id/edPass_445" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="S.A.V\nAtualização de Versão\nSistema De Apoio Ao Vendedor"
+            android:id="@+id/textView2"
+            android:layout_above="@+id/edUser_445"
+            android:layout_alignStart="@+id/edUser_445"
+            android:layout_marginStart="40dp"
+            android:layout_alignTop="@+id/logo_100"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Atenção !\nAtualização Obrigatória.\nFavor Tocar A Opção ATUALIZAR!"
+            android:id="@+id/txt_mensagem_troca_445"
+            android:layout_below="@+id/spConexao_445"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@color/red"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

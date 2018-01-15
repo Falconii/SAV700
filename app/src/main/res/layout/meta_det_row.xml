@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/meta_000"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="58dp"
+		>
+        
+        <ImageView
+            android:id="@+id/meta_move_dow"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dip"
+            android:paddingBottom="2dip"
+            android:paddingTop="2dip"
+            android:src="@drawable/seta_baixo" />
+
+         <TextView
+             android:id="@+id/lblCategoria_20"
+             android:layout_width="400sp"
+             android:layout_height="30sp"
+             android:layout_centerVertical="true"
+             android:gravity="center_vertical"
+             android:layout_marginLeft="5dip"
+             android:text="ARROZ"
+             android:textSize="14sp"
+             android:textStyle="bold" />
+
+         <TextView
+             android:id="@+id/lblPorcentagem_20"
+             android:layout_width="match_parent"
+             android:layout_height="30sp"
+             android:layout_centerVertical="true"
+             android:layout_marginLeft="5sp"
+             android:layout_toLeftOf="@+id/bola_20"
+             android:layout_toRightOf="@+id/lblCategoria_20"
+             android:gravity="center_vertical"
+             android:text="20%"
+             android:textSize="14sp"
+             android:textStyle="bold" />
+
+         <ImageView
+             android:id="@+id/bola_20"
+             android:layout_width="40dip"
+             android:layout_height="40dip"
+             android:layout_alignTop="@+id/lblPorcentagem_20"
+             android:layout_marginRight="31dp"
+             android:layout_toLeftOf="@+id/meta_move_dow"
+             android:adjustViewBounds="true"
+             android:scaleType="center"
+             android:src="@drawable/bola_verde" />
+
+         <TextView
+             android:id="@+id/txttexto_20"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignLeft="@+id/lblCategoria_20"
+             android:layout_marginTop="40dp"
+             android:textSize      = "14sp"
+             android:textColor     = "@color/black"
+             android:text="TextView" />
+        
+    </RelativeLayout>
+    
+    
+	<TableLayout
+            android:id="@+id/tablemetas_20"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="05dp"
+            android:shrinkColumns="*"  android:stretchColumns="*" android:background="#ffffff"
+            >
+
+                        <!-- titulo realizado -->
+                        <TableRow
+                            android:layout_height="wrap_content"
+                            android:layout_width ="fill_parent"
+                            android:gravity      ="center_horizontal"
+                            android:background   ="#999999">
+
+                            <TextView
+                                android:layout_width  = "fill_parent" 
+                                android:layout_height = "wrap_content"
+                                android:textSize      = "14sp" 
+                                android:text          = "Realizado"  
+                                android:layout_span   = "6"
+                                android:padding       = "14dip"
+                                android:gravity		  =  "center"
+                                android:textColor     = "@color/black"/>
+
+                       </TableRow>
+         
+                        <!-- Titulo dos Realizados -->
+
+                        <TableRow
+                            android:id="@+id/titulo_realizado_20"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent">
+                            <TextView
+                                android:id				= "@+id/lblMeta_20_1" 
+                                android:text			= "Meta"
+                                android:layout_weight	= "1" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			= "14dip"
+                                android:layout_span     = "2" 
+                                android:gravity			= "center"/>
+                            <TextView
+                                android:id				= "@+id/lblRealizado_20_1" 
+                                android:text			= "Realizado"
+                                android:layout_weight	= "2" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			= "14dip"
+                                android:layout_span     = "2" 
+                                android:gravity			= "center"/>
+                            <TextView
+                                android:id				= "@+id/lblPercRealizado_20_1" 
+                                android:text			= "% Real" 
+                                android:layout_weight	= "1" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			= "14dip" 
+                                android:gravity			= "center"/>
+                            <TextView
+                                android:id				= "@+id/lblPercIdeal_20_1" 
+                                android:text			= "% Ideal" 
+                                android:layout_weight	= "1" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			= "14dip" 
+                                android:gravity			= "center"/>
+                            
+                        </TableRow>
+
+                        
+                        <!-- Dados da Linha Realizado-->
+
+                        <TableRow
+                            android:id="@+id/dados_realizado_20"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent">
+                            <TextView
+                                android:id				="@+id/txtMeta_1_20" 
+                                android:text			="1400,00"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip"
+                                android:layout_span     ="2"  
+                                android:gravity			="right"
+                                />
+                            <TextView
+                                android:id				="@+id/txtMetaRealizado_1_20" 
+                                android:text			="800,00"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip" 
+                                android:layout_span     ="2" 
+                                android:gravity			="right"/>
+                            <TextView
+                                android:id				="@+id/txtPercRealizado_1_20" 
+                                android:text			="80%" 
+                                android:layout_span		="1"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                            <TextView
+                                android:id				="@+id/txtPercIdeal_1_20" 
+                                android:text			="80%" 
+                                android:layout_span		="1"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                            
+                        </TableRow>
+                        
+
+    					
+                        <!-- Titulo dos Realizados + Carteira -->
+                        
+                        <TableRow
+                            android:layout_height="wrap_content"
+                            android:layout_width ="fill_parent"
+                            android:gravity      ="center_horizontal"
+                            android:background   ="#999999">
+
+                            <TextView
+                                android:layout_width ="fill_parent" 
+                                android:layout_height="wrap_content"
+                                android:textSize     ="14sp" 
+                                android:text         ="Realizado + Carteira"  
+                                android:layout_span  ="6"
+                                android:padding      ="14dip"
+                                android:gravity		 = "center"
+                                android:textColor    ="#000"/>
+
+                       </TableRow>
+                        
+                        
+                        <!-- Titulo Realizado + Carteira -->
+
+                        <TableRow
+                            android:id="@+id/titulo_carteira_20"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent">
+                            <TextView
+                                android:id				= "@+id/lblMeta_20_2" 
+                                android:text			= "Meta"
+                                android:layout_weight	= "1" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			="14dip"
+                                android:gravity			= "center"/>
+                            <TextView
+                                android:id				="@+id/lblRealizado_20_2" 
+                                android:text			="Realizado"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                            <TextView
+                                android:id				="@+id/lblCarteira_20_2" 
+                                android:text			="Carteira"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                            <TextView
+                                android:id				="@+id/lbltotal_20_2" 
+                                android:text			="Total"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                            <TextView
+                                android:id				="@+id/lblPercCarteira_20_2" 
+                                android:text			="% Real" 
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                            <TextView
+                                android:id				="@+id/lblPercIdeal_20_2" 
+                                android:text			="% Ideal" 
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                            
+                        </TableRow>
+                        
+						<!-- Dados da Linha Realizado + Carteira -->
+						                       
+                        <TableRow
+                            android:layout_height="wrap_content"
+                            android:layout_width="fill_parent"
+                            android:gravity="center_horizontal">
+                            <TextView
+                                android:id				="@+id/txtMeta_20_2" 
+                                android:text			="1400,00"
+                                android:layout_weight	="1"  
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip" 
+                                android:gravity			="right"/>
+                     
+                            <TextView
+                                android:id				="@+id/txtRealizado_20_2" 
+                                android:text			="800,00"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip" 
+                                android:gravity			="right"/>
+                            
+                            <TextView
+                                android:id				="@+id/txtCarteira_20_2" 
+                                android:text			="200,00"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip" 
+                                android:gravity			="right"/>
+
+                            <TextView
+                                android:id				="@+id/txtTotal_20_2" 
+                                android:text			="1.000,00"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                            
+                            <TextView
+                                android:id				="@+id/txtPercCarteira_20_2" 
+                                android:text			="90%"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                            <TextView
+                                android:id				="@+id/txtPercIdeal_20_2" 
+                                android:text			="90%"
+                                android:layout_weight	="1" 
+                                android:background		= "@drawable/customtextview"
+                                android:textColor		="#0000CC"
+                                android:padding			="14dip" 
+                                android:gravity			="center"/>
+                        </TableRow>
+                         
+      </TableLayout>    
+		
+
+	<View
+        android:id="@+id/firstDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#000000" >
+    </View>
+	
+</LinearLayout>

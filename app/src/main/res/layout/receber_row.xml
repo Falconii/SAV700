@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:layout_marginLeft="5sp"
+	android:layout_marginRight="5sp"
+	android:layout_marginTop="10sp"
+	android:layout_marginBottom="10sp"
+	android:background="@drawable/fundo"
+	>
+	<RelativeLayout
+		android:layout_width       ="fill_parent"
+		android:layout_height      ="30sp"
+		android:layout_marginTop   ="05sp"
+		android:layout_marginBottom="05sp"
+		>
+
+		<TextView
+			android:id="@+id/lbl_titulo_077"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:text="prefixo 9999 titulo 99999 parcela iiii"
+			android:textColor="@color/black"
+			android:textSize="18sp"/>
+
+		<ImageView
+			android:id="@+id/flag_77"
+			android:layout_width="26sp"
+			android:layout_height="26sp"
+			android:layout_alignParentLeft="true"
+			android:layout_marginLeft="60sp"
+			android:background="@color/white"
+			android:src="@drawable/flag_24_vermelho"
+			android:layout_centerVertical="true" />
+
+	</RelativeLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:weightSum="10">
+
+		<TextView
+			android:id="@+id/lbl_cod_cliente_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal|center_vertical"
+			android:text="CÓDIGO"
+			android:textColor="@color/red"
+			android:textSize="12sp"
+			android:background="@drawable/titleproduto"
+			android:layout_weight="1"
+			/>
+
+		<TextView
+			android:id="@+id/lbl_cliente_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal|center_vertical"
+			android:text="CLIENTE"
+			android:textColor="@color/red"
+			android:textSize="12sp"
+			android:background="@drawable/titleproduto"
+			android:layout_weight="4.0"
+			/>
+
+
+		<TextView
+			android:id="@+id/lbl_emissao_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal|center_vertical"
+			android:text="EMISSÃO"
+			android:textColor="@color/red"
+			android:textSize="12sp"
+			android:background="@drawable/titleproduto"
+			android:layout_weight="1"
+
+			/>
+
+
+		<TextView
+			android:id="@+id/lbl_vencimento_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal|center_vertical"
+			android:text="VENC."
+			android:textColor="@color/red"
+			android:textSize="12sp"
+			android:background="@drawable/titleproduto"
+			android:layout_weight="1"
+
+			/>
+
+		<TextView
+			android:id="@+id/lbl_saldo_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal|center_vertical"
+			android:text="SALDO"
+			android:textColor="@color/red"
+			android:textSize="12sp"
+			android:background="@drawable/titleproduto"
+			android:layout_weight="2.0"
+
+			/>
+
+		<TextView
+			android:id="@+id/lbl_ATRASO_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal|center_vertical"
+			android:text="ATRASO"
+			android:textColor="@color/red"
+			android:textSize="12sp"
+			android:background="@drawable/titleproduto"
+			android:layout_weight="1.0"
+
+			/>
+
+
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:weightSum="10">
+
+
+		<TextView
+			android:id="@+id/txt_codigo_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="left"
+			android:text="001"
+			android:textColor="@color/black"
+			android:textSize="12sp"
+			android:background="@drawable/detalheproduto"
+			android:layout_weight="1.0"
+			/>
+
+		<TextView
+			android:id="@+id/txt_cliente_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|left"
+			android:text="027202020-BROTO LEGAL ALIMENTOS"
+			android:textColor="@color/black"
+			android:textSize="12sp"
+			android:background="@drawable/detalheproduto"
+			android:layout_weight="4.0"
+			/>
+
+
+		<TextView
+			android:id="@+id/txt_emissao_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|right"
+			android:text="21/10/2016"
+			android:textColor="@color/black"
+			android:textSize="12sp"
+			android:background="@drawable/detalheproduto"
+			android:layout_weight="1.0"
+			/>
+
+
+		<TextView
+			android:id="@+id/txt_vencimento_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|right"
+			android:text="21/10/2016"
+			android:textColor="@color/black"
+			android:textSize="12sp"
+			android:background="@drawable/detalheproduto"
+			android:layout_weight="1.0"
+			/>
+
+		<TextView
+			android:id="@+id/txt_saldo_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|center"
+			android:text="645,80"
+			android:textColor="@color/black"
+			android:textSize="12sp"
+			android:background="@drawable/detalheproduto"
+			android:layout_weight="2.0"
+			/>
+
+		<TextView
+			android:id="@+id/txt_atraso_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|right"
+			android:text="360"
+			android:textColor="@color/black"
+			android:textSize="12sp"
+			android:background="@drawable/detalheproduto"
+			android:layout_weight="1.0"
+			/>
+
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:weightSum="10">
+
+
+		<TextView
+			android:id="@+id/txt_banco_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="BANCO: BRASIL - 098989898989898989"
+			android:textColor="@color/black"
+			android:textSize="12sp"
+			android:background="@drawable/detalheproduto"
+			android:layout_weight="5.0"
+			/>
+
+		<TextView
+			android:id="@+id/txt_ld_077"
+			android:layout_width="0sp"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="9999.99999.99999.99999 9 999999999"
+			android:textColor="@color/black"
+			android:textSize="12sp"
+			android:background="@drawable/detalheproduto"
+			android:layout_weight="5.0"
+			android:layout_gravity="center" />
+
+
+	</LinearLayout>
+
+
+
+</LinearLayout>
+

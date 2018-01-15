@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/fundo"
+	>
+
+
+	<LinearLayout
+		android:id="@+id/parentLayout"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+
+		<LinearLayout
+			android:id="@+id/pedido_filtros_400"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:background="@color/barLightColor"
+			>
+			<CheckBox
+				android:id="@+id/cb_marcados_400"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:background="@drawable/fundo"
+				android:visibility="gone"
+				>
+			</CheckBox>
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_cadastro_400"
+				android:src="@drawable/cliente_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_contrato_400"
+				android:src="@drawable/contrato_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_financeiro_400"
+				android:src="@drawable/financeiro_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="20sp"
+				android:id="@+id/bt_pedidos_400"
+				android:src="@drawable/pedido_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_nf_400"
+				android:src="@drawable/nfe_30"
+				/>
+
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_agenda_400"
+				android:src="@drawable/calendario_plus_30"
+				/>
+
+			<TextView
+				android:layout_width="100sp"
+				android:layout_height="match_parent"
+				android:text="12/12/12\nas\n15:00"
+				android:id="@+id/lbl_hora_400"
+				android:gravity="center_vertical|center_horizontal|center"
+				android:textColor="@color/design_textinput_error_color_light">
+			</TextView>
+
+			<ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/icone_status_400"
+                android:src="@drawable/ac_gps_30"
+                android:layout_gravity="center_vertical"
+
+                />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="15:00"
+				android:id="@+id/lbl_mensagem_400"
+				android:gravity="center_vertical|center_horizontal"
+                android:textSize="16sp"
+				android:textColor="@color/design_textinput_error_color_light"
+				android:ellipsize="end"
+				android:scrollHorizontally = "true"
+				android:minLines = "3"
+				android:maxLines = "3"
+				>
+			</TextView>
+
+		</LinearLayout>
+
+
+
+		<TableLayout
+			android:id="@+id/table_400"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:shrinkColumns="*"
+			android:stretchColumns="*"
+			>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_codigo_400"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="Código Protheus: 999999-09"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+
+					/>
+
+
+				<TextView
+					android:id="@+id/txt_situacao_400"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="Situacao: Ativa"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cliente_400"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="25sp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="000000-00 CARREFOUR CAMPINAS LTDA"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+
+					/>
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_fantasia_400"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="23sp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="FANTASIA"
+					android:textColor="@color/black"
+					/>
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cnpj_400"
+					android:layout_width="fill_parent"
+					android:layout_height="23sp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="CNPJ/CPF: 62.901.210.0001-08"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+				<TextView
+					android:id="@+id/txt_ie_400"
+					android:layout_width="fill_parent"
+					android:layout_height="23sp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="I.E.: 244.244.255.244"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_end_400"
+					android:layout_width="fill_parent"
+					android:layout_height="23sp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="End: RUA MICHIEL MASLJUR, 236"
+					android:textColor="@color/black"
+					android:scrollHorizontally = "true"
+					android:minLines = "1"
+					android:maxLines = "1"
+					/>
+
+				<TextView
+					android:id="@+id/txt_bair_400"
+					android:layout_width="fill_parent"
+					android:layout_height="23sp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="VILA AUROCAN"
+					android:textColor="@color/black"
+					android:ellipsize="end"
+					android:scrollHorizontally = "true"
+					android:minLines = "1"
+					android:maxLines = "1"
+					/>
+
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cidade_400"
+					android:layout_width="fill_parent"
+					android:layout_height="23sp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="CIDADE:CAMPINAS"
+					android:textColor="@color/black"
+					/>
+
+				<TextView
+					android:id="@+id/txt_telefone_400"
+					android:layout_width="fill_parent"
+					android:layout_height="23sp"
+					android:gravity="left|center_vertical|center_horizontal"
+					android:text="TELEFONE (19) 8383838383"
+					android:textColor="@color/black"
+					/>
+
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_desc_rede_400"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="000.000 DESCRICAO DA REDE !!!!"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+			</TableRow>
+
+
+
+
+		</TableLayout>
+
+
+	</LinearLayout>
+
+	<ImageButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/bt_alteracao_400"
+		android:src="@drawable/ic_action_order_sales_i"
+		android:layout_marginTop="50sp"
+		android:layout_alignParentEnd="true" />
+
+	<ImageButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="50sp"
+		android:id="@+id/bt_salles_lista"
+		android:layout_below="@+id/bt_alteracao_400"
+		android:src="@drawable/ic_celular"
+		android:layout_alignStart="@+id/bt_alteracao_400"
+		android:layout_alignEnd="@+id/bt_alteracao_400"/>
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/im_flag_yelow"
+		android:src="@drawable/ic_action_flag_amarela"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+
+		android:layout_toLeftOf="@+id/txt_flag_yellow"
+
+		/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="0"
+		android:id="@+id/txt_flag_yellow"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/bt_salles_lista"
+		android:layout_alignTop="@+id/im_flag_yelow"
+		android:gravity="center_vertical|center_horizontal"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="0"
+		android:id="@+id/txt_flag_red"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/im_flag_yelow"
+		android:layout_alignTop="@+id/im_flag_yelow"
+		android:gravity="center_vertical|center_horizontal"/>
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/im_flag_red"
+		android:src="@drawable/ic_action_flag_vermelha"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/txt_flag_red"
+		/>
+
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="0"
+		android:id="@+id/txt_flag_black"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/im_flag_red"
+		android:layout_alignTop="@+id/im_flag_red"
+		android:gravity="center_vertical|center_horizontal"/>
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/im_flag_black"
+		android:src="@drawable/ic_action_flag_preta"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/txt_flag_black"
+		/>
+
+
+</RelativeLayout>

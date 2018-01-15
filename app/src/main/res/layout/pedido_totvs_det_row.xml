@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
+    android:layout_marginTop="10sp"
+    android:layout_marginBottom="10sp"
+    android:background="@drawable/fundopedido"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_produto_017"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="ITEM 001 - JHSDJKHSJKDHJKSHDJKSHJKDHSAJDHJKSAHDJKSA FD "
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:background="@drawable/detalheproduto"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="05dp"
+        android:layout_marginBottom="05dp"
+        >
+
+        <TableLayout
+            android:id="@+id/table_017"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:shrinkColumns="*"
+            android:stretchColumns="*"
+            >
+
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lbl_operacao_017"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="OPERAÇÃO"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/lbl_qtd_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="QTD"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/lbl_prcven_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="P.UNIT"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+                <TextView
+                    android:id="@+id/lbl_desconto_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="DESC %"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/lbl_desconto_verba_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Desc. Verba %"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+                <TextView
+                    android:id="@+id/lbl_simulador_peddistr_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Simulador/Ped.Distr."
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+                <TextView
+                    android:id="@+id/lbl_total_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="TOTAL ITEM"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:background="@drawable/titleproduto"
+
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/txt_venda_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center"
+                    android:text="VENDA"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+
+                <TextView
+                    android:id="@+id/txt_qtd_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|right"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+
+                <TextView
+                    android:id="@+id/txt_prcven_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|right"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_desconto_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_desconto_verba_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+
+                    />
+
+                <TextView
+                    android:id="@+id/txt_doc_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+
+                    />
+
+                <TextView
+                    android:id="@+id/txt_total_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|right"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/txt_verba_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center"
+                    android:text="Verba"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+
+
+                <TextView
+                    android:id="@+id/txt_verba_descricao_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|right"
+                    android:layout_span="4"
+                    android:text=" "
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_acordo_017"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center"
+                    android:textColor="@color/dark_blue"
+                    android:layout_span="2"
+                    android:textSize="12sp"
+                    android:background="@drawable/detalheproduto"
+                    />
+
+
+
+            </TableRow>
+
+
+
+        </TableLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

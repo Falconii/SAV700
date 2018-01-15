@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <item
+        android:id="@+id/help_menu_ok"
+        android:icon="@drawable/ok_24_branco"
+        app:showAsAction="ifRoom|withText"
+        android:title="Escolher"
+        android:titleCondensed="Escolher">
+    </item>
+
+    <item
+        android:id="@+id/help_menu_cancela"
+        android:icon="@drawable/cancel_24_branco"
+        app:showAsAction="ifRoom|withText"
+        android:title="Cancelar"
+        android:titleCondensed="Cancelar">
+    </item>
+    
+</menu>

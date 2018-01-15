@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:paddingBottom="@dimen/activity_vertical_margin"
+		    android:paddingLeft="@dimen/activity_horizontal_margin"
+		    android:paddingRight="@dimen/activity_horizontal_margin"
+		    android:paddingTop="@dimen/activity_vertical_margin">
+       
+       <TextView
+           android:id="@+id/txt_campo_118"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:layout_marginTop="10dp"
+           android:textSize="18dp"
+           android:text="Informe O Protocolo" />
+
+       <EditText
+           android:id="@+id/edit_campo_118"
+           android:layout_below="@+id/txt_campo_118"
+           android:layout_width="300dp"
+           android:layout_height="wrap_content"
+           android:inputType="textCapCharacters"
+           android:selectAllOnFocus="true"
+           android:background="@drawable/seachedittext"
+		   android:textColor="@color/textFieldColor" 
+         />
+       
+        <Button
+   	           android:id="@+id/bt_confirma_118"
+   	           android:layout_below="@+id/edit_campo_118"
+   	           android:layout_marginTop="15dp"
+   	           android:layout_alignParentLeft="true"
+   	           android:layout_width="180dp"
+   	           android:layout_height="wrap_content"
+   	           android:background="@drawable/customcategoria"
+   	           android:fontFamily="Helvetica"
+   	           android:text="Confirma" />
+        
+        <Button
+   	           android:id="@+id/bt_cancela_118"
+   	           android:layout_below="@+id/edit_campo_118"
+   	           android:layout_marginTop="15dp"
+   	           android:layout_alignParentRight="true"
+   	           android:layout_width="180dp"
+   	           android:layout_height="wrap_content"
+   	           android:background="@drawable/customcategoria"
+   	           android:fontFamily="Helvetica"
+   	           android:text="Cancela"
+               />
+
+        <TextView
+            android:id="@+id/txt_preco_118"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/edit_campo_118"
+            android:layout_alignBottom="@+id/edit_campo_118"
+            android:layout_alignLeft="@+id/bt_cancela_118"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/customcategoria"
+            android:gravity="center_vertical|center_horizontal"
+            android:fontFamily="Helvetica"
+            android:text="R$ 123,00"
+            android:textSize="18dp" />
+       
+   </RelativeLayout>
+
+ 

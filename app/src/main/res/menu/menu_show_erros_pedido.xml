@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".showErrosActivity">
+
+    <item
+        android:id="@+id/action_consulta_erros_voltar"
+        android:orderInCategory="100"
+        android:title="Voltar"
+        app:showAsAction="ifRoom" />
+</menu>

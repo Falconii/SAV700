@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fundo"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/lbl_titulo_725"
+        android:layout_width="match_parent"
+        android:layout_height="35sp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="Tópicos Do Relatório"
+        android:textColor="@color/red"
+        android:background="@drawable/fundo"
+        >
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/ll_categoria_725"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/lbl_titulo_725"
+        android:layout_marginTop="20sp"
+        android:layout_height="30sp"
+        android:weightSum="10"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/rb_data_725"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="DATA"
+            />
+
+        <CheckBox
+            android:id="@+id/rb_cliente_725"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="CLIENTE OU REDE"
+            />
+
+        <CheckBox
+            android:id="@+id/rb_categoria_725"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="CATEGORIA"
+            />
+
+        <CheckBox
+            android:id="@+id/rb_marca_725"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="MARCA"
+            />
+
+        <CheckBox
+            android:id="@+id/rb_produto_725"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="PRODUTO"
+            />
+
+        <!-- cb do filtro -->
+
+    </LinearLayout>
+
+
+</RelativeLayout>

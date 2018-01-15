@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.brotolegal.sav700.fragments.Dispositivo_frag">
+
+    <RelativeLayout
+        android:id="@+id/rl_dispositivo"
+        android:layout_below = "@+id/tb_bem_vindo"
+        android:layout_width = "match_parent"
+        android:layout_height= "wrap_content"
+        >
+
+
+        <ImageView
+            android:layout_width      = "wrap_content"
+            android:layout_height     = "wrap_content"
+            android:layout_marginTop  = "5dp"
+            android:layout_marginLeft = "5dp"
+            android:id="@+id/logo_100"
+            android:src="@drawable/imglogo"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="S.A.V\nAlocação de Dispositivo\nSistema De Apoio Ao Vendedor"
+            android:id="@+id/titulo_333"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/lbl_user_333"
+            android:layout_width      = "wrap_content"
+            android:layout_height     = "wrap_content"
+            android:text              = "Usuário:"
+            android:textColor         = "@color/colorPrimary"
+            android:layout_gravity    = "center_horizontal|center_vertical"
+            android:gravity           = "center_vertical"
+            android:layout_below      = "@+id/titulo_333"
+            android:layout_marginTop  = "50sp"
+            android:layout_alignStart="@+id/titulo_333"
+           >
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/txt_user_333"
+            android:drawableLeft  = "@drawable/icuser"
+            android:background    = "@drawable/fundo3"
+            android:layout_width  = "300sp"
+            android:layout_height = "wrap_content"
+            android:inputType     = "numberSigned"
+            android:fontFamily    = "Helvetica"
+            android:layout_below      = "@+id/lbl_user_333"
+            android:gravity           = "center_vertical"
+            android:layout_alignStart="@+id/titulo_333"
+            />
+
+        <TextView
+            android:id="@+id/lbl_ativo_333"
+            android:layout_width      = "wrap_content"
+            android:layout_height     = "wrap_content"
+            android:text              = "Ativo Fixo"
+            android:textColor         = "@color/colorPrimary"
+            android:layout_gravity    = "center_horizontal|center_vertical"
+            android:gravity           = "center_vertical"
+            android:layout_below      = "@+id/txt_user_333"
+            android:layout_marginTop  = "25sp"
+            android:layout_alignStart="@+id/titulo_333"
+            >
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/txt_ativo_333"
+            android:drawableLeft="@drawable/imobilizado_32"
+            android:background    = "@drawable/fundo3"
+            android:layout_width  = "300sp"
+            android:layout_height = "wrap_content"
+            android:inputType     = "numberSigned"
+            android:fontFamily    = "Helvetica"
+            android:layout_below      = "@+id/lbl_ativo_333"
+            android:gravity           = "center_vertical|center_horizontal"
+            android:layout_alignStart="@+id/titulo_333"
+            />
+
+
+
+
+        <TextView
+            android:id="@+id/txt_linha_01_333"
+            android:drawableLeft  = "@drawable/ic_celular"
+            android:background    = "@drawable/fundo3"
+            android:layout_width  = "300sp"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop="25sp"
+            android:inputType     = "numberSigned"
+            android:fontFamily    = "Helvetica"
+            android:layout_below      = "@+id/txt_ativo_333"
+            android:gravity           = "center_vertical|center_horizontal"
+            android:layout_alignStart="@+id/titulo_333"
+            />
+
+
+        <TextView
+            android:id="@+id/txt_linha_02_333"
+            android:drawableLeft  = "@drawable/ic_celular"
+            android:background    = "@drawable/fundo3"
+            android:layout_width  = "300sp"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop="15sp"
+            android:inputType     = "numberSigned"
+            android:fontFamily    = "Helvetica"
+            android:layout_below      = "@+id/txt_linha_01_333"
+            android:gravity           = "center_vertical|center_horizontal"
+            android:layout_alignStart="@+id/titulo_333"
+            android:text="txt_linha_02_333"
+            />
+
+
+        <TextView
+            android:id="@+id/txt_linha_03_333"
+            android:drawableLeft  = "@drawable/ic_os"
+            android:background    = "@drawable/fundo3"
+            android:layout_width  = "300sp"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop="25sp"
+            android:inputType     = "numberSigned"
+            android:fontFamily    = "Helvetica"
+            android:layout_below      = "@+id/txt_linha_02_333"
+            android:gravity           = "center_vertical|center_horizontal"
+            android:layout_alignStart="@+id/titulo_333"
+            android:text="txt_linha_02_333"
+            />
+
+
+        <TextView
+            android:id="@+id/txt_linha_04_333"
+            android:drawableLeft  = "@drawable/ic_id_verficado"
+            android:background    = "@drawable/fundo3"
+            android:layout_width  = "300sp"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop="25sp"
+            android:inputType     = "numberSigned"
+            android:fontFamily    = "Helvetica"
+            android:layout_below      = "@+id/txt_linha_03_333"
+            android:gravity           = "center_vertical|center_horizontal"
+            android:layout_alignStart="@+id/titulo_333"
+            android:text="txt_linha_04_333"
+            />
+
+
+        <TextView
+            android:id="@+id/txt_linha_05_333"
+            android:drawableLeft  = "@drawable/ic_id_verficado"
+            android:background    = "@drawable/fundo3"
+            android:layout_width  = "300sp"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop="25sp"
+            android:inputType     = "numberSigned"
+            android:fontFamily    = "Helvetica"
+            android:layout_below      = "@+id/txt_linha_04_333"
+            android:gravity           = "center_vertical|center_horizontal"
+            android:layout_alignStart="@+id/titulo_333"
+            android:text="txt_linha_05_333"
+            />
+
+        <TextView
+            android:id="@+id/txt_linha_06_333"
+            android:drawableLeft  = "@drawable/ic_id_verficado"
+            android:background    = "@drawable/fundo3"
+            android:layout_width  = "300sp"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop="25sp"
+            android:inputType     = "numberSigned"
+            android:fontFamily    = "Helvetica"
+            android:layout_below      = "@+id/txt_linha_05_333"
+            android:gravity           = "center_vertical|center_horizontal"
+            android:layout_alignStart="@+id/titulo_333"
+            android:text="txt_linha_06_333"
+            />
+
+
+        <ImageButton
+            android:id="@+id/bt_refresh_333"
+            android:src                 = "@drawable/refresh_30"
+            android:layout_marginLeft   ="10sp"
+            android:layout_width        = "wrap_content"
+            android:layout_height       = "wrap_content"
+            android:fontFamily          = "Helvetica"
+            android:text                = "txt_linha_06_333"
+            android:background          = "@color/md_blue_500"
+            android:layout_alignTop     ="@+id/txt_linha_06_333"
+            android:layout_toEndOf      ="@+id/txt_linha_06_333"
+            android:layout_alignBottom="@+id/txt_linha_06_333"
+             />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

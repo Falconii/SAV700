@@ -1,0 +1,311 @@
+package br.com.brotolegal.sav700.fragments;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.brotolegal.sav700.R;
+import br.com.brotolegal.savdatabase.dao.UsuarioDAO;
+import br.com.brotolegal.savdatabase.entities.NoData;
+import br.com.brotolegal.savdatabase.entities.Usuario;
+
+
+public class Usuarios_Frag extends Fragment {
+
+    ListView lv;
+
+    List<Object> lsLista;
+
+    Adapter adapter;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_usuarios, container, false);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Usuários");
+
+        lv=(ListView) rootView.findViewById(R.id.lvUsuarios);
+
+        return rootView;
+
+
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+
+        super.onActivityCreated(savedInstanceState);
+
+
+        if (savedInstanceState == null){
+
+            LoadUsuarios();
+
+        }
+
+
+    }
+
+    private void LoadUsuarios(){
+
+        try {
+
+            lsLista = new ArrayList<Object>();
+
+            lsLista.add("Usuários");
+
+            UsuarioDAO dao = new UsuarioDAO();
+
+            dao.open();
+
+            lsLista.addAll(dao.getAll());
+
+            dao.close();
+
+            if (lsLista.size() == 1) {
+
+                lsLista.add(new NoData("Nenhum Usuário Encontrado !!"));
+
+            }
+
+            adapter = new Adapter(getContext(), lsLista);
+
+            lv.setAdapter(adapter);
+
+            adapter.notifyDataSetChanged();
+
+
+        } catch (Exception e) {
+
+            Toast.makeText(getContext(), "Erro Na Carga: " + e.getMessage(), Toast.LENGTH_LONG).show();
+
+        }
+
+    }
+
+    private class Adapter extends BaseAdapter {
+
+        DecimalFormat format_02 = new DecimalFormat(",##0.00");
+        private List<Object> lsObjetos;
+        Context context;
+
+        final int ITEM_VIEW_CABEC   = 0;
+        final int ITEM_VIEW_DETALHE = 1;
+        final int ITEM_VIEW_NO_DATA = 2;
+        final int ITEM_VIEW_COUNT   = 3;
+
+        private LayoutInflater inflater;
+
+        public Adapter(Context context, List<Object> pObjects) {
+
+            this.lsObjetos = pObjects;
+            this.context = context;
+
+            inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        }
+
+
+        private String Cabec() {
+
+            String retorno = "";
+
+            int qtd = 0;
+
+            for (Object obj : lsObjetos) {
+
+                if (obj instanceof Usuario) {
+
+                    qtd = qtd + 1;
+
+                }
+
+            }
+
+            retorno = "Total de Usuários: " + String.valueOf(qtd);
+
+            return retorno;
+        }
+
+
+        @Override
+        public int getCount() {
+            return lsObjetos.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return lsObjetos.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return ITEM_VIEW_COUNT;
+        }
+
+
+        @Override
+        public int getItemViewType(int position) {
+
+            int retorno = -1;
+
+
+            if (lsObjetos.get(position) instanceof String) {
+
+                retorno = ITEM_VIEW_CABEC;
+            }
+
+            if (lsObjetos.get(position) instanceof Usuario) {
+
+                retorno = ITEM_VIEW_DETALHE;
+
+            }
+
+            if (lsObjetos.get(position) instanceof NoData) {
+
+                retorno = ITEM_VIEW_NO_DATA;
+
+            }
+
+            return retorno;
+
+
+        }
+
+        @Override
+        public boolean isEnabled(int position) {
+            boolean retorno = false;
+            return retorno;
+        }
+
+
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+
+            try {
+
+                final int pos = position;
+
+                final int type = getItemViewType(position);
+
+                if (convertView == null) {
+
+                    switch (type) {
+
+                        case ITEM_VIEW_CABEC:
+
+                            convertView = inflater.inflate(R.layout.defaultdivider, null);
+
+                            break;
+
+
+                        case ITEM_VIEW_DETALHE:
+
+                            convertView = inflater.inflate(R.layout.usuario_row, null);
+
+                            break;
+
+
+                        case ITEM_VIEW_NO_DATA:
+
+                            convertView = inflater.inflate(R.layout.no_data_row, null);
+
+                            break;
+
+                    }
+
+                }
+
+                switch (type) {
+
+                    case ITEM_VIEW_CABEC: {
+
+                        TextView tvCabec = (TextView) convertView.findViewById(R.id.separador);
+
+                        tvCabec.setText(Cabec());
+
+                        break;
+                    }
+
+                    case ITEM_VIEW_DETALHE: {
+
+                        final Usuario obj = (Usuario) lsObjetos.get(pos);
+
+                        TextView txt_codigo_337     = (TextView) convertView.findViewById(R.id.txt_codigo_337);
+
+                        TextView txt_mod_337        = (TextView) convertView.findViewById(R.id.txt_mod_337);
+
+                        TextView txt_expira_337     = (TextView) convertView.findViewById(R.id.txt_expira_337);
+
+                        TextView txt_status_337     = (TextView) convertView.findViewById(R.id.txt_status_337);
+
+
+                        txt_codigo_337.setText(obj.getCOD() + "-" + obj.getNOME());
+
+                        txt_mod_337.setText("Módulo: "+obj.getMODULO());
+
+                        txt_expira_337.setText("Expira em : "+obj.getEXPIRA());
+
+                        txt_status_337.setText("Status: "+obj.getSTATUS());
+
+                        break;
+                    }
+
+                    case ITEM_VIEW_NO_DATA: {
+
+                        final NoData obj = (NoData) lsObjetos.get(pos);
+
+                        TextView tvTexto = (TextView) convertView.findViewById(R.id.no_data_row_texto);
+
+                        tvTexto.setText(obj.getMensagem());
+
+                        break;
+
+                    }
+
+
+                    default:
+                        break;
+                }
+
+            } catch (Exception e) {
+
+                toast("Erro No Adapdador =>" + e.getMessage());
+
+            }
+
+            return convertView;
+
+        }
+
+
+        public void toast(String msg) {
+
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+
+
+
+}

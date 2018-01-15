@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.brotolegal.sav700">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SUBSCRIBED_FEEDS_WRITE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_OWNER_DATA" />
+    <uses-permission android:name="android.permission.READ_OWNER_DATA" />
+    <uses-permission android:name="android.permission.WRITE_SOCIAL_STREAM" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    />
+    <application
+        android:name="br.com.brotolegal.savdatabase.app.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SAVActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Bem Vindo"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BemVindoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Bem Vindo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CargaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Carga"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LancaPedidoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Lançamento De Pedidos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".help20.Help20Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Pesquisa"
+            android:screenOrientation="portrait" />
+        <activity android:name=".help20.FiltroActivity" />
+        <activity
+            android:name=".PedidosActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Pedidos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UpdateVersionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Atualização de Versão"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Notificacao01Activity">
+            <intent-filter>
+                <action android:name="br.com.brotolegal.sav700_TARGET_NOTIFICATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ClienteViewAtivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Cliente"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ContratoViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Contrato"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Receber_View_Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Financeiro"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ManutencaoAgendaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Manutenção Das Agendas"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProspeccaoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Propectar"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AgendamentoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Agendamentos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PedidoV10Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Pedidos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PedidosGeralActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Lançamento De Pedidos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ShowMetasActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Metas"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PedidosProtheusGeralActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Pedidos Protheus"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConsultaNFTotvsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Notas Fiscais"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreAcordoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Pre-Acordo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroPreAcordoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Cadastro Pré-Acordo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConsultaAcordoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Consulta Acordo Protheus"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ViewAcordoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Acordo Protheus"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DispositivoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Dispositivo Mobile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PedidosAgendaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Pedidos Planejamento"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CCActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Controle De Conta Corrente"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PedidosMobileTransmitidosActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Pedidos Mobile Transmitidos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AgendamentosAtrasadosActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Controle De Conta Corrente"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ViewAgendamentosActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Agendamentos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Parametros_01Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Parâmetros"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Relatorio_01Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Relatório"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TreinamentoMenuViewAtivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Menu Dos Videos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TreinamentoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Menu Dos Videos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MenAtWorkingActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Menu Dos Videos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UsuarioActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Usuários"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NegociacaoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Negociações"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MetaViewActivity"
+            android:label="@string/title_activity_meta_view"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".CampanhaViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Negociações"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CampanhaClienteViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Campanha Clientes"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CampanhaBimestreViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Campanha Visão Bimestral"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroNegociacaoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Cadastro De Negociação"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Cota_ViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Cadastro De Negociação"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrePedidoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Cadastro De Negociação"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ManualActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Manual De Vendas"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".showErrosActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Manual De Vendas"
+            android:screenOrientation="portrait" />
+
+
+        <service android:name=".firebase.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".firebase.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".background.ReceiverCaduca">
+            <intent-filter>
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".background.ProcessosBackGround"
+            android:exported="false">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="PEDIDOBACKGROUND" />
+            </intent-filter>
+        </service>
+        <!--
+             ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+
+    </application>
+
+</manifest>

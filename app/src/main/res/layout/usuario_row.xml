@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/fundo"
+	>
+
+	<!-- Embed ListView Item into a "parent" Layout -->
+	<LinearLayout
+		android:id="@+id/parentLayout"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+
+
+		<TableLayout
+			android:id="@+id/table_337"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:shrinkColumns="*"
+			android:stretchColumns="*"
+			>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_codigo_337"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Código Agente: 999999-09"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+				<TextView
+					android:id="@+id/txt_mod_337"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Situacao: Ativa"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_expira_337"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="Expira em:"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+				<TextView
+					android:id="@+id/txt_status_337"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="STATUS"
+					android:textColor="@color/black"
+					/>
+
+			</TableRow>
+
+
+
+
+
+
+		</TableLayout>
+
+
+	</LinearLayout>
+
+</RelativeLayout>

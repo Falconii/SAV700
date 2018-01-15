@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fundo"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/lbl_titulo_724"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="Filtro De Produtos"
+        android:textColor="@color/red"
+        android:background="@drawable/fundo"
+        >
+    </TextView>
+
+
+    <LinearLayout
+        android:id="@+id/ll_linha01_724"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/lbl_titulo_724"
+        android:layout_marginTop="5sp"
+        android:layout_height="30sp"
+        android:weightSum="8"
+        android:orientation="horizontal">
+
+        <!-- produto inical -->
+        <TextView
+            android:id="@+id/lbl_produto_inicial_724"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Prod. Inicial"
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            android:clickable="true"
+
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_produto_inicial_724"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center_vertical|center_horizontal|left"
+            android:text=" "
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3"
+            android:ellipsize="end"
+            android:scrollHorizontally = "true"
+            android:minLines = "1"
+            android:maxLines = "1"
+            >
+        </TextView>
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_linha02_724"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ll_linha01_724"
+        android:layout_marginTop="5sp"
+        android:layout_height="30sp"
+        android:weightSum="8"
+        android:orientation="horizontal">
+
+        <!-- produto final -->
+        <TextView
+            android:id="@+id/lbl_produto_final_724"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Prod. Final"
+            android:textColor="@color/red"
+            android:background="@drawable/fundo"
+            android:clickable="true"
+
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txt_produto_final_724"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center_vertical|center_horizontal|left"
+            android:text=""
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/fundo3"
+            android:ellipsize="end"
+            android:scrollHorizontally = "true"
+            android:minLines = "1"
+            android:maxLines = "1"
+            >
+        </TextView>
+
+
+    </LinearLayout>
+
+
+    <!-- cb do filtro -->
+    <CheckBox
+        android:id="@+id/cb_filtro_724"
+        android:layout_width="180sp"
+        android:layout_height="30sp"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="Considera o Filtro"
+        android:textColor="@color/red"
+        android:clickable="true"
+        >
+    </CheckBox>
+
+</RelativeLayout>

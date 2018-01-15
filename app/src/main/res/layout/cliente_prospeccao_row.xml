@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/fundo"
+	>
+
+
+	<LinearLayout
+		android:id="@+id/parentLayout"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+
+
+		<TableLayout
+			android:id="@+id/table_407"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:shrinkColumns="*"
+			android:stretchColumns="*"
+			>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_id_407"
+					android:layout_width="wrap_content"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="ID"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+				<TextView
+					android:id="@+id/txt_data_407"
+					android:layout_width="wrap_content"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Data: 21/09/2016"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+				<TextView
+					android:id="@+id/txt_situacao_407"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Situacao: Ativa"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+			</TableRow>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/lbl_razao_407"
+					android:layout_width="80sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="RAZÃO:"
+					android:textColor="@color/red"
+					/>
+				<TextView
+					android:id="@+id/txt_razao_407"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="NOME DO CLIENTE PARA PROSPECCAO"
+					android:textColor="@color/black"
+					/>
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/lbl_endereco_407"
+					android:layout_width="80sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="ENDEREÇO:"
+					android:textColor="@color/red"
+					/>
+
+				<TextView
+					android:id="@+id/txt_endereco_407"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left|center_vertical"
+					android:text="Endereco"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/lbl_bairro_407"
+					android:layout_width="80sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="BAIRRO:"
+					android:textColor="@color/red"
+					/>
+				<TextView
+					android:id="@+id/txt_bairro_407"
+					android:layout_span="3"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left|center_vertical"
+					android:text="Vila Madalena"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/lbl_cidade_407"
+					android:layout_width="80sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="CIDADE:"
+					android:textColor="@color/red"
+					/>
+				<TextView
+					android:id="@+id/txt_cidade_407"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="CIDADE:CAMPINAS"
+					android:textColor="@color/black"
+					/>
+
+
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/lbl_telefone_407"
+					android:layout_width="80sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="TELEFONE:"
+					android:textColor="@color/red"
+					/>
+
+				<TextView
+					android:id="@+id/txt_telefone_407"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="TELEFONE (19) 8383838383"
+					android:textColor="@color/black"
+					/>
+
+			</LinearLayout>
+
+
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/lbl_cnpj_407"
+					android:layout_width="80sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="CNPJ"
+					android:textColor="@color/red"
+					/>
+				<TextView
+					android:id="@+id/txt_cnpj_407"
+					android:layout_width="250sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="62.901.210.0001-08"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+				<TextView
+					android:id="@+id/lbl_ie_407"
+					android:layout_width="80sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="I.E.:"
+					android:textColor="@color/red"
+					/>
+
+				<TextView
+					android:id="@+id/txt_ie_407"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="I.E.: 244.244.255.244"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/lbl_obs_407"
+					android:layout_width="80sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="OBS.:"
+					android:textColor="@color/red"
+					/>
+
+				<TextView
+					android:id="@+id/txt_obs_407"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left|center_vertical"
+					android:text="Observacao"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/lbl_contato_407"
+					android:layout_width="80sp"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="CONTATO:"
+					android:textColor="@color/red"
+					/>
+
+
+				<TextView
+					android:id="@+id/txt_contato_407"
+					android:layout_width="fill_parent"
+					android:layout_height="25sp"
+					android:gravity="left|center_vertical"
+					android:text="NOME DO CONTATO"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+			</LinearLayout>
+
+
+
+
+		</TableLayout>
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+
+			<TextView
+				android:id="@+id/lbl_email_407"
+				android:layout_width="80sp"
+				android:layout_height="wrap_content"
+				android:gravity="left"
+				android:text="EMAIL.:"
+				android:textColor="@color/red"
+				/>
+
+
+			<TextView
+				android:id="@+id/txt_email_407"
+				android:layout_width="fill_parent"
+				android:layout_height="25sp"
+				android:gravity="left|center_vertical"
+				android:text="email"
+				android:textColor="@color/orange"
+				android:textSize="14sp"
+				/>
+
+		</LinearLayout>
+	</LinearLayout>
+
+	<ImageButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/bt_agendamento_407"
+		android:src="@drawable/pen_30"
+		android:layout_alignParentEnd="true" />
+
+
+
+
+
+</RelativeLayout>

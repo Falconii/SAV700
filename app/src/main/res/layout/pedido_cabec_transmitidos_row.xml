@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/fundo"
+	>
+
+
+	<ImageButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/bt_produtos_498"
+		android:src="@drawable/carrinho_26"
+		android:layout_marginTop="50sp"
+		android:layout_alignParentEnd="true" />
+
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="0"
+		android:id="@+id/txt_flag_yellow"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/bt_salles_lista"
+		android:layout_alignTop="@+id/im_flag_yelow"
+		android:gravity="center_vertical|center_horizontal"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="0"
+		android:id="@+id/txt_flag_red"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/im_flag_yelow"
+		android:layout_alignTop="@+id/im_flag_yelow"
+		android:gravity="center_vertical|center_horizontal"/>
+
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="0"
+		android:id="@+id/txt_flag_black"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/im_flag_red"
+		android:layout_alignTop="@+id/im_flag_red"
+		android:gravity="center_vertical|center_horizontal"/>
+
+
+	<LinearLayout
+		android:id="@+id/parentLayout"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentStart="true">
+
+
+		<LinearLayout
+			android:id="@+id/pedido_filtros_498"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:background="@color/barLightColor"
+			android:weightSum="1">
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_cadastro_498"
+				android:src="@drawable/cliente_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_protheus_498"
+				android:src="@drawable/pedido_30"
+				android:visibility="gone"
+				/>
+
+
+
+			<ImageButton
+				android:id="@+id/bt_email_498"
+				android:layout_width="30dp"
+				android:layout_height="30dp"
+				android:layout_alignTop="@+id/img_flag_002"
+				android:layout_marginLeft="36dp"
+				android:layout_toRightOf="@+id/img_flag_002"
+				android:layout_gravity="center_vertical|center_horizontal"
+				android:src="@drawable/email_30_azul" />
+
+
+			<ImageView
+				android:id="@+id/img_upload_002"
+				android:layout_width="26dp"
+				android:layout_height="26dp"
+				android:layout_alignTop="@+id/img_flag_002"
+				android:layout_marginLeft="36dp"
+				android:layout_toRightOf="@+id/img_flag_002"
+				android:layout_gravity="center_vertical|center_horizontal"
+				android:src="@drawable/upload_24_vermelho" />
+
+			<TextView
+				android:id="@+id/txt_upload_498"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="05dp"
+				android:text="12/12 as 12:12"
+				android:textColor="@color/black"
+				android:textSize="12sp" />
+
+
+			<TextView
+				android:id="@+id/txt_situacao_498"
+				android:layout_width="fill_parent"
+				android:layout_height="25dp"
+				android:paddingRight="5sp"
+				android:gravity="center_vertical|center_horizontal"
+				android:layout_marginTop="10dp"
+				android:text="Situacao: Faturado"
+				android:textColor="@color/black"
+				android:textSize="18sp"
+
+				/>
+
+
+		</LinearLayout>
+
+
+		<TableLayout
+			android:id="@+id/table_498"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:shrinkColumns="*"
+			android:stretchColumns="*"
+			>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_nro_pedido_498"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Nº 07-999999"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+
+					/>
+
+
+				<TextView
+					android:id="@+id/txt_nro_tablete_498"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:gravity="left|center_vertical"
+					android:text="Situacao: Faturado"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+
+					/>
+
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_emissao_498"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Nº 07-999999"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+				<TextView
+					android:id="@+id/txt_entrega_498"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Situacao: Faturado"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cliente_498"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="000000-00 CARREFOUR CAMPINAS LTDA"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_fantasia_498"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_span="02"
+					android:gravity="left"
+					android:text="NOME FANTASIA"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cnpj_498"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="CNPJ/CPF: 62.901.210.0001-08"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+				<TextView
+					android:id="@+id/txt_ie_498"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="I.E.: 244.244.255.244"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_condpagto_498"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="Cond.Pagto: 28 dll"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+				<TextView
+					android:id="@+id/txt_tabpreco_498"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="Tab. Preço: Tabela Garantida 02"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cliente_entrega_498"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="000000-00 CLIENTE ENTREGA"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cidade_entrega_498"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="CIDADE:CAMPINAS"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+
+				<TextView
+					android:id="@+id/txt_telefone_entrega_498"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="TELEFONE (19) 8383838383"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+				<TextView
+					android:id="@+id/txt_obs_pedido_498"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="000000-00 CARREFOUR CAMPINAS LTDA"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+				<TextView
+					android:id="@+id/txt_obs_nf_498"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="000000-00 CARREFOUR CAMPINAS LTDA"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_frete_desc_retira_498"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="Desconto Retira"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_total_498"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="Total Do Pedido: 340,00"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+
+				<TextView
+					android:id="@+id/txt_rede_498"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="Rede.: "
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+
+			</TableRow>
+
+
+
+
+		</TableLayout>
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/fundo_preto"
+			android:orientation="horizontal" >
+
+		</LinearLayout>
+	</LinearLayout>
+
+</RelativeLayout>

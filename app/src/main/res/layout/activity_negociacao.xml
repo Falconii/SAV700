@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="br.com.brotolegal.sav700.NegociacaoActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_negociacao_495"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:background="@color/white"
+        android:layout_below="@+id/appbar"
+        >
+        <TableLayout
+            android:id="@+id/verrede"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/lbConexao_495"
+                    android:layout_width      ="match_parent"
+                    android:layout_height     ="wrap_content"
+                    android:text              ="Conexão:"
+                    android:textColor         ="@color/colorPrimary"
+                    >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/lbParametros_495"
+                    android:layout_width      ="match_parent"
+                    android:layout_height     ="wrap_content"
+                    android:text              ="Parâmetros:"
+                    android:textColor         ="@color/colorPrimary"
+                    >
+                </TextView>
+
+
+
+            </TableRow>
+
+            <TableRow>
+
+                <Spinner
+                    android:id="@+id/spConexao_495"
+                    android:background="@drawable/customfundo01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <Spinner
+                    android:id="@+id/spParametro_495"
+                    android:background="@drawable/customfundo01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/verrede"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/inc_filtro_cliente_01"
+                layout="@layout/filtro_cliente_01" />
+
+            <ListView
+                android:id="@+id/lvNegociacao_495"
+                android:layout_width ="fill_parent"
+                android:layout_height="fill_parent"
+                >
+            </ListView>
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/plus_negociacao_495"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@android:drawable/ic_input_add" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

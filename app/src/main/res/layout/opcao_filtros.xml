@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo"
+    >
+             <ImageButton
+        		android:id="@+id/opcaoBotao_help_20"
+        		android:layout_width="40dp"
+        		android:layout_height="40dp"
+        		android:src="@drawable/filter_20"
+        		 />
+
+              <ImageView
+        		android:id="@+id/CancelarBotao_help_20"
+        		android:layout_width="40dp"
+        		android:layout_height="40dp"
+        		android:layout_alignParentRight="true"
+        		android:src="@drawable/cancelar"
+        		 />
+             
+             <TextView
+                 android:id="@+id/lblOpcao_help_20"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:fontFamily="Helvetica"
+                 android:layout_centerHorizontal="true"
+                 android:layout_alignParentTop="true"
+                  />
+
+              <TextView
+                  android:id="@+id/lblAtivo_help_20"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@+id/lblOpcao_help_20"
+                  android:layout_marginTop="17dp"
+                  android:gravity="center_vertical|center_horizontal"
+                  android:layout_toLeftOf="@+id/CancelarBotao_help_20"
+                  android:layout_toRightOf="@+id/opcaoBotao_help_20"
+                  android:fontFamily="Helvetica"
+                  android:textSize="12sp"
+                  android:textColor="@color/red"
+                  />
+             
+</RelativeLayout>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/fundo"
+	>
+
+
+	<ImageButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/bt_produtos_597"
+		android:src="@drawable/carrinho_26"
+		android:layout_marginTop="50sp"
+		android:layout_alignParentEnd="true" />
+
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="0"
+		android:id="@+id/txt_flag_yellow"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/bt_salles_lista"
+		android:layout_alignTop="@+id/im_flag_yelow"
+		android:gravity="center_vertical|center_horizontal"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="0"
+		android:id="@+id/txt_flag_red"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/im_flag_yelow"
+		android:layout_alignTop="@+id/im_flag_yelow"
+		android:gravity="center_vertical|center_horizontal"/>
+
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="0"
+		android:id="@+id/txt_flag_black"
+		android:layout_alignBottom="@+id/bt_salles_lista"
+		android:layout_toLeftOf="@+id/im_flag_red"
+		android:layout_alignTop="@+id/im_flag_red"
+		android:gravity="center_vertical|center_horizontal"/>
+
+
+	<LinearLayout
+		android:id="@+id/geral_597"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentStart="true">
+
+		<LinearLayout
+			android:id="@+id/pedido_filtros_597"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:background="@color/barLightColor"
+			android:weightSum="1">
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_cadastro_597"
+				android:src="@drawable/cliente_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_pedidos_597"
+				android:src="@drawable/pedido_30"
+				/>
+
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_financeiro_597"
+				android:src="@drawable/financeiro_30"
+				android:visibility="visible"
+				/>
+
+			<TextView
+				android:id="@+id/txt_situacao_597"
+				android:layout_width="fill_parent"
+				android:layout_height="25dp"
+				android:gravity="right|center_vertical"
+				android:layout_marginTop="10dp"
+				android:paddingRight="05dp"
+				android:text="Situacao: Faturado"
+				android:textColor="@color/black"
+				android:textSize="18sp"
+
+				tools:ignore="RtlSymmetry" />
+
+
+		</LinearLayout>
+
+
+
+		<TableLayout
+			android:id="@+id/table_597"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:shrinkColumns="*"
+			android:stretchColumns="*"
+			>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_nro_nota_597"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Nº 07-999999"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+				<TextView
+					android:id="@+id/txt_nro_protheus_597"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Situacao: Faturado"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_emissao_597"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Nº 07-999999"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+				<TextView
+					android:id="@+id/txt_entrega_597"
+					android:layout_width="fill_parent"
+					android:layout_height="25dp"
+					android:gravity="left|center_vertical"
+					android:text="Situacao: Faturado"
+					android:textColor="@color/dark_blue"
+					android:textSize="14sp"
+
+					/>
+
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cliente_597"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="000000-00 CARREFOUR CAMPINAS LTDA"
+					android:textColor="@color/black"
+					/>
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cnpj_597"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="CNPJ/CPF: 62.901.210.0001-08"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+				<TextView
+					android:id="@+id/txt_ie_597"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="I.E.: 244.244.255.244"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					/>
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_cidade_597"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="CIDADE:CAMPINAS"
+					android:textColor="@color/black"
+					/>
+
+				<TextView
+					android:id="@+id/txt_telefone_597"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="TELEFONE (19) 8383838383"
+					android:textColor="@color/black"
+					/>
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_condpagto_597"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="Cond.Pagto: 28 dll"
+					android:textColor="@color/black"
+					/>
+
+				<TextView
+					android:id="@+id/txt_romaneio_597"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="Tab. Preço: Tabela Garantida 02"
+					android:textColor="@color/black"
+					/>
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_chave_eletronica_597"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="000000-00 CARREFOUR CAMPINAS LTDA"
+					android:textColor="@color/black"
+					/>
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_transportadora_597"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="000000-00 CARREFOUR CAMPINAS LTDA"
+					android:textColor="@color/black"
+					/>
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_obs_nf_597"
+					android:layout_span="2"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="000000-00 CARREFOUR CAMPINAS LTDA"
+					android:textColor="@color/black"
+					/>
+			</TableRow>
+
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:id="@+id/txt_total_597"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text="Total Do Pedido: 340,00"
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+
+				<TextView
+					android:id="@+id/txt_canhoto_597"
+					android:layout_width="fill_parent"
+					android:layout_height="35dp"
+					android:gravity="left|center_vertical"
+					android:text=""
+					android:textColor="@color/orange"
+					android:textSize="14sp"
+					/>
+
+			</TableRow>
+
+
+
+
+		</TableLayout>
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/fundo_preto"
+			android:orientation="horizontal" >
+
+		</LinearLayout>
+	</LinearLayout>
+
+</RelativeLayout>

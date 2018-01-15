@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pedidomb_det_item_row"
+    android:layout_width="fill_parent"
+    android:layout_height="40sp"
+    android:orientation="horizontal"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
+    android:layout_marginBottom="05sp"
+    android:background="@color/md_yellow_400"
+
+    >
+    <TextView
+        android:id="@+id/lbl_produto_007"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="230sp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:text="127.00.00.00"
+        android:background="@drawable/customlabel"/>
+
+    <TextView
+        android:id="@+id/lbl_descricao_007"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_marginLeft="35sp"
+        android:layout_width="400sp"
+        android:layout_height="match_parent"
+        android:gravity="left|center"
+        android:textSize="12sp"
+        android:text="FEIJAO BROTO LEGAL !!!!"
+        android:background="@drawable/customlabel"
+        android:longClickable="true" />
+
+    <TextView
+        android:id="@+id/lbl_unid_007"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_marginLeft="05sp"
+        android:layout_width     ="50sp"
+        android:layout_height    ="match_parent"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:text="FD"
+        android:background="@drawable/customlabel"/>
+
+    <ImageView
+        android:id="@+id/img_bola_007"
+        android:src="@drawable/bola_verde"
+        android:layout_marginLeft="05sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+ />
+</LinearLayout>

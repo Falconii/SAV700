@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.brotolegal.sav700.PedidosAgendaActivity">
+    <item
+        android:id="@+id/ac_ag_atrasados_enviar"
+        android:icon="@drawable/upload_24_amarelo"
+        app:showAsAction="ifRoom|withText"
+        android:title="Sincronizar"
+        android:titleCondensed=" Sincronizar">
+    </item>
+    <item
+        android:id="@+id/ac_ag_atrasados_cancelar"
+        android:orderInCategory="100"
+        android:title="Voltar"
+        android:titleCondensed=" Voltar"
+        android:icon="@drawable/cancel_24_branco"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>

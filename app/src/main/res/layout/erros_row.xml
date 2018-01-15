@@ -1,0 +1,98 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <ImageView
+        android:id="@+id/img_responsavel_20"
+        android:src="@drawable/ti"
+        android:layout_marginTop="10sp"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        >
+    </ImageView>
+
+
+    <LinearLayout
+        android:id="@+id/linha01_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/img_responsavel_20"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tvLinha_01_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:minLines="2"
+            android:scrollHorizontally="true"
+            android:text="LINHA 01"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"></TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linha02_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf  ="@+id/img_responsavel_20"
+        android:layout_below="@+id/linha01_20"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tvLinha_02_20"
+            android:layout_width      = "match_parent"
+            android:layout_height     = "match_parent"
+            android:layout_marginLeft ="05sp"
+            android:text              = "Conexão Interna"
+            android:textColor         = "@color/red"
+            android:textSize          = "14dp"
+            android:layout_gravity    = "center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:ellipsize="end"
+            android:scrollHorizontally = "true"
+            android:minLines           = "2"
+            android:maxLines           = "3"
+            >
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linha03_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="05sp"
+        android:layout_toRightOf  ="@+id/img_responsavel_20"
+        android:layout_below="@+id/linha02_20"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:id="@+id/tvLinha_03_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:minLines="2"
+            android:scrollHorizontally="true"
+            android:text="Conexão Interna"
+            android:textColor="@color/black"
+            android:textSize="14dp"></TextView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

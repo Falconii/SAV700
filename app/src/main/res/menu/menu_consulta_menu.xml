@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SAVActivity">
+    <item
+        android:id="@+id/action_second_activity"
+        android:orderInCategory="100"
+        android:title="Teste"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_teste_01"
+        android:orderInCategory="100"
+        android:title="Pedidos"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_teste_02"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_linkedin"
+        android:title="Planilhas"
+        app:showAsAction="never" />
+</menu>

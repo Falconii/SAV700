@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.brotolegal.sav700.BemVindoActivity">
+    <item
+        android:id="@+id/action_alocar"
+        android:orderInCategory="100"
+        android:title="Gravar"
+        android:titleCondensed=" Gravar"
+        android:icon="@drawable/ok_24_branco"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/action_cancelar"
+        android:orderInCategory="100"
+        android:title="Cancelar"
+        android:titleCondensed=" Cancelar"
+        android:icon="@drawable/cancel_24_branco"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>

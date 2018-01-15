@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tabela_preco_05"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom= "5sp"
+    android:paddingLeft  = "5sp"
+    android:paddingRight = "5sp"
+    android:paddingTop   = "5sp"
+    android:background="#EEE8AA"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        >
+
+        <TextView
+            android:id="@+id/lbl_produto_05"
+            android:layout_width="500sp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|left"
+            android:layout_marginLeft="5dip"
+            android:text="126260201 - FEIJÃO BROTO LEGAL"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lbl_preco_05"
+            android:layout_width="120sp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|left"
+            android:layout_toRightOf="@+id/lbl_produto_05"
+            android:text="PREÇO: 100"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <TableLayout
+        android:id="@+id/tablemetas_05"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop = "05dp"
+        android:layout_marginLeft= "05dp"
+        android:layout_marginRight = "05dp"
+        android:shrinkColumns="*"  android:stretchColumns="*"
+        >
+
+        <TableRow
+            android:id="@+id/meta_05"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <RelativeLayout
+                android:id = "@+id/ll_faixa_00"
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro"
+                >
+
+                <TextView
+                    android:id				= "@+id/lbl_faixa_00"
+                    android:layout_height   ="wrap_content"
+                    android:layout_width    ="wrap_content"
+                    android:text			= "Meta"
+                    android:gravity			= "center"
+                    android:textSize        ="12sp"
+                    android:textColor="@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_faixa_00"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_faixa_00"
+                    android:layout_alignParentEnd="true"
+                    android:text			= "1400,00"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "right"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id = "@+id/ll_faixa_01"
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro"
+                >
+
+                <TextView
+                    android:id				= "@+id/lbl_faixa_01"
+                    android:layout_height   ="wrap_content"
+                    android:layout_width    ="wrap_content"
+                    android:text			= "Faixa 01"
+                    android:gravity			= "center"
+                    android:textSize        ="12sp"
+                    android:textColor="@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_faixa_01"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_faixa_01"
+                    android:layout_alignParentEnd="true"
+                    android:text			= "1400,00"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "right"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id = "@+id/ll_faixa_02"
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro"
+                >
+                <TextView
+                    android:id				= "@+id/lbl_faixa_02"
+                    android:layout_height   ="wrap_content"
+                    android:layout_width    ="wrap_content"
+                    android:text			= "Faixa 02"
+                    android:gravity			= "center"
+                    android:textSize        ="12sp"
+                    android:textColor="@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_faixa_02"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_faixa_02"
+                    android:layout_alignParentEnd="true"
+                    android:text			= "1400,00"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "right"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id = "@+id/ll_faixa_03"
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro">
+
+                <TextView
+                    android:id				= "@+id/lbl_faixa_03"
+                    android:layout_height   ="wrap_content"
+                    android:layout_width    ="wrap_content"
+                    android:text			= "Faixa 03"
+                    android:gravity			= "center"
+                    android:textSize        ="12sp"
+                    android:textColor="@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_faixa_03"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_faixa_03"
+                    android:layout_alignParentEnd="true"
+                    android:text			= "1400,00"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "right"/>
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id = "@+id/ll_faixa_04"
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro">
+                <TextView
+                    android:id				= "@+id/lbl_faixa_04"
+                    android:layout_height   ="wrap_content"
+                    android:layout_width    ="wrap_content"
+                    android:text			= "Faixa 04"
+                    android:gravity			= "center"
+                    android:textSize        ="12sp"
+                    android:textColor="@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_faixa_04"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_faixa_04"
+                    android:layout_alignParentEnd="true"
+                    android:text			= "1400,00"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "right"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id = "@+id/ll_faixa_05"
+                android:layout_height="wrap_content"
+                android:layout_width= "match_parent"
+                android:layout_weight	="1"
+                android:background	= "@drawable/fundo_neutro">
+                <TextView
+                    android:id				= "@+id/lbl_faixa_05"
+                    android:layout_height   ="wrap_content"
+                    android:layout_width    ="wrap_content"
+                    android:text			= "Faixa 05"
+                    android:gravity			= "center"
+                    android:textSize        ="12sp"
+                    android:textColor="@color/red"/>
+
+                <TextView
+                    android:id				= "@+id/txt_faixa_05"
+                    android:layout_height   = "wrap_content"
+                    android:layout_width    = "wrap_content"
+                    android:layout_below    = "@+id/lbl_faixa_05"
+                    android:layout_alignParentEnd="true"
+                    android:text			= "1400,00"
+                    android:textColor		= "#0000CC"
+                    android:gravity			= "right"/>
+            </RelativeLayout>
+
+        </TableRow>
+
+
+
+    </TableLayout>
+
+
+
+
+
+</LinearLayout>

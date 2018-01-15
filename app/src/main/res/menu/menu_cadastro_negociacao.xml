@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/negociacao_cadastro_menu_ok"
+        android:icon="@drawable/ok_24_branco"
+        app:showAsAction="ifRoom|withText"
+        android:title="Gravar"
+        android:titleCondensed="Gravar">
+    </item>
+
+    <item
+        android:id="@+id/negociacao_cadastro_menu_excluir"
+        android:icon="@drawable/trash_24_branco"
+        app:showAsAction="ifRoom|withText"
+        android:title="Excluir"
+        android:titleCondensed="Excluir">
+    </item>
+
+
+    <item
+        android:id="@+id/negociacao_cadastro_cancela"
+        android:icon="@drawable/cancel_24_branco"
+        app:showAsAction="ifRoom|withText"
+        android:title="Cancelar"
+        android:titleCondensed="Cancelar">
+    </item>
+
+</menu>

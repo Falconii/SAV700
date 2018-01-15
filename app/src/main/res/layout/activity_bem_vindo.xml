@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="br.com.brotolegal.sav700.BemVindoActivity">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_bem_vindo"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_login"
+        android:layout_below="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/logo_100"
+            android:src="@drawable/imglogo"
+            />
+
+        <TextView
+            android:id="@+id/lbUser"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="wrap_content"
+            android:text              ="Código Usuário:"
+            android:textColor         ="@color/colorPrimary"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="45dp"
+            android:layout_alignBottom="@+id/edUser_335"
+            android:layout_alignStart="@+id/edUser_335">
+        </TextView>
+
+
+        <EditText
+            android:id="@+id/edUser_335"
+            android:drawableLeft="@drawable/icuser"
+            android:background="@drawable/customfundo01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:fontFamily="Helvetica"
+            android:layout_marginTop="69dp"
+            android:layout_below="@+id/logo_100"
+            android:layout_alignStart="@+id/edPass_335"
+            android:layout_alignEnd="@+id/edPass_335" />
+
+
+        <TextView
+            android:id="@+id/lbSenha"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="wrap_content"
+            android:text              ="Senha:"
+            android:textColor         ="@color/colorPrimary"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="45dp"
+            android:layout_alignBottom="@+id/edPass_335"
+            android:layout_alignStart="@+id/edPass_335">
+        </TextView>
+        <EditText
+            android:id="@+id/edPass_335"
+            android:drawableLeft="@drawable/icpass"
+            android:background="@drawable/customfundo01"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_gravity="center"
+            android:fontFamily="Helvetica"
+            android:layout_below="@+id/edUser_335"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="43dp" />
+
+        <TextView
+            android:id="@+id/lbImobilizado"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="wrap_content"
+            android:text              ="Imobilizado:"
+            android:textColor         ="@color/colorPrimary"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="45dp"
+            android:layout_alignBottom="@+id/edAtivo"
+            android:layout_alignStart="@+id/edAtivo">
+        </TextView>
+        <EditText
+            android:id="@+id/edAtivo"
+            android:drawableLeft="@drawable/imobilizado_32"
+            android:background="@drawable/customfundo01"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:layout_gravity="center"
+            android:fontFamily="Helvetica"
+            android:layout_below="@+id/edPass_335"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="43dp"
+            />
+
+        <TextView
+            android:id="@+id/lbConexao"
+            android:layout_width      ="wrap_content"
+            android:layout_height     ="wrap_content"
+            android:text              ="Conexão:"
+            android:textColor         ="@color/colorPrimary"
+            android:layout_gravity    ="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/lbImobilizado"
+            android:layout_alignStart="@+id/spConexao"
+            android:layout_marginTop="39dp">
+        </TextView>
+        <Spinner
+            android:id="@+id/spConexao"
+            android:background="@drawable/customfundo01"
+            android:drawSelectorOnTop="true"
+            android:layout_marginTop="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edAtivo"
+            android:layout_alignEnd="@+id/edPass_335"
+            android:layout_alignStart="@+id/edPass_335"
+            />
+
+
+        <LinearLayout
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="56dp"
+            android:id="@+id/dispositivo"
+            android:layout_below="@+id/spConexao"
+            android:background="@drawable/customfundo01"
+            android:layout_centerHorizontal="true">
+            <LinearLayout
+                android:layout_width="424dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:id="@+id/img_01_17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:src="@drawable/ic_celular" >
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/tvLinha01_01_17"
+                    android:layout_width      ="wrap_content"
+                    android:layout_height     ="match_parent"
+                    android:layout_marginLeft ="10dp"
+                    android:text              ="escolha"
+                    android:textColor         ="@color/colorPrimary"
+                    android:layout_gravity    ="center_horizontal|center_vertical"
+                    android:gravity="center_vertical"
+                    >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tvLinha01_02_17"
+                    android:layout_width      ="wrap_content"
+                    android:layout_height     ="wrap_content"
+                    android:text              ="Data Da Atualização: 23/23/23"
+                    android:textColor         ="@color/red"
+                    android:layout_marginLeft ="43dp"
+                    android:gravity           ="center_horizontal"
+                    >
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="424dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:id="@+id/img_02_17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:src="@drawable/ic_os" >
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/tvLinha02_01_17"
+                    android:layout_width      ="wrap_content"
+                    android:layout_height     ="match_parent"
+                    android:layout_marginLeft ="10dp"
+                    android:text              ="escolha"
+                    android:textColor         ="@color/colorPrimary"
+                    android:layout_gravity    ="center_horizontal|center_vertical"
+                    android:gravity="center_vertical"
+                    >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tvLinha02_02_17"
+                    android:layout_width      ="wrap_content"
+                    android:layout_height     ="wrap_content"
+                    android:text              ="Data Da Atualização: 23/23/23"
+                    android:textColor         ="@color/red"
+                    android:layout_marginLeft ="43dp"
+                    android:gravity           ="center_horizontal"
+                    >
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="424dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:id="@+id/img_03_17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:src="@drawable/ic_id_verficado" >
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/tvLinha03_01_17"
+                    android:layout_width      ="wrap_content"
+                    android:layout_height     ="match_parent"
+                    android:layout_marginLeft ="10dp"
+                    android:text              ="escolha"
+                    android:textColor         ="@color/colorPrimary"
+                    android:layout_gravity    ="center_horizontal|center_vertical"
+                    android:gravity="center_vertical"
+                    >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tvLinha03_02_17"
+                    android:layout_width      ="wrap_content"
+                    android:layout_height     ="wrap_content"
+                    android:text              ="Data Da Atualização: 23/23/23"
+                    android:textColor         ="@color/red"
+                    android:layout_marginLeft ="43dp"
+                    android:gravity           ="center_horizontal"
+                    >
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="424dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:id="@+id/img_04_17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:src="@drawable/ic_id_verficado" >
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/tvLinha04_01_17"
+                    android:layout_width      ="wrap_content"
+                    android:layout_height     ="match_parent"
+                    android:layout_marginLeft ="10dp"
+                    android:text              ="escolha"
+                    android:textColor         ="@color/colorPrimary"
+                    android:layout_gravity    ="center_horizontal|center_vertical"
+                    android:gravity="center_vertical"
+                    >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tvLinha04_02_17"
+                    android:layout_width      ="wrap_content"
+                    android:layout_height     ="wrap_content"
+                    android:text              ="Data Da Atualização: 23/23/23"
+                    android:textColor         ="@color/red"
+                    android:layout_marginLeft ="43dp"
+                    android:gravity           ="center_horizontal"
+                    >
+                </TextView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="S.A.V\nAlocação de Dispositivo\nSistema De Apoio Ao Vendedor"
+            android:id="@+id/textView2"
+            android:layout_above="@+id/edUser_335"
+            android:layout_alignStart="@+id/edUser_335"
+            android:layout_marginStart="40dp"
+            android:layout_alignTop="@+id/logo_100"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <TextView
+            android:id="@+id/lbDispositivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dispositivo:"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="36dp"
+            android:layout_below="@+id/spConexao"
+            android:layout_alignStart="@+id/dispositivo" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

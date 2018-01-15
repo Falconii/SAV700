@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.brotolegal.sav700.CargaActivity">
+    <item
+        android:id="@+id/ac_update_atualizar"
+        android:orderInCategory="100"
+        android:title="Atualizar"
+        android:icon="@drawable/upload_24_amarelo"
+        android:titleCondensed=" Atualizar"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/ac_update_cancelar"
+        android:orderInCategory="100"
+        android:title="Cancelar"
+        android:titleCondensed=" Cancelar"
+        android:icon="@drawable/cancel_24_branco"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>

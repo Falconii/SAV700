@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pedido_filtros_008"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
+    android:background="@drawable/fundopedido"
+    >
+
+    <Spinner
+        android:id="@+id/sp_categoria_088"
+        android:background="@drawable/fundo"
+        android:layout_width="0sp"
+        android:layout_weight="0.4"
+        android:layout_height="30sp"
+        android:textColor="@color/dark_blue"
+        android:layout_marginRight="5sp"
+
+        />
+
+
+    <Spinner
+        android:id="@+id/sp_marca_088"
+        android:background="@drawable/fundo"
+        android:layout_width="0sp"
+        android:layout_weight="0.4"
+        android:layout_height="30sp"
+        android:textColor="@color/dark_blue"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        />
+
+    <Spinner
+        android:id="@+id/sp_view_088"
+        android:background="@drawable/fundo"
+        android:layout_width="0sp"
+        android:layout_weight="0.1"
+        android:layout_height="30sp"
+        android:textColor="@color/dark_blue"
+        android:layout_marginLeft="5sp"
+
+        />
+
+</LinearLayout>
