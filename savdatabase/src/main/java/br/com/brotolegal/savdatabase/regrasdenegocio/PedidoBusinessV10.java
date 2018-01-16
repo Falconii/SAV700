@@ -758,6 +758,7 @@ public class PedidoBusinessV10 {
                             det.setDESCVER(0f);
 
                         } else {
+
                             //bonificação
                             if ("003#011#013".contains(this.getCabec().getTIPO())) { //bonificações
 
@@ -1248,6 +1249,7 @@ public class PedidoBusinessV10 {
                             }
 
                         }
+
                         if (!det.getNRO().isEmpty()) {
 
                             det.setSTATUS();
@@ -2510,9 +2512,15 @@ public class PedidoBusinessV10 {
 
             obj.setDESCON(0f);
 
-            obj.setCODVERBA("");
+            //pedidos troca e devolução não alteram verba
 
-            obj.set_Verba("");
+            if ( !("005,006".contains(cabec.getTIPO()))) {
+
+                obj.setCODVERBA("");
+
+                obj.set_Verba("");
+
+            }
 
             obj.setACORDO("");
 

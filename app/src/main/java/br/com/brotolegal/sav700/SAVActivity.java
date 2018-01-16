@@ -730,9 +730,7 @@ public class SAVActivity extends AppCompatActivity {
             EventBus.getDefault().unregister(this);
         }
 
-        super.onStop();// ATTENTION: This was auto-generated to implement the App Indexing API.
-// See https://g.co/AppIndexing/AndroidStudio for more information.
-        FirebaseUserActions.getInstance().end(getIndexApiAction());
+        super.onStop();
 
     }
 
@@ -1394,7 +1392,7 @@ public class SAVActivity extends AppCompatActivity {
                 .withCompactStyle(false)
                 .withSavedInstance(savebundle)
                 .withThreeSmallProfileImages(false)
-                .withHeaderBackground(R.drawable.feliznatal)
+                .withHeaderBackground(R.drawable.sav_logo)
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
                     public boolean onProfileChanged(View view, IProfile iProfile, boolean b) {
@@ -1519,37 +1517,37 @@ public class SAVActivity extends AppCompatActivity {
 
             dao.close();
 
-//            ProfileDrawerItem item = new ProfileDrawerItem()
-//                    .withName("000000")
-//                    .withEmail("Log OFF");
-//
-//            item.setTextColorRes(R.color.black);
-//            item.setTextColor(R.color.black);
-//
-//            headerNavigationLeft.addProfiles(item);
-//
-//            for(Usuario us : users){
-//
-//                ProfileDrawerItem item1 = new ProfileDrawerItem()
-//                        .withName(us.getCOD())
-//                        .withEmail(us.getNOME());
-//                        .withIcon(getResources().getDrawable(R.drawable.person_1));
-//                item1.setTextColorRes(R.color.black);
-//                item1.setTextColor(R.color.black);
-//
-//                headerNavigationLeft.addProfiles(item1);
-//
-//                if ((status.getLOGADO().equals("S")) && (us.getCOD().equals(status.getUSERLOG()))){
-//
-//                    ativo = headerNavigationLeft.getProfiles().size() - 1;
-//
-//                }
-//
-//            }
-//
-//            //headerNavigationLeft.getProfiles().get(ativo).setSelectable(true);
-//
-//            headerNavigationLeft.setActiveProfile(headerNavigationLeft.getProfiles().get(ativo));
+            ProfileDrawerItem item = new ProfileDrawerItem()
+                    .withName("000000")
+                    .withEmail("Log OFF");
+
+            item.setTextColorRes(R.color.black);
+            item.setTextColor(R.color.black);
+
+            headerNavigationLeft.addProfiles(item);
+
+            for(Usuario us : users){
+
+                ProfileDrawerItem item1 = new ProfileDrawerItem()
+                        .withName(us.getCOD())
+                        .withEmail(us.getNOME())
+                        .withIcon(getResources().getDrawable(R.drawable.person_2));
+                item1.setTextColorRes(R.color.black);
+                item1.setTextColor(R.color.black);
+
+                headerNavigationLeft.addProfiles(item1);
+
+                if ((status.getLOGADO().equals("S")) && (us.getCOD().equals(status.getUSERLOG()))){
+
+                    ativo = headerNavigationLeft.getProfiles().size() - 1;
+
+                }
+
+            }
+
+            //headerNavigationLeft.getProfiles().get(ativo).setSelectable(true);
+
+            headerNavigationLeft.setActiveProfile(headerNavigationLeft.getProfiles().get(ativo));
 
         } catch (Exception e){
 

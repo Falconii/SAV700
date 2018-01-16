@@ -1441,6 +1441,7 @@ public class PedidosActivity extends AppCompatActivity {
 
                         }
 
+
                         if (  (obj.getSTATUS().equals("98") || obj.getSTATUS().equals("6")  || obj.getSTATUS().equals("0") ) ) {
 
                             item_refresh_002.setVisibility(View.VISIBLE);
@@ -1634,6 +1635,8 @@ public class PedidosActivity extends AppCompatActivity {
 
                             item_erros_002.setVisibility(View.GONE);
                         }
+
+
 
                         item_pedido_002.setOnClickListener(new View.OnClickListener() {
                             @Override

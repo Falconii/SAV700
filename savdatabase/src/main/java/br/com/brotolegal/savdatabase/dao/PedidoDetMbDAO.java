@@ -381,8 +381,10 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
 					+ "inner join marca             on marca.codigo       = produto.marca "
 					+ "left  join MotivosTrocaDev   on MotivosTrocaDev.codigo    = pedidodetmb.codverba "
 					+ "left  join meta              on meta.data = '"+App.getHojeaaaamm()+"' and meta.cliente = '"+ values[1] +"' and meta.loja = '"+ values[2]+"' and meta.produto = produto.codigo "
-					+ "where ( (tabprecodet.codigo =  '"+ values[3] +"') ) " //and ( trim(tabprecodet.produto) = '124300201'  )   ) "
+					+ "where ( (tabprecodet.codigo =  '"+ values[3] +"' ) ) "
+					//+ "where ( (tabprecodet.codigo =  '"+ values[3] +"')  and ( trim(tabprecodet.produto) = '124290201' ) ) "
 					+ "order by produto.descricao ";
+
 
 			cursor = getDataBase().rawQuery(select , null);
 

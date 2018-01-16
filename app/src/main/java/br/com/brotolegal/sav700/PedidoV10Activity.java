@@ -338,17 +338,17 @@ public class PedidoV10Activity extends AppCompatActivity implements
 
     private Config config;
 
-    private String operacao = "";
+    private String operacao    = "";
 
-    private String nropedido = "";
+    private String nropedido   = "";
 
-    private String CODIGO = "";
+    private String CODIGO      = "";
 
-    private String LOJA = "";
+    private String LOJA        = "";
 
-    private String IDAGE = "";
+    private String IDAGE       = "";
 
-    private String NEGOCIACAO = "";
+    private String NEGOCIACAO  = "";
 
     private String LOG = "LANCAPEDIDO";
 
@@ -4427,71 +4427,12 @@ public class PedidoV10Activity extends AppCompatActivity implements
 
         }
 
-//        opcoes = new ArrayList<String[]>();
-//
-//        opcoes.add(new String[]{"1ª", pedido.getCabec().getENTREGA()});
-//
-//        sp_entrega_001.setEnabled(false);
-//
-//        entregaadapter = new defaultAdapter(PedidoV10Activity.this, R.layout.choice_default_row, opcoes, "Entrega", pedido.getCabec().isValidoByName("ENTREGA"));
-//
-//        sp_entrega_001.setAdapter(entregaadapter);
-//
-//        sp_entrega_001.setSelection(0);
 
         txt_retira_001.setText(pedido.getCabec().get_Retira());
 
         txt_emissao_001.setText(pedido.getCabec().getEMISSAO());
 
         txt_clienteentrega_001.setText(pedido.getCabec().get_ClienteEntRazao());
-
-//        int index = -1;
-//
-//        int i = 0;
-//
-//        opcoes = new ArrayList<>();
-//
-//        for (CondPagto op : pedido.getLsCondPagto()) {
-//
-//            opcoes.add(new String[]{op.getCODIGO(), op.getCODIGO() + "-" + op.getDESCRICAO()});
-//
-//            if (op.getCODIGO().equals(pedido.getCabec().getCOND())) {
-//
-//                index = i;
-//
-//            }
-//
-//            i++;
-//
-//        }
-//
-//        if (index == -1) {
-//
-//            opcoes.add(new String[]{"01", " "});
-//
-//            index = 0;
-//
-//        }
-//
-//        sp_condpagto_001.setEnabled(false);
-//
-//        condadapter = new defaultAdapter(PedidoV10Activity.this, R.layout.choice_default_row, opcoes, "Cond Pagto", pedido.getCabec().isValidoByName("COND"));
-//
-//        sp_condpagto_001.setAdapter(condadapter);
-//
-//        sp_condpagto_001.setSelection(index);
-
-//        sp_tabpreco_001.setEnabled(false);
-//
-//        opcoes = new ArrayList<>();
-//
-//        opcoes.add(new String[]{pedido.getCabec().getTABPRECO(), pedido.getCabec().get_TabPreco()});
-//
-//        tabprecoadapter = new defaultAdapter(PedidoV10Activity.this, R.layout.choice_default_row, opcoes, "Tab.Preço", pedido.getCabec().isValidoByName("TABPRECO"));
-//
-//        sp_tabpreco_001.setAdapter(tabprecoadapter);
-//
-//        sp_tabpreco_001.setSelection(0);
 
 
         txt_obsped_001.setText(pedido.getCabec().getOBSPED());
@@ -4630,7 +4571,6 @@ public class PedidoV10Activity extends AppCompatActivity implements
                     }
 
                     opcoes.add(new String[]{String.valueOf(x + 1) + "ª", format_full.format(emissao)});
-
 
                 }
 
@@ -4786,8 +4726,6 @@ public class PedidoV10Activity extends AppCompatActivity implements
                 }
 
                 sp_condpagto_001.setEnabled(true);
-
-
 
                 condadapter = new defaultAdapter(PedidoV10Activity.this, R.layout.choice_default_row, opcoes,"Cond Pagto",pedido.getCabec().isValidoByName("COND"));
 
