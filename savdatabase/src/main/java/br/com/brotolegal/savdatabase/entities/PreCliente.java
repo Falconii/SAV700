@@ -86,6 +86,9 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
     protected String LATITUDE;
     protected String LONGITUDE;
     protected String SUFRAMA;
+    protected String EAN;
+    protected String TIPOCONTRATO;
+
 
 
     /* Descriçõoes de canais, tabela de preço */
@@ -188,7 +191,8 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
     public PreCliente(String ID, String ERRO, String MSGERRO, String OPERACAO, String STATUS, String CODIGO, String RAZAO, String FANTASIA, String PESSOA, String CNPJ, String RG, String IE, String IM, String LOGRADOURO, String ENDERECO, String NRO, String COMPLEMENTO, String BAIRRO, String CODCIDADE, String CIDADE, String ESTADO, String CEP, String DDD, String TELEFONE, String CELULAR, String HOMEPAGE,
                       String EMAILNFE, String EMAIL, String FUNDACAO, String CANAL, String REDE, String POLITICA, String TABPRECO, String CONDPAGTO, String BOLETO, String TAXA, String OPSIMPLES, String ISENTOST, Float LIMITE, String ICMS, String CLIENTEENTREGA, String RESTRECEB,
-                      String HORARECEB, String AGENDAMENTO, Float VLRDESCARG, String UNIDDESCARG, String PERFILVEIC, String PERFILCARG, String PALETIZACAO, String RESSALVACOM, String RESSALVALOG, String FORMAPAGTO, String MISTO, String CADASTRO, String DEPTO01, String DEPTO02, String DEPTO03, String DEPTO04, String DEPTO05, String DEPTO06, String CIENTE, String LATITUDE, String LONGITUDE, String SUFRAMA){
+                      String HORARECEB, String AGENDAMENTO, Float VLRDESCARG, String UNIDDESCARG, String PERFILVEIC, String PERFILCARG, String PALETIZACAO, String RESSALVACOM, String RESSALVALOG, String FORMAPAGTO, String MISTO, String CADASTRO, String DEPTO01, String DEPTO02, String DEPTO03, String DEPTO04, String DEPTO05, String DEPTO06, String CIENTE, String LATITUDE, String LONGITUDE, String SUFRAMA,
+                      String EAN, String TIPOCONTRATO){
 
 
         super(_OBJETO, "PRECLIENTE");
@@ -263,7 +267,8 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         this.LATITUDE       = LATITUDE;
         this.LONGITUDE      = LONGITUDE;
         this.SUFRAMA        = SUFRAMA;
-
+        this.EAN            = EAN;
+        this.TIPOCONTRATO   = TIPOCONTRATO;
 
         PERFIS              = new ArrayList<Perfil>();
 
@@ -702,7 +707,6 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
     }
 
-
     public void upDatePERFILVEIC(Perfil perfil){
         //atualiza PERFILVEIC
 
@@ -739,9 +743,6 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         return this.PERFIS;
     }
 
-
-
-
     public void setPERFIS(Perfil perfil) {
 
         Boolean lAchou = false;
@@ -767,7 +768,6 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         }
 
     }
-
 
     public String getRESSALVACOM() {
         return RESSALVACOM;
@@ -800,7 +800,6 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
     public void setMISTO(String MISTO) {
         this.MISTO = MISTO;
     }
-
 
     public String getCADASTRO() {
         return CADASTRO;
@@ -911,8 +910,6 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
     }
 
-
-
     public void upDatePALETIZACAO(Palete palete){
        //atualiza PALETES
 
@@ -948,7 +945,6 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         return this.PALETES;
     }
 
-
     public void setPALETES(Palete palete) {
 
         Boolean lAchou = false;
@@ -975,16 +971,12 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
     }
 
-
     public String getCANALDESCRI(Context context) {
 
         CANALDESCRI = SEEKCanal().getDESCRICAO();
 
         return CANALDESCRI;
     }
-
-
-
 
     public String getTABPRECODESCRI(Context context) {
 
@@ -993,9 +985,6 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         return TABPRECODESCRI;
     }
 
-
-
-
     public String getPOLITICADESCRI(Context context) {
 
         POLITICADESCRI = "";
@@ -1003,14 +992,12 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         return POLITICADESCRI;
     }
 
-
     public String getREDEDESCRI(Context context) {
 
         REDEDESCRI = SEEKRede().getDESCRICAO();
 
         return REDEDESCRI;
     }
-
 
     public String getCONDPAGTODESCRI(Context context) {
 
@@ -1071,6 +1058,45 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         return STATUSDESCRI;
     }
 
+    public String getLATITUDE() {
+        return LATITUDE;
+    }
+
+    public void setLATITUDE(String LATITUDE) {
+        this.LATITUDE = LATITUDE;
+    }
+
+    public String getLONGITUDE() {
+        return LONGITUDE;
+    }
+
+    public void setLONGITUDE(String LONGITUDE) {
+        this.LONGITUDE = LONGITUDE;
+    }
+
+    public String getSUFRAMA() {
+        return SUFRAMA;
+    }
+
+    public void setSUFRAMA(String SUFRAMA) {
+        this.SUFRAMA = SUFRAMA;
+    }
+
+    public String getEAN() {
+        return EAN;
+    }
+
+    public void setEAN(String EAN) {
+        this.EAN = EAN;
+    }
+
+    public String getTIPOCONTRATO() {
+        return TIPOCONTRATO;
+    }
+
+    public void setTIPOCONTRATO(String TIPOCONTRATO) {
+        this.TIPOCONTRATO = TIPOCONTRATO;
+    }
 
     private Canal SEEKCanal(){
 
@@ -1250,6 +1276,9 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         _colunas.add("LATITUDE");
         _colunas.add("LONGITUDE");
         _colunas.add("SUFRAMA");
+        _colunas.add("EAN");
+        _colunas.add("TIPOCONTRATO");
+
 
     }
 

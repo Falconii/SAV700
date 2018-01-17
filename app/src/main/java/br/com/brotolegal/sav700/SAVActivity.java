@@ -1132,7 +1132,11 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("precliente")) {
 
-                            Intent intent = new Intent(SAVActivity.this,MenAtWorkingActivity.class);
+                            Intent intent = new Intent(SAVActivity.this,PreClienteActivity.class);
+                            Bundle params = new Bundle();
+                            params.putString("CODCLIENTE", "");
+                            params.putString("LOJCLIENTE", "");
+                            intent.putExtras(params);
                             startActivity(intent);
 
                         }

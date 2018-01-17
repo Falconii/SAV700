@@ -262,9 +262,14 @@
             android:label="Manual De Vendas"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".showErrosActivity"
+        android:name=".showErrosActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="Manual De Vendas"
+        android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreClienteActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="Manual De Vendas"
+            android:label="Cadastro Pré-Cliente"
             android:screenOrientation="portrait" />
 
 
