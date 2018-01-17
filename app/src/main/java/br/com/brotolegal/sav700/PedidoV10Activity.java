@@ -6785,6 +6785,8 @@ public class PedidoV10Activity extends AppCompatActivity implements
 
                 params.putString("msgerro", "");
 
+                Log.i("ERRO","iTENS CARREGADOS");
+
 
 
             } catch (Exception e){

@@ -309,6 +309,15 @@ public class PedidoDetMB_fast {
         this.VLRCAMPANHA        = obj.getVLRCAMPANHA();
         this.VLRDESCARGA2       = obj.getVLRDESCARGA2();
         this.POLITICABASE       = obj.getPOLITICABASE();
+
+        //Ajusta preço para sim.,ped dist e cota
+        if (!obj.getSIMULADOR().trim().isEmpty() || !obj.getPEDDIST().trim().isEmpty() || !obj.getCOTA().trim().isEmpty()){
+
+            this.setPRCVEN(obj.getPRCVEN());
+
+            return ;
+        }
+
         //
         this._Verba             = obj.get_Verba();
         this._Verba2            = obj.get_Verba2();

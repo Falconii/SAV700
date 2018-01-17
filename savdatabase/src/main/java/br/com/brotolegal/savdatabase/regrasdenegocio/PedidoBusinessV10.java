@@ -3308,7 +3308,15 @@ public class PedidoBusinessV10 {
 
                     Float perc   = old.getDESCON();
 
+                    lsDetalhe.get(x).setBONIPREC(prcbon);
+
                     lsDetalhe.get(x).atualizar(old);
+
+                    //Ignora recalculo para sim.,ped dist e cota
+                    if (!lsDetalhe.get(x).getSIMULADOR().trim().isEmpty() || !lsDetalhe.get(x).getPEDDIST().trim().isEmpty() || !lsDetalhe.get(x).getCOTA().trim().isEmpty()){
+
+                        continue;
+                    }
 
                     switch (opcaoRecalculo){
 
@@ -3337,8 +3345,6 @@ public class PedidoBusinessV10 {
 
 
                     };
-
-                    lsDetalhe.get(x).setBONIPREC(prcbon);
 
                 }
 

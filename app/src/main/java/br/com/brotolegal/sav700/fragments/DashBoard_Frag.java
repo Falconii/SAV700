@@ -145,9 +145,10 @@ public class DashBoard_Frag extends Fragment {
 
         lv_db_01b = (ListView) rootView.findViewById(R.id.lv_db_01b);
 
-        lv_db_02a = (ListView) rootView.findViewById(R.id.lv_db_02a);
+        //@TODO VERSÃO NOVA
+        //lv_db_02a = (ListView) rootView.findViewById(R.id.lv_db_02a);
 
-        lv_db_02b = (ListView) rootView.findViewById(R.id.lv_db_02b);
+        //lv_db_02b = (ListView) rootView.findViewById(R.id.lv_db_02b);
 
         sp_tabela_01a = (Spinner) rootView.findViewById(R.id.sp_tabela_01a);
 
@@ -767,6 +768,7 @@ public class DashBoard_Frag extends Fragment {
     public void loadNotificacoes(){
 
 
+        /*
         try {
 
             lsNotificacao    = new ArrayList<>();
@@ -826,7 +828,7 @@ public class DashBoard_Frag extends Fragment {
 
         }
 
-
+*/
 
     }
 
