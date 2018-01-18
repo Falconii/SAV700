@@ -156,14 +156,14 @@ public class PreClienteDAO extends DAO2 implements IDao2<PreCliente> {
                     cursor.getString(35),
                     cursor.getString(36),
                     cursor.getString(37),
-                    cursor.getFloat(38),
-                    cursor.getString(39),
+                    cursor.getString(38),
+                    cursor.getFloat(39),
                     cursor.getString(40),
                     cursor.getString(41),
                     cursor.getString(42),
                     cursor.getString(43),
-                    cursor.getFloat(44),
-                    cursor.getString(45),
+                    cursor.getString(44),
+                    cursor.getFloat(45),
                     cursor.getString(46),
                     cursor.getString(47),
                     cursor.getString(48),
@@ -183,8 +183,10 @@ public class PreClienteDAO extends DAO2 implements IDao2<PreCliente> {
                     cursor.getString(62),
                     cursor.getString(63),
                     cursor.getString(64),
-                    cursor.getString(65)
-            );
+                    cursor.getString(65),
+                    cursor.getString(66)
+
+                    );
 
         } catch (Exception e){
 

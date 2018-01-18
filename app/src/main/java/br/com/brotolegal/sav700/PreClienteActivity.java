@@ -48,6 +48,7 @@ import java.util.TreeMap;
 import br.com.brotolegal.sav700.VerificaWeb.ConexaoAdapter;
 import br.com.brotolegal.sav700.VerificaWeb.Parametros;
 import br.com.brotolegal.sav700.VerificaWeb.ParametrosAdapter;
+import br.com.brotolegal.sav700.VerificaWeb.TestePreClienteActivity;
 import br.com.brotolegal.savdatabase.app.App;
 import br.com.brotolegal.savdatabase.dao.ConfigDAO;
 import br.com.brotolegal.savdatabase.dao.PreClienteDAO;
@@ -274,12 +275,11 @@ public class PreClienteActivity extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    Intent intent = new Intent(PreClienteActivity.this,CadastroPreClienteActivity.class);
-//                    Bundle params = new Bundle();
-//                    params.putString("CODCLIENTE", "");
-//                    params.putString("LOJCLIENTE", "");
-//                    intent.putExtras(params);
-//                    startActivity(intent);
+                    Intent intent = new Intent(PreClienteActivity.this,TestePreClienteActivity.class);
+                    Bundle params = new Bundle();
+                    params.putString("CODIGO", "");
+                    intent.putExtras(params);
+                    startActivity(intent);
                 }
             });
 

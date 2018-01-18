@@ -28,6 +28,7 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
     protected String OPERACAO;
     protected String STATUS;
     protected String CODIGO;
+    protected String LOJA;
     protected String RAZAO;
     protected String FANTASIA;
     protected String PESSOA;
@@ -189,7 +190,7 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
     }
 
 
-    public PreCliente(String ID, String ERRO, String MSGERRO, String OPERACAO, String STATUS, String CODIGO, String RAZAO, String FANTASIA, String PESSOA, String CNPJ, String RG, String IE, String IM, String LOGRADOURO, String ENDERECO, String NRO, String COMPLEMENTO, String BAIRRO, String CODCIDADE, String CIDADE, String ESTADO, String CEP, String DDD, String TELEFONE, String CELULAR, String HOMEPAGE,
+    public PreCliente(String ID, String ERRO, String MSGERRO, String OPERACAO, String STATUS, String CODIGO, String LOJA,String RAZAO, String FANTASIA, String PESSOA, String CNPJ, String RG, String IE, String IM, String LOGRADOURO, String ENDERECO, String NRO, String COMPLEMENTO, String BAIRRO, String CODCIDADE, String CIDADE, String ESTADO, String CEP, String DDD, String TELEFONE, String CELULAR, String HOMEPAGE,
                       String EMAILNFE, String EMAIL, String FUNDACAO, String CANAL, String REDE, String POLITICA, String TABPRECO, String CONDPAGTO, String BOLETO, String TAXA, String OPSIMPLES, String ISENTOST, Float LIMITE, String ICMS, String CLIENTEENTREGA, String RESTRECEB,
                       String HORARECEB, String AGENDAMENTO, Float VLRDESCARG, String UNIDDESCARG, String PERFILVEIC, String PERFILCARG, String PALETIZACAO, String RESSALVACOM, String RESSALVALOG, String FORMAPAGTO, String MISTO, String CADASTRO, String DEPTO01, String DEPTO02, String DEPTO03, String DEPTO04, String DEPTO05, String DEPTO06, String CIENTE, String LATITUDE, String LONGITUDE, String SUFRAMA,
                       String EAN, String TIPOCONTRATO){
@@ -207,41 +208,42 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         this.ERRO = ERRO;
         this.MSGERRO = MSGERRO;
         this.OPERACAO = OPERACAO;
-        this.STATUS = STATUS;
-        this.CODIGO = CODIGO;
-        this.RAZAO = RAZAO;
+        this.STATUS   = STATUS;
+        this.CODIGO   = CODIGO;
+        this.LOJA     = LOJA;
+        this.RAZAO    = RAZAO;
         this.FANTASIA = FANTASIA;
-        this.PESSOA = PESSOA;
-        this.CNPJ = CNPJ;
-        this.RG = RG;
-        this.IE = IE;
-        this.IM = IM;
+        this.PESSOA   = PESSOA;
+        this.CNPJ     = CNPJ;
+        this.RG       = RG;
+        this.IE       = IE;
+        this.IM         = IM;
         this.LOGRADOURO = LOGRADOURO;
-        this.ENDERECO = ENDERECO;
-        this.NRO = NRO;
+        this.ENDERECO   = ENDERECO;
+        this.NRO         = NRO;
         this.COMPLEMENTO = COMPLEMENTO;
-        this.BAIRRO = BAIRRO;
-        this.CODCIDADE  = CODCIDADE;
-        this.CIDADE     = CIDADE;
-        this.ESTADO     = ESTADO;
-        this.CEP        = CEP;
-        this.DDD        = DDD;
-        this.TELEFONE   = TELEFONE;
-        this.CELULAR    = CELULAR;
-        this.HOMEPAGE   = HOMEPAGE;
-        this.EMAILNFE   = EMAILNFE;
-        this.EMAIL      = EMAIL;
-        this.FUNDACAO   = FUNDACAO;
-        this.CANAL      = CANAL;
-        this.REDE       = REDE;
-        this.POLITICA   = POLITICA;
-        this.TABPRECO   = TABPRECO;
-        this.CONDPAGTO  = CONDPAGTO;
-        this.BOLETO     = BOLETO;
-        this.TAXA       = TAXA;
-        this.OPSIMPLES  = OPSIMPLES;
-        this.ISENTOST   = ISENTOST;
-        this.LIMITE     = LIMITE;
+        this.BAIRRO      = BAIRRO;
+        this.CODCIDADE   = CODCIDADE;
+        this.CIDADE      = CIDADE;
+        this.ESTADO      = ESTADO;
+        this.CEP         = CEP;
+        this.DDD         = DDD;
+        this.TELEFONE    = TELEFONE;
+        this.CELULAR     = CELULAR;
+        this.HOMEPAGE    = HOMEPAGE;
+        this.EMAILNFE    = EMAILNFE;
+        this.EMAIL       = EMAIL;
+        this.FUNDACAO    = FUNDACAO;
+        this.CANAL       = CANAL;
+        this.REDE        = REDE;
+        this.POLITICA    = POLITICA;
+        this.TABPRECO    = TABPRECO;
+        this.CONDPAGTO   = CONDPAGTO;
+        this.BOLETO      = BOLETO;
+        this.TAXA        = TAXA;
+        this.OPSIMPLES   = OPSIMPLES;
+        this.ISENTOST    = ISENTOST;
+        this.LIMITE      = LIMITE;
         this.ICMS           = ICMS;
         this.CLIENTEENTREGA = CLIENTEENTREGA;
         this.RESTRECEB      = RESTRECEB;
@@ -335,6 +337,14 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
     public void setCODIGO(String cODIGO) {
         CODIGO = cODIGO;
+    }
+
+    public String getLOJA() {
+        return LOJA;
+    }
+
+    public void setLOJA(String LOJA) {
+        this.LOJA = LOJA;
     }
 
     public String getRAZAO() {
@@ -971,35 +981,32 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
     }
 
-    public String getCANALDESCRI(Context context) {
+    public String getCANALDESCRI() {
 
         CANALDESCRI = SEEKCanal().getDESCRICAO();
 
         return CANALDESCRI;
     }
 
-    public String getTABPRECODESCRI(Context context) {
+    public String getTABPRECODESCRI() {
 
         TABPRECODESCRI = SEEKtabpreco().getDESCRICAO();
 
         return TABPRECODESCRI;
     }
 
-    public String getPOLITICADESCRI(Context context) {
+    public String getPOLITICADESCRI() {
 
         POLITICADESCRI = "";
 
         return POLITICADESCRI;
     }
 
-    public String getREDEDESCRI(Context context) {
-
-        REDEDESCRI = SEEKRede().getDESCRICAO();
-
+    public String getREDEDESCRI() {
         return REDEDESCRI;
     }
 
-    public String getCONDPAGTODESCRI(Context context) {
+    public String getCONDPAGTODESCRI() {
 
         CONDPAGTODESCRI = SEEKCondPagto().getDESCRICAO();
 
@@ -1218,6 +1225,7 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         _colunas.add("OPERACAO");
         _colunas.add("STATUS");
         _colunas.add("CODIGO");
+        _colunas.add("LOJA");
         _colunas.add("RAZAO");
         _colunas.add("FANTASIA");
         _colunas.add("PESSOA");

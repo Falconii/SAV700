@@ -262,16 +262,20 @@
             android:label="Manual De Vendas"
             android:screenOrientation="portrait" />
         <activity
-        android:name=".showErrosActivity"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:label="Manual De Vendas"
-        android:screenOrientation="portrait" />
+            android:name=".showErrosActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Manual De Vendas"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PreClienteActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Cadastro Pré-Cliente"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".PreClienteCadastroActiviy"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Cadastro Pré-Cliente"
+            android:screenOrientation="portrait" />
 
         <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>
@@ -307,7 +311,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-
+        <activity
+            android:name=".VerificaWeb.TestePreClienteActivity"
+            android:label="@string/title_activity_teste_pre_cliente"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
