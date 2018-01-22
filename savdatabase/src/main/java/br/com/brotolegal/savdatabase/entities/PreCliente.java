@@ -983,32 +983,25 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
     public String getCANALDESCRI() {
 
-        CANALDESCRI = SEEKCanal().getDESCRICAO();
-
         return CANALDESCRI;
     }
 
     public String getTABPRECODESCRI() {
-
-        TABPRECODESCRI = SEEKtabpreco().getDESCRICAO();
 
         return TABPRECODESCRI;
     }
 
     public String getPOLITICADESCRI() {
 
-        POLITICADESCRI = "";
-
         return POLITICADESCRI;
     }
 
     public String getREDEDESCRI() {
+
         return REDEDESCRI;
     }
 
     public String getCONDPAGTODESCRI() {
-
-        CONDPAGTODESCRI = SEEKCondPagto().getDESCRICAO();
 
         return CONDPAGTODESCRI;
     }

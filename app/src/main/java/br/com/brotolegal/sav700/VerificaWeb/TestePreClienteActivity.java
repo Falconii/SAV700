@@ -74,7 +74,7 @@ public class TestePreClienteActivity extends AppCompatActivity {
             }
 
 
-            if (CODIGO.trim() == ""){
+            if (CODIGO.isEmpty()){
 
                 cliente = new PreCliente();
 
@@ -202,7 +202,7 @@ public class TestePreClienteActivity extends AppCompatActivity {
 
 
 
-                View rootView = inflater.inflate(R.layout.fragment_fragmet_cliente_comercial, container, false);
+                final View rootView = inflater.inflate(R.layout.fragment_fragmet_cliente_comercial, container, false);
 
                 tvID = (TextView) rootView.findViewById(R.id.txt_id_500);
 
@@ -350,6 +350,18 @@ public class TestePreClienteActivity extends AppCompatActivity {
                     tvICMS.setText(App.TotvsSIMNAO(cliente.getICMS()));
 
                 }
+
+                tvRAZAO.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        clickTexto(v, "Observação Do Contrato", "OBS", 0,"Digite Mensagem até 100 caracteres !",100);
+
+                        tvRAZAO.setText("DEU CERTO");
+                    }
+                });
+
+
                 return rootView;
 
             }
@@ -552,6 +564,277 @@ public class TestePreClienteActivity extends AppCompatActivity {
             cliente = cli;
 
         }
+
+        private static void clickTexto(View v, String label, final String campo, int tipo, String mensa, int maxlenght) {
+
+            DecimalFormat format_02 = new DecimalFormat(",##0.00");
+
+            final Dialog dialog = new Dialog(v.getContext());
+
+            dialog.setContentView(R.layout.gettexttopadrao);
+
+            dialog.setTitle(label);
+
+            final Button confirmar = (Button) dialog.findViewById(R.id.btn_570_ok);
+            final Button cancelar = (Button) dialog.findViewById(R.id.btn_570_can);
+            final TextView tvtexto1 = (TextView) dialog.findViewById(R.id.txt_570_texto1);
+            final EditText edCampo = (EditText) dialog.findViewById(R.id.edCampo_570);
+            final TextView tvCONTADOR = (TextView) dialog.findViewById(R.id.lbl_570_contador);
+            final TextView tvMensagem = (TextView) dialog.findViewById(R.id.txt_570_error);
+
+            tvMensagem.setText("");
+
+            if (maxlenght > 0) edCampo.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxlenght)});
+
+
+            switch (tipo) {
+
+                case 0:  //texto maiusculo
+
+                    edCampo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+
+                    break;
+
+                case 1:  //numerico
+
+                    edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
+
+                    break;
+
+                case 2: //data
+
+                    edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
+
+                    edCampo.addTextChangedListener(Mask.insert("##/##/####", edCampo));
+
+                    break;
+
+                case 3: //telefone
+
+                    edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
+
+                    break;
+
+                case 4: //url
+
+                    edCampo.setInputType(InputType.TYPE_TEXT_VARIATION_URI);
+
+                    break;
+
+                case 5: //email
+
+                    edCampo.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
+                    break;
+
+                case 6: //FLOAT
+
+                    edCampo.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+                    break;
+
+                case 7: //cnpj
+
+                    edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
+
+                    edCampo.addTextChangedListener(Mask.insert("##.###.###/####-##", edCampo));
+
+                    break;
+
+                case 8: //CEP
+
+                    edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
+
+                    edCampo.addTextChangedListener(Mask.insert("#####-###", edCampo));
+
+                    break;
+
+                case 9: //DATA
+
+                    edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
+
+                    edCampo.addTextChangedListener(Mask.insert("##/##/####", edCampo));
+
+                    edCampo.setHint("dd/mm/aaaa");
+
+                    break;
+
+                case 10:
+
+                    edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
+
+                    edCampo.addTextChangedListener(Mask.insert("###.###.###.####", edCampo));
+
+                    break;
+
+                case 11:
+
+                    edCampo.setHeight(500);
+
+                    edCampo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+
+                    break;
+
+                default:
+
+                    edCampo.setRawInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+
+                    break;
+            }
+
+
+            if (cliente.getTypeByName(campo).equals(ObjRegister._float)){
+
+                Float value = (Float) cliente.getFieldByName(campo);
+
+                if (value == 0){
+
+                    edCampo.setText("");
+
+                } else {
+
+                    edCampo.setText(format_02.format(value));
+
+                }
+
+
+
+            } else {
+
+                edCampo.setText((String) cliente.getFieldByName(campo));
+
+            }
+
+
+            try {
+
+                edCampo.setSelection(0,edCampo.getText().toString().length());
+
+                edCampo.addTextChangedListener(new TextWatcher() {
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                        try {
+
+                            Integer com = s.toString().trim().length();
+
+                            tvCONTADOR.setText(String.valueOf(com));
+
+
+                        } catch (Exception e) {
+
+                            Log.i("SAV", e.getMessage());
+
+                        }
+
+                    }
+                });
+
+
+            } catch (Exception e) {
+
+
+            }
+
+
+            tvtexto1.setText(mensa);
+
+            confirmar.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View v) {
+
+
+                    if ("FUNDACAO".contains(campo)) {
+
+                        try {
+
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", new Locale("pt", "BR"));
+
+                            sdf.setLenient(false);
+
+                            sdf.parse(edCampo.getText().toString());
+
+
+                        } catch (java.text.ParseException e) {
+
+
+                            tvMensagem.setText("Data Inválida !!");
+
+
+                            return;
+
+                        }
+                    }
+
+                    if (campo.equals("LIMITE")) {
+
+                        Float value;
+
+                        try {
+
+                            value = Float.valueOf(edCampo.getText().toString().replaceAll(",", "."));
+
+                            if (value.isNaN()){
+
+                                tvMensagem.setText("Valor Inválido !!");
+
+                                return;
+
+                            }
+
+                            cliente.setLIMITE(value);
+
+                            dialog.dismiss();
+
+                            cliente.setFieldByName(campo, edCampo.getText().toString());
+
+                            //refresh();
+
+                        } catch (Exception e){
+
+                            tvMensagem.setText("Valor Inválido !!");
+
+                        }
+
+                        return;
+                    }
+
+
+                    dialog.dismiss();
+
+                    cliente.setFieldByName(campo, edCampo.getText().toString());
+
+                }
+
+
+            });
+
+            cancelar.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View v) {
+
+                    dialog.dismiss();
+                }
+
+            });
+
+
+            dialog.show();
+
+
+        }
+
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -588,275 +871,6 @@ public class TestePreClienteActivity extends AppCompatActivity {
 
     }
 
-    private void clickTexto(View v, String label, final String campo, int tipo, String mensa, int maxlenght) {
 
-        DecimalFormat format_02 = new DecimalFormat(",##0.00");
-
-        final Dialog dialog = new Dialog(v.getContext());
-
-        dialog.setContentView(R.layout.gettexttopadrao);
-
-        dialog.setTitle(label);
-
-        final Button confirmar = (Button) dialog.findViewById(R.id.btn_570_ok);
-        final Button cancelar = (Button) dialog.findViewById(R.id.btn_570_can);
-        final TextView tvtexto1 = (TextView) dialog.findViewById(R.id.txt_570_texto1);
-        final EditText edCampo = (EditText) dialog.findViewById(R.id.edCampo_570);
-        final TextView tvCONTADOR = (TextView) dialog.findViewById(R.id.lbl_570_contador);
-        final TextView tvMensagem = (TextView) dialog.findViewById(R.id.txt_570_error);
-
-        tvMensagem.setText("");
-
-        if (maxlenght > 0) edCampo.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxlenght)});
-
-
-        switch (tipo) {
-
-            case 0:  //texto maiusculo
-
-                edCampo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
-
-                break;
-
-            case 1:  //numerico
-
-                edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
-
-                break;
-
-            case 2: //data
-
-                edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
-
-                edCampo.addTextChangedListener(Mask.insert("##/##/####", edCampo));
-
-                break;
-
-            case 3: //telefone
-
-                edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
-
-                break;
-
-            case 4: //url
-
-                edCampo.setInputType(InputType.TYPE_TEXT_VARIATION_URI);
-
-                break;
-
-            case 5: //email
-
-                edCampo.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-
-                break;
-
-            case 6: //FLOAT
-
-                edCampo.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-
-                break;
-
-            case 7: //cnpj
-
-                edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
-
-                edCampo.addTextChangedListener(Mask.insert("##.###.###/####-##", edCampo));
-
-                break;
-
-            case 8: //CEP
-
-                edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
-
-                edCampo.addTextChangedListener(Mask.insert("#####-###", edCampo));
-
-                break;
-
-            case 9: //DATA
-
-                edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
-
-                edCampo.addTextChangedListener(Mask.insert("##/##/####", edCampo));
-
-                edCampo.setHint("dd/mm/aaaa");
-
-                break;
-
-            case 10:
-
-                edCampo.setRawInputType(InputType.TYPE_CLASS_PHONE);
-
-                edCampo.addTextChangedListener(Mask.insert("###.###.###.####", edCampo));
-
-                break;
-
-            case 11:
-
-                edCampo.setHeight(500);
-
-                edCampo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
-
-                break;
-
-            default:
-
-                edCampo.setRawInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
-
-                break;
-        }
-
-
-        if (cliente.getTypeByName(campo).equals(ObjRegister._float)){
-
-            Float value = (Float) cliente.getFieldByName(campo);
-
-            if (value == 0){
-
-                edCampo.setText("");
-
-            } else {
-
-                edCampo.setText(format_02.format(value));
-
-            }
-
-
-
-        } else {
-
-            edCampo.setText((String) cliente.getFieldByName(campo));
-
-        }
-
-
-        try {
-
-            edCampo.setSelection(0,edCampo.getText().toString().length());
-
-            edCampo.addTextChangedListener(new TextWatcher() {
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                    try {
-
-                        Integer com = s.toString().trim().length();
-
-                        tvCONTADOR.setText(String.valueOf(com));
-
-
-                    } catch (Exception e) {
-
-                        Log.i("SAV", e.getMessage());
-
-                    }
-
-                }
-            });
-
-
-        } catch (Exception e) {
-
-
-        }
-
-
-        tvtexto1.setText(mensa);
-
-        confirmar.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-
-                if ("FUNDACAO".contains(campo)) {
-
-                    try {
-
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", new Locale("pt", "BR"));
-
-                        sdf.setLenient(false);
-
-                        sdf.parse(edCampo.getText().toString());
-
-
-                    } catch (java.text.ParseException e) {
-
-
-                        tvMensagem.setText("Data Inválida !!");
-
-
-                        return;
-
-                    }
-                }
-
-                if (campo.equals("LIMITE")) {
-
-                    Float value;
-
-                    try {
-
-                        value = Float.valueOf(edCampo.getText().toString().replaceAll(",", "."));
-
-                        if (value.isNaN()){
-
-                            tvMensagem.setText("Valor Inválido !!");
-
-                            return;
-
-                        }
-
-                        cliente.setLIMITE(value);
-
-                        dialog.dismiss();
-
-                        cliente.setFieldByName(campo, edCampo.getText().toString());
-
-                        //refresh();
-
-                    } catch (Exception e){
-
-                        tvMensagem.setText("Valor Inválido !!");
-
-                    }
-
-                    return;
-                }
-
-
-                dialog.dismiss();
-
-                cliente.setFieldByName(campo, edCampo.getText().toString());
-
-                //refresh();
-
-            }
-
-
-        });
-
-        cancelar.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-
-        });
-
-
-        dialog.show();
-
-
-    }
 
 }

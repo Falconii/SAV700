@@ -1,5 +1,6 @@
 package br.com.brotolegal.sav700;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,18 +21,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.brotolegal.savdatabase.app.App;
+import br.com.brotolegal.savdatabase.config.Mask;
 import br.com.brotolegal.savdatabase.dao.ClienteDAO;
+import br.com.brotolegal.savdatabase.database.ObjRegister;
 import br.com.brotolegal.savdatabase.entities.Cliente_fast;
 import br.com.brotolegal.savdatabase.entities.NoData;
 import br.com.brotolegal.savdatabase.entities.Palete;
@@ -134,26 +146,6 @@ public class PreClienteCadastroActiviy extends AppCompatActivity {
     }
 
 
-    /**
-     * will work. You can also use that in Fragments that are attached to ActionBarActivities you can use it like this:
-
-     ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-     ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-     If you are not using ActionBarActivities or if you want to get the back arrow on a Toolbar that's not set as your SupportActionBar then you can use the following:
-
-     mActionBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_back));
-     mActionBar.setNavigationOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-    //What to do on back clicked
-    }
-    });
-
-     */
-    /**
-     * A placeholder fragment containing a simple view.
-     */
     public static class PlaceholderFragment2 extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "section_number";
@@ -388,6 +380,8 @@ public class PreClienteCadastroActiviy extends AppCompatActivity {
                     tvOBS.setText(cliente.getOBS());
 
                 }
+
+
                 return rootView;
 
             }
@@ -616,9 +610,6 @@ public class PreClienteCadastroActiviy extends AppCompatActivity {
             return null;
         }
     }
-
-
-
 
     private void LoadPaletizacao(){
 
@@ -1117,7 +1108,6 @@ public class PreClienteCadastroActiviy extends AppCompatActivity {
 
             return retorno;
         }
-
 
         public void toast (String msg)    {
             Toast.makeText (context, msg, Toast.LENGTH_SHORT).show ();
