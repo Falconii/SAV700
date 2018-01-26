@@ -183,7 +183,7 @@ public class CondPagto extends ObjRegister {
 				"WHERE DESCRICAO LIKE ''%{0}%'' "            ,
 				"ORDER BY DESCRICAO ",
 				"DESCRICAO",
-				new String[] {"CODIGO"},
+				new String[] {"CODIGO","DESCRICAO"},
 				"",
 				new String[] {}));
 		
@@ -192,7 +192,7 @@ public class CondPagto extends ObjRegister {
 				"WHERE CODIGO LIKE ''{0}%'' "           , 
 				"ORDER BY CODIGO ",
 				"CODIGO",
-				new String[] {"CODIGO"},
+				new String[] {"CODIGO","DESCRICAO"},
 				"",
 				new String[] {}));
 

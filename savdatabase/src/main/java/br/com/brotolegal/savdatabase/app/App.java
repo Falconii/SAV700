@@ -19,6 +19,7 @@ import br.com.brotolegal.savdatabase.dao.ClienteDAO;
 import br.com.brotolegal.savdatabase.dao.StatusDAO;
 import br.com.brotolegal.savdatabase.database.DBAp;
 import br.com.brotolegal.savdatabase.database.DBUser;
+import br.com.brotolegal.savdatabase.entities.PreCliente;
 import br.com.brotolegal.savdatabase.entities.Status;
 import br.com.brotolegal.savdatabase.entities.Usuario;
 import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionValidadeAgendamentoAtrasado;
@@ -49,6 +50,7 @@ public class App extends Application {
     public static String PathDB = BasePath + "/" + AppPath;
     public static String base   = HelpInformation.BaseProducao;
     public static Manager_Filtro_01 manager_filtro_01 = new Manager_Filtro_01();
+    public static PreCliente precliente;
 
     static {
 
@@ -169,6 +171,8 @@ public class App extends Application {
         user = new Usuario();
 
         Estrutura stru = new Estrutura();
+
+        precliente = new PreCliente();
 
 
         /* Verifica se existe a estrutura de pasta para aplicação */

@@ -1,7 +1,13 @@
 package br.com.brotolegal.savdatabase.entities;
 
-import java.util.ArrayList;
+import android.database.Cursor;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.brotolegal.savdatabase.dao.FileTable;
+import br.com.brotolegal.savdatabase.dao.HelpFiltro;
+import br.com.brotolegal.savdatabase.dao.HelpParam;
 import br.com.brotolegal.savdatabase.database.ObjRegister;
 
 public class Politica extends ObjRegister {
@@ -341,9 +347,6 @@ public class Politica extends ObjRegister {
 	public void setREDE(String rEDE) {
 		REDE = rEDE;
 	}
-
-
-
 
 
 

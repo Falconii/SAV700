@@ -275,13 +275,16 @@ public class PreClienteActivity extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(PreClienteActivity.this,TestePreClienteActivity.class);
+                    Intent intent = new Intent(PreClienteActivity.this,PreClienteComercialActivity.class);
                     Bundle params = new Bundle();
-                    params.putString("CODIGO", "");
+                    params.putString("CODCLIENTE", "");
+                    params.putString("OPERACAO"  , "NOVO");
                     intent.putExtras(params);
                     startActivity(intent);
                 }
             });
+
+
 
 
         } catch (Exception e){

@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="br.com.brotolegal.sav700.PreClienteLogisticaActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_precliente_logistica"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/linha_navegador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar">
+
+        <include android:id="@+id/inc_navegador_pc"
+            layout="@layout/navegador_precliente"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linha_navegador">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp">
+
+                <TextView
+                    android:id="@+id/lbl_titulo_700"
+                    style="?android:attr/textAppearanceLarge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:text="CADASTRO DE CLIENTES NOVOS" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="05dp"
+                    android:layout_marginBottom="05dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/linha_01_500"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- id -->
+                        <TextView
+                            android:id="@+id/lbl_id_500"
+                            android:layout_width="80sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="ID"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_id_500"
+                            android:layout_width="200sp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3" >
+                        </TextView>
+
+                        <!-- Codigo -->
+                        <TextView
+                            android:id="@+id/lbl_codigo_500"
+                            android:layout_marginLeft="10sp"
+                            android:layout_width="80sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="Código"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_codigo_500"
+                            android:layout_width="120sp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3" >
+                        </TextView>
+
+                        <!-- status  -->
+                        <TextView
+                            android:id="@+id/lbl_status_500"
+                            android:layout_marginLeft="10sp"
+                            android:layout_width="80sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="Status"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_status_500"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="APROVADO !!!"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3"
+                            >
+                        </TextView>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linha_02_500"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linha_01_500"
+                        android:layout_marginTop="10sp"
+                        android:orientation="horizontal">
+
+                        <!-- cnpj  -->
+                        <TextView
+                            android:id="@+id/lbl_cnpj_500"
+                            android:layout_width="80sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="CNPJ/CPF"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_cnpj_500"
+                            android:layout_width="200sp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3"
+                            >
+                        </TextView>
+
+                        <!-- IE -->
+                        <TextView
+                            android:id="@+id/lbl_ie_500"
+                            android:layout_marginLeft="10sp"
+                            android:layout_width="80sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="I.E."
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_ie_500"
+                            android:layout_width="200sp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3" >
+                        </TextView>
+
+                        <!-- CLIENTE ENTREGA -->
+                        <TextView
+                            android:id="@+id/lbl_clienteentrega_500"
+                            android:layout_marginLeft="10sp"
+                            android:layout_width="110sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="CL. Entrega"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_clienteentrega_500"
+                            android:layout_width="100sp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3" >
+                        </TextView>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linha_03_500"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linha_02_500"
+                        android:layout_marginTop="10sp"
+                        android:orientation="horizontal">
+
+                        <!-- RAZAO SOCIAL-->
+                        <TextView
+                            android:id="@+id/lbl_razao_500"
+                            android:layout_width="80sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="RAZAO"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_razao_500"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3" >
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linha_dias_da_semana"
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:layout_below="@+id/linha_03_500" >
+
+                        <!-- RESTRIÇÃO-->
+                        <TextView
+                            android:id="@+id/lbl_restricao_500"
+                            android:layout_width="80sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:text="Restrição:"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            >
+                        </TextView>
+
+                        <CheckBox
+                            android:id="@+id/cb_seg_500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:text="SEG"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/cb_ter_500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:text="TER"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/cb_qua_500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="QUA"
+                            />
+                        <CheckBox
+                            android:id="@+id/cb_qui_500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="QUI"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/cb_sex_500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SEX"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/cb_sab_500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SAB"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/cb_dom_500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DOM"
+                            />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linha_age_hora_500"
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:layout_below="@+id/linha_dias_da_semana" >
+
+
+                        <!-- agenda  -->
+                        <TextView
+                            android:id="@+id/lbl_agenda_500"
+                            android:layout_width="120sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="Agendar"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            android:onClick="clickAGENDAMENTO"
+                            android:clickable="true"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_agendar_500"
+                            android:layout_width="200sp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3"
+                            >
+                        </TextView>
+
+                        <!-- HORARIO -->
+                        <TextView
+                            android:id="@+id/lbl_horario_500"
+                            android:layout_marginLeft="10sp"
+                            android:layout_width="230sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="Horário Máximo Recebimento NF"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            android:onClick="clickHORARIO"
+                            android:clickable="true"
+
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_horario_500"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3" >
+                        </TextView>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linha_descarga_500"
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:layout_below="@+id/linha_age_hora_500"
+                        android:clickable="true"
+
+                        >
+
+
+                        <!-- UNid. Descarga  -->
+                        <TextView
+                            android:id="@+id/lbl_unid_descarga_500"
+                            android:layout_width="120sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="Und. Descarga"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            android:onClick="clickUnid"
+                            android:clickable="true"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_unid_descarga_500"
+                            android:layout_width="200sp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3"
+                            >
+                        </TextView>
+
+                        <!-- Vlr Descarga -->
+                        <TextView
+                            android:id="@+id/lbl_vlr_descarga_500"
+                            android:layout_marginLeft="10sp"
+                            android:layout_width="110sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="Vlr Descarga"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            android:onClick="clickVlrDescarga"
+                            android:clickable="true"
+
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_vlr_descarga_500"
+                            android:layout_width="100sp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3" >
+                        </TextView>
+
+                        <!-- Vlr Forma de Pagto -->
+                        <TextView
+                            android:id="@+id/lbl_forma_pagto_500"
+                            android:layout_marginLeft="10sp"
+                            android:layout_width="110sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="Forma De Pagto"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            android:onClick="clickForma"
+                            android:clickable="true"
+
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_forma_pagto_500"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3" >
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linha_perfil_carga_500"
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:layout_below="@+id/linha_descarga_500">
+
+
+                        <!-- Perfil  Descarga  -->
+                        <TextView
+                            android:id="@+id/lbl_perfil_carga_500"
+                            android:layout_width="120sp"
+                            android:layout_height="30sp"
+                            android:gravity="center"
+                            android:text="Perfil Carga"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            android:onClick="clickPerfilCarga"
+                            android:clickable="true"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_perfil_carga_500"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3"
+                            >
+                        </TextView>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linha_palete_misto_500"
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:layout_below="@+id/linha_perfil_carga_500">
+
+
+                        <!-- MISTO  -->
+                        <TextView
+                            android:id="@+id/lbl_palete_misto_500"
+                            android:layout_width="120sp"
+                            android:layout_height="35sp"
+                            android:gravity="center"
+                            android:text="Aceita Palete Misto"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            android:onClick="clickMisto"
+                            android:clickable="true"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_palete_misto_500"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3"
+                            >
+                        </TextView>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linha_perfil_500"
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="720sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_below="@+id/linha_palete_misto_500" >
+
+                        <ListView
+                            android:id="@+id/lvPerfil_veiculo"
+                            android:layout_weight="0.37"
+                            android:layout_height="0sp"
+                            android:layout_width="fill_parent"
+                            android:background="@drawable/moldura"
+                            >
+                        </ListView>
+
+                        <ListView
+                            android:id="@+id/lvPaletizacao"
+                            android:layout_weight="0.65"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="10sp"
+                            android:layout_width="fill_parent"
+                            android:background="@drawable/moldura"
+                            >
+                        </ListView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linha_ciente_500"
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:layout_below="@+id/linha_perfil_500">
+
+
+                        <!-- CIENTE  -->
+                        <TextView
+                            android:id="@+id/lbl_ciente_500"
+                            android:layout_width="120sp"
+                            android:layout_height="35sp"
+                            android:gravity="center"
+                            android:text="Estou Ciente"
+                            android:textColor="@color/red"
+                            android:background="@drawable/fundo"
+                            android:onClick="clickCiente"
+                            android:clickable="true"
+                            >
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/txt_ciente_500"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="NÃO"
+                            android:textColor="@color/dark_blue"
+                            android:background="@drawable/fundo3"
+                            >
+                        </TextView>
+
+
+                    </LinearLayout>
+
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1098,96 +1098,6 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         this.TIPOCONTRATO = TIPOCONTRATO;
     }
 
-    private Canal SEEKCanal(){
-
-        Canal canal = null;
-
-        try {
-
-            CanalDAO dao = new CanalDAO();
-
-            dao.open();
-
-            canal = dao.seek(new String[] {this.CANAL});
-
-            dao.close();
-
-        } catch (Exception e){
-
-
-            canal = null;
-
-        }
-
-        return canal;
-
-    }
-
-    private TabPreco SEEKtabpreco(){
-
-            return null;
-
-    }
-
-    private Politica SEEKPolitica(){
-
-
-//        DBAdapterPolitica datasourcepolitica;
-//
-//        datasourcepolitica = new DBAdapterPolitica(context);
-//
-//        datasourcepolitica.open();
-//
-//        Politica politica = datasourcepolitica.seek(POLITICA);
-//
-//        datasourcepolitica.close();
-//
-//        return politica;
-
-        return null;
-
-    }
-
-    private Rede SEEKRede(){
-
-
-//        DBAdapterRede datasourcerede;
-//
-//        datasourcerede = new DBAdapterRede(context);
-//
-//        datasourcerede.open();
-//
-//        Rede rede = datasourcerede.getRede(REDE);
-//
-//        datasourcerede.close();
-//
-//        return rede;
-
-        return null;
-
-    }
-
-
-    private CondPagto SEEKCondPagto(){
-
-
-//        DBAdapterCondPagto datasourcecondpagto;
-//
-//        datasourcecondpagto = new DBAdapterCondPagto(context);
-//
-//        datasourcecondpagto.open();
-//
-//        CondPagto condpagto = datasourcecondpagto.seek(CONDPAGTO);
-//
-//        datasourcecondpagto.close();
-//
-//        return condpagto;
-
-        return null;
-
-    }
-
-
     public void setRestricao(int indice, Boolean checked){
 
         String[] dias = this.RESTRECEB.split("\\|");
@@ -1198,13 +1108,36 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
     }
 
-
     public Boolean getRestricao(int indice){
 
         String[] dias = this.RESTRECEB.split("\\|");
 
         return Boolean.valueOf(dias[indice]);
 
+    }
+
+    public void setCANALDESCRI(String CANALDESCRI) {
+        this.CANALDESCRI = CANALDESCRI;
+    }
+
+    public void setTABPRECODESCRI(String TABPRECODESCRI) {
+        this.TABPRECODESCRI = TABPRECODESCRI;
+    }
+
+    public void setPOLITICADESCRI(String POLITICADESCRI) {
+        this.POLITICADESCRI = POLITICADESCRI;
+    }
+
+    public void setREDEDESCRI(String REDEDESCRI) {
+        this.REDEDESCRI = REDEDESCRI;
+    }
+
+    public void setCONDPAGTODESCRI(String CONDPAGTODESCRI) {
+        this.CONDPAGTODESCRI = CONDPAGTODESCRI;
+    }
+
+    public void setSTATUSDESCRI(String STATUSDESCRI) {
+        this.STATUSDESCRI = STATUSDESCRI;
     }
 
     @Override
@@ -1425,9 +1358,6 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
             if (CANAL.equals("")) return false;
 
-            if (SEEKCanal().getCODIGO().equals("")) return false;
-            else return true;
-
         }
 
         	/* REDE */
@@ -1435,18 +1365,12 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
             if (REDE.equals("")) return false;
 
-            if (SEEKRede().getCODIGO().equals("")) return false;
-            else return true;
-
         }
 
         	/* POLITICA*/
 
         if (field.equals("POLITICA")) {
             if (POLITICA.equals("")) return false;
-
-            if (SEEKPolitica().getCODIGO().equals("")) return false;
-            else return true;
 
         }
 
@@ -1457,17 +1381,12 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
 
             if (TABPRECO.equals("")) return false;
 
-            if (SEEKtabpreco().getCODIGO().equals("")) return false;
-            else return true;
 
         }
 
         if (field.equals("CONDPAGTO")) {
 
             if (CONDPAGTO.equals("")) return false;
-
-            if (SEEKCondPagto().getCODIGO().equals("")) return false;
-            else return true;
 
         }
 

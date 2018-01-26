@@ -11,4 +11,5 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_meta_view">MetaViewActivity</string>
     <string name="title_activity_teste_pre_cliente">TestePreClienteActivity</string>
+    <string name="title_activity_pre_cliente_documentos">PreClienteDocumentosActivity</string>
 </resources>

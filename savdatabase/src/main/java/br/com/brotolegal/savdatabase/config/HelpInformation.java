@@ -1,7 +1,7 @@
 package br.com.brotolegal.savdatabase.config;
 
 public final class HelpInformation {
-	
+
 	public static final int HelpCliente        		= 1 ;
 	public static final int HelpProduto        		= 2 ;
 	public static final int HelpMarca          		= 3 ;
@@ -21,6 +21,13 @@ public final class HelpInformation {
 	public static final int MotivosTrocaDev         = 17;
 	public static final int UpdateVersion           = 18;
 	public static final int HelpCota                = 19;
+	public static final int HelpCanal               = 20;
+	public static final int HelpTabPreco            = 21;
+	public static final int HelpRegiao              = 22;
+
+
+
+
 
 
 	/*

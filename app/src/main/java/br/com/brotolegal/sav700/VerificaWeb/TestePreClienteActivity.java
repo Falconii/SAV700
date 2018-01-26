@@ -357,7 +357,6 @@ public class TestePreClienteActivity extends AppCompatActivity {
 
                         clickTexto(v, "Observação Do Contrato", "OBS", 0,"Digite Mensagem até 100 caracteres !",100);
 
-                        tvRAZAO.setText("DEU CERTO");
                     }
                 });
 

@@ -168,7 +168,7 @@ public class Rede extends ObjRegister {
 				"where descricao like ''%{0}%'' "           ,
 				"order by descricao",
 				"descricao",
-				new String[] {"CODIGO"},
+				new String[] {"CODIGO","DESCRICAO"},
 				"",   //aliaswhere
 				new String[] {}));
 
@@ -177,7 +177,7 @@ public class Rede extends ObjRegister {
 				"where codigo like ''%{0}%'' "           ,
 				"order by codigo",
 				"codigo",
-				new String[] {"CODIGO"},
+				new String[] {"CODIGO","DESCRICAO"},
 				"",   //aliaswhere
 				new String[] {}));
 
