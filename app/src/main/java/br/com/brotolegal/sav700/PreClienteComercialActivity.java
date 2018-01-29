@@ -48,6 +48,8 @@ import br.com.brotolegal.savdatabase.dao.PreClienteDAO;
 import br.com.brotolegal.savdatabase.database.ObjRegister;
 import br.com.brotolegal.savdatabase.entities.Cidade;
 import br.com.brotolegal.savdatabase.entities.PreCliente;
+import br.com.brotolegal.savdatabase.regrasdenegocio.Pessoa;
+import br.com.brotolegal.savdatabase.regrasdenegocio.Pessoas;
 import br.com.brotolegal.savdatabase.util.Logradouros;
 
 public class PreClienteComercialActivity extends AppCompatActivity {
@@ -94,13 +96,13 @@ public class PreClienteComercialActivity extends AppCompatActivity {
     private TextView tvCOND;
     private TextView tvCONDDESCRI;
     private TextView tvBoleto;
-    private TextView tvtaxa;
+    private TextView tvTaxa;
     private TextView tvSimplesOP;
     private TextView tvIsentoST;
     private TextView tvLIMITE;
     private TextView tvICMS;
-    private TextView tvRISCO;
-    private TextView tvVENCLIM;
+    private TextView tvEAN;
+    private TextView tvSUFRAMA;
     private TextView tvOBS;
 
 
@@ -136,7 +138,8 @@ public class PreClienteComercialActivity extends AppCompatActivity {
     private TextView lblIsentoST;
     private TextView lblLIMITE;
     private TextView lblICMS;
-
+    private TextView lblEAN;
+    private TextView lblSUFRAMA;
 
     private String CODCLIENTE = "";
     private String OPERACAO   = "";
@@ -303,6 +306,9 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
         lblICMS              = (TextView) findViewById(R.id.lbl_icms_500);
 
+        lblEAN              = (TextView) findViewById(R.id.lbl_ean_500);
+
+        lblSUFRAMA          = (TextView) findViewById(R.id.lbl_suframa_500);
 
         tvID                = (TextView) findViewById(R.id.txt_id_500);
 
@@ -370,11 +376,17 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
         tvBoleto            = (TextView) findViewById(R.id.txt_boleto_500);
 
+        tvTaxa              = (TextView) findViewById(R.id.txt_taxa_500);
+
         tvSimplesOP         = (TextView) findViewById(R.id.txt_simples_500);
 
         tvIsentoST          = (TextView) findViewById(R.id.txt_isento_st_500);
 
+        tvEAN               = (TextView) findViewById(R.id.txt_ean_500);
+
         tvLIMITE            = (TextView) findViewById(R.id.txt_limite_500);
+
+        tvSUFRAMA           = (TextView) findViewById(R.id.txt_suframa_500);
 
         tvICMS              = (TextView) findViewById(R.id.txt_icms_500);
 
@@ -406,7 +418,7 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
         tvENDERECO.setText(App.precliente.getENDERECO());
 
-        tvCOMPLEMENTO.setText(" ");
+        tvCOMPLEMENTO.setText(App.precliente.getCOMPLEMENTO());
 
         tvBAIRRO.setText(App.precliente.getBAIRRO());
 
@@ -416,7 +428,7 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
         tvCIDADE.setText(App.precliente.getCIDADE());
 
-        tvCEP.setText(App.cep(App.precliente.getCEP()));
+        tvCEP.setText(App.precliente.getCEP());
 
         tvTELEFONE.setText("("+App.precliente.getDDD()+")"+App.precliente.getTELEFONE());
 
@@ -426,7 +438,7 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
         tvEMAIL.setText(App.precliente.getEMAIL());
 
-        tvFUNDACAO.setText(App.aaaammddToddmmaaaa(App.precliente.getFUNDACAO()));
+        tvFUNDACAO.setText(App.precliente.getFUNDACAO());
 
         tvCANAL.setText(App.precliente.getCANAL());
 
@@ -450,11 +462,17 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
         tvBoleto.setText(App.TotvsSIMNAO(App.precliente.getBOLETO()));
 
+        tvTaxa.setText(App.TotvsSIMNAO(App.precliente.getTAXA()));
+
         tvSimplesOP.setText(App.TotvsSIMNAO(App.precliente.getOPSIMPLES()));
 
         tvIsentoST.setText(App.TotvsSIMNAO(App.precliente.getISENTOST()));
 
+        tvEAN.setText(App.precliente.getEAN());
+
         tvLIMITE.setText(format_02.format(App.precliente.getLIMITE()));
+
+        tvSUFRAMA.setText(App.precliente.getSUFRAMA());
 
         tvICMS.setText(App.TotvsSIMNAO(App.precliente.getICMS()));
 
@@ -506,7 +524,18 @@ public class PreClienteComercialActivity extends AppCompatActivity {
         });
 
 
-//        lblPESSOA
+       lblPESSOA.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+               clickTi(v,"TIPO DE CLIENTE","PESSOA");
+
+           }
+       });
+
+
+
+
 
         lblENDERECO.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -587,19 +616,47 @@ public class PreClienteComercialActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                clickTexto(v, "BAIRRO", "BAIRRO", 0, "Campo OBRIGATÓRIO.",20);
+                clickTexto(v, "TELEFONE", "TELEFONE", 0, "Campo OBRIGATÓRIO.",20);
 
             }
         });
 
-//        lblHOME
-//
-//        lblEMAILNFE
-//
-//        lblEMAIL
-//
-//        lblFUNDACAO
-//
+        lblHOME.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickTexto(v, "SITE DO CLIENTE", "HOMEPAGE", 4, "",20);
+
+            }
+        });
+
+        lblEMAILNFE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickTexto(v, "E-MAIL NFE", "EMAILNFE", 5, "Campo OBRIGATÓRIO.",255);
+
+            }
+        });
+
+        lblEMAIL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickTexto(v, "E-MAIL", "EMAIL", 5, "Campo OBRIGATÓRIO.",255);
+
+            }
+        });
+
+        lblFUNDACAO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickTexto(v, "DATA DAFUNDAÇÃO", "FUNDACAO", 9, "Campo OBRIGATÓRIO.",0);
+
+            }
+        });
+
         lblCANAL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -648,19 +705,29 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
 
         lblBoleto.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
-            clickSN(v,"Emite Boleto Bancário?","BOLETO");
+                clickSN(v,"Emite Boleto Bancário?","BOLETO");
 
-        }
-    });
+            }
+        });
+
+
+        lblTAXA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickSN(v,"Aplica Taxa Financeira?","TAXA");
+
+            }
+        });
 
         lblSimplesOP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                clickSN(v,"Regime Da Empresa é o SIMPLES?","SIMPLEOP");
+                clickSN(v,"Regime Da Empresa é o SIMPLES?","OPSIMPLES");
 
             }
         });
@@ -691,11 +758,33 @@ public class PreClienteComercialActivity extends AppCompatActivity {
                 if (App.precliente.getESTADO().equals("MG"))
                 {
                     clickSN(v,"ICMS MG","ICMS");
+
+                } else {
+
+                    toast("Somente Para Clientes De Minas Gerais.");
+
                 }
 
             }
         });
 
+        lblEAN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickTexto(v, "CÓDIGO EAN", "EAN", 1, "Campo Não Obrigatório.",0);
+
+            }
+        });
+
+        lblSUFRAMA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickTexto(v, "CÓDIGO SUFRAMA", "SUFRAMA", 1, "Campo Obrigatório Somente Para  Zona Franca De Manaus.",0);
+
+            }
+        });
 
 
     }
@@ -1148,7 +1237,7 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
                 if (campo.equals("BOLETO"))      tvBoleto.setText((String) spSimNao.getSelectedItem());
 
-                if (campo.equals("TAXA"))        tvtaxa.setText((String) spSimNao.getSelectedItem());
+                if (campo.equals("TAXA"))        tvTaxa.setText((String) spSimNao.getSelectedItem());
 
                 if (campo.equals("OPSIMPLES"))   tvSimplesOP.setText((String) spSimNao.getSelectedItem());
 
@@ -1180,6 +1269,80 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
 
     }
+
+    private void clickTi(View v,String label,final String campo){
+
+        Pessoas pessoas = new Pessoas();
+
+        int id;
+
+        final Dialog dialog = new Dialog(v.getContext());
+
+        dialog.setContentView(R.layout.dlgsimnao);
+
+        dialog.setTitle(label);
+
+        final Button confirmar    = (Button)   dialog.findViewById(R.id.btn_040_ok);
+        final Button cancelar     = (Button)   dialog.findViewById(R.id.btn_040_can);
+        final TextView tvtexto1   = (TextView) dialog.findViewById(R.id.txt_040_texto1);
+        final Spinner  spSimNao   = (Spinner)  dialog.findViewById(R.id.spSimNao);
+
+        List<String> list = new ArrayList<String>();
+
+        for(Pessoa p : pessoas.getLsPessoas()){
+
+            list.add(p.getDESCRICAO());
+
+        }
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spSimNao.setAdapter(dataAdapter);
+
+        id = pessoas.getIndice((String) App.precliente.getFieldByName(campo));
+
+        if (id == -1){
+
+            spSimNao.setSelection(0);
+
+        } else {
+
+            spSimNao.setSelection(id);
+        }
+
+        tvtexto1.setText("Escolha Uma Das Opcoes:");
+
+        confirmar.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                dialog.dismiss();
+
+                App.precliente.setFieldByName(campo,(String) spSimNao.getSelectedItem());
+
+                refresh();
+
+            }
+
+        });
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
+
+
+
+            public void onClick(View v) {
+
+                //finaliza o dialog
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

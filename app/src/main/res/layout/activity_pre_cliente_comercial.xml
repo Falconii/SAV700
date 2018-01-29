@@ -1086,21 +1086,21 @@
 
                     <!-- RISCO -->
                     <TextView
-                        android:id="@+id/lbl_risco_500"
+                        android:id="@+id/lbl_ean_500"
                         android:layout_width="80sp"
                         android:layout_height="30sp"
                         android:gravity="center"
-                        android:text="RISCO"
+                        android:text="EAN"
                         android:textColor="@color/red"
                         android:background="@drawable/fundo"
                         >
                     </TextView>
                     <TextView
-                        android:id="@+id/txt_risco_500"
+                        android:id="@+id/txt_ean_500"
                         android:layout_width="150sp"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="RISCO A"
+                        android:text=""
                         android:textColor="@color/dark_blue"
                         android:background="@drawable/fundo3" >
                     </TextView>
@@ -1130,24 +1130,24 @@
                         android:background="@drawable/fundo3" >
                     </TextView>
 
-                    <!-- vencimento do limite -->
+                    <!-- vencimento suframa -->
                     <TextView
-                        android:id="@+id/lbl_venc_lim_500"
+                        android:id="@+id/lbl_suframa_500"
                         android:layout_width="100sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="10sp"
                         android:gravity="center"
-                        android:text="VENC. LIMITE"
+                        android:text="SUFRAMA"
                         android:textColor="@color/red"
                         android:background="@drawable/fundo"
                         >
                     </TextView>
                     <TextView
-                        android:id="@+id/txt_venc_lim_500"
+                        android:id="@+id/txt_suframa_500"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="27/12/1964"
+                        android:text="25636987"
                         android:textColor="@color/dark_blue"
                         android:background="@drawable/fundo3" >
                     </TextView>

@@ -99,7 +99,7 @@ public class Cidade extends ObjRegister {
                 "where cidade like ''%{0}%'' "           ,
                 "order by estado,cidade",
                 "cidade",
-                new String[] {"CODIGO","ESTADO","CIDADE"},
+                new String[] {"CODIGO","ESTADO","CIDADE","DDD"},
                 "",   //aliaswhere
                 new String[] {}));
 

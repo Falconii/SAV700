@@ -856,6 +856,34 @@ public abstract class ObjRegister {
 
 	}
 
+	public int get_ColunasSize(){
+
+	    if (_colunas == null){
+
+	    	return 0;
+
+		}
+
+		return _colunas.size();
+
+	}
+
+	public String get_colunasByIndice(int indice){
+
+		if (indice > _colunas.size()-1){
+
+			return "";
+
+		} else {
+
+
+			return  _colunas.get(indice);
+
+		}
+
+
+	}
+
 	abstract public void loadColunas();
 
 
