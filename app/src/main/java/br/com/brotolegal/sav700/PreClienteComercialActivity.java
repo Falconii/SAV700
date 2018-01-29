@@ -3,6 +3,7 @@ package br.com.brotolegal.sav700;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -43,18 +44,23 @@ import br.com.brotolegal.sav700.help20.Help20Activity;
 import br.com.brotolegal.savdatabase.app.App;
 import br.com.brotolegal.savdatabase.config.HelpInformation;
 import br.com.brotolegal.savdatabase.config.Mask;
+import br.com.brotolegal.savdatabase.config.MaskFormatter;
 import br.com.brotolegal.savdatabase.dao.CidadeDAO;
+import br.com.brotolegal.savdatabase.dao.ClienteDAO;
 import br.com.brotolegal.savdatabase.dao.PreClienteDAO;
 import br.com.brotolegal.savdatabase.database.ObjRegister;
 import br.com.brotolegal.savdatabase.entities.Cidade;
+import br.com.brotolegal.savdatabase.entities.Cliente;
+import br.com.brotolegal.savdatabase.entities.Cliente_fast;
 import br.com.brotolegal.savdatabase.entities.PreCliente;
 import br.com.brotolegal.savdatabase.regrasdenegocio.Pessoa;
 import br.com.brotolegal.savdatabase.regrasdenegocio.Pessoas;
+import br.com.brotolegal.savdatabase.regrasdenegocio.ValidadorPreCliente;
 import br.com.brotolegal.savdatabase.util.Logradouros;
 
 public class PreClienteComercialActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private Toolbar   toolbar;
     private ImageView im_comercial;
     private ImageView im_logistica;
     private ImageView im_documentos;
@@ -148,6 +154,8 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
     private DecimalFormat format_02 = new DecimalFormat(",##0.00");
 
+    private ValidadorPreCliente validador;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -214,15 +222,17 @@ public class PreClienteComercialActivity extends AppCompatActivity {
             }
 
 
-            im_comercial = (ImageView) findViewById(R.id.im_comercial);
+            validador = new ValidadorPreCliente(App.precliente,PreClienteComercialActivity.this);
 
-            im_logistica = (ImageView) findViewById(R.id.im_logistica);
+            im_comercial  = (ImageView) findViewById(R.id.im_comercial);
+
+            im_logistica  = (ImageView) findViewById(R.id.im_logistica);
 
             im_documentos = (ImageView) findViewById(R.id.im_documentos);
 
-            tv_comercial = (TextView) findViewById(R.id.tv_comercial);
+            tv_comercial  = (TextView) findViewById(R.id.tv_comercial);
 
-            tv_logistica = (TextView) findViewById(R.id.tv_logistica);
+            tv_logistica  = (TextView) findViewById(R.id.tv_logistica);
 
             tv_documentos = (TextView) findViewById(R.id.tv_documentos);
 
@@ -402,79 +412,82 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
     private void refresh() {
 
+
         tvCODIGO.setText(App.precliente.getCODIGO() + "-" + App.precliente.getLOJA());
 
-        tvCNPJ.setText(App.cnpj_cpf(App.precliente.getCNPJ()));
+        tvSTATUS.setText(App.precliente.getSTATUSDESCRI());
 
-        tvIE.setText(App.precliente.getIE());
+        validador.Validadador(tvCNPJ,"CNPJ",App.cnpj_cpf(App.precliente.getCNPJ()));
 
-        tvENTREGA.setText(App.TotvsSIMNAO(App.precliente.getCLIENTEENTREGA()));
+        validador.Validadador(tvIE,"IE",App.precliente.getIE());
 
-        tvRAZAO.setText(App.precliente.getRAZAO());
+        validador.Validadador(tvENTREGA,"CLIENTEENTREGA",App.TotvsSIMNAO(App.precliente.getCLIENTEENTREGA()));
 
-        tvFANTASIA.setText(App.precliente.getFANTASIA());
+        validador.Validadador(tvRAZAO,"RAZAO",App.precliente.getRAZAO());
 
-        tvPESSOA.setText(App.precliente.getPESSOA());
+        validador.Validadador(tvFANTASIA,"FANTASIA",App.precliente.getFANTASIA());
 
-        tvENDERECO.setText(App.precliente.getENDERECO());
+        validador.Validadador(tvPESSOA,"PESSOA",App.precliente.getPESSOA());
 
-        tvCOMPLEMENTO.setText(App.precliente.getCOMPLEMENTO());
+        validador.Validadador(tvENDERECO,"ENDERECO",App.precliente.getENDERECO());
 
-        tvBAIRRO.setText(App.precliente.getBAIRRO());
+        validador.Validadador(tvCOMPLEMENTO,"COMPLEMENTO",App.precliente.getCOMPLEMENTO());
 
-        tvCODIGO_CIDADE.setText(App.precliente.getCODCIDADE());
+        validador.Validadador(tvBAIRRO,"BAIRRO",App.precliente.getBAIRRO());
 
-        tvESTADO.setText(App.precliente.getESTADO());
+        validador.Validadador(tvCODIGO_CIDADE,"CODCIDADE",App.precliente.getCODCIDADE());
 
-        tvCIDADE.setText(App.precliente.getCIDADE());
+        validador.Validadador(tvESTADO,"ESTADO",App.precliente.getESTADO());
 
-        tvCEP.setText(App.precliente.getCEP());
+        validador.Validadador(tvCIDADE,"CIDADE",App.precliente.getCIDADE());
 
-        tvTELEFONE.setText("("+App.precliente.getDDD()+")"+App.precliente.getTELEFONE());
+        validador.Validadador(tvCEP,"CEP",App.precliente.getCEP());
 
-        tvHOME.setText(App.precliente.getHOMEPAGE());
+        validador.Validadador(tvTELEFONE,"TELEFONE","("+App.precliente.getDDD()+")"+App.precliente.getTELEFONE());
 
-        tvEMAILNFE.setText(App.precliente.getEMAILNFE());
+        validador.Validadador(tvHOME,"HOMEPAGE",App.precliente.getHOMEPAGE());
 
-        tvEMAIL.setText(App.precliente.getEMAIL());
+        validador.Validadador(tvEMAILNFE,"EMAILNFE",App.precliente.getEMAILNFE());
 
-        tvFUNDACAO.setText(App.precliente.getFUNDACAO());
+        validador.Validadador(tvEMAIL,"EMAIL",App.precliente.getEMAIL());
 
-        tvCANAL.setText(App.precliente.getCANAL());
+        validador.Validadador(tvFUNDACAO,"FUNDACAO",App.precliente.getFUNDACAO());
 
-        tvREDE.setText(App.precliente.getREDE());
+        validador.Validadador(tvCANAL,"CANAL",App.precliente.getCANAL());
 
-        tvREDEDESCRI.setText(App.precliente.getREDEDESCRI());
+        validador.Validadador(tvCANALDESCRI,"CANALDESCRI",App.precliente.getCANALDESCRI());
 
-        tvCANALDESCRI.setText(App.precliente.getCANALDESCRI());
+        validador.Validadador(tvREDE,"REDE",App.precliente.getREDE());
 
-        tvTABPRECO.setText(App.precliente.getTABPRECO());
+        validador.Validadador(tvREDEDESCRI,"REDEDESCRI",App.precliente.getREDEDESCRI());
 
-        tvTABPRECODESCRI.setText(App.precliente.getTABPRECODESCRI());
+        validador.Validadador(tvTABPRECO,"TABPRECO",App.precliente.getTABPRECO());
 
-        tvPOLITICA.setText(App.precliente.getPOLITICA());
+        validador.Validadador(tvTABPRECODESCRI,"TABPRECODESCRI",App.precliente.getTABPRECODESCRI());
 
-        tvPOLITICADESCRI.setText(App.precliente.getPOLITICADESCRI());
+        validador.Validadador(tvPOLITICA,"POLITICA",App.precliente.getPOLITICA());
 
-        tvCOND.setText(App.precliente.getCONDPAGTO());
+        validador.Validadador(tvPOLITICADESCRI,"POLITICADESCRI",App.precliente.getPOLITICADESCRI());
 
-        tvCONDDESCRI.setText(App.precliente.getCONDPAGTODESCRI());
+        validador.Validadador(tvCOND,"CONDPAGTO",App.precliente.getCONDPAGTO());
 
-        tvBoleto.setText(App.TotvsSIMNAO(App.precliente.getBOLETO()));
+        validador.Validadador(tvCONDDESCRI,"CONDPAGTODESCRI",App.precliente.getCONDPAGTODESCRI());
 
-        tvTaxa.setText(App.TotvsSIMNAO(App.precliente.getTAXA()));
+        validador.Validadador(tvBoleto,"BOLETO",App.TotvsSIMNAO(App.precliente.getBOLETO()));
 
-        tvSimplesOP.setText(App.TotvsSIMNAO(App.precliente.getOPSIMPLES()));
+        validador.Validadador(tvTaxa,"TAXA",App.TotvsSIMNAO(App.precliente.getTAXA()));
 
-        tvIsentoST.setText(App.TotvsSIMNAO(App.precliente.getISENTOST()));
+        validador.Validadador(tvSimplesOP,"OPSIMPLES",App.TotvsSIMNAO(App.precliente.getOPSIMPLES()));
 
-        tvEAN.setText(App.precliente.getEAN());
+        validador.Validadador(tvIsentoST,"ISENTOST",App.TotvsSIMNAO(App.precliente.getISENTOST()));
 
-        tvLIMITE.setText(format_02.format(App.precliente.getLIMITE()));
+        validador.Validadador(tvEAN,"EAN",App.precliente.getEAN());
 
-        tvSUFRAMA.setText(App.precliente.getSUFRAMA());
+        validador.Validadador(tvLIMITE,"LIMITE",format_02.format(App.precliente.getLIMITE()));
 
-        tvICMS.setText(App.TotvsSIMNAO(App.precliente.getICMS()));
+        validador.Validadador(tvSUFRAMA,"SUFRAMA",App.precliente.getSUFRAMA());
+
+        validador.Validadador(tvICMS,"ICMS",App.TotvsSIMNAO(App.precliente.getICMS()));
 
     }
 
@@ -500,7 +513,14 @@ public class PreClienteComercialActivity extends AppCompatActivity {
             }
         });
 
-//        lblENTREGA
+        lblENTREGA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickClienteEntrega(v);
+
+            }
+        });
 
         lblRAZAO.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1071,7 +1091,7 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
                         dialog.dismiss();
 
-                        App.precliente.setFieldByName(campo, edCampo.getText().toString());
+                        App.precliente.setFieldByName(campo, value);
 
                         refresh();
 
@@ -1343,6 +1363,21 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
     }
 
+    public void clickClienteEntrega(View v){
+
+        Intent i = new Intent(PreClienteComercialActivity.this, Help20Activity.class);
+        Bundle params = new Bundle();
+        params.putString("ARQUIVO", "CLIENTE");
+        params.putString("TITULO", "CADASTRO DE CLIENTES");
+        params.putString("MULTICHOICE", "N");
+        params.putString("ALIAS", "CLIENTE");
+        params.putString("ALIASVALUES", "");
+        i.putExtras(params);
+        startActivityForResult(i, HelpInformation.HelpCliente);
+
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -1444,126 +1479,112 @@ public class PreClienteComercialActivity extends AppCompatActivity {
             }
         }
 
-//        if (resultCode == 1 && requestCode == CLIENTE_CODE) {
-//
-//            if (data.hasExtra("CODIGO")) {
-//
-//                com.example.tabelas.Sa1 sa1 = null;
-//
-//                try {
-//
-//                    com.example.tabelas.DBAdapterSa1 datasourceSa1;
-//
-//                    datasourceSa1 = new com.example.tabelas.DBAdapterSa1(CadClienteActivity.this);
-//
-//                    datasourceSa1.open();
-//
-//                    sa1 = datasourceSa1.seek(data.getExtras().getString("CODIGO"),data.getExtras().getString("LOJA"));
-//
-//                    datasourceSa1.close();
-//
-//
-//                }  catch (Exception e)
-//                {
-//                    showToast("Erro: " + e.getMessage());
-//                }
-//
-//                if ( sa1 != null && sa1.getCODIGO().trim() != "") {
-//
-//
-//                    Pessoas pes = new Pessoas();
-//
-//                    try {
-//                        cliente.setRAZAO(sa1.getRAZAO());
-//                        cliente.setFANTASIA(sa1.getFANTASIA());
-//                        cliente.setPESSOA(pes.getPessoa(pes.getIndiceLetra(sa1.getTIPOPESSOA().trim())));
-//                        cliente.setCNPJ(format("##.###.###/####-##",sa1.getCNPJ()));
-//                        cliente.setRG("");
-//                        cliente.setIE(format("###.###.###.###",sa1.getIE()));
-//                        cliente.setCLIENTEENTREGA("1");
-//                        cliente.setIM("");
-//                        cliente.setLOGRADOURO("");
-//                        cliente.setENDERECO("");
-//                        cliente.setNRO("");
-//                        cliente.setCOMPLEMENTO("");
-//                        cliente.setBAIRRO("");
-//                        cliente.setCODCIDADE(sa1.getCODCIDADE());
-//                        cliente.setCEP("");
-//                        cliente.setDDD("");
-//                        cliente.setTELEFONE("");
-//                        cliente.setCELULAR("");
-//                        cliente.setHOMEPAGE("");
-//                        if (!sa1.getEMAILNFE().trim().isEmpty()){
-//
-//                            cliente.setEMAILNFE(sa1.getEMAILNFE());
-//
-//                        } else {
-//
-//                            cliente.setEMAILNFE(sa1.getEMAIL());
-//
-//                        }
-//                        cliente.setEMAIL(sa1.getEMAIL());
-//                        if (sa1.getFUNDACAO().trim().length() == 0){
-//
-//                            cliente.setFUNDACAO("");
-//
-//                        } else {
-//
-//                            cliente.setFUNDACAO(sa1.getFUNDACAO().substring(6, 8)+"/"+sa1.getFUNDACAO().substring(4, 6)+"/"+sa1.getFUNDACAO().substring(0, 4));
-//
-//                        }
-//                        cliente.setCANAL(sa1.getCANAL());
-//                        cliente.setREDE(sa1.getREDE());
-//                        cliente.setPOLITICA(sa1.getPOLITICA().trim());
-//                        cliente.setTABPRECO(sa1.getTABPRECO());
-//                        cliente.setCONDPAGTO(sa1.getCONDPAGTO());
-//                        cliente.setBOLETO(sa1.getBOLETO());
-//                        cliente.setTAXA(sa1.getTAXAFIN());
-//                        if (sa1.getSIMPLES().equals("1")){
-//
-//                            cliente.setOPSIMPLES("S");
-//
-//                        } else {
-//
-//                            cliente.setOPSIMPLES("N");
-//
-//                        }
-//                        if (sa1.getISENTOST().equals("1")){
-//
-//                            cliente.setISENTOST("S");
-//
-//                        } else {
-//
-//                            cliente.setISENTOST("N");
-//
-//                        }
-//
-//                        cliente.setLIMITE(sa1.getLIMITE());
-//
-//                        if (sa1.getICMS().equals("1")){
-//
-//                            cliente.setISENTOST("S");
-//
-//                        } else {
-//
-//                            cliente.setISENTOST("N");
-//
-//                        }
-//
-//                        cliente.ValidaAll(CadClienteActivity.this);
-//
-//                        refresh();
-//
-//
-//                    } catch (Exception e){
-//
-//                        showToast(e.getMessage());
-//
-//                    }
-//
-//                }
-//            }
-//        }
+        if (resultCode == 1 && requestCode == HelpInformation.HelpCliente) {
+
+            if (data.hasExtra("CODIGO")) {
+
+                String codigo = data.getExtras().getString("CODIGO");
+
+                String loja   = data.getExtras().getString("LOJA");
+
+                Cliente_fast cliente = null;
+
+                try {
+
+                     ClienteDAO dao = new ClienteDAO();
+
+                     dao.open();
+
+                    cliente = dao.seek_fast(codigo,loja,"");
+
+                     dao.close();
+
+                }  catch (Exception e)
+                {
+                    toast("Erro: " + e.getMessage());
+                }
+
+                if ( cliente != null ) {
+
+
+                    Pessoas pes = new Pessoas();
+
+                    try {
+                        App.precliente.setRAZAO(cliente.getRAZAO());
+                        App.precliente.setFANTASIA(cliente.getFANTASIA());
+                        App.precliente.setPESSOA(pes.getPessoa(pes.getIndiceLetra(cliente.getPESSOA().trim())));
+                        App.precliente.setCNPJ(format("##.###.###/####-##",cliente.getCNPJ()));
+                        App.precliente.setRG("");
+                        App.precliente.setIE(format("###.###.###.###",cliente.getIE()));
+                        App.precliente.setCLIENTEENTREGA("1");
+                        App.precliente.setIM("");
+                        App.precliente.setLOGRADOURO("");
+                        App.precliente.setENDERECO("");
+                        App.precliente.setNRO("");
+                        App.precliente.setCOMPLEMENTO("");
+                        App.precliente.setBAIRRO("");
+                        App.precliente.setCODCIDADE(cliente.getCODCIDADE());
+                        App.precliente.setCEP("");
+                        App.precliente.setDDD("");
+                        App.precliente.setTELEFONE("");
+                        App.precliente.setCELULAR("");
+                        App.precliente.setHOMEPAGE("");
+                        if (!cliente.getEMAILNFE().trim().isEmpty()){
+
+                            App.precliente.setEMAILNFE(cliente.getEMAILNFE());
+
+                        } else {
+
+                            App.precliente.setEMAILNFE(cliente.getEMAIL());
+
+                        }
+                        App.precliente.setEMAIL(cliente.getEMAIL());
+                        if (cliente.getFUNDACAO().trim().length() == 0){
+
+                            App.precliente.setFUNDACAO("");
+
+                        } else {
+
+                            App.precliente.setFUNDACAO(cliente.getFUNDACAO().substring(6, 8)+"/"+cliente.getFUNDACAO().substring(4, 6)+"/"+cliente.getFUNDACAO().substring(0, 4));
+
+                        }
+                        App.precliente.setCANAL(cliente.getCANAL());
+                        App.precliente.setCANALDESCRI(cliente.get_CANAL());
+
+                        App.precliente.setREDE(cliente.getREDE());
+                        App.precliente.setREDEDESCRI(cliente.get_REDE());
+
+                        App.precliente.setPOLITICA(cliente.getREGIAO());
+                        App.precliente.setPOLITICADESCRI(cliente.get_POLITICA());
+
+
+                        App.precliente.setTABPRECO(cliente.getTABELA());
+                        App.precliente.setTABPRECODESCRI(cliente.get_TABELA());
+
+                        App.precliente.setCONDPAGTO(cliente.getCONDPAGTO());
+                        App.precliente.setCONDPAGTODESCRI(cliente.get_COND());
+
+                        App.precliente.setBOLETO(cliente.getBOLETO());
+                        App.precliente.setTAXA(cliente.getTAXAFIN());
+                        App.precliente.setLIMITE(cliente.getLIMITE());
+                        App.precliente.setISENTOST(cliente.getISENTOST());
+                        App.precliente.setOPSIMPLES(cliente.getSIMPLES());
+                        App.precliente.setICMS(cliente.getICMS());
+
+                        //cliente.ValidaAll(CadClienteActivity.this);
+
+                        refresh();
+
+
+                    } catch (Exception e){
+
+                        toast(e.getMessage());
+
+                    }
+
+                }
+            }
+        }
     }
 
     private class BUSCAThread extends Thread{
@@ -1778,5 +1799,16 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
     };
 
+
+
+    private static String format(String pattern, Object value) {
+        MaskFormatter mask;
+        try {
+            mask = new MaskFormatter(pattern);
+            return mask.valueToString(value);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

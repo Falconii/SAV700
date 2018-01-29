@@ -1,11 +1,15 @@
 package br.com.brotolegal.savdatabase.regrasdenegocio;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import br.com.brotolegal.savdatabase.R;
 import br.com.brotolegal.savdatabase.entities.PreCliente;
 
 /**
@@ -15,23 +19,57 @@ import br.com.brotolegal.savdatabase.entities.PreCliente;
 public class ValidadorPreCliente {
 
     PreCliente preCliente;
+    Context    context;
 
-    public ValidadorPreCliente(PreCliente preCliente) {
+    public ValidadorPreCliente(PreCliente preCliente,Context context) {
 
         this.preCliente = preCliente;
+
+        this.context    = context;
 
 
     }
 
-    public Boolean Validadador(Context context,String campo){
+    public Boolean Validadador(TextView v, String campo, String texto){
+
+
+        Drawable img = context.getResources().getDrawable(R.drawable.error5 );
+
+        img.setBounds( 0, 0, 30, 30 );
+
+        Boolean retorno = false;
 
         int indice;
+
+        v.setText(texto);
 
         indice = preCliente.getIndiceByNameColunas(campo);
 
         if (indice == -1) return true;
 
-        return  ValidaCampo(context,indice);
+        retorno = ValidaCampo(indice);
+
+        if (v != null){
+
+            if (!retorno) {
+
+                v.setTextColor(context.getResources().getColor(R.color.red));
+
+                v.setCompoundDrawables( img, null, null, null );
+
+            }
+            else {
+
+                v.setTextColor(context.getResources().getColor(R.color.dark_blue));
+
+                v.setCompoundDrawables( null, null, null, null );
+
+            }
+
+
+        }
+
+        return  retorno;
     }
 
     public Boolean ValidaAll(Context context){
@@ -45,7 +83,7 @@ public class ValidadorPreCliente {
         try {
             for(indice=0;indice <= preCliente.get_ColunasSize()-1;indice++){
 
-                if (!ValidaCampo(context,indice)){
+                if (!ValidaCampo(indice)){
 
                     retorno = false;
 
@@ -63,7 +101,7 @@ public class ValidadorPreCliente {
         return retorno;
     }
 
-    private Boolean ValidaCampo(Context context,int index)  {
+    private Boolean ValidaCampo(int index)  {
 
         String SEM_VALIDACAO     = "#ERRO#MSGERRO#ID#OPERACAO#STATUS#CODIGO#RG#IM#COMPLEMENTO#CELULAR#HOMEPAGE#EMAIL";
 

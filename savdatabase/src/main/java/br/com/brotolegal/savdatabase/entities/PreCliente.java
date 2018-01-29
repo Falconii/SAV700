@@ -118,7 +118,11 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         setSTATUS("0")      ;
 
         CODIGO              = "";
-        ICMS                = "NAO";
+        ICMS                = "2";
+        BOLETO              = "1";
+        TAXA                = "1";
+        OPSIMPLES           = "2";
+        ISENTOST            = "2";
         CLIENTEENTREGA      = "2";
         RESTRECEB           = "TRUE|FALSE|FALSE|FALSE|FALSE|FALSE|TRUE|";
         HORARECEB           = "00:00";
@@ -166,9 +170,11 @@ public class PreCliente extends ObjRegister implements KvmSerializable {
         CODIGO              = "";
         OPERACAO            = oPERACAO;
         setSTATUS("0")      ;
-        ICMS                = "NAO";
+        ICMS                = "2";
         BOLETO              = "1";
         TAXA                = "1";
+        OPSIMPLES           = "2";
+        ISENTOST            = "2";
         CLIENTEENTREGA      = "2";
         RESTRECEB           = "TRUE|FALSE|FALSE|FALSE|FALSE|FALSE|TRUE|";
         HORARECEB           = "00:00";
