@@ -24,6 +24,9 @@ public final class HelpInformation {
 	public static final int HelpCanal               = 20;
 	public static final int HelpTabPreco            = 21;
 	public static final int HelpRegiao              = 22;
+	public static final int Help_SELECT_PICTURE     = 23;
+	public static final int Help_TAKE_PHOTO_CODE    = 24;
+
 
 
 

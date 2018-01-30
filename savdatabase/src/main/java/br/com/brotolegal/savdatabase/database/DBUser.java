@@ -31,6 +31,7 @@ import br.com.brotolegal.savdatabase.entities.ContaCorrente;
 import br.com.brotolegal.savdatabase.entities.Contrato;
 import br.com.brotolegal.savdatabase.entities.Cota;
 import br.com.brotolegal.savdatabase.entities.DadosRanking;
+import br.com.brotolegal.savdatabase.entities.DocCliente;
 import br.com.brotolegal.savdatabase.entities.Frete;
 import br.com.brotolegal.savdatabase.entities.Game;
 import br.com.brotolegal.savdatabase.entities.Grupo;
@@ -70,7 +71,7 @@ public class DBUser extends SQLiteOpenHelper {
     private static final String TAG =  "DBUser";
 
     /* Data Base */
-    private static final int           DATABASE_VERSION = 101;
+    private static final int           DATABASE_VERSION = 102;
     private static final String        DATABASE_NAME    = "dados";
     private static       String        DATABASE_PATH    = Environment.getExternalStorageDirectory().getPath();
 
@@ -94,7 +95,7 @@ public class DBUser extends SQLiteOpenHelper {
 
         //Cadastros
         lsTabelas.add(new Tabela(new int[]{0, 1}        , "", new Cliente()));
-        lsTabelas.add(new Tabela(null                   , "", new Politica()));
+        lsTabelas.add(new Tabela(null             , "", new Politica()));
         lsTabelas.add(new Tabela(new int[] {0}          , "", new Canal()));
         lsTabelas.add(new Tabela(new int[] {0}          , "", new CondPagto()));
         lsTabelas.add(new Tabela(new int[] {0}          , "", new TabPrecoCabec()));
@@ -137,6 +138,7 @@ public class DBUser extends SQLiteOpenHelper {
 
         //Pré-Cliente
         lsTabelas.add(new Tabela(new int[] {0}	        , "", new PreCliente()));
+        lsTabelas.add(new Tabela(new int[] {0,1}	    , "", new DocCliente()));
 
         //Prospeccao
         lsTabelas.add(new Tabela(new int[] {0}	        , "", new Prospeccao()));

@@ -358,7 +358,6 @@ public class PreClienteActivity extends AppCompatActivity {
         super.onStop();
     }
 
-
     @Override
     public void onResume() {
 
@@ -368,7 +367,6 @@ public class PreClienteActivity extends AppCompatActivity {
 
         super.onResume();
     }
-
 
     @Override
     public void finish() {
@@ -384,7 +382,6 @@ public class PreClienteActivity extends AppCompatActivity {
         super.finish();
 
     }
-
 
     private void loadPreCliente(){
 
@@ -575,13 +572,11 @@ public class PreClienteActivity extends AppCompatActivity {
 
     }
 
-
     private void showToast(String mensagem){
 
         Toast.makeText(this,mensagem, Toast.LENGTH_LONG).show();
 
     }
-
 
     private void verWeb(){
 

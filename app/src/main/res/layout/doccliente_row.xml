@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/fundo"
+	>
+
+
+	<LinearLayout
+		android:id="@+id/barra_400"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+
+		<LinearLayout
+			android:id="@+id/pedido_filtros_400"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:background="@color/barLightColor"
+			>
+			<CheckBox
+				android:id="@+id/cb_marcados_400"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:background="@drawable/fundo"
+				android:visibility="gone"
+				>
+			</CheckBox>
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_cadastro_400"
+				android:src="@drawable/cliente_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_contrato_400"
+				android:src="@drawable/contrato_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_financeiro_400"
+				android:src="@drawable/financeiro_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="20sp"
+				android:id="@+id/bt_pedidos_400"
+				android:src="@drawable/pedido_30"
+				/>
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_nf_400"
+				android:src="@drawable/nfe_30"
+				/>
+
+
+			<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/bt_agenda_400"
+				android:src="@drawable/calendario_plus_30"
+				/>
+
+			<TextView
+				android:layout_width="100sp"
+				android:layout_height="match_parent"
+				android:text="12/12/12\nas\n15:00"
+				android:id="@+id/lbl_hora_400"
+				android:gravity="center_vertical|center_horizontal|center"
+				android:textColor="@color/design_textinput_error_color_light">
+			</TextView>
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/icone_status_400"
+				android:src="@drawable/ac_gps_30"
+				android:layout_gravity="center_vertical"
+
+				/>
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="15:00"
+				android:id="@+id/lbl_mensagem_400"
+				android:gravity="center_vertical|center_horizontal"
+				android:textSize="16sp"
+				android:textColor="@color/design_textinput_error_color_light"
+				android:ellipsize="end"
+				android:scrollHorizontally = "true"
+				android:minLines = "3"
+				android:maxLines = "3"
+				>
+			</TextView>
+
+		</LinearLayout>
+
+
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/parentLayout"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_below="@+id/barra_400"
+		android:layout_marginTop="5sp">
+
+
+		<TableLayout
+			android:id="@+id/table_427"
+			android:layout_marginLeft="50sp"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:shrinkColumns="*"
+			android:stretchColumns="*"
+			>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_status_arquvo_427"
+					android:layout_width="fill_parent"
+					android:layout_span="02"
+					android:paddingTop="5sp"
+					android:paddingLeft="10sp"
+					android:gravity="left|center_vertical|center_horizontal|center"
+					android:text="PRONTO PARA TRANSMITIR"
+					android:textColor="@color/red"
+					android:textSize="14sp"
+					android:ellipsize="end"
+					android:scrollHorizontally = "true"
+					android:minLines = "0"
+					android:maxLines = "1"
+					android:layout_height="wrap_content" />
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_descricao_arquvo_427"
+					android:layout_width="fill_parent"
+					android:layout_span="02"
+					android:paddingTop="5sp"
+					android:paddingLeft="10sp"
+					android:gravity="left|center_vertical|center_horizontal|center"
+					android:text="CARTÃO DO CNPJ."
+					android:textColor="@color/dark_blue"
+					android:textSize="16sp"
+					android:ellipsize="end"
+					android:scrollHorizontally = "true"
+					android:minLines = "0"
+					android:maxLines = "1"
+					android:layout_height="wrap_content" />
+
+			</TableRow>
+
+			<TableRow
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent">
+
+
+				<TextView
+					android:id="@+id/txt_nome_arquvo_427"
+					android:layout_width="fill_parent"
+					android:layout_span="02"
+					android:paddingTop="5sp"
+					android:paddingLeft="10sp"
+					android:gravity="left|center_vertical|center_horizontal|center"
+					android:text="Nome Do Arquivo"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					android:ellipsize="end"
+					android:scrollHorizontally = "true"
+					android:minLines = "0"
+					android:maxLines = "1"
+					android:layout_height="wrap_content" />
+
+			</TableRow>
+
+		</TableLayout>
+
+	</LinearLayout>
+
+	<ImageButton
+		android:layout_marginTop="15sp"
+		android:layout_width="60sp"
+		android:layout_height="90sp"
+		android:id="@+id/tipo_documento_427"
+		android:scaleType="centerInside"
+		android:src="@drawable/pedido_30"
+		android:layout_below="@+id/barra_400"
+		/>
+
+	<Button
+		android:id="@+id/bt_acoes_427"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentEnd="true"
+		android:layout_below="@+id/parentLayout"
+		android:text="AENXAR DOC." />
+
+</RelativeLayout>
