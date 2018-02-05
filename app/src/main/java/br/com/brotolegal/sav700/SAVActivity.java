@@ -1,5 +1,8 @@
 package br.com.brotolegal.sav700;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
@@ -12,6 +15,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -34,15 +38,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.appindexing.Action;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
@@ -58,13 +56,9 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import br.com.brotolegal.sav700.firebase.FireBaseDataBase;
 import br.com.brotolegal.sav700.fragments.DashBoard_Frag;
 import br.com.brotolegal.savdatabase.app.App;
 import br.com.brotolegal.savdatabase.config.HelpInformation;
@@ -78,14 +72,10 @@ import br.com.brotolegal.savdatabase.entities.Dispositivo;
 import br.com.brotolegal.savdatabase.entities.Marca;
 import br.com.brotolegal.savdatabase.entities.Status;
 import br.com.brotolegal.savdatabase.entities.Usuario;
-import br.com.brotolegal.savdatabase.entities.Usuario_fast;
 import br.com.brotolegal.savdatabase.eventbus.NotificationCarga;
 import br.com.brotolegal.savdatabase.eventbus.NotificationConexao;
 import br.com.brotolegal.savdatabase.eventbus.NotificationPedido;
 import br.com.brotolegal.savdatabase.eventbus.NotificationSincronizacao;
-import br.com.brotolegal.savdatabase.regrasdenegocio.Empresa;
-import br.com.brotolegal.savdatabase.regrasdenegocio.PedidoBusinessV10;
-import br.com.brotolegal.savdatabase.regrasdenegocio.UsuarioTST;
 import br.com.brotolegal.savdatabase.util.Filtro_Categoria;
 import br.com.brotolegal.savdatabase.util.Filtro_Cliente;
 import br.com.brotolegal.savdatabase.util.Filtro_Data;
@@ -99,21 +89,21 @@ import static br.com.brotolegal.savdatabase.app.App.user;
 
 public class SAVActivity extends AppCompatActivity {
 
-    public static final int FIRST_LOGIN    = 1; //Primeiro Login No Sistema
-    public static final int NEW_USER       = 2; //Troca de Usuário
-    public static final int TRANSMISSAO    = 3; //Transmissao de Pedidos
-    public static final int CARGA          = 4; //CARGA
-    public static final int SINCRONIZACAO  = 5; //SINCRONIZACAO
+    public static final int FIRST_LOGIN = 1; //Primeiro Login No Sistema
+    public static final int NEW_USER = 2; //Troca de Usuário
+    public static final int TRANSMISSAO = 3; //Transmissao de Pedidos
+    public static final int CARGA = 4; //CARGA
+    public static final int SINCRONIZACAO = 5; //SINCRONIZACAO
 
 
-    public static final int MANUPLANEJAMENTO  = 6; //MANUTENÇÃO DAS AGENDAS
+    public static final int MANUPLANEJAMENTO = 6; //MANUTENÇÃO DAS AGENDAS
 
     private Toolbar toolbar;
 
-    private Bundle  savebundle;
+    private Bundle savebundle;
 
-    private final int HOME_ITEM       = 5;
-    private DashBoard_Frag              dashboard_frag;
+    private final int HOME_ITEM = 5;
+    private DashBoard_Frag dashboard_frag;
 
     private Drawer.Result navigationDrawerLeft;
     private Drawer.Result navigationDrawerRight;
@@ -124,13 +114,13 @@ public class SAVActivity extends AppCompatActivity {
     private defaultAdapter conexaoadapter;
     private Intent serviceIntent;
 
-    private Filtro_Data      fData;
-    private Filtro_Cliente   fCliente;
+    private Filtro_Data fData;
+    private Filtro_Cliente fCliente;
     private Filtro_Categoria fCategoria;
-    private Filtro_Marca     fMarca;
-    private Filtro_Produto   fProduto;
-    private Rel_Visao        rVisao;
-    private Rel_Topicos      rTopicos;
+    private Filtro_Marca fMarca;
+    private Filtro_Produto fProduto;
+    private Rel_Visao rVisao;
+    private Rel_Topicos rTopicos;
 
 //    public  static  FirebaseDatabase  firebaseDatabase;
 //    public  static  DatabaseReference databaseReference;
@@ -153,13 +143,15 @@ public class SAVActivity extends AppCompatActivity {
 //    }
 
 
-
     private OnCheckedChangeListener mOnCheckedChangeListener = new OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(IDrawerItem iDrawerItem, CompoundButton compoundButton, boolean b) {
             Toast.makeText(SAVActivity.this, "onCheckedChanged: " + (b ? "true" : "false"), Toast.LENGTH_SHORT).show();
         }
     };
+
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
 
 
     @Override
@@ -171,6 +163,36 @@ public class SAVActivity extends AppCompatActivity {
         lbUsuario.setText("Nehum Usuário Logado.");
 
         savebundle = savedInstanceState;
+
+        try {
+
+            abertura();
+
+        } catch (Exception e) {
+
+            finish();
+        }
+
+
+    }
+
+
+    private void abertura() throws Exception {
+
+        verifyAppPermissions(SAVActivity.this);
+
+        try {
+
+            CriarPastaApp folders = new CriarPastaApp();
+
+            folders.VerificaEstruturaPastas();
+
+        } catch (Exception e) {
+
+            finish();
+
+        }
+
 
         if (App.getItsOK()) {
 
@@ -191,6 +213,9 @@ public class SAVActivity extends AppCompatActivity {
 
                 if (dispo == null) {
 
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
                     dispo = new Dispositivo(
 
                             "000000",
@@ -318,7 +343,7 @@ public class SAVActivity extends AppCompatActivity {
 
                                         Object lixo = spconexoes.getSelectedItem();
 
-                                        if ((((String[]) lixo)[0]).equals("001")){
+                                        if ((((String[]) lixo)[0]).equals("001")) {
 
                                             porta = "9999";//Produção
 
@@ -390,7 +415,7 @@ public class SAVActivity extends AppCompatActivity {
 
                                             init();
 
-                                        } catch (Exception e){
+                                        } catch (Exception e) {
 
                                             firstLogin();
 
@@ -448,7 +473,7 @@ public class SAVActivity extends AppCompatActivity {
             }
         } else {
 
-            Toast.makeText(getApplicationContext(),"Problemas Na Instação...", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Problemas Na Instação...", Toast.LENGTH_LONG).show();
 
             finish();
 
@@ -477,7 +502,7 @@ public class SAVActivity extends AppCompatActivity {
 
                 dao.close();
 
-            }catch (Exception e){
+            } catch (Exception e) {
 
                 lsMarcas = new ArrayList<>();
 
@@ -519,19 +544,22 @@ public class SAVActivity extends AppCompatActivity {
 
             man.loadPreferenciasRel_01();
 
-        } catch (Exception e ){
+        } catch (Exception e) {
 
-            Toast.makeText(getApplicationContext(),e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 
         }
 
+
+
+
     }
 
-    private void init() throws Exception{
+    private void init() throws Exception {
 
         Status status = null;
 
-        Usuario user  = null;
+        Usuario user = null;
 
         try {
 
@@ -547,29 +575,28 @@ public class SAVActivity extends AppCompatActivity {
 
             if (status == null) {
 
-                status = new Status("N","","","","","","","N","","","","0");
+                status = new Status("N", "", "", "", "", "", "", "N", "", "", "", "0");
 
             } else {
 
-                if (status.getLOGADO().equals("S")){
+                if (status.getLOGADO().equals("S")) {
 
                     UsuarioDAO daoUS = new UsuarioDAO();
 
                     daoUS.open();
 
-                    user = daoUS.seek(new String[] {status.getUSERLOG()});
-
+                    user = daoUS.seek(new String[]{status.getUSERLOG()});
 
 
                     //Cria a Estrutura do Usuário se necessário
 
-                    if (user != null){
+                    if (user != null) {
 
                         CreateUserStructure(user.getCOD());
 
                     }
 
-                    App.user =  user;
+                    App.user = user;
 
                     App.setDataBaseUser();
 
@@ -581,8 +608,7 @@ public class SAVActivity extends AppCompatActivity {
             }
 
 
-
-        } catch (Exception e){
+        } catch (Exception e) {
 
             user = null;
         }
@@ -619,7 +645,7 @@ public class SAVActivity extends AppCompatActivity {
 
 
         SharedPreferences prefs = getSharedPreferences("ShortCutPrefs", MODE_PRIVATE);
-        if(!prefs.getBoolean("isFirstTime", false)){
+        if (!prefs.getBoolean("isFirstTime", false)) {
             addShortcut();
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("isFirstTime", true);
@@ -634,7 +660,7 @@ public class SAVActivity extends AppCompatActivity {
 
             adicionaHeaderNavigation();
 
-            if (status.getLOGADO().equals("S")){
+            if (status.getLOGADO().equals("S")) {
 
                 lbUsuario.setText(user.getNOME());
 
@@ -644,7 +670,7 @@ public class SAVActivity extends AppCompatActivity {
 
             }
 
-        } catch (Exception e){
+        } catch (Exception e) {
 
 
             finish();
@@ -652,10 +678,9 @@ public class SAVActivity extends AppCompatActivity {
         }
 
 
-
     }
 
-    private void remove_frags(){
+    private void remove_frags() {
 
 
         try {
@@ -683,7 +708,7 @@ public class SAVActivity extends AppCompatActivity {
             ft.replace(R.id.rl_fragment_container, frag, "dashboard_frag");
             ft.commit();
 
-        } catch (Exception e){
+        } catch (Exception e) {
 
             Toast.makeText(SAVActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -695,7 +720,7 @@ public class SAVActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
 
-        if (!EventBus.getDefault().isRegistered(this)){
+        if (!EventBus.getDefault().isRegistered(this)) {
 
             EventBus.getDefault().register(this);
         }
@@ -710,7 +735,41 @@ public class SAVActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    private void refresh(){
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+
+        switch (requestCode) {
+            case HelpInformation.Help_PERMISSIONS_APP: {
+
+                // Verificando as Permissões
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    try {
+
+                        abertura();
+
+                    } catch (Exception e){
+
+                        finish();
+
+                    }
+
+                } else {
+
+                    finish();
+
+                }
+            }
+
+        }
+
+        return;
+    }
+
+
+
+    private void refresh() {
 
         dashboard_frag.loadClientes();
 
@@ -734,7 +793,7 @@ public class SAVActivity extends AppCompatActivity {
 
     }
 
-    public void adicionaDrawer(final Bundle savedInstanceState){
+    public void adicionaDrawer(final Bundle savedInstanceState) {
 
         Status status = null;
 
@@ -746,13 +805,13 @@ public class SAVActivity extends AppCompatActivity {
 
             status = dao.seek(null);
 
-            if (status == null){
+            if (status == null) {
 
-                status = new Status("N","","","","","","","N","","","","0");
+                status = new Status("N", "", "", "", "", "", "", "N", "", "", "", "0");
 
             }
 
-        } catch (Exception e){
+        } catch (Exception e) {
 
             Toast.makeText(SAVActivity.this, "Falha Na Leitura Do Status !!!", Toast.LENGTH_SHORT).show();
 
@@ -768,7 +827,7 @@ public class SAVActivity extends AppCompatActivity {
 
     }
 
-    private void adicionaLeftNavigation(Status status){
+    private void adicionaLeftNavigation(Status status) {
 
         navigationDrawerLeft = new Drawer()
                 .withActivity(this)
@@ -794,9 +853,9 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("login")) {
 
-                            for(int count = 0; count < navigationDrawerLeft.getDrawerItems().size(); count++){
+                            for (int count = 0; count < navigationDrawerLeft.getDrawerItems().size(); count++) {
 
-                                if (navigationDrawerLeft.getDrawerItems().get(count) instanceof PrimaryDrawerItem && navigationDrawerLeft.getDrawerItems().get(count).getTag().equals("login") ) {
+                                if (navigationDrawerLeft.getDrawerItems().get(count) instanceof PrimaryDrawerItem && navigationDrawerLeft.getDrawerItems().get(count).getTag().equals("login")) {
 
                                     PrimaryDrawerItem aux = (PrimaryDrawerItem) navigationDrawerLeft.getDrawerItems().get(count);
 
@@ -815,9 +874,9 @@ public class SAVActivity extends AppCompatActivity {
 
                             lbUsuario.setText("Nenhum Usuário Logado.");
 
-                            for(int count = 0; count < navigationDrawerLeft.getDrawerItems().size(); count++){
+                            for (int count = 0; count < navigationDrawerLeft.getDrawerItems().size(); count++) {
 
-                                if (navigationDrawerLeft.getDrawerItems().get(count) instanceof PrimaryDrawerItem && navigationDrawerLeft.getDrawerItems().get(count).getTag().equals("login") ) {
+                                if (navigationDrawerLeft.getDrawerItems().get(count) instanceof PrimaryDrawerItem && navigationDrawerLeft.getDrawerItems().get(count).getTag().equals("login")) {
 
                                     PrimaryDrawerItem aux = (PrimaryDrawerItem) navigationDrawerLeft.getDrawerItems().get(count);
 
@@ -846,7 +905,7 @@ public class SAVActivity extends AppCompatActivity {
 
                                 dao.close();
 
-                            } catch (Exception e){
+                            } catch (Exception e) {
 
                                 config = null;
 
@@ -889,7 +948,7 @@ public class SAVActivity extends AppCompatActivity {
                                     }
                                 });
 
-                                if (config.getPORTA().equals(HelpInformation.BaseProducao)){
+                                if (config.getPORTA().equals(HelpInformation.BaseProducao)) {
 
                                     spconexoes.setSelection(0);
 
@@ -1068,21 +1127,21 @@ public class SAVActivity extends AppCompatActivity {
                         if (opcao.equals("dispositivo")) {
 
 
-                            Intent intent = new Intent(SAVActivity.this,DispositivoActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, DispositivoActivity.class);
                             startActivity(intent);
 
                         }
 
                         if (opcao.equals("usuario")) {
 
-                            Intent intent = new Intent(SAVActivity.this,UsuarioActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, UsuarioActivity.class);
                             startActivity(intent);
 
                         }
 
                         if (opcao.equals("pedidocomposicaodecarga")) {
 
-                            Intent intent = new Intent(SAVActivity.this,NegociacaoActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, NegociacaoActivity.class);
                             startActivity(intent);
 
                         }
@@ -1090,7 +1149,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("pedidodistribuicao")) {
 
-                            Intent intent = new Intent(SAVActivity.this,MenAtWorkingActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, MenAtWorkingActivity.class);
                             startActivity(intent);
 
 
@@ -1098,9 +1157,9 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("pedidoplanejamento")) {
 
-                            Intent intent = new Intent(SAVActivity.this,PedidosAgendaActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, PedidosAgendaActivity.class);
                             Bundle params = new Bundle();
-                            params.putString("ROTINA"   , "CONSULTA");
+                            params.putString("ROTINA", "CONSULTA");
                             intent.putExtras(params);
                             startActivity(intent);
 
@@ -1110,9 +1169,9 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("pedidoavulso")) {
 
-                            Intent intent = new Intent(SAVActivity.this,PedidosGeralActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, PedidosGeralActivity.class);
                             Bundle params = new Bundle();
-                            params.putString("ROTINA"   , "CONSULTA");
+                            params.putString("ROTINA", "CONSULTA");
                             intent.putExtras(params);
                             startActivity(intent);
 
@@ -1121,9 +1180,9 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("pedidotransmitido")) {
 
-                            Intent intent = new Intent(SAVActivity.this,PedidosMobileTransmitidosActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, PedidosMobileTransmitidosActivity.class);
                             Bundle params = new Bundle();
-                            params.putString("ROTINA"   , "CONSULTAGERAL");
+                            params.putString("ROTINA", "CONSULTAGERAL");
                             intent.putExtras(params);
                             startActivity(intent);
 
@@ -1132,7 +1191,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("precliente")) {
 
-                            Intent intent = new Intent(SAVActivity.this,PreClienteActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, PreClienteActivity.class);
                             Bundle params = new Bundle();
                             params.putString("CODCLIENTE", "");
                             params.putString("LOJCLIENTE", "");
@@ -1144,7 +1203,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("metas")) {
 
-                            Intent intent = new Intent(SAVActivity.this,ShowMetasActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, ShowMetasActivity.class);
                             startActivity(intent);
 
 
@@ -1152,7 +1211,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("campanhas")) {
 
-                            Intent intent = new Intent(SAVActivity.this,CampanhaViewActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, CampanhaViewActivity.class);
                             startActivity(intent);
 
 
@@ -1160,7 +1219,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("agenda01")) {
 
-                            Intent intent = new Intent(SAVActivity.this,MenAtWorkingActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, MenAtWorkingActivity.class);
                             startActivity(intent);
 
                         }
@@ -1168,7 +1227,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("agenda02")) {
 
-                            Intent intent = new Intent(SAVActivity.this,MenAtWorkingActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, MenAtWorkingActivity.class);
                             startActivity(intent);
 
                         }
@@ -1176,19 +1235,18 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("gerencial01")) {
 
-                            Intent intent = new Intent(SAVActivity.this,Parametros_01Activity.class);
+                            Intent intent = new Intent(SAVActivity.this, Parametros_01Activity.class);
                             Bundle params = new Bundle();
                             params.putString("BASE", "MOBILE");
                             intent.putExtras(params);
                             startActivity(intent);
 
 
-
                         }
 
                         if (opcao.equals("pedidosprotheus")) {
 
-                            Intent intent = new Intent(SAVActivity.this,PedidosProtheusGeralActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, PedidosProtheusGeralActivity.class);
                             Bundle params = new Bundle();
                             params.putString("CODCLIENTE", "");
                             params.putString("LOJCLIENTE", "");
@@ -1200,7 +1258,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("nfsprotheus")) {
 
-                            Intent intent = new Intent(SAVActivity.this,ConsultaNFTotvsActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, ConsultaNFTotvsActivity.class);
                             Bundle params = new Bundle();
                             params.putString("CODCLIENTE", "");
                             params.putString("LOJCLIENTE", "");
@@ -1211,7 +1269,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("acordosprotheus")) {
 
-                            Intent intent = new Intent(SAVActivity.this,ConsultaAcordoActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, ConsultaAcordoActivity.class);
                             Bundle params = new Bundle();
                             params.putString("CODCLIENTE", "");
                             params.putString("LOJCLIENTE", "");
@@ -1222,7 +1280,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("preacordo")) {
 
-                            Intent intent = new Intent(SAVActivity.this,PreAcordoActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, PreAcordoActivity.class);
                             Bundle params = new Bundle();
                             params.putString("CODCLIENTE", "");
                             params.putString("LOJCLIENTE", "");
@@ -1233,7 +1291,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("prospeccao")) {
 
-                            Intent intent = new Intent(SAVActivity.this,MenAtWorkingActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, MenAtWorkingActivity.class);
                             startActivity(intent);
 
                         }
@@ -1241,7 +1299,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("CC")) {
 
-                            Intent intent = new Intent(SAVActivity.this,CCActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, CCActivity.class);
                             Bundle params = new Bundle();
                             params.putString("CODCLIENTE", "");
                             params.putString("LOJCLIENTE", "");
@@ -1254,11 +1312,11 @@ public class SAVActivity extends AppCompatActivity {
 
                             remove_frags();
 
-                            Intent intent = new Intent(SAVActivity.this,PedidosActivity.class);
+                            Intent intent = new Intent(SAVActivity.this, PedidosActivity.class);
                             Bundle params = new Bundle();
-                            params.putString("CODIGO"   , "");
-                            params.putString("LOJA"     , "");
-                            params.putString("ROTINA"   , "CONSULTA");
+                            params.putString("CODIGO", "");
+                            params.putString("LOJA", "");
+                            params.putString("ROTINA", "CONSULTA");
                             intent.putExtras(params);
                             startActivityForResult(intent, TRANSMISSAO);
 
@@ -1271,8 +1329,8 @@ public class SAVActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(SAVActivity.this, CargaActivity.class);
                             Bundle params = new Bundle();
-                            params.putString("CODIGO"   , "");
-                            params.putString("LOJA"     , "");
+                            params.putString("CODIGO", "");
+                            params.putString("LOJA", "");
                             intent.putExtras(params);
                             startActivityForResult(intent, CARGA);
 
@@ -1282,7 +1340,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("treinamento01")) {
 
-                            Intent intent = new Intent(SAVActivity.this,TreinamentoMenuViewAtivity.class);
+                            Intent intent = new Intent(SAVActivity.this, TreinamentoMenuViewAtivity.class);
                             startActivity(intent);
 
                         }
@@ -1360,7 +1418,7 @@ public class SAVActivity extends AppCompatActivity {
 
         Boolean ativo = false;
 
-        if (status.getLOGADO().equals("S")){
+        if (status.getLOGADO().equals("S")) {
 
             ativo = true;
 
@@ -1373,11 +1431,11 @@ public class SAVActivity extends AppCompatActivity {
         }
 
 
-        for(int count = indice; count < navigationDrawerLeft.getDrawerItems().size(); count++) {
+        for (int count = indice; count < navigationDrawerLeft.getDrawerItems().size(); count++) {
 
             if (navigationDrawerLeft.getDrawerItems().get(count) instanceof PrimaryDrawerItem) {
 
-                ( (PrimaryDrawerItem) navigationDrawerLeft.getDrawerItems().get(count)).setEnabled(ativo);
+                ((PrimaryDrawerItem) navigationDrawerLeft.getDrawerItems().get(count)).setEnabled(ativo);
 
             }
 
@@ -1386,10 +1444,9 @@ public class SAVActivity extends AppCompatActivity {
         navigationDrawerLeft.getAdapter().notifyDataSetChanged();
 
 
-
     }
 
-    private void adicionaHeaderNavigation(){
+    private void adicionaHeaderNavigation() {
 
         headerNavigationLeft = new AccountHeader()
                 .withActivity(this)
@@ -1404,7 +1461,7 @@ public class SAVActivity extends AppCompatActivity {
 
                             lbUsuario.setText("Nenhum Usuário Logado.");
 
-                            if (iProfile.getName().equals("000000")){
+                            if (iProfile.getName().equals("000000")) {
 
                                 remove_frags();
 
@@ -1434,7 +1491,8 @@ public class SAVActivity extends AppCompatActivity {
 
                                 adicionaUsuarios();
 
-                                if (savebundle != null) navigationDrawerLeft.setSelection(HOME_ITEM);
+                                if (savebundle != null)
+                                    navigationDrawerLeft.setSelection(HOME_ITEM);
 
                                 return false;
 
@@ -1447,11 +1505,11 @@ public class SAVActivity extends AppCompatActivity {
 
                             dao.open();
 
-                            Usuario user = dao.seek(new String[] {iProfile.getName()});
+                            Usuario user = dao.seek(new String[]{iProfile.getName()});
 
                             dao.close();
 
-                            if (user == null){
+                            if (user == null) {
 
                                 throw new Exception("Usuário Não Cadastrado No Tablet.");
 
@@ -1461,9 +1519,9 @@ public class SAVActivity extends AppCompatActivity {
 
                             Bundle params = new Bundle();
 
-                            params.putString("CODIGO",user.getCOD());
+                            params.putString("CODIGO", user.getCOD());
 
-                            params.putString("SENHA" ,user.getSENHA());
+                            params.putString("SENHA", user.getSENHA());
 
                             i.putExtras(params);
 
@@ -1480,11 +1538,9 @@ public class SAVActivity extends AppCompatActivity {
                 .build();
 
 
-
-
     }
 
-    private void adicionaUsuarios(){
+    private void adicionaUsuarios() {
 
         List<Usuario> users = null;
 
@@ -1504,7 +1560,7 @@ public class SAVActivity extends AppCompatActivity {
 
             daoST.close();
 
-            if (status == null){
+            if (status == null) {
 
                 status = new Status();
 
@@ -1530,7 +1586,7 @@ public class SAVActivity extends AppCompatActivity {
 
             headerNavigationLeft.addProfiles(item);
 
-            for(Usuario us : users){
+            for (Usuario us : users) {
 
                 ProfileDrawerItem item1 = new ProfileDrawerItem()
                         .withName(us.getCOD())
@@ -1541,7 +1597,7 @@ public class SAVActivity extends AppCompatActivity {
 
                 headerNavigationLeft.addProfiles(item1);
 
-                if ((status.getLOGADO().equals("S")) && (us.getCOD().equals(status.getUSERLOG()))){
+                if ((status.getLOGADO().equals("S")) && (us.getCOD().equals(status.getUSERLOG()))) {
 
                     ativo = headerNavigationLeft.getProfiles().size() - 1;
 
@@ -1553,9 +1609,9 @@ public class SAVActivity extends AppCompatActivity {
 
             headerNavigationLeft.setActiveProfile(headerNavigationLeft.getProfiles().get(ativo));
 
-        } catch (Exception e){
+        } catch (Exception e) {
 
-            Toast.makeText(SAVActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+            Toast.makeText(SAVActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
 
 
         }
@@ -1564,20 +1620,20 @@ public class SAVActivity extends AppCompatActivity {
 
     private void addShortcut() {
 
-        Intent shortcutIntent = new Intent(getApplicationContext(),SAVActivity.class);
+        Intent shortcutIntent = new Intent(getApplicationContext(), SAVActivity.class);
 
         shortcutIntent.setAction(Intent.ACTION_MAIN);
 
         Intent addIntent = new Intent();
         addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
         addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "SAV 7.00");
-        addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,Intent.ShortcutIconResource.fromContext(getApplicationContext(),R.mipmap.ic_launcher));
+        addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(getApplicationContext(), R.mipmap.ic_launcher));
 
         addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
         getApplicationContext().sendBroadcast(addIntent);
     }
 
-    private void atalho(){
+    private void atalho() {
 
         Application application = this.getApplication();
         String appLabel = "SAV 7.00";
@@ -1597,11 +1653,11 @@ public class SAVActivity extends AppCompatActivity {
         shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         final Intent putShortCutIntent = new Intent();
-        putShortCutIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT,shortcutIntent);
+        putShortCutIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
 
         // Sets the custom shortcut's title
-        putShortCutIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME,appLabel);
-        putShortCutIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,Intent.ShortcutIconResource.fromContext(this,R.mipmap.ic_launcher));
+        putShortCutIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, appLabel);
+        putShortCutIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(this, R.mipmap.ic_launcher));
         putShortCutIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
         sendBroadcast(putShortCutIntent);
 
@@ -1609,7 +1665,7 @@ public class SAVActivity extends AppCompatActivity {
     }
 
     @Override
-    public void finish(){
+    public void finish() {
 
 //        if (serviceIntent != null){
 //
@@ -1621,8 +1677,6 @@ public class SAVActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
 
         super.finish();
-
-
 
 
     }
@@ -1729,7 +1783,6 @@ public class SAVActivity extends AppCompatActivity {
                     }
 
 
-
                 } catch (Exception e) {
 
                     Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -1780,7 +1833,7 @@ public class SAVActivity extends AppCompatActivity {
                         adicionaHeaderNavigation();
 
                         adicionaUsuarios();
-                        Log.i(TAG,"PONTO B");
+                        Log.i(TAG, "PONTO B");
                         if (status.getLOGADO().equals("S")) {
 
                             lbUsuario.setText(user.getNOME());
@@ -1820,11 +1873,11 @@ public class SAVActivity extends AppCompatActivity {
 
     }
 
-    public void UpdateVersion(){
+    public void UpdateVersion() {
 
         Intent intent = new Intent(SAVActivity.this, UpdateVersionActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle params = new Bundle();
-        params.putBoolean("isUpdate"   , false);
+        params.putBoolean("isUpdate", false);
         intent.putExtras(params);
         startActivityForResult(intent, HelpInformation.UpdateVersion);
 
@@ -1926,9 +1979,9 @@ public class SAVActivity extends AppCompatActivity {
 
         private Context context;
 
-        public defaultAdapter(Context context, int textViewResourceId, List<String[]> objects,String label) {
+        public defaultAdapter(Context context, int textViewResourceId, List<String[]> objects, String label) {
 
-            super(context, textViewResourceId,objects);
+            super(context, textViewResourceId, objects);
 
             this.lista = objects;
 
@@ -1938,10 +1991,10 @@ public class SAVActivity extends AppCompatActivity {
         }
 
 
-        public String getOpcao(int pos){
+        public String getOpcao(int pos) {
 
 
-            if ( (pos < this.lista.size() )){
+            if ((pos < this.lista.size())) {
 
 
                 return lista.get(pos)[1];
@@ -1951,6 +2004,7 @@ public class SAVActivity extends AppCompatActivity {
             return "";
 
         }
+
         public void setEscolha(int escolha) {
 
             this.escolha = escolha;
@@ -2008,11 +2062,11 @@ public class SAVActivity extends AppCompatActivity {
 
             View layout = inflater.inflate(R.layout.choice_default_row, parent, false);
 
-            TextView tvlabel   = (TextView) layout.findViewById(R.id.lbl_titulo_22);
+            TextView tvlabel = (TextView) layout.findViewById(R.id.lbl_titulo_22);
 
             tvlabel.setText(this.label);
 
-            if (this.label.isEmpty()){
+            if (this.label.isEmpty()) {
 
                 tvlabel.setVisibility(View.GONE);
 
@@ -2154,21 +2208,7 @@ public class SAVActivity extends AppCompatActivity {
 
     //Event Bus
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onReceiverNotification(NotificationCarga notificationCarga){
-
-
-        refresh();
-
-    }
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onReceiverNotification(NotificationSincronizacao notificationSincronizacao){
-
-
-        refresh();
-
-    }
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onReceiverNotification(NotificationPedido notificationPedido){
+    public void onReceiverNotification(NotificationCarga notificationCarga) {
 
 
         refresh();
@@ -2176,7 +2216,23 @@ public class SAVActivity extends AppCompatActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onReceiverNotification(NotificationConexao notificationConexao){
+    public void onReceiverNotification(NotificationSincronizacao notificationSincronizacao) {
+
+
+        refresh();
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiverNotification(NotificationPedido notificationPedido) {
+
+
+        refresh();
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiverNotification(NotificationConexao notificationConexao) {
 
         dashboard_frag.config = notificationConexao.getCONFIG();
 
@@ -2184,6 +2240,90 @@ public class SAVActivity extends AppCompatActivity {
 
         dashboard_frag.setarCabec();
 
+    }
+
+    public static void verifyAppPermissions(Activity activity) {
+
+        if ( Build.VERSION.SDK_INT < 23 ) {
+
+            return  ;
+
+        }
+
+        List<String> PERMISSIONS_APP = new ArrayList<>();
+
+        int writePermission         = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int readPermission          = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.READ_EXTERNAL_STORAGE);
+        int readPhoneState          = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.READ_PHONE_STATE);
+        int access_fine_location    = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
+        int access_coarse_location  = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        if (writePermission        != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (readPermission         != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (readPhoneState         != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.READ_PHONE_STATE);
+        if (access_fine_location   != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.ACCESS_FINE_LOCATION);
+        if (access_coarse_location != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.ACCESS_COARSE_LOCATION);
+
+
+        String[] parametros = PERMISSIONS_APP.toArray(new String[0]);
+
+        if (PERMISSIONS_APP.size() > 0){
+
+            ActivityCompat.requestPermissions(activity, parametros, HelpInformation.Help_PERMISSIONS_APP);
+
+        }
+
+    }
+
+    private class CriarPastaApp
+
+    {
+
+        public CriarPastaApp() {
+        }
+
+        private void VerificaEstruturaPastas() throws Exception {
+
+
+            App.Estrutura stru = new App.Estrutura();
+
+
+            try {
+
+                if (stru.isFirst()) {
+
+                /* Cria A Estrutura de diretorios */
+                    try {
+
+                        stru.CreateBaseStructure();
+
+                        Toast.makeText(SAVActivity.this, "EStrtutura de Pastas, Criada Com Sucesso!", Toast.LENGTH_SHORT).show();
+
+                    } catch (Exception e) {
+
+                        throw  new Exception("Não Foi Possível Criar As Pastas Do Sistema.");
+
+                    }
+
+                }
+
+            } catch (Exception e) {
+
+                throw new Exception(e.getMessage());
+
+            }
+
+            try {
+
+                App.OpenDbAp();
+
+            } catch (Exception e) {
+
+                throw new Exception(e.getMessage());
+
+            }
+
+        }
     }
 
 }

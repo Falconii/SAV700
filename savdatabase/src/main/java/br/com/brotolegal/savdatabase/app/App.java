@@ -42,7 +42,7 @@ public class App extends Application {
     private static Context context;
     public static DBAp dbap;
     public static DBUser dbuser;
-    public static String BasePath = Environment.getExternalStorageDirectory().getPath(); //"/mnt/sdcard/";
+    public static String BasePath =  Environment.getExternalStorageDirectory().getPath(); //"/mnt/sdcard/";
     public static String AppPath  = "Sav700";
     public static final String version;
     public static Usuario user;
@@ -174,33 +174,51 @@ public class App extends Application {
 
         precliente = new PreCliente();
 
-
         /* Verifica se existe a estrutura de pasta para aplicação */
 
-        try {
+//        try {
+//
+//            if (stru.isFirst()) {
+//
+//                /* Cria A Estrutura de diretorios */
+//                try {
+//
+//                    stru.CreateBaseStructure();
+//
+//                    Log.i(TAG, "Estrutura De Pastas Do Sistema Criada Com Socesso.");
+//
+//                } catch (Exception e) {
+//
+//                    Log.i(TAG,"Não Foi Possível Criar As Pastas Do Sistema.");
+//
+//                }
+//
+//            }
+//
+//        } catch (Exception e) {
+//
+//            Log.i(TAG,e.getMessage());
+//
+//        }
+//
+//        try {
+//
+//            dbap = DBAp.getInstance(context);
+//
+//            ItsOK = true;
+//
+//        } catch (Exception e){
+//
+//            Log.i(TAG,e.getMessage());
+//
+//        }
+    }
 
-            if (stru.isFirst()) {
+    public static Context getCustomAppContext(){
+        return context;
+    }
 
-                /* Cria A Estrutura de diretorios */
-                try {
-
-                    stru.CreateBaseStructure();
-
-                    Log.i(TAG, "Estrutura De Pastas Do Sistema Criada Com Socesso.");
-
-                } catch (Exception e) {
-
-                    Log.i(TAG,"Não Foi Possível Criar As Pastas Do Sistema.");
-
-                }
-
-            }
-
-        } catch (Exception e) {
-
-            Log.i(TAG,e.getMessage());
-
-        }
+    public static void OpenDbAp() throws  Exception{
 
         try {
 
@@ -210,13 +228,10 @@ public class App extends Application {
 
         } catch (Exception e){
 
-            Log.i(TAG,e.getMessage());
+            throw new  Exception(e.getMessage());
 
         }
-    }
 
-    public static Context getCustomAppContext(){
-        return context;
     }
 
     public Usuario getUser() {
@@ -385,6 +400,7 @@ public class App extends Application {
     }
 
     public static String SituacaoAgendamento(String sit){
+
         String retorno = "";
 
         if (sit !=  null && sit.equals("")) {
@@ -841,7 +857,7 @@ public class App extends Application {
     }
 
     //INNER CLASS
-    public class Estrutura {
+    public static class Estrutura {
 
 
         public Estrutura() {
@@ -884,7 +900,7 @@ public class App extends Application {
 
                     File dir = new File(path);
 
-                    if (!dir.mkdirs()) {
+                    if (!dir.mkdir()) {
 
                         throw new Exception("Erro Na Criação Do Diretório Da Aplicação.");
                     }

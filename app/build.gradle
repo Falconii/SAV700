@@ -1,19 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 27
     buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "br.com.brotolegal.sav700"
         minSdkVersion 19
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -37,9 +37,9 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.easing:library:1.0.1@aar'
     compile 'com.daimajia.androidanimations:library:1.1.3@aar'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:appcompat-v7:27.+'
+    compile 'com.android.support:support-v4:27.0.2'
+    compile 'com.android.support:design:27.+'
     compile 'com.google.android.gms:play-services-location:11.0.4'
     compile 'com.google.firebase:firebase-database:11.0.4'
     compile 'com.google.firebase:firebase-appindexing:11.0.4'
@@ -48,6 +48,7 @@ dependencies {
     compile files('libs/itextg-5.5.5.jar')
     compile files('libs/xmlworker-5.5.6.jar')
     compile 'org.greenrobot:eventbus:3.0.0'
+    //compile 'com.github.bumptech.glide:glide:3.7.0'
 
     //lib para viwer do PDF
     //compile 'com.github.barteksc:android-pdf-viewer:2.3.0'
@@ -55,20 +56,15 @@ dependencies {
 }
 
 dependencies {
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    //compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     compile 'com.android.support.constraint:constraint-layout:+'
-    compile 'com.github.thuat26:CustomGaugeView:1.0'
+    //compile 'com.github.thuat26:CustomGaugeView:1.0'
 }
 
 dependencies {
     compile 'com.android.support.constraint:constraint-layout:+'
 }
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
+
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:+'
 }

@@ -600,6 +600,16 @@ public class DashBoard_Frag extends Fragment {
 
     public void loadPedidosEmAberto(){
 
+        if (App.user == null || App.user.getCOD().trim().isEmpty()){
+
+            lsPedidos    = new ArrayList<>();
+
+            lsPedidos.add("cabec");
+
+            return;
+
+        }
+
 
         try {
 
@@ -676,6 +686,17 @@ public class DashBoard_Frag extends Fragment {
     }
 
     public void loadClientes(){
+
+
+        if (App.user == null || App.user.getCOD().trim().isEmpty()){
+
+            lsClientes    = new ArrayList<>();
+
+            lsClientes.add("cabec");
+
+            return;
+
+        }
 
 
         try {

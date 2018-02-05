@@ -19,6 +19,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera" />
     />
     <application
@@ -277,6 +279,26 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Cadastro Pré-Cliente"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreClienteComercialActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Comercial"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreClienteLogisticaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Logística"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreClienteDocumentosActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Documentos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChooseDialogActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Escolha Os Documentos"
+            android:screenOrientation="portrait" />
 
         <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>
@@ -316,12 +338,7 @@
             android:name=".VerificaWeb.TestePreClienteActivity"
             android:label="@string/title_activity_teste_pre_cliente"
             android:theme="@style/AppTheme" />
-        <activity android:name=".PreClienteComercialActivity" />
-        <activity android:name=".PreClienteLogisticaActivity" />
-        <activity
-            android:name=".PreClienteDocumentosActivity"
-            android:label="@string/title_activity_pre_cliente_documentos"
-            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".ChooseFileDialogActivity"></activity>
     </application>
 
 </manifest>

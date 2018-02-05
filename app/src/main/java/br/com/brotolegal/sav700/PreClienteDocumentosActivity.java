@@ -79,7 +79,7 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
         try {
             toolbar = (Toolbar) findViewById(R.id.tb_precliente_documentos);
             toolbar.setTitle(getResources().getString(R.string.app_razao));
-            toolbar.setSubtitle("Pré-Clientes");
+            toolbar.setSubtitle("Documentos");
             toolbar.setLogo(R.mipmap.ic_launcher);
 
             setSupportActionBar(toolbar);
@@ -127,6 +127,14 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
+                    Intent intent = new Intent(PreClienteDocumentosActivity.this,ChooseFileDialogActivity.class);
+                    Bundle params = new Bundle();
+                    params.putString("CODCLIENTE", "");
+                    params.putString("OPERACAO"  , "NOVO");
+                    intent.putExtras(params);
+                    startActivity(intent);
+
+                    // Pega as fotos do tablet
 //                    Intent intent = new Intent();
 //                    intent.setType("image/*");
 //                    intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -134,52 +142,52 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
 
                     //Busca foto da camera
                     //Busca O Diretóriodo do usuario
-                String path = App.PathDB+"/"+App.user.getCOD();
+//                String path = App.PathDB+"/"+App.user.getCOD();
 
                  //Verifica a existencia do diretorio
 
-                File dir = new File(path);
-
-                if ( !dir.exists()){
-
-                    if (!dir.mkdirs()) {
-
-                        toast("Falha Na Criação do Diretorio");
-
-                        return;
-
-                    }
-
-                }
-
-                toast(path);
-
-
-                String file = path+"/"+"foto.jpg";
-
-                File newfile = new File(file);
-
-                try {
-
-                    if (newfile.exists()){
-
-                        newfile.delete();
-
-                    }
-
-                    newfile.createNewFile();
-                }
-                catch (IOException e)
-                {
-                }
-
-                Uri outputFileUri = Uri.fromFile(newfile);
-
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-
-                startActivityForResult(cameraIntent, HelpInformation.Help_TAKE_PHOTO_CODE);
+//                File dir = new File(path);
+//
+//                if ( !dir.exists()){
+//
+//                    if (!dir.mkdirs()) {
+//
+//                        toast("Falha Na Criação do Diretorio");
+//
+//                        return;
+//
+//                    }
+//
+//                }
+//
+//                toast(path);
+//
+//
+//                String file = path+"/"+"foto.jpg";
+//
+//                File newfile = new File(file);
+//
+//                try {
+//
+//                    if (newfile.exists()){
+//
+//                        newfile.delete();
+//
+//                    }
+//
+//                    newfile.createNewFile();
+//                }
+//                catch (IOException e)
+//                {
+//                }
+//
+//                Uri outputFileUri = Uri.fromFile(newfile);
+//
+//                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//
+//                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
+//
+//                startActivityForResult(cameraIntent, HelpInformation.Help_TAKE_PHOTO_CODE);
                 }
             });
 
