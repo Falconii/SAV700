@@ -601,7 +601,7 @@ public class Planejamento_Frag extends Fragment {
 
                         final Cliente_fast obj = (Cliente_fast) lsObjetos.get(pos);
 
-                        ImageButton bt_cadastro    = (ImageButton) convertView.findViewById(R.id.bt_enviar_111);
+                        ImageButton bt_cadastro    = (ImageButton) convertView.findViewById(R.id.bt_file_408);
 
                         ImageButton bt_alteracao = (ImageButton) convertView.findViewById(R.id.bt_alteracao_400);
 

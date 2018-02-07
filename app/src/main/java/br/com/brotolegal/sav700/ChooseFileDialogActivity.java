@@ -56,9 +56,19 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_file_dialog);
 
-        STORAGE = "/storage";
+        lv = findViewById(R.id.lv_Arquivos_492);
 
-        ROOT    = STORAGE;
+
+        meMap.put(".jpg",R.drawable.file_jpg_48);
+        meMap.put(".jpeg",R.drawable.file_jpg_48);
+        meMap.put(".mp4",R.drawable.file_jpg_48);
+        meMap.put(".txt",R.drawable.file_txt_48);
+        meMap.put(".doc",R.drawable.file_txt_48);
+        meMap.put(".png",R.drawable.file_png_48);
+        meMap.put(".pdf",R.drawable.file_pdf_48);
+        meMap.put(".***",R.drawable.generic_file_48);
+
+        ROOT    =  App.BasePath;
 
         getDir(ROOT);
     }
@@ -75,62 +85,72 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
         lsLista = new ArrayList<>();
 
-        if(!dirPath.equals(ROOT))
-        {
-            lsLista.add(new objFile("RAIZ",f));
+        if (dirPath.equals(ROOT)) {
+            lsLista.add(new objFile("D", "RAIZ", f));
             item.add(ROOT);
             path.add(ROOT);
             item.add("../");
             path.add(f.getParent());
-        }
+        } else {
+
+            item.add(ROOT);
+            path.add(ROOT);
+            item.add("../");
+            path.add(f.getParent());
+
+            for(int i=0; i < files.length; i++)
+            {
+                file = files[i];
+                String FileName = file.getName();
+                if (FileName.equals("emulated")) {
+                    continue;
+                }
+
+                if (FileName.equals("sdcard0")) {
+
+                    FileName = "Aparelho";
+
+                    File dir = new File(file.getPath()+"/SAV800");
+
+                    try {
+
+                        if (!dir.mkdir()) {
+
+                            throw new Exception("Erro Na Criação Do Diretório Da Aplicação.");
+                        }
 
 
-        for(int i=0; i < files.length; i++)
-        {
-            file = files[i];
-            String FileName = file.getName();
-            if (FileName.equals("emulated")) {
-                continue;
-            }
+                    } catch (Exception e) {
 
-            if (FileName.equals("sdcard0")) {
+                        toast(e.getMessage());
 
-                FileName = "Aparelho";
-
-                File dir = new File(file.getPath()+"/SAV800");
-
-                try {
-
-                    if (!dir.mkdir()) {
-
-                        throw new Exception("Erro Na Criação Do Diretório Da Aplicação.");
                     }
 
 
-                } catch (Exception e) {
-
-                    toast(e.getMessage());
-
                 }
 
+                if (FileName.equals("extSdCard")) {
+                    FileName = "Cartão De Memória";
+                }
 
-            }
+                lsLista.add(new objFile("F",FileName,file));
 
-            if (FileName.equals("extSdCard")) {
-                FileName = "Cartão De Memória";
-            }
+                if(!file.isHidden() && file.canRead()){
 
-            lsLista.add(new objFile(FileName,file));
+                    if(file.isDirectory()){
 
-            if(!file.isHidden() && file.canRead()){
+                        ((objFile) lsLista.get(lsLista.size()-1)).setDescricao(FileName + "...");
 
-                if(file.isDirectory()){
-
-                    ((objFile) lsLista.get(lsLista.size()-1)).setDescricao(FileName + "...");
-
+                    }
                 }
             }
         }
+
+        adapter = new Adapter(this,lsLista);
+
+        lv.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
 
     }
 
@@ -173,7 +193,7 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
             for (Object obj : lsObjetos) {
 
-                if (obj instanceof Cliente_fast) {
+                if (obj instanceof objFile) {
 
                     qtd = qtd + 1;
 
@@ -181,7 +201,7 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
             }
 
-            retorno = "Total de Documentos: " + String.valueOf(qtd);
+            retorno = "Total de Arquivos: " + String.valueOf(qtd);
 
             return retorno;
         }
@@ -213,13 +233,12 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
             int retorno = -1;
 
-
             if (lsObjetos.get(position) instanceof String) {
 
                 retorno = ITEM_VIEW_CABEC;
             }
 
-            if (lsObjetos.get(position) instanceof Cliente_fast) {
+            if (lsObjetos.get(position) instanceof objFile) {
 
                 retorno = ITEM_VIEW_DETALHE;
 
@@ -267,7 +286,7 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
                         case ITEM_VIEW_DETALHE:
 
-                            convertView = inflater.inflate(R.layout.cliat_row, null);
+                            convertView = inflater.inflate(R.layout.doc_file, null);
 
                             break;
 
@@ -295,7 +314,23 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
                     case ITEM_VIEW_DETALHE: {
 
-                        final Cliente_fast obj = (Cliente_fast) lsObjetos.get(pos);
+                        final objFile obj = (objFile) lsObjetos.get(pos);
+
+                        ImageButton bt_file_408 = (ImageButton) convertView.findViewById(R.id.bt_file_408);
+
+                        TextView txt_descricao_408 = (TextView) convertView.findViewById(R.id.txt_descricao_408);
+
+                        if (obj.getTipo().equals("D")){
+
+                            bt_file_408.setImageResource(R.drawable.folder_arancio_48);
+
+                        } else {
+
+                            bt_file_408.setImageResource(R.drawable.folder_arancio_48);
+
+                        }
+
+                        txt_descricao_408.setText(obj.getDescricao());
 
                         break;
 
@@ -337,14 +372,24 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
     }
 
-    private class objFile{
+    private class objFile {
 
+        private String tipo;
         private String descricao;
-        private File   file;
+        private File file;
 
-        public objFile(String descricao, File file) {
+        public objFile(String tipo, String descricao, File file) {
+            this.tipo = tipo;
             this.descricao = descricao;
             this.file = file;
+        }
+
+        public String getTipo() {
+            return tipo;
+        }
+
+        public void setTipo(String tipo) {
+            this.tipo = tipo;
         }
 
         public String getDescricao() {
@@ -361,6 +406,39 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
         public void setFile(File file) {
             this.file = file;
+        }
+
+        public String get_Tipo(){
+
+            String retorno = "";
+            if (this.tipo.isEmpty()){
+
+                return "";
+
+            }
+
+            switch (this.tipo.charAt(0)){
+
+                case 'D':
+
+                    retorno = "PASTA";
+
+                    break;
+
+                case 'F':
+
+                    retorno = "ARQUIVO";
+
+                    break;
+
+                default:
+
+                    retorno = "";
+
+            }
+
+            return retorno;
+
         }
     }
 }

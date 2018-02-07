@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_precliente_489"
+            android:id="@+id/tb_arquivos_492"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -40,11 +40,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/appbar"
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/lvPreCliente_489"
+                android:id="@+id/lv_Arquivos_492"
                 android:layout_width ="fill_parent"
                 android:layout_height="fill_parent"
                 >

@@ -13,7 +13,7 @@
 
 
 		<TableLayout
-			android:id="@+id/table_402"
+			android:id="@+id/table_403"
 			android:layout_marginLeft="50sp"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
 
 
 				<TextView
-					android:id="@+id/txt_cliente_402"
+					android:id="@+id/txt_descricao_408"
 					android:layout_width="fill_parent"
 					android:layout_span="02"
 					android:paddingLeft="05sp"
@@ -50,7 +50,7 @@
 			<TableRow>
 
 				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-					android:id="@+id/cabec_402"
+					android:id="@+id/cabec_403"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="3sp"
@@ -58,67 +58,33 @@
 					android:layout_marginRight="5sp"
 					android:paddingTop="10sp"
 					android:layout_span="02"
-					android:gravity="left|center_vertical"
-
+					android:gravity="center_horizontal"
+					android:weightSum="10"
 					>
 
 
 					<ImageView
-						android:id="@+id/flag_amarela_402"
-						android:layout_width="wrap_content"
+						android:id="@+id/flag_default_403"
+						android:layout_width="0sp"
 						android:layout_height="30sp"
 						android:src="@drawable/ic_action_flag_amarela"
 						android:adjustViewBounds="true"
-						/>
+						android:layout_weight="1"/>
 
 					<TextView
-						android:id="@+id/txt_amarela_402"
-						android:layout_width="wrap_content"
+						android:id="@+id/txt_default_403"
+						android:layout_width="0sp"
 						android:layout_height="30sp"
 						android:text="100,00"
 						android:gravity="center_vertical|left"
 						android:layout_gravity="center"
 						android:textSize="14sp"
 						android:textColor="@color/black"
-						/>
-
-					<ImageView
-						android:id="@+id/flag_vermelha_402"
-						android:layout_width="wrap_content"
-						android:layout_height="30sp"
-						android:src="@drawable/ic_action_flag_vermelha"
-						android:adjustViewBounds="true"
-						/>
-
-					<TextView
-						android:id="@+id/txt_vermelha_402"
-						android:layout_width="wrap_content"
-						android:layout_height="30sp"
-						android:text="100,00"
-						android:gravity="center_vertical|left"
-						android:layout_gravity="center"
-						android:textSize="14sp"
-						android:textColor="@color/black"
-						/>
-
-					<ImageView
-						android:id="@+id/flag_preta_402"
-						android:layout_width="wrap_content"
-						android:layout_height="30sp"
-						android:src="@drawable/ic_action_flag_preta"
-						android:adjustViewBounds="true"
-						/>
-
-					<TextView
-						android:id="@+id/txt_preta_402"
-						android:layout_width="wrap_content"
-						android:layout_height="30sp"
-						android:text="100,00"
-						android:gravity="center_vertical|left"
-						android:layout_gravity="center"
-						android:textSize="14sp"
-						android:textColor="@color/black"
-						/>
+						android:layout_weight="9"
+						android:ellipsize="end"
+						android:scrollHorizontally = "true"
+						android:minLines = "2"
+						android:maxLines = "2"/>
 
 				</LinearLayout>
 
@@ -135,14 +101,7 @@
 		android:layout_height="wrap_content"
 		android:id="@+id/bt_file_408"
 		android:src="@drawable/cliente_30"
-		/>
-
-	<ImageButton
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:id="@+id/bt_pedidos_402"
-		android:layout_below="@+id/bt_file_408"
-		android:src="@drawable/pedido_30"
+		android:layout_marginTop="20sp"
 		/>
 
 

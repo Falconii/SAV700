@@ -599,7 +599,7 @@ public class Pedidos_Tablet_Frag extends Fragment {
                         final Cliente_fast obj = (Cliente_fast) lsObjetos.get(pos);
 
 
-                        ImageButton bt_cadastro   = (ImageButton) convertView.findViewById(R.id.bt_enviar_111);
+                        ImageButton bt_cadastro   = (ImageButton) convertView.findViewById(R.id.bt_file_408);
 
                         ImageButton bt_contrato   = (ImageButton) convertView.findViewById(R.id.bt_contrato_400);
 

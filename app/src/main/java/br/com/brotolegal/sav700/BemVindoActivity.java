@@ -1235,6 +1235,8 @@ public class BemVindoActivity extends AppCompatActivity {
 
                 } else {
 
+                    Toast.makeText(getApplicationContext(),cerro + "-" + cmsgerro,Toast.LENGTH_SHORT).show();
+
                     throw new Exception(cerro + "-" + cmsgerro);
                 }
             } catch (Exception e){

@@ -1,8 +1,6 @@
 package br.com.brotolegal.sav700;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
@@ -89,10 +87,10 @@ import static br.com.brotolegal.savdatabase.app.App.user;
 
 public class SAVActivity extends AppCompatActivity {
 
-    public static final int FIRST_LOGIN = 1; //Primeiro Login No Sistema
-    public static final int NEW_USER = 2; //Troca de Usuário
-    public static final int TRANSMISSAO = 3; //Transmissao de Pedidos
-    public static final int CARGA = 4; //CARGA
+    public static final int FIRST_LOGIN   = 1; //Primeiro Login No Sistema
+    public static final int NEW_USER      = 2; //Troca de Usuário
+    public static final int TRANSMISSAO   = 3; //Transmissao de Pedidos
+    public static final int CARGA         = 4; //CARGA
     public static final int SINCRONIZACAO = 5; //SINCRONIZACAO
 
 
@@ -166,7 +164,12 @@ public class SAVActivity extends AppCompatActivity {
 
         try {
 
-            abertura();
+
+            if (App.verifyAppPermissions(SAVActivity.this)) {
+
+                abertura();
+
+            }
 
         } catch (Exception e) {
 
@@ -179,7 +182,6 @@ public class SAVActivity extends AppCompatActivity {
 
     private void abertura() throws Exception {
 
-        verifyAppPermissions(SAVActivity.this);
 
         try {
 
@@ -738,6 +740,9 @@ public class SAVActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         switch (requestCode) {
             case HelpInformation.Help_PERMISSIONS_APP: {
@@ -2242,38 +2247,7 @@ public class SAVActivity extends AppCompatActivity {
 
     }
 
-    public static void verifyAppPermissions(Activity activity) {
 
-        if ( Build.VERSION.SDK_INT < 23 ) {
-
-            return  ;
-
-        }
-
-        List<String> PERMISSIONS_APP = new ArrayList<>();
-
-        int writePermission         = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int readPermission          = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.READ_EXTERNAL_STORAGE);
-        int readPhoneState          = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.READ_PHONE_STATE);
-        int access_fine_location    = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
-        int access_coarse_location  = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION);
-
-        if (writePermission        != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (readPermission         != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.READ_EXTERNAL_STORAGE);
-        if (readPhoneState         != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.READ_PHONE_STATE);
-        if (access_fine_location   != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.ACCESS_FINE_LOCATION);
-        if (access_coarse_location != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.ACCESS_COARSE_LOCATION);
-
-
-        String[] parametros = PERMISSIONS_APP.toArray(new String[0]);
-
-        if (PERMISSIONS_APP.size() > 0){
-
-            ActivityCompat.requestPermissions(activity, parametros, HelpInformation.Help_PERMISSIONS_APP);
-
-        }
-
-    }
 
     private class CriarPastaApp
 

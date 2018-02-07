@@ -32,7 +32,6 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.ksoap2.serialization.SoapObject;
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -51,7 +50,6 @@ import br.com.brotolegal.savdatabase.config.HelpInformation;
 import br.com.brotolegal.savdatabase.dao.AgendamentoDAO;
 import br.com.brotolegal.savdatabase.dao.ClienteDAO;
 import br.com.brotolegal.savdatabase.dao.ConfigDAO;
-import br.com.brotolegal.savdatabase.dao.NotificacaoDAO;
 import br.com.brotolegal.savdatabase.dao.PedCabTvsDAO;
 import br.com.brotolegal.savdatabase.dao.PreAcordoDAO;
 import br.com.brotolegal.savdatabase.dao.StatusDAO;
@@ -1230,7 +1228,7 @@ public class DashBoard_Frag extends Fragment {
 
                         final Cliente_fast obj = (Cliente_fast) lsObjetos.get(pos);
 
-                        ImageButton bt_cadastro = (ImageButton) convertView.findViewById(R.id.bt_enviar_111);
+                        ImageButton bt_cadastro = (ImageButton) convertView.findViewById(R.id.bt_file_408);
 
                         ImageButton bt_pedidos = (ImageButton) convertView.findViewById(R.id.bt_pedidos_402);
 
@@ -1322,7 +1320,7 @@ public class DashBoard_Frag extends Fragment {
 
                         final ResumoAgendamento obj = (ResumoAgendamento) lsObjetos.get(pos);
 
-                        ImageButton bt_enviar_111 = (ImageButton)convertView.findViewById(R.id.bt_enviar_111);
+                        ImageButton bt_enviar_111 = (ImageButton)convertView.findViewById(R.id.bt_file_408);
 
                         TextView txt_agendamentos_111 = (TextView) convertView.findViewById(R.id.txt_agendamentos_111);
 
@@ -1761,7 +1759,7 @@ public class DashBoard_Frag extends Fragment {
 
                         final PedCabTvs obj = (PedCabTvs) lsObjetos.get(pos);
 
-                        ImageButton bt_cadastro = (ImageButton) convertView.findViewById(R.id.bt_enviar_111);
+                        ImageButton bt_cadastro = (ImageButton) convertView.findViewById(R.id.bt_file_408);
 
                         ImageButton bt_pedidos = (ImageButton) convertView.findViewById(R.id.bt_pedidos_403);
                         ImageView flag_default_403  = (ImageView) convertView.findViewById(R.id.flag_default_403);

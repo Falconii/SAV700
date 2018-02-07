@@ -1,18 +1,24 @@
 package br.com.brotolegal.savdatabase.app;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import br.com.brotolegal.savdatabase.config.HelpInformation;
 import br.com.brotolegal.savdatabase.dao.ClienteDAO;
@@ -146,6 +152,32 @@ public class App extends Application {
                     retorno = "Android 5.1 Lollipop";
 
                     break;
+                case 23:
+
+                    retorno = "Android 6.0 Marshmallow";
+
+                    break;
+                case 24:
+
+                    retorno = "Android 7.0 Nougat";
+
+                    break;
+                case 25:
+
+                    retorno = "Android 7.1 Nougat";
+
+                    break;
+                case 26:
+
+                    retorno = "Android 8.0 Oreo";
+
+                    break;
+                case 27:
+
+                    retorno = "Android 8.1 Oreo";
+
+                    break;
+
                 default:
                     break;
             }
@@ -785,7 +817,6 @@ public class App extends Application {
 
     }
 
-
     public static String diferencaDatas(String DataInicial,String DataFinal){
 
         String retorno = " sem registro ";
@@ -853,6 +884,44 @@ public class App extends Application {
 
 
         return retorno;
+
+    }
+
+    public static Boolean verifyAppPermissions(Activity activity) {
+
+        if ( Build.VERSION.SDK_INT < 23 ) {
+
+            return  true;
+
+        }
+
+        List<String> PERMISSIONS_APP = new ArrayList<>();
+
+        int writePermission         = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int readPermission          = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.READ_EXTERNAL_STORAGE);
+        int readPhoneState          = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.READ_PHONE_STATE);
+        int access_fine_location    = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
+        int access_coarse_location  = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        if (writePermission        != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (readPermission         != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (readPhoneState         != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.READ_PHONE_STATE);
+        if (access_fine_location   != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.ACCESS_FINE_LOCATION);
+        if (access_coarse_location != PackageManager.PERMISSION_GRANTED) PERMISSIONS_APP.add( android.Manifest.permission.ACCESS_COARSE_LOCATION);
+
+
+        String[] parametros = PERMISSIONS_APP.toArray(new String[0]);
+
+        if (PERMISSIONS_APP.size() > 0){
+
+            ActivityCompat.requestPermissions(activity, parametros, HelpInformation.Help_PERMISSIONS_APP);
+
+            return false;
+
+        } else {
+
+            return true;
+        }
 
     }
 
