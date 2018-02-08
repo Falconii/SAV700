@@ -29,6 +29,7 @@ public final class HelpInformation {
 	public static final int Help_PERMISSAO_WRITE       = 25;
 	public static final int Help_READ_PHONE_STATE      = 26;
 	public static final int Help_PERMISSIONS_APP  	   = 27;
+	public static final int Help_ChooseFile      	   = 28;
 
 
 

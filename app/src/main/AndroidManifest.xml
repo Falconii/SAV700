@@ -275,11 +275,6 @@
             android:label="Cadastro Pré-Cliente"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PreClienteCadastroActiviy"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="Cadastro Pré-Cliente"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".PreClienteComercialActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Comercial"

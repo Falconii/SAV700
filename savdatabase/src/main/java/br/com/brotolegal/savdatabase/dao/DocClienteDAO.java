@@ -17,7 +17,7 @@ public class DocClienteDAO extends DAO2 implements IDao2<DocCliente> {
 
     private final String TAG = "DOCCLIENTE";
 
-    private String whereClausePrimary = " codigo = ?  and controle = ? ";
+    private String whereClausePrimary = " codigo = ?  and patch = ? ";
 
     public DocClienteDAO() throws Exception {
 
@@ -40,7 +40,7 @@ public class DocClienteDAO extends DAO2 implements IDao2<DocCliente> {
 
             if (insertId != -1){
 
-                cursor = getDataBase().query(obj.getFileName(), obj.getColumn(),whereClausePrimary,new String[] {obj.getCODIGO(),obj.getCONTROLE().toString()},null, null, null);
+                cursor = getDataBase().query(obj.getFileName(), obj.getColumn(),whereClausePrimary,new String[] {obj.getCODIGO(),obj.getPATCH()},null, null, null);
 
                 cursor.moveToFirst();
 
@@ -94,7 +94,7 @@ public class DocClienteDAO extends DAO2 implements IDao2<DocCliente> {
 
             ContentValues values = getContentValues(obj);
 
-            retorno = getDataBase().update(getRegistro().getFileName(), values, whereClausePrimary, new String[] {obj.getCODIGO(),obj.getCONTROLE().toString()});
+            retorno = getDataBase().update(getRegistro().getFileName(), values, whereClausePrimary, new String[] {obj.getCODIGO(),obj.getPATCH()});
 
         } catch (Exception e){
 
@@ -114,11 +114,12 @@ public class DocClienteDAO extends DAO2 implements IDao2<DocCliente> {
             obj = new DocCliente(
 
                     cursor.getString(0),
-                    cursor.getInt(1),
+                    cursor.getString(1),
                     cursor.getString(2),
                     cursor.getString(3),
                     cursor.getString(4),
                     cursor.getString(5)
+
 
 
                     );

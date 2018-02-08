@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,7 +47,7 @@ public class PreClienteLogisticaActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-            toolbar.inflateMenu(R.menu.menu_precliente);
+            toolbar.inflateMenu(R.menu.menu_precliente_02);
 
             Intent i = getIntent();
 
@@ -81,6 +83,75 @@ public class PreClienteLogisticaActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_precliente_02, menu);
+
+        MenuItem iGravar   = menu.findItem(R.id.action_precliente_gravar);
+        MenuItem iCancelar = menu.findItem(R.id.action_precliente_cancelar);
+        MenuItem iVoltar   = menu.findItem(R.id.action_precliente_voltar);
+
+        if (OPERACAO.equals("NOVO")) {
+
+            iVoltar.setVisible(false);
+
+        }
+
+        if (OPERACAO.equals("ALTERACAO")) {
+
+            iVoltar.setVisible(false);
+
+        }
+
+        if (OPERACAO.equals("CONSULTA")) {
+
+            iGravar.setVisible(false);
+            iCancelar.setVisible(false);
+
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+
+                finish();
+
+                break;
+
+            case R.id.action_precliente_gravar:
+
+                finish();
+
+                break;
+
+            case R.id.action_precliente_cancelar:
+
+                finish();
+
+                break;
+
+            case R.id.action_precliente_voltar:
+
+                finish();
+
+                break;
+
+            default:
+
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     private void toast(String Mensagem){
 
 
@@ -98,8 +169,8 @@ public class PreClienteLogisticaActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(PreClienteLogisticaActivity.this, PreClienteComercialActivity.class);
                 Bundle params = new Bundle();
-                params.putString("CODCLIENTE", "");
-                params.putString("OPERACAO"  , "DIGITANDO");
+                params.putString("CODCLIENTE", CODCLIENTE);
+                params.putString("OPERACAO"  , OPERACAO);
                 intent.putExtras(params);
                 startActivity(intent);
                 finish();
@@ -115,8 +186,8 @@ public class PreClienteLogisticaActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(PreClienteLogisticaActivity.this,PreClienteDocumentosActivity.class);
                 Bundle params = new Bundle();
-                params.putString("CODCLIENTE", "");
-                params.putString("OPERACAO"  , "DIGITANDO");
+                params.putString("CODCLIENTE", CODCLIENTE);
+                params.putString("OPERACAO"  , OPERACAO);
                 intent.putExtras(params);
                 startActivity(intent);
                 finish();

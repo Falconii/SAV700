@@ -2,8 +2,6 @@ package br.com.brotolegal.sav700.VerificaWeb;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -33,18 +31,14 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import br.com.brotolegal.sav700.PreClienteCadastroActiviy;
 import br.com.brotolegal.sav700.R;
 import br.com.brotolegal.savdatabase.app.App;
 import br.com.brotolegal.savdatabase.config.Mask;
-import br.com.brotolegal.savdatabase.dao.ClienteDAO;
 import br.com.brotolegal.savdatabase.dao.PreClienteDAO;
 import br.com.brotolegal.savdatabase.database.ObjRegister;
-import br.com.brotolegal.savdatabase.entities.Cliente_fast;
 import br.com.brotolegal.savdatabase.entities.PreCliente;
 
 public class TestePreClienteActivity extends AppCompatActivity {

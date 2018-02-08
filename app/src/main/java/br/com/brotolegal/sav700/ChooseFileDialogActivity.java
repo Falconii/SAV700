@@ -2,51 +2,46 @@ package br.com.brotolegal.sav700;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
-import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import br.com.brotolegal.savdatabase.app.App;
-import br.com.brotolegal.savdatabase.entities.Cliente_fast;
 import br.com.brotolegal.savdatabase.entities.NoData;
-import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionValidadeAgendamentoAtrasado;
-import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionValidadeTabelaPreco;
 
 public class ChooseFileDialogActivity extends AppCompatActivity {
 
-    Toolbar   toolbar;
+    private Toolbar     toolbar;
 
-    ListView  lv;
+    private ListView     lv;
 
-    List<Object> lsLista;
+    private List<Object> lsLista;
 
-    Adapter adapter;
+    private Adapter      adapter;
 
     private String       ROOT;
+
+    private String       PATCH;
+
+    private String       NAME;
+
+    private int          Result = -1;
 
 
     @Override
@@ -54,12 +49,107 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_file_dialog);
 
+        toolbar = findViewById(R.id.tb_arquivos_492);
+
+        toolbar.setTitle(getResources().getString(R.string.app_razao));
+        toolbar.setSubtitle("Escolha Um Arquivo");
+        toolbar.setLogo(R.mipmap.ic_launcher);
+        setSupportActionBar(toolbar);
+
+        toolbar.inflateMenu(R.menu.menu_choosefiledialog);
+
+
+        try {
+
+//            Intent i = getIntent();
+//
+//            if (i != null) {
+//
+//                Bundle params = i.getExtras();
+//
+//
+//            }
+
+        } catch (Exception e) {
+
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+
+            finish();
+
+        }
+
+
         lv = findViewById(R.id.lv_Arquivos_492);
 
         ROOT    =  "storage";
 
         getDir(ROOT);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_choosefiledialog, menu);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+
+                finish();
+
+                break;
+
+            case R.id.action_chooseFileDialog_voltar: {
+
+                finish();
+
+                break;
+
+            }
+
+
+            default:
+
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void finish() {
+
+        lsLista = new ArrayList<>();
+
+        if (Result == 1) {
+
+            Intent data = new Intent();
+
+            data.putExtra("PATCH", PATCH);
+
+            data.putExtra("NAME", NAME);
+
+            setResult(Result, data);
+
+        } else {
+
+            Intent data = new Intent();
+
+            setResult(Result, data);
+
+        }
+        super.finish();
+    }
+
+
 
     private void getDir(String dirPath)
     {
@@ -112,7 +202,6 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
     }
-
 
     private void toast(String mensagem){
 
@@ -363,10 +452,18 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
                             bt_anexar_408.setVisibility(View.VISIBLE);
 
                             bt_anexar_408.setOnClickListener(new View.OnClickListener() {
+
                                 @Override
                                 public void onClick(View view) {
 
+                                    PATCH = obj.getFile().getPath();
 
+                                    NAME  = obj.getFile().getName();
+
+                                    Result = 1;
+
+
+                                    finish();
 
                                 }
                             });

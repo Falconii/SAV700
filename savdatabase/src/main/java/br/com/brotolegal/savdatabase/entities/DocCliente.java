@@ -16,9 +16,9 @@ import br.com.brotolegal.savdatabase.database.ObjRegister;
 public class DocCliente extends ObjRegister {
 
     protected String CODIGO;
-    protected Integer CONTROLE;
+    protected String PATCH;
     protected String DESCRICAO;
-    protected String CAMINHO;
+    protected String NOME;
     protected String STATUS;
     protected String TIPO;
 
@@ -37,7 +37,7 @@ public class DocCliente extends ObjRegister {
         InicializaFields();
     }
 
-    public DocCliente(String CODIGO, Integer CONTROLE, String DESCRICAO, String CAMINHO, String STATUS, String TIPO) {
+    public DocCliente(String CODIGO, String PATCH, String DESCRICAO, String NOME, String STATUS, String TIPO) {
 
         super(_OBJETO,"DOCCLIENTE");
 
@@ -46,9 +46,9 @@ public class DocCliente extends ObjRegister {
         InicializaFields();
 
         this.CODIGO = CODIGO;
-        this.CONTROLE = CONTROLE;
+        this.PATCH = PATCH;
         this.DESCRICAO = DESCRICAO;
-        this.CAMINHO = CAMINHO;
+        this.NOME = NOME;
         this.STATUS = STATUS;
         this.TIPO = TIPO;
     }
@@ -61,12 +61,12 @@ public class DocCliente extends ObjRegister {
         this.CODIGO = CODIGO;
     }
 
-    public Integer getCONTROLE() {
-        return CONTROLE;
+    public String getPATCH() {
+        return PATCH;
     }
 
-    public void setCONTROLE(Integer CONTROLE) {
-        this.CONTROLE = CONTROLE;
+    public void setPATCH(String PATCH) {
+        this.PATCH = PATCH;
     }
 
     public String getDESCRICAO() {
@@ -77,12 +77,12 @@ public class DocCliente extends ObjRegister {
         this.DESCRICAO = DESCRICAO;
     }
 
-    public String getCAMINHO() {
-        return CAMINHO;
+    public String getNOME() {
+        return NOME;
     }
 
-    public void setCAMINHO(String CAMINHO) {
-        this.CAMINHO = CAMINHO;
+    public void setNOME(String NOME) {
+        this.NOME = NOME;
     }
 
     public String getSTATUS() {
@@ -105,12 +105,14 @@ public class DocCliente extends ObjRegister {
     public void loadColunas() {
 
         _colunas = new ArrayList<String>();
+
         _colunas.add("CODIGO");
-        _colunas.add("CONTROLE");
+        _colunas.add("PATCH");
         _colunas.add("DESCRICAO");
-        _colunas.add("CAMINHO");
+        _colunas.add("NOME");
         _colunas.add("STATUS");
         _colunas.add("TIPO");
+
 
     }
 }

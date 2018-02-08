@@ -8,17 +8,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -32,20 +27,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import br.com.brotolegal.savdatabase.app.App;
 import br.com.brotolegal.savdatabase.config.HelpInformation;
-import br.com.brotolegal.savdatabase.dao.DAO;
 import br.com.brotolegal.savdatabase.dao.DocClienteDAO;
-import br.com.brotolegal.savdatabase.dao.PreClienteDAO;
 import br.com.brotolegal.savdatabase.entities.DocCliente;
 import br.com.brotolegal.savdatabase.entities.NoData;
 import br.com.brotolegal.savdatabase.entities.PreCliente;
+import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionItemProduto;
 
 public class PreClienteDocumentosActivity extends AppCompatActivity {
 
@@ -129,10 +121,8 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(PreClienteDocumentosActivity.this,ChooseFileDialogActivity.class);
                     Bundle params = new Bundle();
-                    params.putString("CODCLIENTE", "");
-                    params.putString("OPERACAO"  , "NOVO");
                     intent.putExtras(params);
-                    startActivity(intent);
+                    startActivityForResult(intent,HelpInformation.Help_ChooseFile);
 
                     // Pega as fotos do tablet
 //                    Intent intent = new Intent();
@@ -214,6 +204,7 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == HelpInformation.Help_TAKE_PHOTO_CODE && resultCode == RESULT_OK) {
@@ -225,25 +216,25 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
                 try {
                     Uri uri = Uri.fromFile(file);
 
-                    DocClienteDAO dao = new DocClienteDAO();
-
-                    dao.open();
-
-                    DocCliente doc = new DocCliente("1000", 1, "TESTE DE ESCOLHA DE FOTO", file.toString(), "1", "2");
-
-                    dao.insert(doc);
-
-                    dao.close();
-
-                    if (doc != null) {
-
-                        toast("Arquivo Anexado Com Sucesso.");
-
-                    }
-
-                    loadPreClienteDocs();
-
-                    toast("Foto Atualizada !!!");
+//                    DocClienteDAO dao = new DocClienteDAO();
+//
+//                    dao.open();
+//
+//                    DocCliente doc = new DocCliente("1000", 1, "TESTE DE ESCOLHA DE FOTO", file.toString(), "1", "2");
+//
+//                    dao.insert(doc);
+//
+//                    dao.close();
+//
+//                    if (doc != null) {
+//
+//                        toast("Arquivo Anexado Com Sucesso.");
+//
+//                    }
+//
+//                    loadPreClienteDocs();
+//
+//                    toast("Foto Atualizada !!!");
 
                 } catch (Exception e){
 
@@ -335,7 +326,7 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
 
                 dao.open();
 
-                DocCliente doc = new DocCliente("1000",1,"TESTE DE ESCOLHA DE FOTO",path,"1","2");
+                DocCliente doc = new DocCliente(App.precliente.getID(),"","TESTE DE ESCOLHA DE FOTO",path,"1","2");
 
                 dao.insert(doc);
 
@@ -362,6 +353,62 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
             }
 
         }
+
+
+        if (requestCode == HelpInformation.Help_ChooseFile && resultCode == 1) {
+
+            String patch = "";
+            String name  = "";
+
+            try {
+
+                if (data.hasExtra("PATCH")) {
+
+                    patch = data.getExtras().getString("PATCH");
+
+                }
+
+                if (data.hasExtra("NAME")) {
+
+                    name = data.getExtras().getString("NAME");
+
+                }
+
+                DocClienteDAO dao = new DocClienteDAO();
+
+                dao.open();
+
+                DocCliente doc = new DocCliente(App.precliente.getID(),patch,"ARQUIVO NOVO.",name,"1","1");
+
+                doc = dao.insert(doc);
+
+                dao.close();
+
+                if (doc == null){
+
+                    toast("Falha Para Anexar O Arquivo.");
+
+                } else {
+
+                    loadPreClienteDocs();
+
+                }
+
+                loadPreClienteDocs();
+
+
+            } catch (Exception e) {
+
+                toast(e.getMessage());
+
+
+            }
+
+
+
+        }
+
+
     }
 
 
@@ -626,7 +673,7 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
 
                         TextView txt_nome_arquvo_427 = (TextView) convertView.findViewById(R.id.txt_nome_arquvo_427);
 
-                        final File file = new File(obj.getCAMINHO());
+                        final File file = new File(obj.getPATCH());
 
                         if (file.exists()) {
 
@@ -656,7 +703,7 @@ public class PreClienteDocumentosActivity extends AppCompatActivity {
 
                         txt_descricao_arquvo_427.setText(obj.getDESCRICAO());
 
-                        txt_nome_arquvo_427.setText(obj.getCAMINHO());
+                        txt_nome_arquvo_427.setText(obj.getPATCH());
 
 
 

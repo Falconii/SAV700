@@ -14,6 +14,8 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -172,7 +174,7 @@ public class PreClienteComercialActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-            toolbar.inflateMenu(R.menu.menu_precliente);
+            toolbar.inflateMenu(R.menu.menu_precliente_02);
 
             Intent i = getIntent();
 
@@ -247,6 +249,75 @@ public class PreClienteComercialActivity extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_precliente_02, menu);
+
+        MenuItem iGravar   = menu.findItem(R.id.action_precliente_gravar);
+        MenuItem iCancelar = menu.findItem(R.id.action_precliente_cancelar);
+        MenuItem iVoltar   = menu.findItem(R.id.action_precliente_voltar);
+
+        if (OPERACAO.equals("NOVO")) {
+
+            iVoltar.setVisible(false);
+
+        }
+
+        if (OPERACAO.equals("ALTERACAO")) {
+
+            iVoltar.setVisible(false);
+
+        }
+
+        if (OPERACAO.equals("CONSULTA")) {
+
+            iGravar.setVisible(false);
+            iCancelar.setVisible(false);
+
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+
+                finish();
+
+                break;
+
+            case R.id.action_precliente_gravar:
+
+                finish();
+
+                break;
+
+            case R.id.action_precliente_cancelar:
+
+                finish();
+
+                break;
+
+            case R.id.action_precliente_voltar:
+
+                finish();
+
+                break;
+
+            default:
+
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void init(){
@@ -827,8 +898,8 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(PreClienteComercialActivity.this, PreClienteLogisticaActivity.class);
                 Bundle params = new Bundle();
-                params.putString("CODCLIENTE", "");
-                params.putString("OPERACAO"  , "DIGITANDO");
+                params.putString("CODCLIENTE", CODCLIENTE);
+                params.putString("OPERACAO"  , OPERACAO);
                 intent.putExtras(params);
                 startActivity(intent);
                 finish();

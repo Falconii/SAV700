@@ -71,7 +71,7 @@ public class DBUser extends SQLiteOpenHelper {
     private static final String TAG =  "DBUser";
 
     /* Data Base */
-    private static final int           DATABASE_VERSION = 102;
+    private static final int           DATABASE_VERSION = 103;
     private static final String        DATABASE_NAME    = "dados";
     private static       String        DATABASE_PATH    = Environment.getExternalStorageDirectory().getPath();
 
