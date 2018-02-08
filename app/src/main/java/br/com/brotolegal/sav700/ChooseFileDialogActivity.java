@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -46,9 +47,6 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
     Adapter adapter;
 
     private String       ROOT;
-    private String       STORAGE;
-
-    HashMap<String, Integer> meMap=new HashMap<String, Integer>();
 
 
     @Override
@@ -58,93 +56,54 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
         lv = findViewById(R.id.lv_Arquivos_492);
 
-
-        meMap.put(".jpg",R.drawable.file_jpg_48);
-        meMap.put(".jpeg",R.drawable.file_jpg_48);
-        meMap.put(".mp4",R.drawable.file_jpg_48);
-        meMap.put(".txt",R.drawable.file_txt_48);
-        meMap.put(".doc",R.drawable.file_txt_48);
-        meMap.put(".png",R.drawable.file_png_48);
-        meMap.put(".pdf",R.drawable.file_pdf_48);
-        meMap.put(".***",R.drawable.generic_file_48);
-
-        ROOT    =  App.BasePath;
+        ROOT    =  "storage";
 
         getDir(ROOT);
     }
 
     private void getDir(String dirPath)
     {
-        File file;
 
         List<String>  item = new ArrayList<>();
         List<String>  path = new ArrayList<>();
 
-        File f       = new File(dirPath);
-        File[] files = f.listFiles();
-
         lsLista = new ArrayList<>();
 
-        if (dirPath.equals(ROOT)) {
+        if (dirPath.equals(ROOT)){
+
+            File f       = new File(App.BasePath);
+
             lsLista.add(new objFile("D", "RAIZ", f));
-            item.add(ROOT);
-            path.add(ROOT);
-            item.add("../");
-            path.add(f.getParent());
+
         } else {
 
-            item.add(ROOT);
-            path.add(ROOT);
-            item.add("../");
-            path.add(f.getParent());
+            File f = new File(dirPath);
 
-            for(int i=0; i < files.length; i++)
-            {
-                file = files[i];
-                String FileName = file.getName();
-                if (FileName.equals("emulated")) {
-                    continue;
-                }
+            File[] files = f.listFiles();
 
-                if (FileName.equals("sdcard0")) {
+            lsLista.add(new objFile("V", "VOLTAR !!", f));
 
-                    FileName = "Aparelho";
 
-                    File dir = new File(file.getPath()+"/SAV800");
+            if (!(files == null)) {
 
-                    try {
+                for (int i = 0; i < files.length; i++) {
 
-                        if (!dir.mkdir()) {
+                    String FileName = files[i].getName();
 
-                            throw new Exception("Erro Na Criação Do Diretório Da Aplicação.");
+                    lsLista.add(new objFile(( files[i].isDirectory() ? "D" : "F"), FileName, files[i]));
+
+                    if (!files[i].isHidden() && files[i].canRead()) {
+
+                        if (files[i].isDirectory()) {
+
+                            ((objFile) lsLista.get(lsLista.size() - 1)).setDescricao(FileName + "...");
+
                         }
-
-
-                    } catch (Exception e) {
-
-                        toast(e.getMessage());
-
-                    }
-
-
-                }
-
-                if (FileName.equals("extSdCard")) {
-                    FileName = "Cartão De Memória";
-                }
-
-                lsLista.add(new objFile("F",FileName,file));
-
-                if(!file.isHidden() && file.canRead()){
-
-                    if(file.isDirectory()){
-
-                        ((objFile) lsLista.get(lsLista.size()-1)).setDescricao(FileName + "...");
-
                     }
                 }
             }
         }
+
 
         adapter = new Adapter(this,lsLista);
 
@@ -161,6 +120,7 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
 
     }
+
     private class Adapter extends BaseAdapter {
 
         private List<Object> lsObjetos;
@@ -174,11 +134,31 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
         private LayoutInflater inflater;
 
+
+        private HashMap<String, Integer> meMap=new HashMap<String, Integer>();
+
+
         public Adapter(Context context, List<Object> pObjects) {
 
             this.lsObjetos  = pObjects;
 
             this.context    = context;
+
+            this.meMap.put(".jpg",R.drawable.file_jpg_48);
+
+            this.meMap.put(".jpeg",R.drawable.file_jpg_48);
+
+            this.meMap.put(".mp4",R.drawable.file_jpg_48);
+
+            this.meMap.put(".txt",R.drawable.file_txt_48);
+
+            this.meMap.put(".doc",R.drawable.file_txt_48);
+
+            this.meMap.put(".png",R.drawable.file_png_48);
+
+            this.meMap.put(".pdf",R.drawable.file_pdf_48);
+
+            this.meMap.put(".***",R.drawable.generic_file_48);
 
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -202,6 +182,29 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
             }
 
             retorno = "Total de Arquivos: " + String.valueOf(qtd);
+
+            return retorno;
+        }
+
+        private String Extensao(String NameFile){
+
+            String retorno = "";
+
+            int pos = NameFile.indexOf(".");
+
+            if (pos>-1) {
+
+                retorno  = NameFile.substring(NameFile.lastIndexOf("."));
+
+            }else {
+
+                retorno = ".***";
+            }
+            if (meMap.get(retorno) == null){
+
+                retorno = ".***";
+
+            }
 
             return retorno;
         }
@@ -320,13 +323,54 @@ public class ChooseFileDialogActivity extends AppCompatActivity {
 
                         TextView txt_descricao_408 = (TextView) convertView.findViewById(R.id.txt_descricao_408);
 
-                        if (obj.getTipo().equals("D")){
+                        Button   bt_anexar_408 = (Button) convertView.findViewById(R.id.bt_anexar_408);
 
-                            bt_file_408.setImageResource(R.drawable.folder_arancio_48);
+                        bt_anexar_408.setVisibility(View.INVISIBLE);
+
+                        if  ( (obj.getTipo().equals("D")) || (obj.getTipo().equals("V")) ){
+
+                            if (obj.getTipo().equals("D")) {
+                                bt_file_408.setImageResource(R.drawable.folder_arancio_48);
+
+                                bt_file_408.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+                                        getDir(obj.getFile().getPath());
+
+                                    }
+                                });
+                            }
+
+                            if (obj.getTipo().equals("V")) {
+                                bt_file_408.setImageResource(R.drawable.upfolder_arancio_48);
+
+                                bt_file_408.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+                                        getDir(obj.getFile().getParent());
+
+                                    }
+                                });
+                            }
+
 
                         } else {
 
-                            bt_file_408.setImageResource(R.drawable.folder_arancio_48);
+                            bt_file_408.setImageResource(meMap.get(Extensao(obj.getFile().getName())));
+
+                            bt_anexar_408.setVisibility(View.VISIBLE);
+
+                            bt_anexar_408.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+
+
+                                }
+                            });
+
 
                         }
 

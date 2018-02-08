@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
+	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:background="@drawable/fundo"
 	>
@@ -31,7 +31,9 @@
 					android:layout_width="fill_parent"
 					android:layout_span="02"
 					android:paddingLeft="05sp"
-					android:layout_height="45dp"
+					android:layout_marginLeft="5sp"
+					android:layout_marginRight="5sp"
+					android:layout_height="30dp"
 					android:gravity="left|center_vertical"
 					android:text="Código Protheus: 999999-09"
 					android:textColor="@color/dark_blue"
@@ -72,19 +74,19 @@
 						android:layout_weight="1"/>
 
 					<TextView
-						android:id="@+id/txt_default_403"
+						android:id="@+id/txt_path_403"
 						android:layout_width="0sp"
 						android:layout_height="30sp"
-						android:text="100,00"
-						android:gravity="center_vertical|left"
 						android:layout_gravity="center"
-						android:textSize="14sp"
-						android:textColor="@color/black"
 						android:layout_weight="9"
 						android:ellipsize="end"
-						android:scrollHorizontally = "true"
-						android:minLines = "2"
-						android:maxLines = "2"/>
+						android:gravity="center_vertical|left"
+						android:maxLines="2"
+						android:minLines="2"
+						android:scrollHorizontally="true"
+						android:text="100,00"
+						android:textColor="@color/black"
+						android:textSize="14sp" />
 
 				</LinearLayout>
 
@@ -97,12 +99,23 @@
 	</LinearLayout>
 
 	<ImageButton
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_width="48sp"
+		android:layout_height="48sp"
+		android:scaleType="centerInside"
 		android:id="@+id/bt_file_408"
 		android:src="@drawable/cliente_30"
 		android:layout_marginTop="20sp"
 		/>
+
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/bt_anexar_408"
+		android:text="Anexar"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentBottom="true"
+		/>
+
 
 
 </RelativeLayout>
