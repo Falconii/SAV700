@@ -27,16 +27,12 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 import org.ksoap2.serialization.SoapObject;
 
 import java.text.DecimalFormat;
@@ -48,7 +44,6 @@ import java.util.TreeMap;
 import br.com.brotolegal.sav700.VerificaWeb.ConexaoAdapter;
 import br.com.brotolegal.sav700.VerificaWeb.Parametros;
 import br.com.brotolegal.sav700.VerificaWeb.ParametrosAdapter;
-import br.com.brotolegal.sav700.VerificaWeb.TestePreClienteActivity;
 import br.com.brotolegal.savdatabase.app.App;
 import br.com.brotolegal.savdatabase.dao.ConfigDAO;
 import br.com.brotolegal.savdatabase.dao.PreClienteDAO;

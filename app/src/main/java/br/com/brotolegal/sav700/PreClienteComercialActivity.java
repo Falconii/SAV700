@@ -295,7 +295,34 @@ public class PreClienteComercialActivity extends AppCompatActivity {
 
             case R.id.action_precliente_gravar:
 
-                finish();
+                try {
+
+                    PreClienteDAO dao = new PreClienteDAO();
+
+                    dao.open();
+
+                    PreCliente pre = dao.insert(App.precliente);
+
+                    dao.close();
+
+                    if (!(pre == null)) {
+
+                        toast("Pré-Cliente Gravado Com Sucesso !");
+
+                        finish();
+
+                    } else {
+
+                        toast("Falha Na Gravção Do Pré-Cliente !");
+
+                    }
+
+                } catch (Exception e){
+
+                    toast(e.getMessage());
+
+                }
+
 
                 break;
 
