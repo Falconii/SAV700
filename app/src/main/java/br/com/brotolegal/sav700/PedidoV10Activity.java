@@ -940,8 +940,21 @@ public class PedidoV10Activity extends AppCompatActivity implements
             if (data.hasExtra("CODIGO")) {
 
                 String codigo = data.getExtras().getString("CODIGO");
+                String tipo   = data.getExtras().getString("TIPO");
 
                 try {
+
+                    if (tipo.equals("P")){
+
+                        if (pedido.getCabec().getAPROVEITAMENTO().compareTo(pedido.getEdicao().getTOTAL()) < 0){
+
+                            toast("Saldo Do Aproveitamento De Politica Insuficiente Para Este Produto!");
+
+                            return;
+
+                        }
+
+                    }
 
                     pedido.setItemVerba(codigo);
 
@@ -4279,7 +4292,7 @@ public class PedidoV10Activity extends AppCompatActivity implements
                 pedido.getEdicao().setACORDO("");
                 pedido.getEdicao().setCODVERBA("");
                 pedido.getEdicao().set_Verba("");
-            }
+                            }
 
             if (field.equals("CODVERBA2")){
 
@@ -6221,7 +6234,7 @@ public class PedidoV10Activity extends AppCompatActivity implements
                         lbl_produto_007.setText(obj.getPRODUTO().trim());
                         lbl_descricao_007.setText(obj.get_Produto().trim());
                         lbl_ultimo_preco_007.setText("Último Preço: "+format_02.format(obj.get_UltimoPreco()));
-                        lbl_preco_venda_007.setText( "Preço Tabela: "+format_02.format(obj.getPRECOFORMACAO()));
+                        lbl_preco_venda_007.setText( "Preço Tabela: "+format_02.format(obj.getPRECOFORMACAO())+" Poltica V "+obj.get_UsaPoliticaV()+ " Politica B"+obj.get_UsaPolitica());
 
                         txt_meta_007.setText(format_02.format(obj.get_Meta()));
                         txt_carteira_007.setText(format_02.format(obj.get_Carteira()));

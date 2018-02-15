@@ -598,9 +598,11 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
 					cursor.getFloat(73),
 					cursor.getFloat(74),
 					cursor.getFloat(75),
-					cursor.getString(76),
-					cursor.getString(77)
+					( ( cursor.getString(76).equals("P") ) ? "S" : "N" ),
+					( ( cursor.getString(77).equals("P") ) ? "S" : "N" ),
+					cursor.getString(78)
 					);
+
 
 		} catch (Exception e){
 
@@ -695,7 +697,8 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
                 + "ifnull(meta.objetivo,0),  "
                 + "ifnull(meta.carteira,0),  "
                 + "ifnull(meta.real,0),  "
-                + "ifnull(verba2.tipo,'N'),  "
+                + "ifnull(verba2.tipo,''),  "
+				+ "ifnull(verba.tipo,''),  "
                 + " ' ' as PEDIDOMAE   ";
 
 
@@ -787,7 +790,8 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
 				+ "ifnull(meta.objetivo,0),  "
 				+ "ifnull(meta.carteira,0),  "
 				+ "ifnull(meta.real,0),  "
-				+ "ifnull(verba2.tipo,'N'),  "
+				+ "ifnull(verba2.tipo,''),  "
+				+ "ifnull(verba.tipo ,''),  "
 				+ " ' ' as PEDIDOMAE   ";
 
 

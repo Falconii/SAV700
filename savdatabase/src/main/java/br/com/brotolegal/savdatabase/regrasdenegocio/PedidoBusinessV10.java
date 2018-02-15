@@ -1083,9 +1083,20 @@ public class PedidoBusinessV10 {
 
                                 if (ver != null) {
 
-                                    det.set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), true);
-                                    det.set_Verba(ver.getCODIGO() + "-" + ver.getDESCRICAO());
+                                    if (det.get_UsaPoliticaV().equals("S")) {
 
+                                        if (getCabec().getSALDOAPROVEITAMENTO().compareTo(0f) < 0) {
+
+                                            det.set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), false);
+                                            det.set_Verba("SALDO NEGATIVO APROV. POLÍTCA");
+
+                                        } else {
+
+                                            det.set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), true);
+                                            det.set_Verba(ver.getCODIGO() + "-" + ver.getDESCRICAO());
+
+                                        }
+                                    }
                                 } else {
 
                                     det.set_Verba("Nao Encontrei Verba " + det.getCODVERBA());
@@ -2104,14 +2115,11 @@ public class PedidoBusinessV10 {
 
             if (ver != null) {
 
-                if (ver.getTIPO().equals("P")){
-
-                    throw new ExceptionItemProduto("Não Posso Aceitar Verba De Aproveitamento De Politica");
-                }
-
                 Edicao.setCODVERBA(Codigo);
 
                 Edicao.set_Verba(Codigo + "-" + ver.getDESCRICAO());
+
+                Edicao.set_UsaPoliticaV((ver.getTIPO().equals("P") ? "S" : "N"));
 
             } else {
 
@@ -2659,6 +2667,12 @@ public class PedidoBusinessV10 {
 
             APROVEITAMENTO += obj.getAproveitamento();
 
+            if (obj.get_UsaPoliticaV().equals("S")){
+
+                USADOAPROVEITAMENTO += ( Arredondamento((obj.getPRECOFORMACAO() * (obj.getDESCVER()/100)),2) * obj.getQTD() ) ;
+
+            }
+
             if (obj.get_UsaPolitica().equals("S")){
 
                 USADOAPROVEITAMENTO += obj.getBONITOTAL();
@@ -3096,9 +3110,21 @@ public class PedidoBusinessV10 {
 
                     if (ver != null) {
 
-                        getEdicao().set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), true);
-                        getEdicao().set_Verba(ver.getCODIGO() + "-" + ver.getDESCRICAO());
+                        if (ver.getTIPO().equals("P")) {
 
+                            if (getCabec().getSALDOAPROVEITAMENTO().compareTo(0f) < 0) {
+
+                                getEdicao().set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), false);
+                                getEdicao().set_Verba2("SALDO NEGATIVO APROV. POLÍTCA");
+
+                            } else {
+
+                                getEdicao().set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), true);
+                                getEdicao().set_Verba(ver.getCODIGO() + "-" + ver.getDESCRICAO());
+
+                            }
+
+                        }
                     } else {
 
                         getEdicao().set_Verba("Nao Encontrei Verba " + getEdicao().getCODVERBA());

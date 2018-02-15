@@ -100,6 +100,7 @@ public class PedidoDetMB_fast {
     protected Float   _Carteira;
     protected Float   _Realizado;
     protected String  _UsaPolitica;
+    protected String  _UsaPoliticaV;
     protected String  _PedidoMae;
 
 
@@ -192,6 +193,7 @@ public class PedidoDetMB_fast {
                             Float _Carteira,
                             Float _Realizado,
                             String _UsaPolitica,
+                            String _UsaPoliticaV,
                             String _PedidoMae)
     {
         this.NRO = NRO;
@@ -273,6 +275,7 @@ public class PedidoDetMB_fast {
         this._Carteira    = _Carteira;
         this._Realizado   = _Realizado;
         this._UsaPolitica = _UsaPolitica;
+        this._UsaPoliticaV= _UsaPoliticaV;
         this._PedidoMae   = _PedidoMae;
 
         _ValidaOK();
@@ -326,6 +329,7 @@ public class PedidoDetMB_fast {
         this._Simulador         = obj.get_Simulador();
         this._Simulador2        = obj.get_Simulador2();
         this._UsaPolitica       = obj.get_UsaPolitica();
+        this._UsaPoliticaV      = obj.get_UsaPoliticaV();
         this._PedidoMae         = obj.get_PedidoMae();
 
 
@@ -356,6 +360,7 @@ public class PedidoDetMB_fast {
         _Carteira    = 0f;
         _Realizado   = 0f;
         _UsaPolitica = "N";
+        _UsaPoliticaV= "N";
         _PedidoMae   = "";
         _tipo        = "";
 
@@ -1172,5 +1177,13 @@ public class PedidoDetMB_fast {
 
     public void set_tipo(String _tipo) {
         this._tipo = _tipo;
+    }
+
+    public String get_UsaPoliticaV() {
+        return _UsaPoliticaV;
+    }
+
+    public void set_UsaPoliticaV(String _UsaPoliticaV) {
+        this._UsaPoliticaV = _UsaPoliticaV;
     }
 }

@@ -95,7 +95,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 	protected Float _Carteira;
 	protected Float _Realizado;
 	protected String _UsaPolitica;
-
+	protected String _UsaPoliticaV;
 
 
 	protected Map<String,String> lsStatus = new TreeMap<String, String >();
@@ -197,6 +197,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		_Carteira     = 0f;
 		_Realizado    = 0f;
 		_UsaPolitica  = "N";
+		_UsaPoliticaV = "N";
 
 		loadStatusDescricao();
 	}
@@ -266,24 +267,25 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 
 		_View       = "G";
 
-		_Produto    =  obj.get_Produto();
-		_Verba      =  obj.get_Verba();
-		_Verba2     =  obj.get_Verba2();
-		_Acordo     =  obj.get_Acordo();
-		_Acordo2    =  obj.get_Acordo2();
-		_Simulador  =  obj.get_Simulador();
-		_Simulador2 =  obj.get_Simulador2();
-		_Grupo      =  obj.get_CodGrupo();
-		_Marca      =  obj.get_CodMarca();
-		_UltimoPreco = obj.get_UltimoPreco();
-		_PesoBruto   = obj.get_PesoBruto();
-		_PesoLiquido = obj.get_PesoLiquido();
-		_MotDev      = obj.get_MotDev();
-		_Mix         = obj.get_Mix();
-		_Meta        = obj.get_Meta();
-		_Carteira    = obj.get_Carteira();
-		_Realizado   = obj.get_Realizado();
-		_UsaPolitica = obj.get_UsaPolitica();
+		_Produto      =  obj.get_Produto();
+		_Verba        =  obj.get_Verba();
+		_Verba2       =  obj.get_Verba2();
+		_Acordo       =  obj.get_Acordo();
+		_Acordo2      =  obj.get_Acordo2();
+		_Simulador    =  obj.get_Simulador();
+		_Simulador2   =  obj.get_Simulador2();
+		_Grupo        =  obj.get_CodGrupo();
+		_Marca        =  obj.get_CodMarca();
+		_UltimoPreco  = obj.get_UltimoPreco();
+		_PesoBruto    = obj.get_PesoBruto();
+		_PesoLiquido  = obj.get_PesoLiquido();
+		_MotDev       = obj.get_MotDev();
+		_Mix          = obj.get_Mix();
+		_Meta         = obj.get_Meta();
+		_Carteira     = obj.get_Carteira();
+		_Realizado    = obj.get_Realizado();
+		_UsaPolitica  = obj.get_UsaPolitica();
+		_UsaPoliticaV = obj.get_UsaPoliticaV();
 
 
 		loadStatusDescricao();
@@ -376,7 +378,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		obj.set_Carteira(_Carteira);
 		obj.set_Realizado(_Realizado);
 		obj.set_UsaPolitica(_UsaPolitica);
-
+		obj.set_UsaPoliticaV(_UsaPoliticaV);
 
 		return obj;
 	}
@@ -406,7 +408,8 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		_Meta        = 0f;
 		_Carteira    = 0f;
 		_Realizado   = 0f;
-		_UsaPolitica = "N";
+		_UsaPolitica  = "N";
+		_UsaPoliticaV = "N";
 
 		loadStatusDescricao();
 
@@ -514,6 +517,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 
 	public void setCODVERBA(String CODVERBA) {
 		this.CODVERBA = CODVERBA;
+		if (this.CODVERBA.trim().isEmpty()) this.set_UsaPoliticaV("N");
 	}
 
 	public Float getDESCVER2() {
@@ -530,6 +534,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 
 	public void setCODVERBA2(String CODVERBA2) {
 		this.CODVERBA2 = CODVERBA2;
+		if (this.CODVERBA2.trim().isEmpty()) this.set_UsaPolitica("N");
 	}
 
 	public Float getTOTAL() {
@@ -1139,6 +1144,14 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 
 	public void setPOLITICABASE(Float POLITICABASE) {
 		this.POLITICABASE = POLITICABASE;
+	}
+
+	public String get_UsaPoliticaV() {
+		return _UsaPoliticaV;
+	}
+
+	public void set_UsaPoliticaV(String _UsaPoliticaV) {
+		this._UsaPoliticaV = _UsaPoliticaV;
 	}
 
 	@Override
