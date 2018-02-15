@@ -3536,40 +3536,34 @@ public class PedidoBusinessV10 {
 
                         lsDetalhe.get(pos).set_Produto(produto.getDESCRICAO().trim() + " Und. " + produto.getUM());
 
-                        //Procura o Desconto de Contrato
-                        lsDetalhe.get(pos).setDESCCONTRATO(0f);
+                        /* Alterada a maneira de buscar o desconto do contrato
+                           Se o campo TIPOCONTRATO da tabela de Preço for igual a "M", utilizo o percentual que está no
+                           detalhe da tabela de preço. Caso contrário utilizo o desconto do cadastro de contratos.
+                           15/02/2018
+                         */
 
-                        if (lsContrato.size() == 0) {
+                        if (tabpreco.getTIPOCONTRATO().equals("M")){
 
-                            lsDetalhe.get(pos).setDESCCONTRATO(0f);
+                            lsDetalhe.get(pos).setDESCCONTRATO(tabpreco.getPERCONTRATO());
 
                         } else {
 
-                            contrato = lsContrato.get(0);
+                            //Procura o Desconto de Contrato
+                            lsDetalhe.get(pos).setDESCCONTRATO(0f);
 
-                            if (contrato.getTIPO().equals("T")) {
+                            if (lsContrato.size() == 0) {
 
-                                if (cliente.getTIPOCON().equals("1") || cliente.getTIPOCON().trim().isEmpty()) { //normal ou loja
-
-                                    lsDetalhe.get(pos).setDESCCONTRATO(contrato.getPERCTOF() + contrato.getPERCADIC() + contrato.getTAXAFIN());
-
-                                } else {
-
-                                    lsDetalhe.get(pos).setDESCCONTRATO(contrato.getPERCCD() + contrato.getPERCADIC() + contrato.getTAXAFIN());
-
-                                }
+                                lsDetalhe.get(pos).setDESCCONTRATO(0f);
 
                             } else {
 
-                                int indice = seekContratoBYChave(lsDetalhe.get(pos).getPRODUTO(), produto.getMARCA(), produto.getGRUPO(), contrato.getChave());
+                                contrato = lsContrato.get(0);
 
-                                if (indice != -1) {
-
-                                    contrato = lsContrato.get(indice);
+                                if (contrato.getTIPO().equals("T")) {
 
                                     if (cliente.getTIPOCON().equals("1") || cliente.getTIPOCON().trim().isEmpty()) { //normal ou loja
 
-                                        lsDetalhe.get(pos).setDESCCONTRATO(contrato.getPERCTOF()  + contrato.getPERCADIC() + contrato.getTAXAFIN());
+                                        lsDetalhe.get(pos).setDESCCONTRATO(contrato.getPERCTOF() + contrato.getPERCADIC() + contrato.getTAXAFIN());
 
                                     } else {
 
@@ -3579,12 +3573,30 @@ public class PedidoBusinessV10 {
 
                                 } else {
 
-                                    Log.i(LOG, "Não Encontrei Contrato");
+                                    int indice = seekContratoBYChave(lsDetalhe.get(pos).getPRODUTO(), produto.getMARCA(), produto.getGRUPO(), contrato.getChave());
 
+                                    if (indice != -1) {
+
+                                        contrato = lsContrato.get(indice);
+
+                                        if (cliente.getTIPOCON().equals("1") || cliente.getTIPOCON().trim().isEmpty()) { //normal ou loja
+
+                                            lsDetalhe.get(pos).setDESCCONTRATO(contrato.getPERCTOF() + contrato.getPERCADIC() + contrato.getTAXAFIN());
+
+                                        } else {
+
+                                            lsDetalhe.get(pos).setDESCCONTRATO(contrato.getPERCCD() + contrato.getPERCADIC() + contrato.getTAXAFIN());
+
+                                        }
+
+                                    } else {
+
+                                        Log.i(LOG, "Não Encontrei Contrato");
+
+                                    }
                                 }
                             }
                         }
-
 
                         if (produto.getGRUPO().equals("3.02")) {
 

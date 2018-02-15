@@ -19,6 +19,7 @@ public class TabPrecoCabec extends ObjRegister {
 	protected String FLAGDESCLOGIST;
 	protected Float FAIXADE;
 	protected Float FAIXAATE;
+	protected String TIPOCONTRATO;
 
 
 	protected static final String _OBJETO = "br.com.brotolegal.savdatabase.entities.TabPrecoCabec";
@@ -33,7 +34,8 @@ public class TabPrecoCabec extends ObjRegister {
 		InicializaFields();
 	}
 
-	public TabPrecoCabec(String CODIGO, String DESCRICAO, String FLAGFAIXA, String FLAGHABDESC, String FLAGHABMOTIVO, String FLAGCONTRATO, String FLAGCC, String FLAGTAXAFINANC, String FLAGDESCCANAL, String FLAGDESCLOGIST, Float FAIXADE, Float FAIXAATE) {
+	public TabPrecoCabec(String CODIGO, String DESCRICAO, String FLAGFAIXA, String FLAGHABDESC, String FLAGHABMOTIVO, String FLAGCONTRATO, String FLAGCC, String FLAGTAXAFINANC, String FLAGDESCCANAL, String FLAGDESCLOGIST, Float FAIXADE, Float FAIXAATE, String TIPOCONTRATO) {
+
 		super(_OBJETO,"TABPRECOCABEC");
 
 		loadColunas();
@@ -52,6 +54,7 @@ public class TabPrecoCabec extends ObjRegister {
 		this.FLAGDESCLOGIST = FLAGDESCLOGIST;
 		this.FAIXADE = FAIXADE;
 		this.FAIXAATE = FAIXAATE;
+		this.TIPOCONTRATO = TIPOCONTRATO;
 	}
 
 	public String getCODIGO() {
@@ -150,6 +153,14 @@ public class TabPrecoCabec extends ObjRegister {
 		this.FAIXAATE = FAIXAATE;
 	}
 
+	public String getTIPOCONTRATO() {
+		return TIPOCONTRATO;
+	}
+
+	public void setTIPOCONTRATO(String TIPOCONTRATO) {
+		this.TIPOCONTRATO = TIPOCONTRATO;
+	}
+
 	@Override
 	public void loadColunas() {
 
@@ -166,6 +177,8 @@ public class TabPrecoCabec extends ObjRegister {
 		_colunas.add("FLAGDESCLOGIST");
 		_colunas.add("FAIXADE");
 		_colunas.add("FAIXAATE");
+		_colunas.add("TIPOCONTRATO");
+
 
 
 	}

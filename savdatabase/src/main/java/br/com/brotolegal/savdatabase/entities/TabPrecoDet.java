@@ -18,24 +18,26 @@ public class TabPrecoDet extends ObjRegister {
 	protected Float CUSTOOPER;
 	protected Float BDI;
 	protected Float PRECOANTERIOR;
+	protected Float PERCONTRATO;
+
 
 
 
 
 	protected static final String _OBJETO = "br.com.brotolegal.savdatabase.entities.TabPrecoDet";
-	
-	
-	public TabPrecoDet(){
-		
-		 super(_OBJETO,"TABPRECODET");
-		 
-		 loadColunas();
 
-		 InicializaFields();
+
+
+	public TabPrecoDet(){
+
+		super(_OBJETO,"TABPRECODET");
+
+		loadColunas();
+
+		InicializaFields();
 	}
 
-
-	public TabPrecoDet(String CODIGO, String PRODUTO, Float PRCVEN, Float DESCONTOMAIS, Float ACRESCIMOMAIS, String FATOR, Float PRCBASE, Float POLITICABASE,Float CUSTOOPER,Float BDI, Float PRECOANTERIOR ) {
+	public TabPrecoDet(String CODIGO, String PRODUTO, Float PRCVEN, Float DESCONTOMAIS, Float ACRESCIMOMAIS, String FATOR, Float PRCBASE, Float POLITICABASE, Float CUSTOOPER, Float BDI, Float PRECOANTERIOR, Float PERCONTRATO) {
 
 		super(_OBJETO,"TABPRECODET");
 
@@ -43,85 +45,58 @@ public class TabPrecoDet extends ObjRegister {
 
 		InicializaFields();
 
-		this.CODIGO        = CODIGO;
-		this.PRODUTO       = PRODUTO;
-		this.PRCVEN        = PRCVEN;
-		this.DESCONTOMAIS  = DESCONTOMAIS;
+		this.CODIGO = CODIGO;
+		this.PRODUTO = PRODUTO;
+		this.PRCVEN = PRCVEN;
+		this.DESCONTOMAIS = DESCONTOMAIS;
 		this.ACRESCIMOMAIS = ACRESCIMOMAIS;
-		this.FATOR         = FATOR;
-		this.PRCBASE       = PRCBASE;
-		this.POLITICABASE  = POLITICABASE;
-		this.CUSTOOPER     = CUSTOOPER;
-		this.BDI           = BDI;
+		this.FATOR = FATOR;
+		this.PRCBASE = PRCBASE;
+		this.POLITICABASE = POLITICABASE;
+		this.CUSTOOPER = CUSTOOPER;
+		this.BDI = BDI;
 		this.PRECOANTERIOR = PRECOANTERIOR;
-
+		this.PERCONTRATO = PERCONTRATO;
 	}
 
 	public String getCODIGO() {
 		return CODIGO;
 	}
 
-
-
-
-	public void setCODIGO(String cODIGO) {
-		CODIGO = cODIGO;
+	public void setCODIGO(String CODIGO) {
+		this.CODIGO = CODIGO;
 	}
-
-
-
 
 	public String getPRODUTO() {
 		return PRODUTO;
 	}
 
-
-
-
-	public void setPRODUTO(String pRODUTO) {
-		PRODUTO = pRODUTO;
+	public void setPRODUTO(String PRODUTO) {
+		this.PRODUTO = PRODUTO;
 	}
-
-
-
 
 	public Float getPRCVEN() {
 		return PRCVEN;
 	}
 
-
-
-
-	public void setPRCVEN(Float pRCVEN) {
-		PRCVEN = pRCVEN;
+	public void setPRCVEN(Float PRCVEN) {
+		this.PRCVEN = PRCVEN;
 	}
-
-
-
 
 	public Float getDESCONTOMAIS() {
 		return DESCONTOMAIS;
 	}
 
-
-
-
-	public void setDESCONTOMAIS(Float dESCONTOMAIS) {
-		DESCONTOMAIS = dESCONTOMAIS;
+	public void setDESCONTOMAIS(Float DESCONTOMAIS) {
+		this.DESCONTOMAIS = DESCONTOMAIS;
 	}
-
-
-
 
 	public Float getACRESCIMOMAIS() {
 		return ACRESCIMOMAIS;
 	}
 
-
-
-
-	public void setACRESCIMOMAIS(Float aCRESCIMOMAIS) {
-		ACRESCIMOMAIS = aCRESCIMOMAIS;
+	public void setACRESCIMOMAIS(Float ACRESCIMOMAIS) {
+		this.ACRESCIMOMAIS = ACRESCIMOMAIS;
 	}
 
 	public String getFATOR() {
@@ -164,9 +139,25 @@ public class TabPrecoDet extends ObjRegister {
 		this.BDI = BDI;
 	}
 
+	public Float getPRECOANTERIOR() {
+		return PRECOANTERIOR;
+	}
+
+	public void setPRECOANTERIOR(Float PRECOANTERIOR) {
+		this.PRECOANTERIOR = PRECOANTERIOR;
+	}
+
+	public Float getPERCONTRATO() {
+		return PERCONTRATO;
+	}
+
+	public void setPERCONTRATO(Float PERCONTRATO) {
+		this.PERCONTRATO = PERCONTRATO;
+	}
+
 	@Override
 	public void loadColunas() {
-		
+
 		_colunas = new ArrayList<String>();
 		_colunas.add("CODIGO");
 		_colunas.add("PRODUTO");
@@ -179,9 +170,11 @@ public class TabPrecoDet extends ObjRegister {
 		_colunas.add("CUSTOOPER");
 		_colunas.add("BDI");
 		_colunas.add("PRECOANTERIOR");
+		_colunas.add("PERCONTRATO");
+
 
 	}
 
-	
+
 
 }

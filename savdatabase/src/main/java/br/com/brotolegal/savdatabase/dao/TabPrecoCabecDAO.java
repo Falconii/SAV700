@@ -129,7 +129,9 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 					cursor.getString(8),
 					cursor.getString(9),
 					cursor.getFloat(10),
-					cursor.getFloat(11)
+					cursor.getFloat(11),
+					cursor.getString(12)
+
 			);
 
 		} catch (Exception e){
@@ -212,7 +214,6 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 	}
 
 
-
 	public List<TabPreco> seekTabelaByPedido(String Codigo, String pedido) {
 
 		List<TabPreco> lstabpreco = new ArrayList<TabPreco>();
@@ -232,6 +233,7 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 					"tabprecocabec.flagdesclogist, " +
 					"tabprecocabec.faixade, " +
 					"tabprecocabec.faixaate, " +
+					"tabprecocabec.tipocontrato, "+
 					"tabprecodet.PRODUTO,"+
 					"tabprecodet.PRCVEN,"+
 					"tabprecodet.DESCONTOMAIS,"+
@@ -247,7 +249,8 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 					"pedidodetmb.ITEM,   " +
 					"tabprecodet.FATOR,  "+
 					"tabprecodet.PRCBASE, "+
-					"tabprecodet.POLITICABASE "
+					"tabprecodet.POLITICABASE, "+
+			        "tabprecocabec.tipocontrato "
 					+ "from       tabprecocabec "
 					+ "inner join tabprecodet on tabprecodet.codigo = tabprecocabec.codigo "
 					+ "inner join produto     on produto.codigo     = tabprecodet.produto  "
@@ -270,36 +273,39 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 				while (!(cursor.isAfterLast())) {
 
 					TabPreco tabpreco = new TabPreco(
-							cursor.getString(0) ,
-							cursor.getString(1) ,
-							cursor.getString(2) ,
-							cursor.getString(3) ,
-							cursor.getString(4) ,
-							cursor.getString(5) ,
-							cursor.getString(6) ,
-							cursor.getString(7) ,
-							cursor.getString(8) ,
-							cursor.getString(9) ,
-							cursor.getFloat(10) ,
-							cursor.getFloat(11) ,
+							cursor.getString(0),
+							cursor.getString(1),
+							cursor.getString(2),
+							cursor.getString(3),
+							cursor.getString(4),
+							cursor.getString(5),
+							cursor.getString(6),
+							cursor.getString(7),
+							cursor.getString(8),
+							cursor.getString(9),
+							cursor.getFloat(10),
+							cursor.getFloat(11),
 							cursor.getString(12),
-							cursor.getFloat(13) ,
-							cursor.getFloat(14) ,
-							cursor.getFloat(15) ,
-							cursor.getString(16),
+							cursor.getString(13),
+							cursor.getFloat(14),
+							cursor.getFloat(15),
+							cursor.getFloat(16),
 							cursor.getString(17),
 							cursor.getString(18),
 							cursor.getString(19),
 							cursor.getString(20),
-							cursor.getFloat(21) ,
-							cursor.getString(22),
+							cursor.getString(21),
+							cursor.getFloat(22),
 							cursor.getString(23),
 							cursor.getString(24),
 							cursor.getString(25),
-							cursor.getFloat(26),
+							cursor.getString(26),
 							cursor.getFloat(27),
 							cursor.getFloat(28),
-							cursor.getFloat(29)
+							cursor.getFloat(29),
+							cursor.getFloat(30),
+							cursor.getFloat(31)
+
 					);
 
 					lstabpreco.add(tabpreco);
@@ -414,7 +420,7 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							cursor.getFloat(55),
 							cursor.getFloat(56)
 
-							);
+					);
 
 					det.set_Produto(cursor.getString(52));
 					det.set_Grupo(cursor.getString(53));
@@ -467,6 +473,7 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							"tabprecocabec.flagdesclogist, "+
 							"tabprecocabec.faixade, "       +
 							"tabprecocabec.faixaate, "      +
+							"tabprecocabec.tipocontrato, "  +
 							"tabprecodet.PRODUTO,"          +
 							"tabprecodet.PRCVEN,"           +
 							"tabprecodet.DESCONTOMAIS,"     +
@@ -484,7 +491,8 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							"tabprecodet.PRCBASE, "+
 							"tabprecodet.POLITICABASE, "+
 							"tabprecodet.CUSTOOPER, "+
-							"tabprecodet.BDI  "
+							"tabprecodet.BDI,  "+
+							"tabprecodet.percontrato  "
 							+ "from       tabprecocabec "
 							+ "inner join tabprecodet on tabprecodet.codigo = tabprecocabec.codigo "
 							+ "inner join produto     on produto.codigo     = tabprecodet.produto and produto.tipopedido like '%"+Tipo+"%' "
@@ -518,23 +526,27 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							cursor.getFloat(10),
 							cursor.getFloat(11),
 							cursor.getString(12),
-							cursor.getFloat(13),
+							cursor.getString(13),
 							cursor.getFloat(14),
 							cursor.getFloat(15),
-							cursor.getString(16),
+							cursor.getFloat(16),
 							cursor.getString(17),
 							cursor.getString(18),
 							cursor.getString(19),
 							cursor.getString(20),
-							cursor.getFloat(21),
-							cursor.getString(22),
+							cursor.getString(21),
+							cursor.getFloat(22),
 							cursor.getString(23),
 							cursor.getString(24),
 							cursor.getString(25),
-							cursor.getFloat(26),
+							cursor.getString(26),
 							cursor.getFloat(27),
 							cursor.getFloat(28),
-							cursor.getFloat(29)
+							cursor.getFloat(29),
+							cursor.getFloat(30),
+							cursor.getFloat(31)
+
+
 					);
 
 					lstabpreco.add(tabpreco);
@@ -553,7 +565,6 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 	}
 
 
-
 	public List<TabPrecoCabec> seekTabelaCarga(String Codigo) {
 
 		Cursor cursor = null;
@@ -566,9 +577,9 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 			String select      =  "select * "
 					+ "from  tabprecocabec "
 					+ "where ( (tabprecocabec.codigo =  '"+ Codigo + "') ";
-			        if (Codigo.compareTo("500") >= 0) select += " or (tabprecocabec.flagfaixa = '1') ";
-			        select +=  " ) ";
-					select +=  "order by tabprecocabec.codigo ";
+			if (Codigo.compareTo("500") >= 0) select += " or (tabprecocabec.flagfaixa = '1') ";
+			select +=  " ) ";
+			select +=  "order by tabprecocabec.codigo ";
 
 			cursor = getDataBase().rawQuery(select , null);
 
