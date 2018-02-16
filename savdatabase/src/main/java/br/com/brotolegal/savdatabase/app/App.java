@@ -836,6 +836,20 @@ public class App extends Application {
 
     }
 
+    public static Float Arredondamento(Float value, int cd ){
+
+        Float retorno = 0f;
+
+        BigDecimal tot2 = new BigDecimal(Float.toString(value));
+
+        tot2 = tot2.setScale(cd, BigDecimal.ROUND_HALF_UP);
+
+        retorno = tot2.floatValue();
+
+        return retorno;
+
+    }
+
     //INNER CLASS
     public class Estrutura {
 

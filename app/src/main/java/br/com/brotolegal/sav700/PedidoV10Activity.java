@@ -946,7 +946,7 @@ public class PedidoV10Activity extends AppCompatActivity implements
 
                     if (tipo.equals("P")){
 
-                        if (pedido.getCabec().getAPROVEITAMENTO().compareTo(pedido.getEdicao().getTOTAL()) < 0){
+                        if (pedido.getCabec().getAPROVEITAMENTO().compareTo(( App.Arredondamento((pedido.getEdicao().getPRECOFORMACAO() * (pedido.getEdicao().getDESCVER()/100)),2) * pedido.getEdicao().getQTD() )) < 0){
 
                             toast("Saldo Do Aproveitamento De Politica Insuficiente Para Este Produto!");
 
@@ -6234,7 +6234,7 @@ public class PedidoV10Activity extends AppCompatActivity implements
                         lbl_produto_007.setText(obj.getPRODUTO().trim());
                         lbl_descricao_007.setText(obj.get_Produto().trim());
                         lbl_ultimo_preco_007.setText("Último Preço: "+format_02.format(obj.get_UltimoPreco()));
-                        lbl_preco_venda_007.setText( "Preço Tabela: "+format_02.format(obj.getPRECOFORMACAO())+" Poltica V "+obj.get_UsaPoliticaV()+ " Politica B"+obj.get_UsaPolitica());
+                        lbl_preco_venda_007.setText( "Preço Tabela: "+format_02.format(obj.getPRECOFORMACAO())+" Pol. V "+obj.get_UsaPoliticaV()+ " Pol. B"+obj.get_UsaPolitica()+" CTR "+format_02.format(obj.getDESCCONTRATO()));
 
                         txt_meta_007.setText(format_02.format(obj.get_Meta()));
                         txt_carteira_007.setText(format_02.format(obj.get_Carteira()));
