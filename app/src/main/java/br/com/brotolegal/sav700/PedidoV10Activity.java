@@ -6219,10 +6219,11 @@ public class PedidoV10Activity extends AppCompatActivity implements
                             }
                         }
 
-                        if ( obj.getORIGEM().trim().equals('1')){
+                        if ( obj.getORIGEM().trim().equals("3")){
 
                             img_dollar_07.setVisibility(View.VISIBLE);
                             lbl_importado_007.setVisibility(View.VISIBLE);
+
 
                         } else {
 
@@ -6234,7 +6235,7 @@ public class PedidoV10Activity extends AppCompatActivity implements
                         lbl_produto_007.setText(obj.getPRODUTO().trim());
                         lbl_descricao_007.setText(obj.get_Produto().trim());
                         lbl_ultimo_preco_007.setText("Último Preço: "+format_02.format(obj.get_UltimoPreco()));
-                        lbl_preco_venda_007.setText( "Preço Tabela: "+format_02.format(obj.getPRECOFORMACAO())+" Pol. V "+obj.get_UsaPoliticaV()+ " Pol. B"+obj.get_UsaPolitica()+" CTR "+format_02.format(obj.getDESCCONTRATO()));
+                        lbl_preco_venda_007.setText( "Preço Tabela: "+format_02.format(obj.getPRECOFORMACAO()));
 
                         txt_meta_007.setText(format_02.format(obj.get_Meta()));
                         txt_carteira_007.setText(format_02.format(obj.get_Carteira()));
