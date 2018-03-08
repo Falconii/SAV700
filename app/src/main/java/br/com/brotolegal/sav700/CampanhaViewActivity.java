@@ -96,8 +96,8 @@ public class CampanhaViewActivity extends AppCompatActivity {
     ListView Campanha;
 
     private  int     Indice = 2;
-    private  String  PeriodoInicial = "201707";
-    private  String  PeriodoFinal   = "201708";
+    private  String  PeriodoInicial = "201807";
+    private  String  PeriodoFinal   = "201808";
 
     String CodCliente = "";
     String LojCliente = "";
@@ -160,7 +160,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
                         adapter.setPeriodoFinal(PeriodoFinal);
 
-                        SharedPreferences prefs = getSharedPreferences("CAMPANHA_2017", MODE_PRIVATE);
+                        SharedPreferences prefs = getSharedPreferences("CAMPANHA_2018", MODE_PRIVATE);
 
                         SharedPreferences.Editor editor = prefs.edit();
 
@@ -259,7 +259,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
     @Override
     public void onResume() {
 
-        SharedPreferences prefs = getSharedPreferences("CAMPANHA_2017", MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("CAMPANHA_2018", MODE_PRIVATE);
 
         Indice         = prefs.getInt("Indice", Indice);
         PeriodoInicial = prefs.getString("PeriodoInicial",PeriodoInicial);
@@ -276,7 +276,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
     @Override
     public void finish() {
 
-        SharedPreferences prefs = getSharedPreferences("CAMPANHA_2017", MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("CAMPANHA_2018", MODE_PRIVATE);
 
         SharedPreferences.Editor editor = prefs.edit();
 
@@ -305,16 +305,16 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
             ParametrosCampanha tempo = new ParametrosCampanha("000000","GERAL");
 
-            tempo.addPeriodo( new PeriodoCampanha("03","2017","04","2017"));
-            tempo.addPeriodo( new PeriodoCampanha("05","2017","06","2017"));
-            tempo.addPeriodo( new PeriodoCampanha("07","2017","08","2017"));
-            tempo.addPeriodo( new PeriodoCampanha("09","2017","10","2017"));
-            tempo.addPeriodo( new PeriodoCampanha("11","2017","12","2017"));
+            tempo.addPeriodo( new PeriodoCampanha("03","2018","04","2018"));
+            tempo.addPeriodo( new PeriodoCampanha("05","2018","06","2018"));
+            tempo.addPeriodo( new PeriodoCampanha("07","2018","08","2018"));
+            tempo.addPeriodo( new PeriodoCampanha("09","2018","10","2018"));
+            tempo.addPeriodo( new PeriodoCampanha("11","2018","12","2018"));
 
 
             lsparametrosCampanha.add(tempo);
 
-            SharedPreferences prefs = getSharedPreferences("CAMPANHA_2017", MODE_PRIVATE);
+            SharedPreferences prefs = getSharedPreferences("CAMPANHA_2018", MODE_PRIVATE);
 
             Indice         = prefs.getInt("Indice", Indice);
             PeriodoInicial = prefs.getString("PeriodoInicial",PeriodoInicial);
@@ -331,7 +331,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
             dao.open();
 
-            lsLista.addAll(dao.getCampanhas("2017",new String[] {PeriodoInicial,PeriodoFinal}));
+            lsLista.addAll(dao.getCampanhas("2018",new String[] {PeriodoInicial,PeriodoFinal}));
 
             if (lsLista.size() == 1){
 
