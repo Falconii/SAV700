@@ -88,8 +88,8 @@ public class CampanhaClienteViewActivity extends AppCompatActivity {
     ListView Campanha;
 
     private  int     Indice = 2;
-    private  String  PeriodoInicial = "201807";
-    private  String  PeriodoFinal   = "201808";
+    private  String  PeriodoInicial = "201803";
+    private  String  PeriodoFinal   = "201803";
 
     String PARTICIPANTE = "";
     String CODCAMPANHA  = "";
