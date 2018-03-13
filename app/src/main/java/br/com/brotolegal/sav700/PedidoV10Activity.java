@@ -195,8 +195,6 @@ public class PedidoV10Activity extends AppCompatActivity implements
 
     private AdapterMetas adapterMetas;
 
-    private String Importados = "001021,003004,008600,001022,002011";
-
     private DecimalFormat format_02 = new DecimalFormat(",##0.00");
     private DecimalFormat format_04 = new DecimalFormat(",##0.0000");
     private DecimalFormat format_05 = new DecimalFormat(",##0.00000");

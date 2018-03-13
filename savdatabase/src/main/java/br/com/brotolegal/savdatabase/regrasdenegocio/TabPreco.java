@@ -21,7 +21,7 @@ public class TabPreco {
 	private Float  FAIXADE;
 	private Float  FAIXAATE;
 	private String  TIPOCONTRATO;
-
+	private String  TIPOFRETE;
 	
 /*
  * 
@@ -49,7 +49,7 @@ public class TabPreco {
 	private Float  PERCONTRATO;
 
 
-	public TabPreco(String CODIGO, String DESCRICAO, String FLAGFAIXA, String FLAGHABDESC, String FLAGHABMOTIVO, String FLAGCONTRATO, String FLAGCC, String FLAGTAXAFINANC, String FLAGDESCCANAL, String FLAGDESCLOGIST, Float FAIXADE, Float FAIXAATE,String  TIPOCONTRATO, String PRODUTO, Float PRCVEN, Float DESCONTOMAIS, Float ACRESCIMOMAIS, String DESCRICAOPRODUTO, String UNID, String GRUPO, String MARCA, String ORIGEM, Float CONVERSAO, String DESCRICAOGRUPO, String DESCRICAOMARCA, String NROITEM, String FATOR, Float PRCBASE, Float POLITICABASE, Float CUSTOOPER, Float BDI,Float  PERCONTRATO) {
+	public TabPreco(String CODIGO, String DESCRICAO, String FLAGFAIXA, String FLAGHABDESC, String FLAGHABMOTIVO, String FLAGCONTRATO, String FLAGCC, String FLAGTAXAFINANC, String FLAGDESCCANAL, String FLAGDESCLOGIST, Float FAIXADE, Float FAIXAATE,String  TIPOCONTRATO,String  TIPOFRETE, String PRODUTO, Float PRCVEN, Float DESCONTOMAIS, Float ACRESCIMOMAIS, String DESCRICAOPRODUTO, String UNID, String GRUPO, String MARCA, String ORIGEM, Float CONVERSAO, String DESCRICAOGRUPO, String DESCRICAOMARCA, String NROITEM, String FATOR, Float PRCBASE, Float POLITICABASE, Float CUSTOOPER, Float BDI,Float  PERCONTRATO) {
 		this.CODIGO 			= CODIGO;
 		this.DESCRICAO 			= DESCRICAO;
 		this.FLAGFAIXA 			= FLAGFAIXA;
@@ -63,6 +63,7 @@ public class TabPreco {
 		this.FAIXADE          	= FAIXADE;
 		this.FAIXAATE         	= FAIXAATE;
 		this.TIPOCONTRATO       = TIPOCONTRATO;
+		this.TIPOFRETE          = TIPOFRETE;
 		this.PRODUTO          	= PRODUTO;
 		this.PRCVEN           	= PRCVEN;
 		this.DESCONTOMAIS     	= DESCONTOMAIS;
@@ -353,6 +354,10 @@ public class TabPreco {
 	public void setPERCONTRATO(Float PERCONTRATO) {
 		this.PERCONTRATO = PERCONTRATO;
 	}
+
+	public String getTIPOFRETE() {return TIPOFRETE;	}
+
+	public void setTIPOFRETE(String TIPOFRETE) {this.TIPOFRETE = TIPOFRETE;}
 }
 
 

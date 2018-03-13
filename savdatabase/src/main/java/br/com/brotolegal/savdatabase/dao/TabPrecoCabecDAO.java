@@ -130,7 +130,8 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 					cursor.getString(9),
 					cursor.getFloat(10),
 					cursor.getFloat(11),
-					cursor.getString(12)
+					cursor.getString(12),
+					cursor.getString(13)
 
 			);
 
@@ -234,6 +235,7 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 					"tabprecocabec.faixade, " +
 					"tabprecocabec.faixaate, " +
 					"tabprecocabec.tipocontrato, "+
+					"tabprecocabec.tipofrete, "   +
 					"tabprecodet.PRODUTO,"+
 					"tabprecodet.PRCVEN,"+
 					"tabprecodet.DESCONTOMAIS,"+
@@ -287,26 +289,27 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							cursor.getFloat(11),
 							cursor.getString(12),
 							cursor.getString(13),
-							cursor.getFloat(14),
+							cursor.getString(14),
 							cursor.getFloat(15),
 							cursor.getFloat(16),
-							cursor.getString(17),
+							cursor.getFloat(17),
 							cursor.getString(18),
 							cursor.getString(19),
 							cursor.getString(20),
 							cursor.getString(21),
-							cursor.getFloat(22),
-							cursor.getString(23),
+							cursor.getString(22),
+							cursor.getFloat(23),
 							cursor.getString(24),
 							cursor.getString(25),
 							cursor.getString(26),
-							cursor.getFloat(27),
+							cursor.getString(27),
 							cursor.getFloat(28),
 							cursor.getFloat(29),
 							cursor.getFloat(30),
-							cursor.getFloat(31)
+							cursor.getFloat(31),
+							cursor.getFloat(32)
 
-					);
+							);
 
 					lstabpreco.add(tabpreco);
 
@@ -474,6 +477,7 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							"tabprecocabec.faixade, "       +
 							"tabprecocabec.faixaate, "      +
 							"tabprecocabec.tipocontrato, "  +
+							"tabprecocabec.tipofrete, "     +
 							"tabprecodet.PRODUTO,"          +
 							"tabprecodet.PRCVEN,"           +
 							"tabprecodet.DESCONTOMAIS,"     +
@@ -527,27 +531,28 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							cursor.getFloat(11),
 							cursor.getString(12),
 							cursor.getString(13),
-							cursor.getFloat(14),
+							cursor.getString(14),
 							cursor.getFloat(15),
 							cursor.getFloat(16),
-							cursor.getString(17),
+							cursor.getFloat(17),
 							cursor.getString(18),
 							cursor.getString(19),
 							cursor.getString(20),
 							cursor.getString(21),
-							cursor.getFloat(22),
-							cursor.getString(23),
+							cursor.getString(22),
+							cursor.getFloat(23),
 							cursor.getString(24),
 							cursor.getString(25),
 							cursor.getString(26),
-							cursor.getFloat(27),
+							cursor.getString(27),
 							cursor.getFloat(28),
 							cursor.getFloat(29),
 							cursor.getFloat(30),
-							cursor.getFloat(31)
+							cursor.getFloat(31),
+							cursor.getFloat(32)
 
 
-					);
+							);
 
 					lstabpreco.add(tabpreco);
 

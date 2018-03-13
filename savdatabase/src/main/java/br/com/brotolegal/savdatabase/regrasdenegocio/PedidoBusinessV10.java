@@ -21,6 +21,7 @@ import br.com.brotolegal.savdatabase.dao.CondPagtoDAO;
 import br.com.brotolegal.savdatabase.dao.ContratoDAO;
 import br.com.brotolegal.savdatabase.dao.CotaDAO;
 import br.com.brotolegal.savdatabase.dao.FreteDAO;
+import br.com.brotolegal.savdatabase.dao.FreteMedioDAO;
 import br.com.brotolegal.savdatabase.dao.ImpostoDAO;
 import br.com.brotolegal.savdatabase.dao.MotivosTrocaDEvDAO;
 import br.com.brotolegal.savdatabase.dao.PedDetTvsDAO;
@@ -38,6 +39,7 @@ import br.com.brotolegal.savdatabase.entities.CondPagto;
 import br.com.brotolegal.savdatabase.entities.Contrato;
 import br.com.brotolegal.savdatabase.entities.Cota;
 import br.com.brotolegal.savdatabase.entities.Frete;
+import br.com.brotolegal.savdatabase.entities.FreteMedio;
 import br.com.brotolegal.savdatabase.entities.Imposto;
 import br.com.brotolegal.savdatabase.entities.MotivosTrocaDev;
 import br.com.brotolegal.savdatabase.entities.NoData;
@@ -89,7 +91,7 @@ public class PedidoBusinessV10 {
     private ImpostoDAO       impostodao;
     private SimuladorDAO     simuladordao;
     private AgendamentoDAO   agendamentodao;
-
+    private FreteMedioDAO    fretemedioDAO;
 
     //PEDIDO
     private List<PedidoDetMB_fast> lsDetalhe;
@@ -145,6 +147,8 @@ public class PedidoBusinessV10 {
         simuladordao   = new SimuladorDAO();
 
         agendamentodao = new AgendamentoDAO();
+
+        fretemedioDAO  = new FreteMedioDAO();
 
         Novo();
 
@@ -1475,6 +1479,8 @@ public class PedidoBusinessV10 {
         simuladordao.close();
 
         agendamentodao.close();
+
+        fretemedioDAO.close();
     }
 
     public void SetTipoPedido(String tipo) {
@@ -2031,51 +2037,87 @@ public class PedidoBusinessV10 {
 
                     qtd = cabec.getFDSPREVISTO() / cabec.getQTDENTREGA();
 
-                } catch (Exception e){
+                } catch (Exception e) {
 
                     qtd = cabec.getFDSPREVISTO();
                 }
 
+                this.tabprecocabecdao.open();
 
-                fretedao.open();
+                TabPrecoCabec cab = this.tabprecocabecdao.seek(new String[] {this.cabec.getTABPRECO()});
 
-                Frete freteArroz = fretedao.getFretArroz(qtd,clienteEntrega.getREDE(),clienteEntrega.getESTADO(),clienteEntrega.getCODCIDADE());
+                this.tabprecocabecdao.close();
 
-                fretedao.close();
+                if (cab != null) {
 
-                if (freteArroz == null){
+                    if ( (cab.getTIPOFRETE().equals("M"))) {
 
-                    freteArroz = new Frete();
+                        fretemedioDAO.open();
 
-                    freteArroz.setFRETE(3.50f);
+                        FreteMedio medio = fretemedioDAO.getFretemedio(this.cabec.getTABPRECO(),this.clienteEntrega.getESTADO(),qtd);
 
+                        fretemedioDAO.close();
+
+                        if (medio != null){
+
+                            this.FRETEARROZ  = medio.getVALOR();
+
+                            this.FRETEFEIJAO = medio.getVALOR();
+
+                        } else {
+
+                            this.FRETEARROZ = 0f;
+
+                            this.FRETEFEIJAO = 0f;
+                        }
+
+                    } else {
+
+
+                        fretedao.open();
+
+                        Frete freteArroz = fretedao.getFretArroz(qtd, clienteEntrega.getREDE(), clienteEntrega.getESTADO(), clienteEntrega.getCODCIDADE());
+
+                        if (freteArroz == null) {
+
+                            freteArroz = new Frete();
+
+                            freteArroz.setFRETE(3.50f);
+
+                        }
+
+
+                        Frete freteFeijao = fretedao.getFreteFeijao(qtd, clienteEntrega.getREDE(), clienteEntrega.getESTADO(), clienteEntrega.getCODCIDADE());
+
+                        if (freteFeijao == null) {
+
+                            freteFeijao = new Frete();
+
+                            freteFeijao.setFRETE(3.50f);
+
+                        }
+
+                        fretedao.close();
+
+                        this.FRETEARROZ = freteArroz.getFRETE();
+
+                        this.FRETEFEIJAO = freteFeijao.getFRETE();
+
+                    }
+
+                } else {
+
+                    this.FRETEARROZ = 0f;
+
+                    this.FRETEFEIJAO = 0f;
                 }
 
 
-                Frete freteFeijao = fretedao.getFreteFeijao(qtd,clienteEntrega.getREDE(),clienteEntrega.getESTADO(),clienteEntrega.getCODCIDADE());
-
-                if (freteFeijao == null){
-
-                    freteFeijao = new Frete();
-
-                    freteFeijao.setFRETE(3.50f);
-
-                }
-
-                this.FRETEARROZ = freteArroz.getFRETE();
-
-                this.FRETEFEIJAO = freteFeijao.getFRETE();
-
-                cabec.set_ClienteEntRazao(clienteEntrega.getCODIGO() + "-" + clienteEntrega.getLOJA() + " " + clienteEntrega.getRAZAOPA() + " Frete ARROZ "+format_02.format(freteArroz.getFRETE())+" Frete FEIJÃO "+format_02.format(freteFeijao.getFRETE()));
+                cabec.set_ClienteEntRazao(clienteEntrega.getCODIGO() + "-" + clienteEntrega.getLOJA() + " " + clienteEntrega.getRAZAOPA() + " Frete ARROZ " + format_02.format( this.FRETEARROZ ) + " Frete FEIJÃO " + format_02.format( this.FRETEFEIJAO ));
 
                 cabec.setCODIGOENT(codigo);
 
                 cabec.setLOJAENT(loja);
-
-            } else {
-
-                throw new ExceptionItemProduto("Cliente Entrega " + clienteEntrega.getCODIGO() + "-" + clienteEntrega.getLOJA() + "Não Encontrado !!!");
-
             }
 
         } catch (Exception e) {
@@ -3485,7 +3527,7 @@ public class PedidoBusinessV10 {
 
                     descarga = tot2.floatValue();
 
-                    frete += descarga;
+                    if (tabpreco.getTIPOFRETE().equals("C")) frete += descarga;
 
                     //Frete retira
 
@@ -3652,7 +3694,7 @@ public class PedidoBusinessV10 {
 
                         lsDetalhe.get(pos).setVLRDESCARGA2(descarga);
 
-                        frete += descarga;
+                        if (tabpreco.getTIPOFRETE().equals("C")) frete += descarga;
 
                         //Frete retira
 

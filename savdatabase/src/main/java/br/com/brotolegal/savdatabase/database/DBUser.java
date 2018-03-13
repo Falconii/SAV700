@@ -32,6 +32,7 @@ import br.com.brotolegal.savdatabase.entities.Contrato;
 import br.com.brotolegal.savdatabase.entities.Cota;
 import br.com.brotolegal.savdatabase.entities.DadosRanking;
 import br.com.brotolegal.savdatabase.entities.Frete;
+import br.com.brotolegal.savdatabase.entities.FreteMedio;
 import br.com.brotolegal.savdatabase.entities.Game;
 import br.com.brotolegal.savdatabase.entities.Grupo;
 import br.com.brotolegal.savdatabase.entities.Imposto;
@@ -70,7 +71,7 @@ public class DBUser extends SQLiteOpenHelper {
     private static final String TAG =  "DBUser";
 
     /* Data Base */
-    private static final int           DATABASE_VERSION = 100;
+    private static final int           DATABASE_VERSION = 104;
     private static final String        DATABASE_NAME    = "dados";
     private static       String        DATABASE_PATH    = Environment.getExternalStorageDirectory().getPath();
 
@@ -131,9 +132,10 @@ public class DBUser extends SQLiteOpenHelper {
         lsTabelas.add(new Tabela(new int[] {0,1,2}	    , "", new PedDetTvs()));
         lsTabelas.add(new Tabela(new int[] {0,1,2,3,4}  , "", new Receber()));
         lsTabelas.add(new Tabela(new int[] {0,1}        , "", new Agendamento()));
-        lsTabelas.add(new Tabela(null                   , "", new ContaCorrente()));
-        lsTabelas.add(new Tabela(null                   , "", new Base01()));
+        lsTabelas.add(new Tabela(null             , "", new ContaCorrente()));
+        lsTabelas.add(new Tabela(null             , "", new Base01()));
         lsTabelas.add(new Tabela(new int[] {0,1}        , "", new MotivosTrocaDev()));
+        lsTabelas.add(new Tabela(new int[] {0,1,2,3}    , "", new FreteMedio()));
 
         //Pré-Cliente
         lsTabelas.add(new Tabela(new int[] {0}	        , "", new PreCliente()));
