@@ -25,11 +25,15 @@ import java.util.Locale;
 
 import br.com.brotolegal.sav700.CampanhaBimestreViewActivity;
 import br.com.brotolegal.sav700.CampanhaClienteViewActivity;
+import br.com.brotolegal.sav700.CampanhaViewActivity;
 import br.com.brotolegal.sav700.R;
 import br.com.brotolegal.savdatabase.dao.CampanhaDAO;
+import br.com.brotolegal.savdatabase.dao.OcorrenciaDAO;
 import br.com.brotolegal.savdatabase.entities.Campanha_fast;
 import br.com.brotolegal.savdatabase.entities.Negociacao;
 import br.com.brotolegal.savdatabase.entities.NoData;
+import br.com.brotolegal.savdatabase.entities.Ocorrencia;
+import br.com.brotolegal.savdatabase.regrasdenegocio.ObjProcesso;
 
 public class Adapter extends BaseAdapter {
 
@@ -54,8 +58,9 @@ public class Adapter extends BaseAdapter {
     final int ITEM_VIEW_MARCA           = 4;
     final int ITEM_VIEW_BIMESTRE        = 5;
     final int ITEM_VIEW_MENSAL          = 6;
-    final int ITEM_VIEW_NO_DATA         = 7;
-    final int ITEM_VIEW_COUNT           = 8;
+    final int ITEM_VIEW_PROCESSO        = 7;
+    final int ITEM_VIEW_NO_DATA         = 8;
+    final int ITEM_VIEW_COUNT           = 9;
 
 
     private LayoutInflater inflater;
@@ -66,6 +71,8 @@ public class Adapter extends BaseAdapter {
 
     private String Periodo;
 
+    private CampanhaViewActivity.ClicProcesso click;
+
     public void setPeriodoInicial(String periodoInicial) {
         PeriodoInicial = periodoInicial;
     }
@@ -74,7 +81,7 @@ public class Adapter extends BaseAdapter {
         PeriodoFinal = periodoFinal;
     }
 
-    public Adapter(Context context, String PeriodoInicial, String PeriodoFinal, List<Object> pObjects) {
+    public Adapter(Context context, String PeriodoInicial, String PeriodoFinal, List<Object> pObjects, CampanhaViewActivity.ClicProcesso click) {
 
         this.lsObjetos  = pObjects;
 
@@ -87,6 +94,8 @@ public class Adapter extends BaseAdapter {
         this.PeriodoFinal   = PeriodoFinal;
 
         this.Periodo        = "";
+
+        this.click          = click;
 
     }
 
@@ -378,6 +387,11 @@ public class Adapter extends BaseAdapter {
 
         }
 
+        if (lsObjetos.get(position) instanceof ObjProcesso) {
+
+              retorno = ITEM_VIEW_PROCESSO;
+        }
+
         if (lsObjetos.get(position) instanceof NoData) {
 
             retorno = ITEM_VIEW_NO_DATA;
@@ -456,6 +470,12 @@ public class Adapter extends BaseAdapter {
 
                         break;
 
+
+                    case ITEM_VIEW_PROCESSO:
+
+                        convertView = inflater.inflate(R.layout.showprocessocarga, null);
+
+                        break;
 
                     case ITEM_VIEW_NO_DATA:
 
@@ -782,6 +802,25 @@ public class Adapter extends BaseAdapter {
 
                 }
 
+                case ITEM_VIEW_PROCESSO: {
+
+                    final ObjProcesso obj = (ObjProcesso) lsObjetos.get(pos);
+
+                    TextView txt_obs_127       = (TextView) convertView.findViewById(R.id.txt_obs_127);
+
+                    TextView txt_estagio_127   = (TextView) convertView.findViewById(R.id.txt_estagio_127);
+
+                    Button   bt_cancela_127    = (Button)   convertView.findViewById(R.id.bt_cancela_127);
+
+                    txt_estagio_127.setText(obj.getEstagio());
+
+                    txt_obs_127.setText(obj.getObs());
+
+                    bt_cancela_127.setOnClickListener( click);
+
+                    break;
+
+                }
 
                 case ITEM_VIEW_NO_DATA: {
 
@@ -816,7 +855,6 @@ public class Adapter extends BaseAdapter {
 
     }
 
-
     private String mesExtenso(String data){
 
         String retorno = "";
@@ -843,15 +881,12 @@ public class Adapter extends BaseAdapter {
         return retorno;
 
     }
+
     public void toast(String msg) {
 
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
 
     }
-
-
-
-
 
 
 }

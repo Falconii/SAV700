@@ -340,7 +340,7 @@ public class CampanhaClienteViewActivity extends AppCompatActivity {
 
             }
 
-            adapter = new Adapter(CampanhaClienteViewActivity.this,PeriodoInicial,PeriodoFinal,lsLista);
+            adapter = new Adapter(CampanhaClienteViewActivity.this,PeriodoInicial,PeriodoFinal,lsLista,null);
 
             lv.setAdapter(adapter);
 

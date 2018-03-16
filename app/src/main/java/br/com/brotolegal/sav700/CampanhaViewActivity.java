@@ -1,6 +1,7 @@
 package br.com.brotolegal.sav700;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -19,8 +20,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -28,13 +31,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.TreeMap;
 
 import br.com.brotolegal.sav700.Campanha.Adaptadores.Adapter;
@@ -46,18 +59,28 @@ import br.com.brotolegal.sav700.VerificaWeb.ParametrosAdapter;
 import br.com.brotolegal.savdatabase.app.App;
 import br.com.brotolegal.savdatabase.dao.CampanhaDAO;
 import br.com.brotolegal.savdatabase.dao.ConfigDAO;
+import br.com.brotolegal.savdatabase.dao.OcorrenciaDAO;
 import br.com.brotolegal.savdatabase.dao.StatusDAO;
+import br.com.brotolegal.savdatabase.dao.TaskDAO;
 import br.com.brotolegal.savdatabase.entities.Campanha_fast;
 import br.com.brotolegal.savdatabase.entities.Config;
 import br.com.brotolegal.savdatabase.entities.NoData;
+import br.com.brotolegal.savdatabase.entities.Ocorrencia;
 import br.com.brotolegal.savdatabase.entities.Status;
+import br.com.brotolegal.savdatabase.entities.Task;
+import br.com.brotolegal.savdatabase.eventbus.NotificationCarga;
 import br.com.brotolegal.savdatabase.internet.AccessWebInfo;
 import br.com.brotolegal.savdatabase.internet.HandleSoap;
+import br.com.brotolegal.savdatabase.internet.SoapServEnv;
+import br.com.brotolegal.savdatabase.regrasdenegocio.ObjProcesso;
+import br.com.brotolegal.savdatabase.wsentities.TASK;
 
 import static br.com.brotolegal.savdatabase.internet.AccessWebInfo.PROCESSO_CUSTOM;
 import static br.com.brotolegal.savdatabase.internet.AccessWebInfo.RETORNO_TIPO_ESTUTURADO;
 
 public class CampanhaViewActivity extends AppCompatActivity {
+
+    private String LOG = "CAMPANHA" ;
 
     private Spinner spConexao;
 
@@ -89,7 +112,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
     Spinner spPeriodo;
 
-    List<String[]> lsPeriodos            = new ArrayList<>();
+    List<String[]> lsPeriodos = new ArrayList<>();
 
     TextView UltimaAtualizacao;
 
@@ -209,7 +232,6 @@ public class CampanhaViewActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -229,8 +251,33 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
             case R.id.action_campanha_fechada_sincronizar:
 
-                finish();
+                try {
 
+                    OcorrenciaDAO dao = new OcorrenciaDAO();
+
+                    dao.open();
+
+                    Ocorrencia ocorrencia = dao.seekByCodigo(new String[] {"000018"});
+
+                    dao.close();
+
+                    if (ocorrencia != null) {
+
+                        ResetOcorrencia("000018");
+
+                        carga01(ocorrencia);
+
+                    } else {
+
+                        Toast("Não Encontrada Ocorrência 000018 - Campanha Fechada");
+
+                    }
+
+                } catch (Exception e){
+
+                    Toast(e.getMessage());
+
+                }
                 break;
 
             case R.id.action_campanha_aberta_sincronizar:
@@ -255,23 +302,34 @@ public class CampanhaViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public void onResume() {
 
-        SharedPreferences prefs = getSharedPreferences("CAMPANHA_2018", MODE_PRIVATE);
+        try {
 
-        Indice         = prefs.getInt("Indice", Indice);
-        PeriodoInicial = prefs.getString("PeriodoInicial",PeriodoInicial);
-        PeriodoFinal   = prefs.getString("PeriodoFinal"  ,PeriodoFinal);
+            SharedPreferences prefs = getSharedPreferences("CAMPANHA_2018", MODE_PRIVATE);
+
+            Indice         = prefs.getInt("Indice", Indice);
+            PeriodoInicial = prefs.getString("PeriodoInicial",PeriodoInicial);
+            PeriodoFinal   = prefs.getString("PeriodoFinal"  ,PeriodoFinal);
 
 
-        spPeriodo.setSelection(Indice);
+            spPeriodo.setSelection(Indice);
+
+
+
+            if (!EventBus.getDefault().isRegistered(this)) EventBus.getDefault().register(this);
+
+
+        } catch (Exception e) {
+
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        }
 
 
         super.onResume();
     }
-
 
     @Override
     public void finish() {
@@ -292,7 +350,23 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
         lsPeriodos        = new ArrayList<>();
 
+        if (dialog != null){
+
+            if ( dialog.isShowing() ) dialog.dismiss();
+
+
+        }
+
         super.finish();
+
+    }
+
+    @Override
+    protected void onStop() {
+
+        if (EventBus.getDefault().isRegistered(this)) EventBus.getDefault().unregister(this);
+
+        super.onStop();
 
     }
 
@@ -339,7 +413,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
             }
 
-            adapter = new Adapter(CampanhaViewActivity.this,PeriodoInicial,PeriodoFinal,lsLista);
+            adapter = new Adapter(CampanhaViewActivity.this,PeriodoInicial,PeriodoFinal,lsLista , new ClicProcesso(CampanhaViewActivity.this));
 
             lv.setAdapter(adapter);
 
@@ -348,7 +422,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
         } catch (Exception e){
 
-
+            toast(e.getMessage());
 
         }
 
@@ -360,6 +434,225 @@ public class CampanhaViewActivity extends AppCompatActivity {
         Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show();
 
     }
+
+    private void carga01(Ocorrencia ocorrencia) throws  Exception {
+
+        try {
+
+            if ( ocorrencia.getSTATUS().equals("0") || ocorrencia.getSTATUS().equals("9")) {
+
+
+                TASK task = new TASK("", "", ocorrencia.getCODIGO(), ocorrencia.getDESCRICAO(), "", "");
+
+                PropertyInfo pi = new PropertyInfo();
+                pi.setName("TASK");
+                pi.setValue(task);
+                pi.setType(task.getClass());
+
+                AccessWebInfo acessoWeb2 = new AccessWebInfo(mHandlerCarga01, getBaseContext(), App.user, "PUTTASKS", "PUTTASKS", AccessWebInfo.RETORNO_ARRAY_ESTRUTURADO, AccessWebInfo.PROCESSO_FILE, config, null, -1);
+
+                acessoWeb2.addInfo(pi);
+                acessoWeb2.addParam("CCODUSER", App.user.getCOD());
+                acessoWeb2.addParam("CPASSUSER", App.user.getSENHA());
+                acessoWeb2.addObjeto("TASK", new TASK());
+
+                acessoWeb2.start();
+
+            }
+            if (ocorrencia.getSTATUS().equals("1")) {
+
+                TASK task = new TASK("", "", ocorrencia.getCODIGO(), ocorrencia.getDESCRICAO(), "COM", ocorrencia.getARQUIVO());
+
+                PropertyInfo pi = new PropertyInfo();
+                pi.setName("TASK");
+                pi.setValue(task);
+                pi.setType(task.getClass());
+
+                AccessWebInfo acessoWeb2 = new AccessWebInfo(null, getBaseContext(), App.user, "PROCTASKS", "PROCTASKS", AccessWebInfo.RETORNO_ARRAY_ESTRUTURADO, AccessWebInfo.PROCESSO_FILE, config, null,-1);
+
+                acessoWeb2.addInfo(pi);
+                acessoWeb2.addParam("CCODUSER", App.user.getCOD());
+                acessoWeb2.addParam("CPASSUSER", App.user.getSENHA());
+                acessoWeb2.addObjeto("TASK", new TASK());
+                acessoWeb2.setCodocorrencia(ocorrencia.getCODIGO());
+
+                acessoWeb2.start();
+
+            }
+
+        } catch (Exception e) {
+
+            throw new Exception("Falha Na Gravação Das Tarrefas!\n"+e.getMessage());
+
+        }
+
+    }
+
+
+    //Event Bus
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiverNotification(NotificationCarga notification){
+
+        Log.i(LOG,"Notification Carga");
+
+        Log.i(LOG,notification.getMSGERRO());
+
+        UltimaAtualizacao.setText(notification.getMSGERRO());
+
+        lsLista.clear();
+
+        lsLista.add("CABEC");
+
+        lsLista.add(new ObjProcesso("TITULO",notification.getMSGERRO(),"OBS"));
+
+        adapter = new Adapter(CampanhaViewActivity.this,PeriodoInicial,PeriodoFinal,lsLista,new ClicProcesso(CampanhaViewActivity.this));
+
+        lv.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
+
+
+    }
+
+    private void refreshCarga(String CodTarefa) {
+
+        Timer timer = new Timer();
+
+        timer.scheduleAtFixedRate( new refresh(CodTarefa) , 20000, 20000);
+
+        Log.i(LOG,"Refresh Ativado...");
+
+    }
+
+    private void Toast(String Mensa){
+
+        Toast.makeText(this, Mensa, Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void ResetOcorrencia(String codigo){
+
+        try {
+
+            OcorrenciaDAO dao = new OcorrenciaDAO();
+
+            dao.open();
+
+            Ocorrencia ocorrencia = dao.seekByCodigo(new String[] {codigo});
+
+            if (ocorrencia != null) {
+
+                ocorrencia.setSTATUS("0");
+                ocorrencia.setOBS("");
+                ocorrencia.setARQUIVO("");
+
+                dao.Update(ocorrencia);
+
+            }
+
+            dao.close();
+
+        } catch(Exception e){
+
+            toast(e.getMessage());
+
+        }
+
+
+
+    }
+
+    private Handler mHandlerCarga01 = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            Boolean processado = false;
+
+            try {
+
+                if (!msg.getData().containsKey("CERRO") || !msg.getData().containsKey("CMSGERRO")) {
+
+                    Log.i(LOG, "NAO CONTEM AS CHAVES..");
+
+                    return;
+
+                }
+
+
+
+                if (msg.getData().getString("CERRO").equals("---")) {
+
+                    if (!(dialog.isShowing())) dialog.show();
+
+                    processado = true;
+
+                    Log.i(LOG, "Mostrando Dialog...");
+
+                }
+
+
+                if (msg.getData().getString("CERRO").equals("MMM")) {
+
+                    if ((dialog != null)) {
+
+                        if (dialog.isShowing()) {
+
+                            dialog.setTitle(msg.getData().getString("CMSGERRO"));
+
+                        }
+
+                    }
+
+                    processado = true;
+
+                }
+
+
+                if ((msg.getData().getString("CERRO").equals("FEC"))) {
+
+
+                    if (dialog != null){
+
+                        if (dialog.isShowing()){
+
+                            dialog.dismiss();
+
+                        }
+
+                    }
+
+
+                    if (!msg.getData().getString("CMSGERRO").isEmpty()) {
+
+                        Toast( msg.getData().getString("CMSGERRO"));
+
+                    }
+
+                    refreshCarga("000018");
+
+                    processado = true;
+                }
+
+
+                if (!processado) {
+
+
+                    Toast("Erro: " + msg.getData().getString("CMSGERRO"));
+
+
+                }
+
+            } catch (Exception E) {
+
+                Log.d(LOG, "MENSAGEM", E);
+
+                Toast("Erro Handler: " + E.getMessage());
+
+            }
+        }
+    };
 
     private Handler mHandlerRede = new Handler() {
 
@@ -386,7 +679,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
                     } catch (Exception e) {
 
-                        Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast( e.getMessage());
 
                     }
 
@@ -445,7 +738,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
         } catch (Exception e) {
 
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast( e.getMessage() );
 
             finish();
 
@@ -496,7 +789,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
                     } catch (Exception e) {
 
-                        Toast.makeText(getBaseContext(), "Não Atualizada A Conexão !!\n" + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast("Não Atualizada A Conexão !!\n" + e.getMessage());
                     }
 
                 }
@@ -742,5 +1035,161 @@ public class CampanhaViewActivity extends AppCompatActivity {
             this.isInicializacao = isInicializacao;
         }
     }
+
+    private  class refresh extends TimerTask {
+
+        String CodTarefa = "";
+
+        int vezes = 0;
+
+        public refresh(String codTarefa) {
+
+            CodTarefa = codTarefa;
+
+            vezes = 0;
+        }
+
+        @Override
+        public void run() {
+
+            try {
+
+                OcorrenciaDAO dao = new OcorrenciaDAO();
+
+                dao.open();
+
+                Ocorrencia ocorrencia = dao.seekByCodigo(new String[] {CodTarefa});
+
+                dao.close();
+
+                if (ocorrencia != null && ocorrencia.getSTATUS().equals("1")) {
+
+                    vezes++;
+
+                    if (vezes == 15) cancel();
+
+                    Log.i("TIME", "Processando...Tarefa " + CodTarefa + " Vez " + String.valueOf(vezes));
+
+                    carga01(ocorrencia);
+
+                } else {
+
+                    Log.i("TIME", "Finalizando...Tarefa " + CodTarefa );
+
+                    cancel();
+
+                }
+            } catch (Exception e){
+
+                Log.i("TIME", "Finalizando...Tarefa " + CodTarefa );
+
+                Log.i("TIME",e.getMessage());
+
+                cancel();
+
+            }
+        }
+    }
+
+    public class TransparentProgressDialog extends Dialog {
+
+        private TextView txt_estagio_127;
+
+        private TextView txt_obs_127;
+
+        private Button bt_cancela_127;
+
+        public TransparentProgressDialog(Context context ) {
+            super(context, R.style.AppTheme);
+
+            WindowManager.LayoutParams wlmp = getWindow().getAttributes();
+
+            wlmp.height  = WindowManager.LayoutParams.WRAP_CONTENT;
+            getWindow().setAttributes(wlmp);
+            setTitle("");
+            setCancelable(false);
+            setOnCancelListener(null);
+            View view = LayoutInflater.from(context).inflate(R.layout.showprocessocarga, null);
+
+            setContentView(view);
+
+            TextView txt_obs_127       = (TextView) findViewById(R.id.txt_obs_127);
+
+            TextView txt_estagio_127   = (TextView) findViewById(R.id.txt_estagio_127);
+
+            Button   bt_cancela_127    = (Button)   findViewById(R.id.bt_cancela_127);
+
+            bt_cancela_127.setOnClickListener( new ClicProcesso(context));
+
+        }
+
+
+        public String getTxt_estagio_127() {
+            return txt_estagio_127.getText().toString();
+        }
+
+        public void setTxt_estagio_127(String value) {
+            txt_estagio_127.setText(value);
+        }
+
+        public String getTxt_obs_127() {
+            return txt_obs_127.getText().toString();
+        }
+
+        public void setTxt_obs_127(String value) {
+            this.txt_obs_127.setText(value);
+        }
+    }
+
+    public class ClicProcesso implements  View.OnClickListener {
+
+        Context context;
+
+        public ClicProcesso(Context context) {
+
+            this.context = context;
+
+        }
+
+        @Override
+        public void onClick(View v) {
+
+
+            try {
+
+                OcorrenciaDAO dao = new OcorrenciaDAO();
+
+                dao.open();
+
+                Ocorrencia ocorrencia = dao.seekByCodigo(new String[] {"000018"});
+
+                if (ocorrencia != null) {
+
+                    ocorrencia.setSTATUS("0");
+                    ocorrencia.setOBS("");
+                    ocorrencia.setARQUIVO("");
+
+                    dao.Update(ocorrencia);
+
+                }
+
+                dao.close();
+
+                loadCampanhas();
+
+            } catch(Exception e){
+
+                toast(e.getMessage());
+
+            }
+
+            return;
+
+        }
+
+
+
+    }
+
 
 }

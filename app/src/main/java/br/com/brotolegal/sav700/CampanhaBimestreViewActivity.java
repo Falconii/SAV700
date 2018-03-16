@@ -347,7 +347,7 @@ public class CampanhaBimestreViewActivity extends AppCompatActivity {
 
             dao.close();
 
-            adapter = new Adapter(CampanhaBimestreViewActivity.this,PeriodoInicial,PeriodoFinal,lsLista);
+            adapter = new Adapter(CampanhaBimestreViewActivity.this,PeriodoInicial,PeriodoFinal,lsLista,null);
 
             adapter.setPeriodo(lsparametrosCampanha.get(0).getPeriodoExtenso(Indice));
 
