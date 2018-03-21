@@ -167,139 +167,139 @@ public class CadastroNegociacaoActivity extends AppCompatActivity {
 
                 break;
             }
-      }
-
-return super.onOptionsItemSelected(item);
         }
 
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (resultCode == 1 && requestCode == HelpInformation.HelpCliente) {
 
-        String codigo = null;
+            String codigo = null;
 
-        String loja = null;
+            String loja = null;
 
-        try {
+            try {
 
-        if (data.hasExtra("CODIGO")) {
+                if (data.hasExtra("CODIGO")) {
 
-        codigo = data.getExtras().getString("CODIGO");
+                    codigo = data.getExtras().getString("CODIGO");
 
-        }
-        if (data.hasExtra("LOJA")) {
+                }
+                if (data.hasExtra("LOJA")) {
 
-        loja = data.getExtras().getString("LOJA");
+                    loja = data.getExtras().getString("LOJA");
 
-        }
+                }
 
-        ClienteDAO dao = new ClienteDAO();
+                ClienteDAO dao = new ClienteDAO();
 
-        dao.open();
+                dao.open();
 
-        Cliente cliente = dao.seek(new String[] {codigo,loja});
+                Cliente cliente = dao.seek(new String[] {codigo,loja});
 
-        dao.close();
+                dao.close();
 
-        preacordo.setREDE("");
-        preacordo.set_REDE("");
+                preacordo.setREDE("");
+                preacordo.set_REDE("");
 
-        if (cliente != null){
+                if (cliente != null){
 
-        preacordo.setCLIENTE(codigo);
-        preacordo.setLOJA(loja);
-        preacordo.set_RAZAO(cliente.getRAZAO());
-        preacordo.set_CNPJ(App.cnpj_cpf(cliente.getCNPJ()));
-        preacordo.set_IE(cliente.getIE());
+                    preacordo.setCLIENTE(codigo);
+                    preacordo.setLOJA(loja);
+                    preacordo.set_RAZAO(cliente.getRAZAO());
+                    preacordo.set_CNPJ(App.cnpj_cpf(cliente.getCNPJ()));
+                    preacordo.set_IE(cliente.getIE());
 
-        } else {
+                } else {
 
-        preacordo.setCLIENTE("");
-        preacordo.setLOJA("");
-        preacordo.set_RAZAO("");
-        preacordo.set_CNPJ("");
-        preacordo.set_IE("");
+                    preacordo.setCLIENTE("");
+                    preacordo.setLOJA("");
+                    preacordo.set_RAZAO("");
+                    preacordo.set_CNPJ("");
+                    preacordo.set_IE("");
 
-        }
+                }
 
-        refresh();
+                refresh();
 
 
-        } catch (Exception e) {
+            } catch (Exception e) {
 
-        toast(e.getMessage());
-        }
+                toast(e.getMessage());
+            }
 
         }
 
         if (resultCode == 1 && requestCode == HelpInformation.HelpRede) {
 
-        String codigo = null;
+            String codigo = null;
 
 
-        try {
+            try {
 
-        if (data.hasExtra("CODIGO")) {
+                if (data.hasExtra("CODIGO")) {
 
-        codigo = data.getExtras().getString("CODIGO");
+                    codigo = data.getExtras().getString("CODIGO");
 
-        }
+                }
 
-        RedeDAO dao = new RedeDAO();
+                RedeDAO dao = new RedeDAO();
 
-        dao.open();
+                dao.open();
 
-        Rede rede = dao.seek(new String[] {codigo});
+                Rede rede = dao.seek(new String[] {codigo});
 
-        dao.close();
+                dao.close();
 
-        preacordo.setCLIENTE("");
-        preacordo.setLOJA("");
-        preacordo.set_RAZAO("");
-        preacordo.set_CNPJ("");
-        preacordo.set_IE("");
+                preacordo.setCLIENTE("");
+                preacordo.setLOJA("");
+                preacordo.set_RAZAO("");
+                preacordo.set_CNPJ("");
+                preacordo.set_IE("");
 
-        if (rede != null){
+                if (rede != null){
 
-        preacordo.setREDE(rede.getCODIGO());
-        preacordo.set_REDE(rede.getDESCRICAO());
+                    preacordo.setREDE(rede.getCODIGO());
+                    preacordo.set_REDE(rede.getDESCRICAO());
 
-        } else {
+                } else {
 
-        preacordo.setREDE("");
-        preacordo.set_REDE("");
+                    preacordo.setREDE("");
+                    preacordo.set_REDE("");
 
-        }
+                }
 
-        refresh();
+                refresh();
 
 
-        } catch (Exception e) {
+            } catch (Exception e) {
 
-        toast(e.getMessage());
-        }
-
-        }
+                toast(e.getMessage());
+            }
 
         }
 
-private void toast(String mensagem){
+    }
+
+    private void toast(String mensagem){
 
         Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show();
 
-        }
+    }
 
-@Override
-public void finish() {
+    @Override
+    public void finish() {
 
         //lsVerba = new ArrayList<String[]>();
 
         super.finish();
 
-        }
+    }
 
-private void Init() {
+    private void Init() {
 
         txt_mensagem_714           = (TextView) findViewById(R.id.txt_mensagem_714);
         txt_id_714                 = (TextView) findViewById(R.id.txt_id_714);
@@ -320,119 +320,119 @@ private void Init() {
         txt_qtd_aproveitamento_714 = (TextView) findViewById(R.id.txt_qtd_aproveitamento_714) ;
         txt_sld_politica_714       = (TextView) findViewById(R.id.txt_sld_politica_714);
 
-        }
+    }
 
 
 
-private void loadPedidos() throws Exception {
+    private void loadPedidos() throws Exception {
 
         try {
 
-        if (ID.isEmpty()) {
+            if (ID.isEmpty()) {
 
-        preacordo = new PreAcordo();
+                preacordo = new PreAcordo();
 
-        preacordo.setCODMOBILE(App.getNewID());
+                preacordo.setCODMOBILE(App.getNewID());
 
-        preacordo.setSTATUS("0");
+                preacordo.setSTATUS("0");
 
-        preacordo.setDATA(App.aaaammddToddmmaaaa(App.getHoje()));
+                preacordo.setDATA(App.aaaammddToddmmaaaa(App.getHoje()));
 
-        preacordo.setCODVEND(App.user.getCODVEN());
+                preacordo.setCODVEND(App.user.getCODVEN());
 
-        preacordo.setNOMVEND(App.user.getNOME());
+                preacordo.setNOMVEND(App.user.getNOME());
 
-        Operacao = OperacaoInclusao;
-
-
-        } else {
+                Operacao = OperacaoInclusao;
 
 
-        PreAcordoDAO dao = new PreAcordoDAO();
-
-        dao.open();
-
-        preacordo = dao.seek(new String[]{ID});
-
-        dao.close();
-
-        if (preacordo == null) {
+            } else {
 
 
-        throw new Exception("Registro Não Encontrado !!");
+                PreAcordoDAO dao = new PreAcordoDAO();
 
-        }
+                dao.open();
 
-        if (preacordo.getSTATUS().compareTo("1") > 0) Operacao = OperacaoConsulta;
-        else Operacao = OperacaoAlteracao;
-        }
+                preacordo = dao.seek(new String[]{ID});
 
-        refresh();
+                dao.close();
+
+                if (preacordo == null) {
+
+
+                    throw new Exception("Registro Não Encontrado !!");
+
+                }
+
+                if (preacordo.getSTATUS().compareTo("1") > 0) Operacao = OperacaoConsulta;
+                else Operacao = OperacaoAlteracao;
+            }
+
+            refresh();
 
         } catch (Exception e) {
 
-        throw new Exception(e.getMessage());
+            throw new Exception(e.getMessage());
 
 
         }
-        }
+    }
 
-public void clickCliente(View v) {
+    public void clickCliente(View v) {
 
         if (Operacao == OperacaoConsulta) {
 
-        //return;
+            //return;
 
         }
 
         if ((!swClienteRede_714.isChecked())){
-        Intent i = new Intent(CadastroNegociacaoActivity.this, Help20Activity.class);
-        Bundle params = new Bundle();
-        params.putString("ARQUIVO", "CLIENTE");
-        params.putString("TITULO", "CADASTRO DE CLIENTES");
-        params.putString("MULTICHOICE", "N");
-        params.putString("ALIAS", "CLIENTE");
-        params.putString("ALIASVALUES", "");
-        i.putExtras(params);
-        startActivityForResult(i, HelpInformation.HelpCliente);
+            Intent i = new Intent(CadastroNegociacaoActivity.this, Help20Activity.class);
+            Bundle params = new Bundle();
+            params.putString("ARQUIVO", "CLIENTE");
+            params.putString("TITULO", "CADASTRO DE CLIENTES");
+            params.putString("MULTICHOICE", "N");
+            params.putString("ALIAS", "CLIENTE");
+            params.putString("ALIASVALUES", "");
+            i.putExtras(params);
+            startActivityForResult(i, HelpInformation.HelpCliente);
         } else {
-        Intent i = new Intent(CadastroNegociacaoActivity.this, Help20Activity.class);
-        Bundle params = new Bundle();
-        params.putString("ARQUIVO", "REDE");
-        params.putString("TITULO", "CADASTRO DE REDES");
-        params.putString("MULTICHOICE", "N");
-        params.putString("ALIAS", "REDECLIENTE");
-        params.putString("ALIASVALUES", "");
-        i.putExtras(params);
-        startActivityForResult(i, HelpInformation.HelpRede);
+            Intent i = new Intent(CadastroNegociacaoActivity.this, Help20Activity.class);
+            Bundle params = new Bundle();
+            params.putString("ARQUIVO", "REDE");
+            params.putString("TITULO", "CADASTRO DE REDES");
+            params.putString("MULTICHOICE", "N");
+            params.putString("ALIAS", "REDECLIENTE");
+            params.putString("ALIASVALUES", "");
+            i.putExtras(params);
+            startActivityForResult(i, HelpInformation.HelpRede);
         }
 
 
-        }
+    }
 
-public void clickPagto(View v) {
+    public void clickPagto(View v) {
 
         if (Operacao == OperacaoConsulta) {
 
-        return;
+            return;
 
         }
 
-        }
+    }
 
-public void clickQtdFardos(View v){
-
-
-        }
-
-public void clickEntrega(View v){
+    public void clickQtdFardos(View v){
 
 
-        }
+    }
+
+    public void clickEntrega(View v){
+
+
+    }
 
 
 
-private void refresh() {
+    private void refresh() {
 /*
         int index = 0;
 
@@ -896,165 +896,165 @@ private void refresh() {
         txt_obs_714.setText(preacordo.getOBS());
 
 */
+    }
+
+    private class defaultAdapter extends ArrayAdapter {
+
+        private int escolha = 0;
+
+        private List<String[]> lista;
+
+        private String label;
+
+        private boolean valido;
+
+        private boolean isInicializacao = true;
+
+        private defaultAdapter(Context context, int textViewResourceId, List<String[]> objects,String label, boolean valido) {
+
+            super(context, textViewResourceId, objects);
+
+            this.lista = objects;
+
+            this.label = label;
+
+            this.valido = valido;
         }
 
-private class defaultAdapter extends ArrayAdapter {
-
-    private int escolha = 0;
-
-    private List<String[]> lista;
-
-    private String label;
-
-    private boolean valido;
-
-    private boolean isInicializacao = true;
-
-    private defaultAdapter(Context context, int textViewResourceId, List<String[]> objects,String label, boolean valido) {
-
-        super(context, textViewResourceId, objects);
-
-        this.lista = objects;
-
-        this.label = label;
-
-        this.valido = valido;
-    }
-
-    public String getOpcao(int pos){
+        public String getOpcao(int pos){
 
 
-        if ( (pos < this.lista.size() )){
+            if ( (pos < this.lista.size() )){
 
 
-            return lista.get(pos)[0];
+                return lista.get(pos)[0];
 
-        }
+            }
 
-        return "";
-
-    }
-
-    public void setEscolha(int escolha) {
-
-        this.escolha = escolha;
-
-        notifyDataSetChanged();
-
-    }
-
-    public View getOpcoesView(int position, View convertView, ViewGroup parent) {
-
-        String col01 = lista.get(position)[0];
-        String col02 = lista.get(position)[1];
-
-        LayoutInflater inflater =  getLayoutInflater();
-
-        View layout = inflater.inflate(R.layout.choice_01_row, parent, false);
-
-        TextView tvcol01 = (TextView) layout.findViewById(R.id.txt_col01_898);
-
-        TextView tvcol02 = (TextView) layout.findViewById(R.id.txt_col02_898);
-
-        tvcol01.setTextSize(14f);
-
-        tvcol02.setTextSize(14f);
-
-
-        tvcol01.setText(col01);
-
-        tvcol02.setText(col02);
-
-        tvcol01.setTextColor(Color.RED);
-
-        tvcol02.setTextColor(Color.RED);
-
-        ImageView img = (ImageView) layout.findViewById(R.id.im_flag_898);
-
-        if (position == escolha) {
-
-            img.setVisibility(View.VISIBLE);
-
-            tvcol01.setTextColor(Color.BLACK);
-
-            tvcol02.setTextColor(Color.BLACK);
+            return "";
 
         }
 
-        return layout;
-    }
+        public void setEscolha(int escolha) {
 
-    public View getEscolhaView(int position, View convertView, ViewGroup parent) {
+            this.escolha = escolha;
 
-        String obj = lista.get(position)[1];
-
-        LayoutInflater inflater = getLayoutInflater();
-
-        View layout = inflater.inflate(R.layout.choice_default_row, parent, false);
-
-        TextView tvlabel   = (TextView) layout.findViewById(R.id.lbl_titulo_22);
-
-        tvlabel.setText(this.label);
-
-        if (this.label.isEmpty()){
-
-            tvlabel.setVisibility(View.GONE);
+            notifyDataSetChanged();
 
         }
 
-        TextView tvOpcao = (TextView) layout.findViewById(R.id.tvOpcao_22);
+        public View getOpcoesView(int position, View convertView, ViewGroup parent) {
 
-        tvOpcao.setText(obj);
+            String col01 = lista.get(position)[0];
+            String col02 = lista.get(position)[1];
 
-        ImageView img = (ImageView) layout.findViewById(R.id.img_22);
+            LayoutInflater inflater =  getLayoutInflater();
 
-        if (valido){
+            View layout = inflater.inflate(R.layout.choice_01_row, parent, false);
 
-            img.setVisibility(View.GONE);
+            TextView tvcol01 = (TextView) layout.findViewById(R.id.txt_col01_898);
 
-        }   else
-        {
-            img.setImageResource(R.drawable.erro_20_vermelho);
+            TextView tvcol02 = (TextView) layout.findViewById(R.id.txt_col02_898);
+
+            tvcol01.setTextSize(14f);
+
+            tvcol02.setTextSize(14f);
+
+
+            tvcol01.setText(col01);
+
+            tvcol02.setText(col02);
+
+            tvcol01.setTextColor(Color.RED);
+
+            tvcol02.setTextColor(Color.RED);
+
+            ImageView img = (ImageView) layout.findViewById(R.id.im_flag_898);
+
+            if (position == escolha) {
+
+                img.setVisibility(View.VISIBLE);
+
+                tvcol01.setTextColor(Color.BLACK);
+
+                tvcol02.setTextColor(Color.BLACK);
+
+            }
+
+            return layout;
         }
 
-        if (position == escolha) {
+        public View getEscolhaView(int position, View convertView, ViewGroup parent) {
 
-            tvOpcao.setTextColor(getResources().getColor(R.color.dark_blue));
+            String obj = lista.get(position)[1];
 
-            tvOpcao.setGravity(Gravity.CENTER);
+            LayoutInflater inflater = getLayoutInflater();
+
+            View layout = inflater.inflate(R.layout.choice_default_row, parent, false);
+
+            TextView tvlabel   = (TextView) layout.findViewById(R.id.lbl_titulo_22);
+
+            tvlabel.setText(this.label);
+
+            if (this.label.isEmpty()){
+
+                tvlabel.setVisibility(View.GONE);
+
+            }
+
+            TextView tvOpcao = (TextView) layout.findViewById(R.id.tvOpcao_22);
+
+            tvOpcao.setText(obj);
+
+            ImageView img = (ImageView) layout.findViewById(R.id.img_22);
+
+            if (valido){
+
+                img.setVisibility(View.GONE);
+
+            }   else
+            {
+                img.setImageResource(R.drawable.erro_20_vermelho);
+            }
+
+            if (position == escolha) {
+
+                tvOpcao.setTextColor(getResources().getColor(R.color.dark_blue));
+
+                tvOpcao.setGravity(Gravity.CENTER);
+
+            }
+
+            return layout;
+        }
+
+        // Mostra as Opções
+        @Override
+        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+
+            return getOpcoesView(position, convertView, parent);
 
         }
 
-        return layout;
+        // Mostra o item selecionado
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            return getEscolhaView(position, convertView, parent);
+
+        }
+
+        public boolean isInicializacao() {
+            return isInicializacao;
+        }
+
+        public void setIsInicializacao(boolean isInicializacao) {
+            this.isInicializacao = isInicializacao;
+        }
+
+        public void setValido(boolean valido) {
+            this.valido = valido;
+        }
     }
-
-    // Mostra as Opções
-    @Override
-    public View getDropDownView(int position, View convertView, ViewGroup parent) {
-
-        return getOpcoesView(position, convertView, parent);
-
-    }
-
-    // Mostra o item selecionado
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        return getEscolhaView(position, convertView, parent);
-
-    }
-
-    public boolean isInicializacao() {
-        return isInicializacao;
-    }
-
-    public void setIsInicializacao(boolean isInicializacao) {
-        this.isInicializacao = isInicializacao;
-    }
-
-    public void setValido(boolean valido) {
-        this.valido = valido;
-    }
-}
 
 }

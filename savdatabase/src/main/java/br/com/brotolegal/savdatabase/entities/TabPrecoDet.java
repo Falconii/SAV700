@@ -19,6 +19,8 @@ public class TabPrecoDet extends ObjRegister {
 	protected Float BDI;
 	protected Float PRECOANTERIOR;
 	protected Float PERCONTRATO;
+	protected Float PERPRAZO;
+
 
 
 
@@ -37,7 +39,7 @@ public class TabPrecoDet extends ObjRegister {
 		InicializaFields();
 	}
 
-	public TabPrecoDet(String CODIGO, String PRODUTO, Float PRCVEN, Float DESCONTOMAIS, Float ACRESCIMOMAIS, String FATOR, Float PRCBASE, Float POLITICABASE, Float CUSTOOPER, Float BDI, Float PRECOANTERIOR, Float PERCONTRATO) {
+	public TabPrecoDet(String CODIGO, String PRODUTO, Float PRCVEN, Float DESCONTOMAIS, Float ACRESCIMOMAIS, String FATOR, Float PRCBASE, Float POLITICABASE, Float CUSTOOPER, Float BDI, Float PRECOANTERIOR, Float PERCONTRATO, Float PERPRAZO) {
 
 		super(_OBJETO,"TABPRECODET");
 
@@ -56,7 +58,9 @@ public class TabPrecoDet extends ObjRegister {
 		this.CUSTOOPER = CUSTOOPER;
 		this.BDI = BDI;
 		this.PRECOANTERIOR = PRECOANTERIOR;
-		this.PERCONTRATO = PERCONTRATO;
+		this.PERCONTRATO   = PERCONTRATO;
+		this.PERPRAZO      = PERPRAZO;
+
 	}
 
 	public String getCODIGO() {
@@ -155,6 +159,14 @@ public class TabPrecoDet extends ObjRegister {
 		this.PERCONTRATO = PERCONTRATO;
 	}
 
+	public Float getPERPRAZO() {
+		return PERPRAZO;
+	}
+
+	public void setPERPRAZO(Float PERPRAZO) {
+		this.PERPRAZO = PERPRAZO;
+	}
+
 	@Override
 	public void loadColunas() {
 
@@ -171,7 +183,7 @@ public class TabPrecoDet extends ObjRegister {
 		_colunas.add("BDI");
 		_colunas.add("PRECOANTERIOR");
 		_colunas.add("PERCONTRATO");
-
+		_colunas.add("PERPRAZO");
 
 	}
 

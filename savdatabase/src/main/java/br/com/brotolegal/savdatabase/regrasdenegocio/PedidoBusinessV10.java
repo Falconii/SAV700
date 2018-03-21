@@ -3584,8 +3584,15 @@ public class PedidoBusinessV10 {
 
                     lsDetalhe.get(pos).setUSATAXAFIN(cliente.getTAXAFIN().equals("S") ? "SIM" : "NãO");
 
-                    lsDetalhe.get(pos).setTAXAFIN(condpagto.getJUROS());
+                    if (tabpreco.getTIPOPRAZO().equals("C")) {
 
+                        lsDetalhe.get(pos).setTAXAFIN(condpagto.getJUROS());
+
+                    } else {
+
+                        lsDetalhe.get(pos).setTAXAFIN(tabpreco.getPERPRAZO().toString());
+
+                    }
                     lsDetalhe.get(pos).setFATOR(tabpreco.getFATOR());
 
                     lsDetalhe.get(pos).setPOLITICABASE(tabpreco.getPOLITICABASE());
@@ -3729,8 +3736,15 @@ public class PedidoBusinessV10 {
 
                         if (lsDetalhe.get(pos).getUSATAXAFIN().equals("SIM")) {
 
-                            preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - condpagto.getJuros2().floatValue() - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
+                            if (tabpreco.getTIPOFRETE().equals("C")) {
 
+                                preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - condpagto.getJuros2().floatValue() - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
+
+                            } else {
+
+                                preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - tabpreco.getPERPRAZO().floatValue() - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
+
+                            }
                         } else {
 
                             preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
@@ -3926,7 +3940,6 @@ public class PedidoBusinessV10 {
                         } else {
 
                             int indice = seekContratoBYChave(lsDetalhe.get(pos).getPRODUTO(), produto.getMARCA(), produto.getGRUPO(), contrato.getChave());
-
 
                             if (indice != -1) {
 

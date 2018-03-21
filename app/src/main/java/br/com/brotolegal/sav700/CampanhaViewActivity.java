@@ -119,8 +119,8 @@ public class CampanhaViewActivity extends AppCompatActivity {
     ListView Campanha;
 
     private  int     Indice = 2;
-    private  String  PeriodoInicial = "201807";
-    private  String  PeriodoFinal   = "201808";
+    private  String  PeriodoInicial = "201803";
+    private  String  PeriodoFinal   = "201804";
 
     String CodCliente = "";
     String LojCliente = "";
@@ -236,6 +236,12 @@ public class CampanhaViewActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_campanha_main, menu);
+
+        MenuItem iFechada  = menu.findItem(R.id.action_campanha_fechada_sincronizar);
+        MenuItem iAberta   = menu.findItem(R.id.action_campanha_aberta_sincronizar);
+        iFechada.setVisible(false);
+        iAberta.setVisible(false);
+
         return true;
     }
 
@@ -318,7 +324,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
 
 
-            if (!EventBus.getDefault().isRegistered(this)) EventBus.getDefault().register(this);
+            //if (!EventBus.getDefault().isRegistered(this)) EventBus.getDefault().register(this);
 
 
         } catch (Exception e) {
@@ -364,7 +370,7 @@ public class CampanhaViewActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
 
-        if (EventBus.getDefault().isRegistered(this)) EventBus.getDefault().unregister(this);
+        //if (EventBus.getDefault().isRegistered(this)) EventBus.getDefault().unregister(this);
 
         super.onStop();
 
@@ -491,29 +497,29 @@ public class CampanhaViewActivity extends AppCompatActivity {
 
     //Event Bus
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onReceiverNotification(NotificationCarga notification){
-
-        Log.i(LOG,"Notification Carga");
-
-        Log.i(LOG,notification.getMSGERRO());
-
-        UltimaAtualizacao.setText(notification.getMSGERRO());
-
-        lsLista.clear();
-
-        lsLista.add("CABEC");
-
-        lsLista.add(new ObjProcesso("TITULO",notification.getMSGERRO(),"OBS"));
-
-        adapter = new Adapter(CampanhaViewActivity.this,PeriodoInicial,PeriodoFinal,lsLista,new ClicProcesso(CampanhaViewActivity.this));
-
-        lv.setAdapter(adapter);
-
-        adapter.notifyDataSetChanged();
-
-
-    }
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void onReceiverNotification(NotificationCarga notification){
+//
+//        Log.i(LOG,"Notification Carga");
+//
+//        Log.i(LOG,notification.getMSGERRO());
+//
+//        UltimaAtualizacao.setText(notification.getMSGERRO());
+//
+//        lsLista.clear();
+//
+//        lsLista.add("CABEC");
+//
+//        lsLista.add(new ObjProcesso("TITULO",notification.getMSGERRO(),"OBS"));
+//
+//        adapter = new Adapter(CampanhaViewActivity.this,PeriodoInicial,PeriodoFinal,lsLista,new ClicProcesso(CampanhaViewActivity.this));
+//
+//        lv.setAdapter(adapter);
+//
+//        adapter.notifyDataSetChanged();
+//
+//
+//    }
 
     private void refreshCarga(String CodTarefa) {
 

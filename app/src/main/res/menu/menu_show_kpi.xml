@@ -1,21 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".PreAcordoActivity">
+    tools:context=".ShowKPIActivity">
     <item
-        android:id="@+id/action_campanha_fechada_sincronizar"
+        android:id="@+id/action_kpi_sincronizar"
         android:orderInCategory="100"
         android:icon="@drawable/refresh_30"
-        android:title="Fechada"
+        android:title="Sincronizar"
         app:showAsAction="ifRoom|withText" />
     <item
-        android:id="@+id/action_campanha_aberta_sincronizar"
-        android:orderInCategory="100"
-        android:title="Aberta"
-        android:icon="@drawable/refresh_30"
-        app:showAsAction="ifRoom|withText"/>
-    <item
-        android:id="@+id/action_campanha_voltar"
+        android:id="@+id/action_kpi_voltar"
         android:orderInCategory="100"
         android:title="Voltar"
         app:showAsAction="ifRoom" />

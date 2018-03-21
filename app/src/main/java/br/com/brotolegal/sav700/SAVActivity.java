@@ -1154,6 +1154,14 @@ public class SAVActivity extends AppCompatActivity {
 
                         }
 
+                        if (opcao.equals("kpi")) {
+
+                            Intent intent = new Intent(SAVActivity.this,ShowKPIActivity.class);
+                            startActivity(intent);
+
+
+                        }
+
                         if (opcao.equals("agenda01")) {
 
                             Intent intent = new Intent(SAVActivity.this,MenAtWorkingActivity.class);
@@ -1338,6 +1346,7 @@ public class SAVActivity extends AppCompatActivity {
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Acordos").withIcon(getResources().getDrawable(R.drawable.ic_action_order_sales_i)).withTag("acordosprotheus"));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Metas").withIcon(getResources().getDrawable(R.drawable.icon_bar_40)).withTag("metas"));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Campanhas").withIcon(getResources().getDrawable(R.drawable.icon_bar_40)).withTag("campanhas"));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Kpi´s").withIcon(getResources().getDrawable(R.drawable.icon_bar_40)).withTag("kpi"));
 
         navigationDrawerLeft.addItem(new SectionDrawerItem().withName("Gerencial").withTextColor(getResources().getColor(R.color.md_red_200)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Rel. Pedidos").withIcon(getResources().getDrawable(R.drawable.ic_action_order_sales_i)).withTag("gerencial01"));

@@ -131,9 +131,9 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 					cursor.getFloat(10),
 					cursor.getFloat(11),
 					cursor.getString(12),
-					cursor.getString(13)
-
-			);
+					cursor.getString(13),
+					cursor.getString(14)
+					);
 
 		} catch (Exception e){
 
@@ -221,38 +221,42 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 
 		try {
 
-			String select =  "select "           +
-					"tabprecocabec.codigo, "     +
-					"tabprecocabec.descricao, "  +
-					"tabprecocabec.flagfaixa, "  +
-					"tabprecocabec.flaghabdesc, "+
-					"tabprecocabec.flaghabmotivo, "+
-					"tabprecocabec.flagcontrato, "+
-					"tabprecocabec.flagcc, "+
-					"tabprecocabec.flagtaxafinanc, "+
-					"tabprecocabec.flagdesccanal, "+
+			String select =  "select "               +
+					"tabprecocabec.codigo, "         +
+					"tabprecocabec.descricao, "      +
+					"tabprecocabec.flagfaixa, "      +
+					"tabprecocabec.flaghabdesc, "    +
+					"tabprecocabec.flaghabmotivo, "  +
+					"tabprecocabec.flagcontrato, "   +
+					"tabprecocabec.flagcc, "         +
+					"tabprecocabec.flagtaxafinanc, " +
+					"tabprecocabec.flagdesccanal, "  +
 					"tabprecocabec.flagdesclogist, " +
-					"tabprecocabec.faixade, " +
-					"tabprecocabec.faixaate, " +
-					"tabprecocabec.tipocontrato, "+
-					"tabprecocabec.tipofrete, "   +
-					"tabprecodet.PRODUTO,"+
-					"tabprecodet.PRCVEN,"+
-					"tabprecodet.DESCONTOMAIS,"+
-					"tabprecodet.ACRESCIMOMAIS, "+
-					"produto.DESCRICAO,  "+
-					"produto.UM,         "+
-					"produto.GRUPO,      "+
-					"produto.MARCA,      "+
-					"produto.ORIGEM,     "+
-					"produto.CONVERSAO,  "+
-					"grupo.DESCRICAO,    "+
-					"marca.DESCRICAO,    "+
-					"pedidodetmb.ITEM,   " +
-					"tabprecodet.FATOR,  "+
-					"tabprecodet.PRCBASE, "+
-					"tabprecodet.POLITICABASE, "+
-			        "tabprecocabec.tipocontrato "
+					"tabprecocabec.faixade, "        +
+					"tabprecocabec.faixaate, "       +
+					"tabprecocabec.tipocontrato, "   +
+					"tabprecocabec.tipofrete, "      +
+					"tabprecocabec.tipoprazo, "      +
+					"tabprecodet.PRODUTO,"           +
+					"tabprecodet.PRCVEN,"            +
+					"tabprecodet.DESCONTOMAIS,"      +
+					"tabprecodet.ACRESCIMOMAIS, "    +
+					"produto.DESCRICAO,  "           +
+					"produto.UM,         "           +
+					"produto.GRUPO,      "           +
+					"produto.MARCA,      "           +
+					"produto.ORIGEM,     "           +
+					"produto.CONVERSAO,  "           +
+					"grupo.DESCRICAO,    "           +
+					"marca.DESCRICAO,    "           +
+					"pedidodetmb.ITEM,   "           +
+					"tabprecodet.FATOR,  "           +
+					"tabprecodet.PRCBASE, "          +
+					"tabprecodet.POLITICABASE, "     +
+					"tabprecodet.CUSTOOPER, "        +
+					"tabprecodet.BDI, "              +
+					"tabprecodet.PERCONTRATO, "      +
+					"tabprecodet.PERPRAZO "
 					+ "from       tabprecocabec "
 					+ "inner join tabprecodet on tabprecodet.codigo = tabprecocabec.codigo "
 					+ "inner join produto     on produto.codigo     = tabprecodet.produto  "
@@ -290,24 +294,27 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							cursor.getString(12),
 							cursor.getString(13),
 							cursor.getString(14),
-							cursor.getFloat(15),
+							cursor.getString(15),
 							cursor.getFloat(16),
 							cursor.getFloat(17),
-							cursor.getString(18),
+							cursor.getFloat(18),
 							cursor.getString(19),
 							cursor.getString(20),
 							cursor.getString(21),
 							cursor.getString(22),
-							cursor.getFloat(23),
-							cursor.getString(24),
+							cursor.getString(23),
+							cursor.getFloat(24),
 							cursor.getString(25),
 							cursor.getString(26),
 							cursor.getString(27),
-							cursor.getFloat(28),
+							cursor.getString(28),
 							cursor.getFloat(29),
 							cursor.getFloat(30),
 							cursor.getFloat(31),
-							cursor.getFloat(32)
+							cursor.getFloat(32),
+							cursor.getFloat(33),
+							cursor.getFloat(34)
+
 
 							);
 
@@ -464,39 +471,41 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 
 			String select =
 					"select "                       +
-							"tabprecocabec.codigo, "        +
-							"tabprecocabec.descricao, "     +
-							"tabprecocabec.flagfaixa, "     +
-							"tabprecocabec.flaghabdesc, "   +
-							"tabprecocabec.flaghabmotivo, " +
-							"tabprecocabec.flagcontrato, "  +
-							"tabprecocabec.flagcc, "        +
-							"tabprecocabec.flagtaxafinanc, "+
-							"tabprecocabec.flagdesccanal, " +
-							"tabprecocabec.flagdesclogist, "+
-							"tabprecocabec.faixade, "       +
-							"tabprecocabec.faixaate, "      +
-							"tabprecocabec.tipocontrato, "  +
-							"tabprecocabec.tipofrete, "     +
-							"tabprecodet.PRODUTO,"          +
-							"tabprecodet.PRCVEN,"           +
-							"tabprecodet.DESCONTOMAIS,"     +
-							"tabprecodet.ACRESCIMOMAIS, "   +
-							"produto.DESCRICAO, "           +
-							"produto.UM, "                  +
-							"produto.GRUPO, "               +
-							"produto.MARCA, "               +
-							"produto.ORIGEM,"               +
-							"produto.CONVERSAO, "+
-							"grupo.DESCRICAO, "+
-							"marca.DESCRICAO,  "+
-							"' ' AS NROITEM,  "+
-							"tabprecodet.FATOR, "+
-							"tabprecodet.PRCBASE, "+
-							"tabprecodet.POLITICABASE, "+
-							"tabprecodet.CUSTOOPER, "+
-							"tabprecodet.BDI,  "+
-							"tabprecodet.percontrato  "
+							"tabprecocabec.codigo, "         +
+							"tabprecocabec.descricao, "      +
+							"tabprecocabec.flagfaixa, "      +
+							"tabprecocabec.flaghabdesc, "    +
+							"tabprecocabec.flaghabmotivo, "  +
+							"tabprecocabec.flagcontrato, "   +
+							"tabprecocabec.flagcc, "         +
+							"tabprecocabec.flagtaxafinanc, " +
+							"tabprecocabec.flagdesccanal, "  +
+							"tabprecocabec.flagdesclogist, " +
+							"tabprecocabec.faixade, "        +
+							"tabprecocabec.faixaate, "       +
+							"tabprecocabec.tipocontrato, "   +
+							"tabprecocabec.tipofrete, "      +
+							"tabprecocabec.tipoprazo, "      +
+							"tabprecodet.PRODUTO,"           +
+							"tabprecodet.PRCVEN,"            +
+							"tabprecodet.DESCONTOMAIS,"      +
+							"tabprecodet.ACRESCIMOMAIS, "    +
+							"produto.DESCRICAO,  "           +
+							"produto.UM,         "           +
+							"produto.GRUPO,      "           +
+							"produto.MARCA,      "           +
+							"produto.ORIGEM,     "           +
+							"produto.CONVERSAO,  "           +
+							"grupo.DESCRICAO,    "           +
+							"marca.DESCRICAO,    "           +
+							"' ' as ITEM,   "           +
+							"tabprecodet.FATOR,  "           +
+							"tabprecodet.PRCBASE, "          +
+							"tabprecodet.POLITICABASE, "     +
+							"tabprecodet.CUSTOOPER, "     +
+							"tabprecodet.BDI, "     +
+							"tabprecodet.PERCONTRATO, "     +
+							"tabprecodet.PERPRAZO "
 							+ "from       tabprecocabec "
 							+ "inner join tabprecodet on tabprecodet.codigo = tabprecocabec.codigo "
 							+ "inner join produto     on produto.codigo     = tabprecodet.produto and produto.tipopedido like '%"+Tipo+"%' "
@@ -532,24 +541,26 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							cursor.getString(12),
 							cursor.getString(13),
 							cursor.getString(14),
-							cursor.getFloat(15),
+							cursor.getString(15),
 							cursor.getFloat(16),
 							cursor.getFloat(17),
-							cursor.getString(18),
+							cursor.getFloat(18),
 							cursor.getString(19),
 							cursor.getString(20),
 							cursor.getString(21),
 							cursor.getString(22),
-							cursor.getFloat(23),
-							cursor.getString(24),
+							cursor.getString(23),
+							cursor.getFloat(24),
 							cursor.getString(25),
 							cursor.getString(26),
 							cursor.getString(27),
-							cursor.getFloat(28),
+							cursor.getString(28),
 							cursor.getFloat(29),
 							cursor.getFloat(30),
 							cursor.getFloat(31),
-							cursor.getFloat(32)
+							cursor.getFloat(32),
+							cursor.getFloat(33),
+							cursor.getFloat(34)
 
 
 							);

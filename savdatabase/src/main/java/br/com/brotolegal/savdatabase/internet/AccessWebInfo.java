@@ -1,5 +1,6 @@
 package br.com.brotolegal.savdatabase.internet;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -91,6 +92,7 @@ public class AccessWebInfo  extends Thread {
     public static final int PROCESSO_DEFAULT                        = 12;
     public static final int PROCESSO_DOWNLOAD                       = 13;
     public static final int PROCESSO_ATUALIZA_ACORDO_PROTHEUS       = 14;
+    public static final int PROCESSO_GET_KPI                        = 15;
     public static final int PLAY_SERVICES_RESOLUTION_REQUEST        =  9000;
 
     private Boolean PROCESSANDO = true;
@@ -394,6 +396,15 @@ public class AccessWebInfo  extends Thread {
 
 
                 }
+
+                return;
+
+            }
+
+
+            if (this.tipoProcesso == PROCESSO_GET_KPI) {
+
+                getKpi();
 
                 return;
 
@@ -800,6 +811,16 @@ public class AccessWebInfo  extends Thread {
                     spRetorno.addProperty("CMSGERRO", e.getMessage());
 
                     if (handlesoap != null)  handlesoap.setResult(spRetorno);
+
+                    if (handler != null){
+
+                        params.putString("CERRO", "FEC");
+
+                        params.putString("CMSGERRO", e.getMessage());
+
+                        sendmsg(params);
+
+                    }
 
                     break;
             }
@@ -3530,6 +3551,7 @@ public class AccessWebInfo  extends Thread {
 
     }
 
+    @SuppressLint("MissingPermission")
     public  boolean verificaConexao() {
         boolean conectado;
         ConnectivityManager conectivtyManager = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
@@ -3796,6 +3818,94 @@ public class AccessWebInfo  extends Thread {
         }
     }
 
+
+    private void getKpi() throws Exception{
+
+        try {
+
+            params.putString("CERRO", "---");
+
+            params.putString("CMSGERRO","ENVIANDO PEDIDOS");
+
+            sendmsg(params);
+
+            envelope.implicitTypes = true;
+
+            envelope.setAddAdornments(false);
+
+            envelope.dotNet = true;
+
+            envelope.setOutputSoapObject(request);
+
+            HttpTransportSE androidHttpTransport = new HttpTransportSE(config.getUrlFull());
+
+            androidHttpTransport.debug = true;
+
+            androidHttpTransport.setXmlVersionTag("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+
+            spRetorno = (SoapObject) envelope.getResponse();
+
+            String cerro    = this.spRetorno.getPropertyAsString("CERRO");
+
+            String cmsgerro = this.spRetorno.getPropertyAsString("CMSGERRO");
+
+            String chtml    = this.spRetorno.getPropertyAsString("CHTML");
+
+            if (cerro.equals("000")) {
+
+                params.putString("CERRO", "000");
+
+                params.putString("CMSGERRO", cmsgerro);
+
+                params.putString("CHTML", chtml);
+
+                sendmsg(params);
+
+                pausa(2000);
+
+
+            } else {
+
+
+                params.putString("CERRO", "MMM");
+
+                params.putString("CMSGERRO", cmsgerro);
+
+                params.putString("CHTML", chtml);
+
+
+                sendmsg(params);
+
+                pausa(2000);
+
+            }
+
+        } catch (Exception e){
+
+            params.putString("CERRO", "MMM");
+
+            params.putString("CMSGERRO", e.getMessage());
+
+            params.putString("CHTML", "");
+
+            sendmsg(params);
+
+            pausa(2000);
+            Log.i(LOG,e.getMessage());
+
+        }
+
+        params.putString("CERRO", "FEC");
+
+        params.putString("CMSGERRO", "");
+
+        params.putString("CHTML", "");
+
+        sendmsg(params);
+
+    }
 
 }
 

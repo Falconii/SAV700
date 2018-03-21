@@ -124,7 +124,8 @@ public class TabPrecoDetDAO  extends DAO2 implements IDao2<TabPrecoDet> {
 					cursor.getFloat(8),
 					cursor.getFloat(9),
 					cursor.getFloat(10),
-					cursor.getFloat(11)
+					cursor.getFloat(11),
+					cursor.getFloat(12)
 
 					);
 

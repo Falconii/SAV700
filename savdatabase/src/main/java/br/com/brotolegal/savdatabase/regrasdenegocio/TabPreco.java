@@ -22,6 +22,7 @@ public class TabPreco {
 	private Float  FAIXAATE;
 	private String  TIPOCONTRATO;
 	private String  TIPOFRETE;
+	private String  TIPOPRAZO;
 	
 /*
  * 
@@ -47,9 +48,18 @@ public class TabPreco {
 	private Float  CUSTOOPER;
 	private Float  BDI;
 	private Float  PERCONTRATO;
+	protected Float PERPRAZO;
 
 
-	public TabPreco(String CODIGO, String DESCRICAO, String FLAGFAIXA, String FLAGHABDESC, String FLAGHABMOTIVO, String FLAGCONTRATO, String FLAGCC, String FLAGTAXAFINANC, String FLAGDESCCANAL, String FLAGDESCLOGIST, Float FAIXADE, Float FAIXAATE,String  TIPOCONTRATO,String  TIPOFRETE, String PRODUTO, Float PRCVEN, Float DESCONTOMAIS, Float ACRESCIMOMAIS, String DESCRICAOPRODUTO, String UNID, String GRUPO, String MARCA, String ORIGEM, Float CONVERSAO, String DESCRICAOGRUPO, String DESCRICAOMARCA, String NROITEM, String FATOR, Float PRCBASE, Float POLITICABASE, Float CUSTOOPER, Float BDI,Float  PERCONTRATO) {
+
+
+	public TabPreco(String CODIGO, String DESCRICAO, String FLAGFAIXA, String FLAGHABDESC, String FLAGHABMOTIVO,
+					String FLAGCONTRATO, String FLAGCC, String FLAGTAXAFINANC, String FLAGDESCCANAL, String FLAGDESCLOGIST,
+					Float FAIXADE, Float FAIXAATE,String  TIPOCONTRATO,String  TIPOFRETE, String TIPOPRAZO,String PRODUTO, Float PRCVEN, Float DESCONTOMAIS,
+					Float ACRESCIMOMAIS, String DESCRICAOPRODUTO, String UNID, String GRUPO, String MARCA, String ORIGEM, Float CONVERSAO,
+					String DESCRICAOGRUPO, String DESCRICAOMARCA, String NROITEM, String FATOR, Float PRCBASE, Float POLITICABASE,
+					Float CUSTOOPER, Float BDI,Float  PERCONTRATO, Float PERPRAZO
+	) {
 		this.CODIGO 			= CODIGO;
 		this.DESCRICAO 			= DESCRICAO;
 		this.FLAGFAIXA 			= FLAGFAIXA;
@@ -64,6 +74,7 @@ public class TabPreco {
 		this.FAIXAATE         	= FAIXAATE;
 		this.TIPOCONTRATO       = TIPOCONTRATO;
 		this.TIPOFRETE          = TIPOFRETE;
+		this.TIPOPRAZO          = TIPOPRAZO;
 		this.PRODUTO          	= PRODUTO;
 		this.PRCVEN           	= PRCVEN;
 		this.DESCONTOMAIS     	= DESCONTOMAIS;
@@ -83,7 +94,9 @@ public class TabPreco {
 		this.CUSTOOPER 			= CUSTOOPER;
 		this.BDI 				= BDI;
 		this.PERCONTRATO        = PERCONTRATO;
+		this.PERPRAZO           = PERPRAZO;
 	}
+
 
 	public String getCODIGO() {
 		return CODIGO;
@@ -187,6 +200,14 @@ public class TabPreco {
 
 	public void setTIPOCONTRATO(String TIPOCONTRATO) {
 		this.TIPOCONTRATO = TIPOCONTRATO;
+	}
+
+	public String getTIPOPRAZO() {
+		return TIPOPRAZO;
+	}
+
+	public void setTIPOPRAZO(String TIPOPRAZO) {
+		this.TIPOPRAZO = TIPOPRAZO;
 	}
 
 	public String getPRODUTO() {
@@ -358,6 +379,14 @@ public class TabPreco {
 	public String getTIPOFRETE() {return TIPOFRETE;	}
 
 	public void setTIPOFRETE(String TIPOFRETE) {this.TIPOFRETE = TIPOFRETE;}
+
+	public Float getPERPRAZO() {
+		return PERPRAZO;
+	}
+
+	public void setPERPRAZO(Float PERPRAZO) {
+		this.PERPRAZO = PERPRAZO;
+	}
 }
 
 
