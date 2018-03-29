@@ -77,6 +77,7 @@ public class ConexaoAdapter extends ArrayAdapter {
 
         return this.connected;
     }
+
     public View getOpcoesView(final int position, View convertView, ViewGroup parent) {
 
         // Infla layout customizado
@@ -104,7 +105,6 @@ public class ConexaoAdapter extends ArrayAdapter {
 
         return layout;
     }
-
 
     public View getEscolhaView(int position, View convertView, ViewGroup parent) {
 

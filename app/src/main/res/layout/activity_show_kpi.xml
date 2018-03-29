@@ -53,10 +53,10 @@
                 </TextView>
 
                 <TextView
-                    android:id="@+id/lbl_atualizacao_498"
+                    android:id="@+id/lbl_datas_498"
                     android:layout_width      ="match_parent"
                     android:layout_height     ="wrap_content"
-                    android:text              ="Ultima Atualização:"
+                    android:text              ="Datas:"
                     android:textColor         ="@color/colorPrimary"
                     >
                 </TextView>
@@ -72,12 +72,13 @@
                     android:layout_height="match_parent"
                     />
 
-                <TextView
-                    android:id="@+id/txt_atualizacao_498"
-                    android:background="@drawable/fundo"
+                <Spinner
+                    android:id="@+id/sp_data_498"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    />
+                    android:layout_marginLeft="5sp"
+                    android:background="@drawable/fundo">
+                </Spinner>
 
             </TableRow>
 

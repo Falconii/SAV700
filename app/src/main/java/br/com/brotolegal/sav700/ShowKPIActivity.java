@@ -2,18 +2,25 @@ package br.com.brotolegal.sav700;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,8 +30,13 @@ import org.ksoap2.serialization.SoapObject;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.brotolegal.sav700.VerificaWeb.ConexaoAdapter;
 import br.com.brotolegal.savdatabase.app.App;
@@ -44,11 +56,11 @@ public class ShowKPIActivity extends AppCompatActivity {
 
     private ConexaoAdapter conexaoadapter;
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
-    Spinner spConexao;
+    private Spinner spConexao;
 
-    TextView UltimaAtualizacao;
+    private Spinner spDatas;
 
     private Dialog dialog;
 
@@ -58,6 +70,9 @@ public class ShowKPIActivity extends AppCompatActivity {
 
     private WebView webView;
 
+    private DataAdapter dataadapter;
+
+    private String DataGrafico;
 
 
 
@@ -83,11 +98,13 @@ public class ShowKPIActivity extends AppCompatActivity {
 
             spConexao         = (Spinner) findViewById(R.id.spConexao_498);
 
-            UltimaAtualizacao = (TextView) findViewById(R.id.txt_atualizacao_498);
+            spDatas           = (Spinner) findViewById(R.id.sp_data_498);
 
-            UltimaAtualizacao.setText("");
+            webView           = (WebView) findViewById(R.id.wv_kpi_498);
 
-            webView = (WebView) findViewById(R.id.wv_kpi_498);
+            DataGrafico       = "";
+
+            LoadDatas();
 
             verWeb();
 
@@ -273,8 +290,6 @@ public class ShowKPIActivity extends AppCompatActivity {
 
                     }
 
-                    UltimaAtualizacao.setText(msg.getData().getString("CMSGERRO"));
-
                     showKpi(msg.getData().getString("CHTML"));
 
                     processado = true;
@@ -331,7 +346,92 @@ public class ShowKPIActivity extends AppCompatActivity {
     };
 
 
+    private void LoadDatas() {
 
+        List<String[]> opcoes;
+
+        int prazo = 30;
+
+        SimpleDateFormat format_chave = new SimpleDateFormat("dd/MM/yyyy"   , new Locale("pt", "BR"));
+
+        SimpleDateFormat format_full = new SimpleDateFormat("dd/MM/yyyy EEE", new Locale("pt", "BR"));
+
+        opcoes = new ArrayList<String[]>();
+
+        Date emissao = new Date();
+
+        final Calendar c = Calendar.getInstance();
+
+        c.setTime(emissao);
+
+        for (int x = 0; x < prazo; x = ((c.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) || (c.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)) ? x : ++x) {
+
+            if (x != 0) {
+
+                c.setTime(emissao);
+
+                c.add(Calendar.DATE, -1);
+
+
+            }
+
+            emissao = c.getTime();
+
+
+            if ((c.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) || (c.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)) {
+
+                c.setTime(emissao);
+
+                c.add(Calendar.DATE, -1);
+
+                emissao = c.getTime();
+
+                if (x == 0) x++;
+
+                continue;
+
+            }
+
+            opcoes.add(new String[]{String.valueOf(x) + "ª", format_full.format(emissao)});
+
+        }
+
+        spDatas.setEnabled(true);
+
+        dataadapter = new DataAdapter(ShowKPIActivity.this, R.layout.choice_default_row, opcoes, "Data");
+
+        spDatas.setAdapter(dataadapter);
+
+        spDatas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                dataadapter.setEscolha(position);
+
+                Object lixo = spDatas.getSelectedItem();
+
+                DataGrafico = App.ddmmaaaaatoaaaammdd(((String[]) lixo)[1].substring(0,10));
+
+                if (conexaoadapter.getConnected()){
+
+                    getKPI();
+
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+
+            }
+        });
+
+        spDatas.setSelection(0);
+
+    }
 
     private void verWeb(){
 
@@ -451,6 +551,8 @@ public class ShowKPIActivity extends AppCompatActivity {
 
         acessoWeb.addParam("CPASSUSER", App.user.getSENHA().trim());
 
+        acessoWeb.addParam("CDATAREF", DataGrafico);
+
         acessoWeb.start();
 
     }
@@ -547,6 +649,148 @@ public class ShowKPIActivity extends AppCompatActivity {
 
             }
 
+        }
+    }
+
+    private class DataAdapter extends ArrayAdapter {
+
+        private int escolha = 0;
+
+        private List<String[]> lista;
+
+        private String label;
+
+        private boolean isInicializacao = true;
+
+        private Context context;
+
+        public DataAdapter(Context context, int textViewResourceId, List<String[]> objects, String label) {
+
+            super(context, textViewResourceId, objects);
+
+            this.lista = objects;
+
+            this.label = label;
+
+            this.context = context;
+        }
+
+
+        public String getOpcao(int pos) {
+
+
+            if ((pos < this.lista.size())) {
+
+
+                return lista.get(pos)[1];
+
+            }
+
+            return "";
+
+        }
+
+        public void setEscolha(int escolha) {
+
+            this.escolha = escolha;
+
+            notifyDataSetChanged();
+
+        }
+
+        public View getOpcoesView(int position, View convertView, ViewGroup parent) {
+
+            String obj = lista.get(position)[1];
+
+            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            View layout = inflater.inflate(R.layout.choice_default_row, parent, false);
+
+            TextView label = (TextView) layout.findViewById(R.id.lbl_titulo_22);
+
+            label.setVisibility(View.GONE);
+
+            TextView tvOpcao = (TextView) layout.findViewById(R.id.tvOpcao_22);
+
+            tvOpcao.setTextSize(18f);
+
+            tvOpcao.setText(obj);
+
+            tvOpcao.setTextColor(Color.RED);
+
+            tvOpcao.setBackgroundResource(R.color.white);
+
+            ImageView img = (ImageView) layout.findViewById(R.id.img_22);
+
+            img.setVisibility(View.GONE);
+
+            if (position == escolha) {
+
+                tvOpcao.setTextColor(Color.BLACK);
+            }
+
+            return layout;
+        }
+
+        public View getEscolhaView(int position, View convertView, ViewGroup parent) {
+
+            String obj = lista.get(position)[1];
+
+            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            View layout = inflater.inflate(R.layout.choice_default_row, parent, false);
+
+            TextView tvlabel = (TextView) layout.findViewById(R.id.lbl_titulo_22);
+
+            tvlabel.setText(this.label);
+
+            if (this.label.isEmpty()) {
+
+                tvlabel.setVisibility(View.GONE);
+
+            }
+
+            TextView tvOpcao = (TextView) layout.findViewById(R.id.tvOpcao_22);
+
+            tvOpcao.setText(obj);
+
+            ImageView img = (ImageView) layout.findViewById(R.id.img_22);
+
+            img.setVisibility(View.GONE);
+
+            if (position == escolha) {
+
+                tvOpcao.setTextColor(getResources().getColor(R.color.dark_blue));
+
+                tvOpcao.setGravity(Gravity.CENTER);
+
+            }
+
+            return layout;
+        }
+
+        // Mostra as Opções
+        @Override
+        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+
+            return getOpcoesView(position, convertView, parent);
+
+        }
+
+        // Mostra o item selecionado
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            return getEscolhaView(position, convertView, parent);
+
+        }
+
+        public boolean isInicializacao() {
+            return isInicializacao;
+        }
+
+        public void setIsInicializacao(boolean isInicializacao) {
+            this.isInicializacao = isInicializacao;
         }
     }
 

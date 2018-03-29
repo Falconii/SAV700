@@ -382,7 +382,7 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
 					+ "left  join MotivosTrocaDev   on MotivosTrocaDev.codigo    = pedidodetmb.codverba "
 					+ "left  join meta              on meta.data = '"+App.getHojeaaaamm()+"' and meta.cliente = '"+ values[1] +"' and meta.loja = '"+ values[2]+"' and meta.produto = produto.codigo "
 					+ "where ( (tabprecodet.codigo =  '"+ values[3] +"' ) ) "
-					//+ "where ( (tabprecodet.codigo =  '"+ values[3] +"')  and ( trim(tabprecodet.produto) = '027260201' ) ) "
+					//+ "where ( (tabprecodet.codigo =  '"+ values[3] +"')  and ( trim(tabprecodet.produto) = '124300201' ) ) "
 					+ "order by produto.descricao ";
 
 

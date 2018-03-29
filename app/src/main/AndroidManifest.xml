@@ -267,11 +267,11 @@
             android:label="Manual De Vendas"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ShowKPIActivity">
+            android:name=".ShowKPIActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Acompanhamento De KPI's"
             android:screenOrientation="portrait"/>
-        </activity>
+
 
         <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>

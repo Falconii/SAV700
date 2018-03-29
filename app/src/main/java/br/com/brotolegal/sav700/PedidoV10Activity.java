@@ -2708,6 +2708,8 @@ public class PedidoV10Activity extends AppCompatActivity implements
 
                                     pedido.getEdicao().setPEDCLI2("");
 
+                                    pedido.getEdicao().setCOTA("");
+
                                     pedido.validarItemEdicao();
 
                                     pedido.getEdicao()._ValidaOK();
