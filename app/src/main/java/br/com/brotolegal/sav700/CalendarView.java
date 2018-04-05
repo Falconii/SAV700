@@ -20,6 +20,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import br.com.brotolegal.savdatabase.app.App;
 
 /**
  * Created by a7med on 28/06/2015.
@@ -43,6 +48,8 @@ public class CalendarView extends LinearLayout
 
 	//event handling
 	private EventHandler eventHandler = null;
+
+	Map<String,objCalendarAge> agendamentos    = new TreeMap<String, objCalendarAge >();
 
 	// internal components
 	private LinearLayout header;
@@ -117,49 +124,58 @@ public class CalendarView extends LinearLayout
 		btnPrev = (ImageView)findViewById(R.id.calendar_prev_button);
 		btnNext = (ImageView)findViewById(R.id.calendar_next_button);
 		txtDate = (TextView)findViewById(R.id.calendar_date_display);
-		grid = (GridView)findViewById(R.id.calendar_grid);
+		grid    = (GridView)findViewById(R.id.calendar_grid);
 	}
 
-	private void assignClickHandlers()
-	{
+	private void assignClickHandlers() {
+
 		// add one month and refresh UI
-		btnNext.setOnClickListener(new OnClickListener()
-		{
+		btnNext.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				currentDate.add(Calendar.MONTH, 1);
 				updateCalendar();
 			}
 		});
 
 		// subtract one month and refresh UI
-		btnPrev.setOnClickListener(new OnClickListener()
-		{
+		btnPrev.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				currentDate.add(Calendar.MONTH, -1);
 				updateCalendar();
+
 			}
 		});
 
 		// long-pressing a day
-		grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
-		{
+		grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> view, View cell, int position, long id)
-			{
+			public boolean onItemLongClick(AdapterView<?> view, View cell, int position, long id) {
 				// handle long-press
 				if (eventHandler == null)
 					return false;
 
-				eventHandler.onDayLongPress((Date)view.getItemAtPosition(position));
+				eventHandler.onDayLongPress((Date) view.getItemAtPosition(position));
 				return true;
 			}
 		});
+
+		grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+				if (eventHandler == null)
+					return ;
+
+				eventHandler.onDayPress((Date) parent.getItemAtPosition(position));
+
+			}
+		});
+
 	}
+
 
 	/**
 	 * Display dates correctly in grid
@@ -192,7 +208,7 @@ public class CalendarView extends LinearLayout
 		}
 
 		// update grid
-		grid.setAdapter(new CalendarAdapter(getContext(), cells, events));
+		grid.setAdapter(new CalendarAdapter(getContext(), cells, events, this.agendamentos));
 
 		// update title
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
@@ -207,6 +223,18 @@ public class CalendarView extends LinearLayout
 	}
 
 
+	public void setAgendamentos(List<objCalendarAge> agendamentos){
+
+		this.agendamentos = new TreeMap<String, objCalendarAge >();
+
+		for(objCalendarAge obj : agendamentos){
+
+			this.agendamentos.put(obj.getData(),obj);
+
+		}
+
+	}
+
 	private class CalendarAdapter extends ArrayAdapter<Date>
 	{
 		// days with events
@@ -215,64 +243,108 @@ public class CalendarView extends LinearLayout
 		// for view inflation
 		private LayoutInflater inflater;
 
-		public CalendarAdapter(Context context, ArrayList<Date> days, HashSet<Date> eventDays)
+		// Agendamentos
+
+		Map<String,objCalendarAge> agendamentos = new TreeMap<String, objCalendarAge >();
+
+		public CalendarAdapter(Context context, ArrayList<Date> days, HashSet<Date> eventDays,Map<String,objCalendarAge> agendamentos )
 		{
 			super(context, R.layout.control_calendar_day, days);
 			this.eventDays = eventDays;
 			inflater = LayoutInflater.from(context);
+			this.agendamentos = agendamentos;
 		}
 
 		@Override
 		public View getView(int position, View view, ViewGroup parent)
 		{
+			TextView lbNro;
+			TextView lbAg1;
+			TextView lbAg2;
 			// day in question
 			Date date = getItem(position);
-			int day = date.getDate();
-			int month = date.getMonth();
-			int year = date.getYear();
+
+			Calendar calendar = Calendar.getInstance();
+
+			calendar.setTime(date);
+
+			int year  = calendar.get(Calendar.YEAR);
+			int month = calendar.get(Calendar.MONTH);
+			int day   = calendar.get(Calendar.DAY_OF_MONTH);
+			Boolean IsSunDay = (calendar.get(Calendar.DAY_OF_WEEK) == 1);
+
 
 			// today
 			Date today = new Date();
 
 			// inflate item if it does not exist yet
-			if (view == null)
-				view = inflater.inflate(R.layout.control_calendar_day, parent, false);
+			if (view == null) {
+				view = inflater.inflate(R.layout.control_calendar_day2, parent, false);
+			}
+
+			lbNro = (TextView) view.findViewById(R.id.cal_day);
+			lbAg1 = (TextView) view.findViewById(R.id.cal_day_ag1);
+			lbAg2 = (TextView) view.findViewById(R.id.cal_day_ag2);
+
+			lbAg1.setText("");
+			lbAg2.setText("");
 
 			// if this day has an event, specify event image
-			view.setBackgroundResource(0);
+			lbNro.setBackgroundResource(0);
 			if (eventDays != null)
 			{
 				for (Date eventDate : eventDays)
 				{
-					if (eventDate.getDate() == day &&
-							eventDate.getMonth() == month &&
-							eventDate.getYear() == year)
+					calendar.setTime(eventDate);
+
+					if (    calendar.get(Calendar.DAY_OF_MONTH) == day &&
+							calendar.get(Calendar.MONTH) == month &&
+							calendar.get(Calendar.YEAR) == year)
 					{
 						// mark this day for event
-						view.setBackgroundResource(R.drawable.reminder);
+						lbNro.setBackgroundResource(R.drawable.reminder);
 						break;
 					}
 				}
 			}
 
 			// clear styling
-			((TextView)view).setTypeface(null, Typeface.NORMAL);
-			((TextView)view).setTextColor(Color.BLACK);
+			lbNro.setTypeface(null, Typeface.NORMAL);
+			lbNro.setTextColor(Color.BLACK);
 
-			if (month != today.getMonth() || year != today.getYear())
+			calendar.setTime(today);
+
+			if (month != calendar.get(Calendar.MONTH) || year != calendar.get(Calendar.YEAR))
 			{
 				// if this day is outside current month, grey it out
-				((TextView)view).setTextColor(getResources().getColor(R.color.greyed_out));
+				lbNro.setTextColor(getResources().getColor(R.color.greyed_out));
 			}
-			else if (day == today.getDate())
+			else if (day == calendar.get(Calendar.DAY_OF_YEAR))
 			{
-				// if it is today, set it to blue/bold
-				((TextView)view).setTypeface(null, Typeface.BOLD);
-				((TextView)view).setTextColor(getResources().getColor(R.color.today));
+				lbNro.setTypeface(null, Typeface.BOLD);
+				lbNro.setTextColor(getResources().getColor(R.color.today));
 			}
+			else if (IsSunDay){
+
+					lbNro.setTypeface(null, Typeface.BOLD);
+					lbNro.setTextColor(getResources().getColor(R.color.red));
+
+				}
 
 			// set text
-			((TextView)view).setText(String.valueOf(date.getDate()));
+			calendar.setTime(date);
+			lbNro.setText(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
+
+			objCalendarAge age = agendamentos.get(App.getDateToDtos(date));
+
+			if (age != null){
+
+				lbAg1.setText(String.valueOf(age.ag1));
+
+				lbAg2.setText(String.valueOf(age.ag2));
+
+
+			}
 
 			return view;
 		}
@@ -283,8 +355,10 @@ public class CalendarView extends LinearLayout
 	 */
 	public void setEventHandler(EventHandler eventHandler)
 	{
+
 		this.eventHandler = eventHandler;
 	}
+
 
 	/**
 	 * This interface defines what events to be reported to
@@ -293,5 +367,44 @@ public class CalendarView extends LinearLayout
 	public interface EventHandler
 	{
 		void onDayLongPress(Date date);
+
+		void onDayPress(Date date);
+	}
+
+	public static class objCalendarAge {
+
+		private String   data;
+		private Integer  ag1;
+		private Integer  ag2;
+
+		public objCalendarAge(String data, Integer ag1, Integer ag2) {
+			this.data = data;
+			this.ag1 = ag1;
+			this.ag2 = ag2;
+		}
+
+		public String getData() {
+			return data;
+		}
+
+		public void setData(String data) {
+			this.data = data;
+		}
+
+		public Integer getAg1() {
+			return ag1;
+		}
+
+		public void setAg1(Integer ag1) {
+			this.ag1 = ag1;
+		}
+
+		public Integer getAg2() {
+			return ag2;
+		}
+
+		public void setAg2(Integer ag2) {
+			this.ag2 = ag2;
+		}
 	}
 }

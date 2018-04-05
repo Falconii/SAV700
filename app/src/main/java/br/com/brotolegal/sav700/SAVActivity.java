@@ -1164,7 +1164,7 @@ public class SAVActivity extends AppCompatActivity {
 
                         if (opcao.equals("agenda01")) {
 
-                            Intent intent = new Intent(SAVActivity.this,MenAtWorkingActivity.class);
+                            Intent intent = new Intent(SAVActivity.this,ViewAgendamentosActivity.class);
                             startActivity(intent);
 
                         }

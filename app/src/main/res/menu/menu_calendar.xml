@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ViewAgendamentosActivity">
+    <item
+        android:id="@+id/action_calendar_sincronizar"
+        android:orderInCategory="100"
+        android:icon="@drawable/refresh_30"
+        android:title="Sincronizar"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/action_calendar_voltar"
+        android:orderInCategory="100"
+        android:title="Voltar"
+        app:showAsAction="ifRoom" />
+</menu>

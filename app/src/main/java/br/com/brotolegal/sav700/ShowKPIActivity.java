@@ -104,9 +104,10 @@ public class ShowKPIActivity extends AppCompatActivity {
 
             DataGrafico       = "";
 
-            LoadDatas();
-
             verWeb();
+
+
+            LoadDatas();
 
 
         } catch (Exception e){
@@ -153,7 +154,16 @@ public class ShowKPIActivity extends AppCompatActivity {
 
                 try {
 
-                    getKPI();
+                    if (conexaoadapter.getConnected()){
+
+                        getKPI();
+
+
+                    } else {
+
+                        toast("Sem Conexão Com A Broto !");
+
+                    }
 
                 } catch (Exception e) {
 
@@ -414,11 +424,18 @@ public class ShowKPIActivity extends AppCompatActivity {
 
                 DataGrafico = App.ddmmaaaaatoaaaammdd(((String[]) lixo)[1].substring(0,10));
 
-                if (conexaoadapter.getConnected()){
+                if (!dataadapter.isInicializacao()) {
 
-                    getKPI();
+                    if (conexaoadapter.getConnected()) {
+
+                        getKPI();
 
 
+                    } else {
+
+                        toast("Sem Conexão Com A Broto !");
+
+                    }
                 }
             }
 
@@ -429,7 +446,12 @@ public class ShowKPIActivity extends AppCompatActivity {
             }
         });
 
+
+        dataadapter.setIsInicializacao(true);
+
         spDatas.setSelection(0);
+
+        dataadapter.setIsInicializacao(false);
 
     }
 
@@ -620,6 +642,8 @@ public class ShowKPIActivity extends AppCompatActivity {
                 }
 
                 dao.close();
+
+                getKPI();
 
             } else {
                 //Altera algumas mensagens

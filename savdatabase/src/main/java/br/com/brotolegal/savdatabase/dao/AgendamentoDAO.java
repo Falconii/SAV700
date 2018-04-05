@@ -449,5 +449,46 @@ public class AgendamentoDAO extends DAO2 implements IDao2<Agendamento> {
 
     }
 
+    public List<Agendamento> getAByData(String Data){
+
+        Cursor cursor = null;
+
+        List<Agendamento> result = new ArrayList<>();
+
+        try {
+
+            cursor = getDataBase().rawQuery("select * from " + getRegistro().getFileName() +
+                    " where data = '"+Data+"' " +
+                    " order by agendamento.data ", null);
+
+            if (!cursor.moveToFirst()){
+
+                result = new ArrayList<>();
+
+            } else {
+
+                while (!(cursor.isAfterLast())) {
+
+                    result.add(cursorToObj(cursor));
+
+                    cursor.moveToNext();
+
+                }
+            }
+
+
+        }catch (Exception e) {
+
+            Log.i(TAG, e.getMessage());
+
+
+            new Exception(e.getMessage());
+
+        }
+
+        return result;
+
+    }
+
 
 }

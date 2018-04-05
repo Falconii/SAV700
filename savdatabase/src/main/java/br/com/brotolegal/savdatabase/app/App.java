@@ -572,6 +572,21 @@ public class App extends Application {
 
     }
 
+
+
+    public  static String getDateToDtos(Date date)
+
+    {
+
+        String retorno = "";
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+
+        retorno = format.format(date);
+
+        return retorno;
+
+    }
     public  static String getHojeaaaamm()
 
     {

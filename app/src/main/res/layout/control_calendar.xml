@@ -60,56 +60,56 @@
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="center_horizontal"
-			android:textColor="#222222"
-			android:text="SUN"/>
+			android:text="DOM"
+			android:textColor="#222222" />
 
 		<TextView
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="center_horizontal"
-			android:textColor="#222222"
-			android:text="MON"/>
+			android:text="SEG"
+			android:textColor="#222222" />
 
 		<TextView
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="center_horizontal"
-			android:textColor="#222222"
-			android:text="TUE"/>
+			android:text="TER"
+			android:textColor="#222222" />
 
 		<TextView
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="center_horizontal"
-			android:textColor="#222222"
-			android:text="WED"/>
+			android:text="QUAR"
+			android:textColor="#222222" />
 
 		<TextView
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="center_horizontal"
-			android:textColor="#222222"
-			android:text="THU"/>
+			android:text="QUI"
+			android:textColor="#222222" />
 
 		<TextView
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="center_horizontal"
-			android:textColor="#222222"
-			android:text="FRI"/>
+			android:text="SEX"
+			android:textColor="#222222" />
 
 		<TextView
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="center_horizontal"
-			android:textColor="#222222"
-			android:text="SAT"/>
+			android:text="SAB"
+			android:textColor="#222222" />
 	</LinearLayout>
 
 	<!-- days view -->
