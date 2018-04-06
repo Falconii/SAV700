@@ -26,6 +26,7 @@ import br.com.brotolegal.savdatabase.dao.AgendamentoDAO;
 import br.com.brotolegal.savdatabase.entities.Agendamento;
 import br.com.brotolegal.savdatabase.entities.NoData;
 import br.com.brotolegal.savdatabase.entities.PedidoCabMb;
+import br.com.brotolegal.savdatabase.regrasdenegocio.AgeByData;
 
 public class ViewAgendamentosActivity extends AppCompatActivity {
 
@@ -94,7 +95,55 @@ public class ViewAgendamentosActivity extends AppCompatActivity {
 
         List<CalendarView.objCalendarAge> age = new ArrayList<>();
 
-        age.add(new CalendarView.objCalendarAge("20180405",10,25));
+        String Data = "";
+
+        Integer ct1,ct2;
+
+        try {
+
+            AgendamentoDAO dao = new AgendamentoDAO();
+
+            dao.open();
+
+            List<AgeByData> ages = dao.getAgeByData();
+
+            dao.close();
+
+            if (ages != null){
+
+                 Data = ages.get(0).getData();
+
+                 ct1 = 0;
+
+                 ct2 = 0;
+
+                 for(AgeByData obj : ages){
+
+                     if (!Data.equals(obj.getData())){
+
+                         age.add(new CalendarView.objCalendarAge(Data,ct1,ct2));
+
+                         Data = obj.getData();
+
+                         ct1 = 0;
+
+                         ct2 = 0;
+
+                     }
+
+                     if (obj.getSituacao().equals("E")) ct1 += obj.getContador();
+                     else ct2 += obj.getContador();
+
+                 }
+
+                age.add(new CalendarView.objCalendarAge(Data,ct1,ct2));
+            }
+
+        }catch (Exception e){
+
+            //nao faz nada
+
+        }
 
         return age;
     }
@@ -365,7 +414,25 @@ public class ViewAgendamentosActivity extends AppCompatActivity {
 
                         final Agendamento obj = (Agendamento) lsObjetos.get(pos);
 
+                        TextView txt_id_402            = (TextView) convertView.findViewById(R.id.txt_id_402);
+                        TextView txt_data_402          = (TextView) convertView.findViewById(R.id.txt_data_402);
+                        TextView txt_hora_402          = (TextView) convertView.findViewById(R.id.txt_hora_402);
+                        TextView txt_tipo_402          = (TextView) convertView.findViewById(R.id.txt_tipo_402);
+                        TextView txt_situacao_402      = (TextView) convertView.findViewById(R.id.txt_situacao_402);
+                        TextView txt_cliente_402       = (TextView) convertView.findViewById(R.id.txt_cliente_402);
+                        TextView txt_pedido_402        = (TextView) convertView.findViewById(R.id.txt_pedido_402);
+                        TextView txt_motivo_402        = (TextView) convertView.findViewById(R.id.txt_motivo_402);
+                        TextView txt_obs_402           = (TextView) convertView.findViewById(R.id.txt_obs_402);
 
+                        txt_id_402.setText("ID: "+obj.getID());
+                        txt_data_402.setText("DATA: "+App.aaaammddToddmmaa(obj.getDATA()));
+                        txt_hora_402.setText("HORA: "+obj.getHORA());
+                        txt_tipo_402.setText("TIPO: "+obj.get_TIPO());
+                        txt_situacao_402.setText("SIT.: "+obj.get_Situacao());
+                        txt_pedido_402.setText("PEDIDO: "+obj.getMOBILE());
+                        txt_motivo_402.setText("MOTIVO: "+obj._motivo());
+                        txt_cliente_402.setText("CLIENTE: "+obj.getCLIENTE()+"-"+obj.getLOJA()+" "+obj.get_RAZAO());
+                        txt_obs_402.setText("OBS: "+obj.getOBS());
 
                         break;
                     }

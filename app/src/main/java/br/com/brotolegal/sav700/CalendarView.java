@@ -129,25 +129,25 @@ public class CalendarView extends LinearLayout
 
 	private void assignClickHandlers() {
 
-		// add one month and refresh UI
-		btnNext.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				currentDate.add(Calendar.MONTH, 1);
-				updateCalendar();
-			}
-		});
-
-		// subtract one month and refresh UI
-		btnPrev.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				currentDate.add(Calendar.MONTH, -1);
-				updateCalendar();
-
-			}
-		});
-
+		// AVANÇA MES
+		//btnNext.setOnClickListener(new OnClickListener() {
+		//	@Override
+		//	public void onClick(View v) {
+		//		currentDate.add(Calendar.MONTH, 1);
+		//		updateCalendar();
+		//	}
+		//});
+		btnNext.setVisibility(INVISIBLE);
+		// VOLTA MES
+		//btnPrev.setOnClickListener(new OnClickListener() {
+		//	@Override
+		//	public void onClick(View v) {
+		//		currentDate.add(Calendar.MONTH, -1);
+		//		updateCalendar();
+        //
+		//	}
+		//});
+		btnPrev.setVisibility(INVISIBLE);
 		// long-pressing a day
 		grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
@@ -302,7 +302,7 @@ public class CalendarView extends LinearLayout
 							calendar.get(Calendar.YEAR) == year)
 					{
 						// mark this day for event
-						lbNro.setBackgroundResource(R.drawable.reminder);
+						lbNro.setBackgroundColor(getResources().getColor(R.color.md_yellow_200));
 						break;
 					}
 				}

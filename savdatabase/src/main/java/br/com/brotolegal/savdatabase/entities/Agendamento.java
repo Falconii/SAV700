@@ -352,17 +352,14 @@ public class Agendamento extends ObjRegister implements KvmSerializable {
 
         String retorno = "";
 
-        if (!this.MOBILE.trim().isEmpty()){
 
-            return retorno;
-
-        }
-
-        if (this.MOTIVONVISITA.trim().isEmpty()){
+        if (!this._DESCRICAOMOTIVONAOVENDA.trim().isEmpty()){
 
             retorno = "NÃO VENDA-"+this.MOTIVONVENDA+"-"+this._DESCRICAOMOTIVONAOVENDA;
 
-        } else {
+        }
+
+        if (!this._DESCRICAOMOTIVONAOVENDA.trim().isEmpty()) {
 
             retorno = "NÃO VISITA-"+this.MOTIVONVISITA+"-"+this._DESCRICAOMOTIVONAOVISITA;
 

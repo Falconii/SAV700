@@ -6,19 +6,10 @@
     >
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:id="@+id/im_agenda"
-        android:src="@drawable/calendar_30"
-        />
-
     <LinearLayout
         android:id="@+id/parentLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/im_agenda"
         android:orientation="vertical" >
 
 
@@ -40,7 +31,7 @@
                 <TextView
                     android:id="@+id/txt_id_402"
                     android:layout_width="fill_parent"
-                    android:layout_height="35sp"
+                    android:layout_height="25sp"
                     android:gravity="left|center_vertical"
                     android:text="18/NOV"
                     android:textColor="@color/dark_blue"
@@ -51,7 +42,7 @@
                 <TextView
                     android:id="@+id/txt_data_402"
                     android:layout_width="fill_parent"
-                    android:layout_height="35sp"
+                    android:layout_height="25sp"
                     android:gravity="left|center_vertical"
                     android:text="18/NOV"
                     android:textColor="@color/dark_blue"
@@ -62,7 +53,7 @@
                 <TextView
                     android:id="@+id/txt_hora_402"
                     android:layout_width="fill_parent"
-                    android:layout_height="35sp"
+                    android:layout_height="25sp"
                     android:gravity="left|center_vertical"
                     android:text="Hora: 12:00"
                     android:textColor="@color/dark_blue"
@@ -102,7 +93,7 @@
                     android:id="@+id/txt_cliente_402"
                     android:layout_span="5"
                     android:layout_width="fill_parent"
-                    android:layout_height="36sp"
+                    android:layout_height="25sp"
                     android:gravity="left|center_vertical"
                     android:text="PEDIDO: KJKJDKFJKDJFKD"
                     android:textColor="@color/black"
@@ -111,13 +102,13 @@
             </TableRow>
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="30sp" >
+                android:layout_height="25sp" >
 
                 <TextView
                     android:id="@+id/txt_pedido_402"
                     android:layout_span="1"
                     android:layout_width="fill_parent"
-                    android:layout_height="36sp"
+                    android:layout_height="25sp"
                     android:gravity="left|center_vertical"
                     android:text="PEDIDO: KJKJDKFJKDJFKD"
                     android:textColor="@color/black"
@@ -128,7 +119,7 @@
                     android:id="@+id/txt_motivo_402"
                     android:layout_span="4"
                     android:layout_width="fill_parent"
-                    android:layout_height="36sp"
+                    android:layout_height="25sp"
                     android:gravity="left|center_vertical"
                     android:text="MOTIVO: KJKJDKFJKDJFKD"
                     android:textColor="@color/black"
@@ -145,7 +136,7 @@
                     android:id="@+id/txt_obs_402"
                     android:layout_span="5"
                     android:layout_width="fill_parent"
-                    android:layout_height="35sp"
+                    android:layout_height="25sp"
                     android:gravity="left|center_vertical"
                     android:text="000.000 DESCRICAO DA REDE !!!!"
                     android:textColor="@color/orange"
@@ -160,13 +151,6 @@
 
 
     </LinearLayout>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bt_alteracao_402"
-        android:src="@drawable/pen_30"
-        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

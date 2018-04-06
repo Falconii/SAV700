@@ -12,6 +12,7 @@ import java.util.List;
 
 import br.com.brotolegal.savdatabase.entities.AGENDADATA;
 import br.com.brotolegal.savdatabase.entities.Agendamento;
+import br.com.brotolegal.savdatabase.regrasdenegocio.AgeByData;
 import br.com.brotolegal.savdatabase.regrasdenegocio.ResumoAgendamento;
 import br.com.brotolegal.savdatabase.util.AgendamentoController;
 
@@ -138,11 +139,18 @@ public class AgendamentoDAO extends DAO2 implements IDao2<Agendamento> {
                     cursor.getString(19),
                     cursor.getString(20)
 
+            );
 
+            //Verifica se tem complemento
+            if (cursor.getColumnCount()> getRegistro().getColumn().length ){
 
+                int coluna = getRegistro().getColumn().length;
 
-                    );
+                obj.set_RAZAO(cursor.getString(coluna++));
+                obj.set_DESCRICAOMOTIVONAOVENDA(cursor.getString(coluna++));
+                obj.set_DESCRICAOMOTIVONAOVISITA(cursor.getString(coluna++));
 
+            }
         } catch (Exception e){
 
             new Exception(e.getMessage());
@@ -455,11 +463,19 @@ public class AgendamentoDAO extends DAO2 implements IDao2<Agendamento> {
 
         List<Agendamento> result = new ArrayList<>();
 
+        String sql = "";
+
         try {
 
-            cursor = getDataBase().rawQuery("select * from " + getRegistro().getFileName() +
-                    " where data = '"+Data+"' " +
-                    " order by agendamento.data ", null);
+            sql = "select agendamento.*, cliente.razaopa ,ifnull (nven.descricao,'') ,ifnull (nvis.descricao,'') "+
+                     "from agendamento " +
+                     "left join cliente on cliente.codigo = agendamento.cliente and cliente.loja = agendamento.loja " +
+                     "left join motivo nven on nven.tipo = 'NAONVENDA'  and agendamento.motivonvenda =  nven.codigo " +
+                     "left join motivo nvis on nvis.tipo = 'NAONVISITA'  and agendamento.motivonvisita =  nvis.codigo " +
+                     "where data = '"+Data+"' order by agendamento.hora";
+
+
+            cursor = getDataBase().rawQuery(sql, null);
 
             if (!cursor.moveToFirst()){
 
@@ -490,5 +506,49 @@ public class AgendamentoDAO extends DAO2 implements IDao2<Agendamento> {
 
     }
 
+    public List<AgeByData> getAgeByData(){
+
+        Cursor cursor = null;
+
+        List<AgeByData> result = new ArrayList<>();
+
+        String sql = "";
+
+        try {
+
+            sql = "select data,situacao,count(*) from agendamento group by data,situacao order by data,situacao";
+
+            cursor = getDataBase().rawQuery(sql, null);
+
+            if (!cursor.moveToFirst()){
+
+                result = new ArrayList<>();
+
+            } else {
+
+                while (!(cursor.isAfterLast())) {
+
+                    result.add(new AgeByData(cursor.getString(0),
+                            cursor.getString(1),
+                            cursor.getInt(2)));
+
+                    cursor.moveToNext();
+
+                }
+            }
+
+
+        }catch (Exception e) {
+
+            Log.i(TAG, e.getMessage());
+
+
+            new Exception(e.getMessage());
+
+        }
+
+        return result;
+
+    }
 
 }
