@@ -311,6 +311,7 @@ public class PedidoCabMbDAO  extends DAO2 implements IDao2<PedidoCabMb> {
 
 	@Override
 	public PedidoCabMb seek(String[] values) {
+
 		PedidoCabMb obj = null;
 
 		try{
@@ -1355,7 +1356,9 @@ public class PedidoCabMbDAO  extends DAO2 implements IDao2<PedidoCabMb> {
 					cursor.getFloat(97),
 					cursor.getFloat(98),
 					cursor.getFloat(99),
-					cursor.getFloat(100)
+					cursor.getFloat(100),
+					cursor.getFloat(101)
+
 
 					);
 

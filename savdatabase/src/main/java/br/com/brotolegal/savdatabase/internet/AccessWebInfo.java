@@ -93,6 +93,7 @@ public class AccessWebInfo  extends Thread {
     public static final int PROCESSO_DOWNLOAD                       = 13;
     public static final int PROCESSO_ATUALIZA_ACORDO_PROTHEUS       = 14;
     public static final int PROCESSO_GET_KPI                        = 15;
+    public static final int PROCESSO_AGENDAMENTO_UNICO              = 16;
     public static final int PLAY_SERVICES_RESOLUTION_REQUEST        =  9000;
 
     private Boolean PROCESSANDO = true;
@@ -292,6 +293,14 @@ public class AccessWebInfo  extends Thread {
             }
 
             if (this.tipoProcesso == PROCESSO_AGENDAMENTO_ATRASADO) {
+
+                transmitir_agendamentoByArray();
+
+                return;
+
+            }
+
+            if (this.tipoProcesso == PROCESSO_AGENDAMENTO_UNICO) {
 
                 transmitir_agendamentoByArray();
 
@@ -2300,6 +2309,7 @@ public class AccessWebInfo  extends Thread {
 
             }
 
+            //vou transmitir apenas agendamentos cujo os pedidos foram incluidos
 
         }
         catch(Exception e)
@@ -3233,16 +3243,25 @@ public class AccessWebInfo  extends Thread {
 
             dao.open();
 
-            if (this.tipoProcesso == PROCESSO_AGENDAMENTO_JUSTIFICATICAS){
+            switch (this.tipoProcesso){
 
-                lsLista = dao.getAllAvulsoToSinc();
+                case PROCESSO_AGENDAMENTO_JUSTIFICATICAS:
 
-            } else {
+                    lsLista = dao.getAllAvulsoToSinc();
 
-                lsLista = dao.getAllByByStatus(CODIGO,LOJA,"T");
+                    break;
+
+                case PROCESSO_AGENDAMENTO_UNICO:
+
+                    lsLista.add(dao.seek(new String[] {CODIGO}));
+
+                    break;
+
+                default:
+
+                    lsLista = dao.getAllByByStatus(CODIGO,LOJA,"T");
 
             }
-
 
             dao.close();
 
@@ -3299,11 +3318,32 @@ public class AccessWebInfo  extends Thread {
 
             SoapObject soapAgenda1 = new SoapObject("", "AGENDAMENTOS");
 
+            PedidoCabMbDAO pedidosdao = new PedidoCabMbDAO();
+
+            pedidosdao.open();
+
             for (Agendamento agendamento : lsLista) {
 
-                soapAgenda1.addProperty("AGENITEM", agendamento);
+                if (agendamento.getMOBILE().trim().equals("")) {
+
+                    PedidoCabMb ped = pedidosdao.seek(new String[]{agendamento.getMOBILE()});
+
+                    if (ped != null && ped.getSTATUS().equals("5")) {
+
+                        soapAgenda1.addProperty("AGENITEM", agendamento);
+
+                    }
+
+                } else {
+
+                    soapAgenda1.addProperty("AGENITEM", agendamento);
+
+                }
+
 
             }
+
+            pedidosdao.close();
 
             soapAgenda0.addSoapObject(soapAgenda1);
 
@@ -3817,7 +3857,6 @@ public class AccessWebInfo  extends Thread {
 
         }
     }
-
 
     private void getKpi() throws Exception{
 

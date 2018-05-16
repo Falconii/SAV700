@@ -381,7 +381,7 @@ public class AgendamentoDAO extends DAO2 implements IDao2<Agendamento> {
 
             String sql = "";
 
-            sql = "select count(*) as soma from " + getRegistro().getFileName() + " where agendamento.situacao = '"+Status+"'  and trim(agendamento.mobile) = '' ";
+            sql = "select count(*) as soma from " + getRegistro().getFileName() + " where agendamento.situacao = '"+Status+"' ";
 
             cursor = getDataBase().rawQuery(sql, null);
 

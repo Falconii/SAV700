@@ -131,8 +131,10 @@ public class PoliticaDAO  extends DAO2 implements IDao2<Politica> {
 					cursor.getString(10),
 					cursor.getString(11),
 					cursor.getString(12),
-					cursor.getString(13)
-			);
+					cursor.getString(13),
+					cursor.getFloat(14)
+
+					);
 
 		} catch (Exception e){
 

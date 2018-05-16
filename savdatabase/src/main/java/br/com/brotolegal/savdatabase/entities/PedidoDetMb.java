@@ -72,6 +72,8 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 	protected Float POLITICABASE;
 	protected Float CUSTOOPER;
 	protected Float BDI;
+	protected Float PERMAX;
+
 
 	protected static final String _OBJETO = "br.com.brotolegal.savdatabase.entities.PedidoDetMb";
 
@@ -112,7 +114,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		Novo();
 	}
 
-	public PedidoDetMb(String NRO, String ITEM, String CPROTHEUS, String CPROTHEUSB, String STATUS, String PRODUTO, String UM, Float QTD, String ORIGEM, Float PRCVEN, Float DESCON, Float DESCVER, String CODVERBA, Float DESCVER2, String CODVERBA2, Float TOTAL, Float BONIQTD, Float BONIPREC, Float BONITOTAL, String PEDDISTFIL, String PEDDIST, String PEDDISTITEM, String PEDDISTFIL2, String PEDDIST2, String PEDDISTITEM2, Float PRECOFORMACAO, Float DESCCONTRATO, Float PRECOTABELA, Float ACRESCIMOMAIS, Float DESCONTOMAIS, Float DESCONTOPOL, Float DNADESCONTO, Float DNAVALOR, String USATAXAFIN, String TAXAFIN, String MENSAGEM, String ACORDO, String ACORDO2, String SIMULADOR, String SIMULADOR2, String PEDCLI, String PEDCLI2, Float FRETE, String FATOR, Float IMPOSTO, Float CONVERSAO, String LOTE, String EMPACOTAMENTO, String VENCIMENTO, String OBS, Integer UNIDADE, String COTA, Float VLRCAMPANHA, Float VLRDESCARGA2, Float POLITICABASE, Float CUSTOOPER, Float BDI) {
+	public PedidoDetMb(String NRO, String ITEM, String CPROTHEUS, String CPROTHEUSB, String STATUS, String PRODUTO, String UM, Float QTD, String ORIGEM, Float PRCVEN, Float DESCON, Float DESCVER, String CODVERBA, Float DESCVER2, String CODVERBA2, Float TOTAL, Float BONIQTD, Float BONIPREC, Float BONITOTAL, String PEDDISTFIL, String PEDDIST, String PEDDISTITEM, String PEDDISTFIL2, String PEDDIST2, String PEDDISTITEM2, Float PRECOFORMACAO, Float DESCCONTRATO, Float PRECOTABELA, Float ACRESCIMOMAIS, Float DESCONTOMAIS, Float DESCONTOPOL, Float DNADESCONTO, Float DNAVALOR, String USATAXAFIN, String TAXAFIN, String MENSAGEM, String ACORDO, String ACORDO2, String SIMULADOR, String SIMULADOR2, String PEDCLI, String PEDCLI2, Float FRETE, String FATOR, Float IMPOSTO, Float CONVERSAO, String LOTE, String EMPACOTAMENTO, String VENCIMENTO, String OBS, Integer UNIDADE, String COTA, Float VLRCAMPANHA, Float VLRDESCARGA2, Float POLITICABASE, Float CUSTOOPER, Float BDI, Float PERMAX) {
 
 		super(_OBJETO,"PEDIDODETMB");
 
@@ -176,6 +178,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		this.POLITICABASE = POLITICABASE;
 		this.CUSTOOPER    = CUSTOOPER;
 		this.BDI          = BDI;
+		this.PERMAX       = PERMAX;
 
 
 		_View  = "G";
@@ -263,6 +266,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		this.POLITICABASE  = obj.getPOLITICABASE();
 		this.CUSTOOPER     = obj.getCUSTOOPER();
 		this.BDI           = obj.getBDI();
+		this.PERMAX        = obj.getPERMAX();
 		this._isValid      = obj.get_isValid();
 
 		_View       = "G";
@@ -276,16 +280,16 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		_Simulador2   =  obj.get_Simulador2();
 		_Grupo        =  obj.get_CodGrupo();
 		_Marca        =  obj.get_CodMarca();
-		_UltimoPreco  = obj.get_UltimoPreco();
-		_PesoBruto    = obj.get_PesoBruto();
-		_PesoLiquido  = obj.get_PesoLiquido();
-		_MotDev       = obj.get_MotDev();
-		_Mix          = obj.get_Mix();
-		_Meta         = obj.get_Meta();
-		_Carteira     = obj.get_Carteira();
-		_Realizado    = obj.get_Realizado();
-		_UsaPolitica  = obj.get_UsaPolitica();
-		_UsaPoliticaV = obj.get_UsaPoliticaV();
+		_UltimoPreco  =  obj.get_UltimoPreco();
+		_PesoBruto    =  obj.get_PesoBruto();
+		_PesoLiquido  =  obj.get_PesoLiquido();
+		_MotDev       =  obj.get_MotDev();
+		_Mix          =  obj.get_Mix();
+		_Meta         =  obj.get_Meta();
+		_Carteira     =  obj.get_Carteira();
+		_Realizado    =  obj.get_Realizado();
+		_UsaPolitica  =  obj.get_UsaPolitica();
+		_UsaPoliticaV =  obj.get_UsaPoliticaV();
 
 
 		loadStatusDescricao();
@@ -357,6 +361,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		obj.setPOLITICABASE(this.POLITICABASE);
 		obj.setCUSTOOPER(this.CUSTOOPER);
 		obj.setBDI(this.BDI);
+		obj.setPERMAX(this.PERMAX);
 
 		obj.set_isValid(this.get_isValid());
 		obj.set_View(_View);
@@ -1154,6 +1159,30 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		this._UsaPoliticaV = _UsaPoliticaV;
 	}
 
+	public Float getCUSTOOPER() {
+		return CUSTOOPER;
+	}
+
+	public void setCUSTOOPER(Float CUSTOOPER) {
+		this.CUSTOOPER = CUSTOOPER;
+	}
+
+	public Float getBDI() {
+		return BDI;
+	}
+
+	public void setBDI(Float BDI) {
+		this.BDI = BDI;
+	}
+
+	public Float getPERMAX() {
+		return PERMAX;
+	}
+
+	public void setPERMAX(Float PERMAX) {
+		this.PERMAX = PERMAX;
+	}
+
 	@Override
 	public void loadColunas() {
 
@@ -1215,7 +1244,7 @@ public class PedidoDetMb extends ObjRegister implements KvmSerializable {
 		_colunas.add("POLITICABASE");
 		_colunas.add("CUSTOOPER");
 		_colunas.add("BDI");
-
+		_colunas.add("PERMAX");
 
 		_ValidaOK();
 

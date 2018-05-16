@@ -166,7 +166,8 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
 					cursor.getFloat(53),
 					cursor.getFloat(54),
 					cursor.getFloat(55),
-					cursor.getFloat(56)
+					cursor.getFloat(56),
+					cursor.getFloat(57)
 
 					);
 
@@ -579,7 +580,7 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
 					cursor.getFloat(54),
 					cursor.getFloat(55),
 					cursor.getFloat(56),
-					cursor.getString(57),
+					cursor.getFloat(57),
 					cursor.getString(58),
 					cursor.getString(59),
 					cursor.getString(60),
@@ -590,17 +591,19 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
 					cursor.getString(65),
 					cursor.getString(66),
 					cursor.getString(67),
-					cursor.getFloat(68),
+					cursor.getString(68),
 					cursor.getFloat(69),
 					cursor.getFloat(70),
-					cursor.getString(71),
-					( cursor.getInt(72) == 0 ? false : true),
-					cursor.getFloat(73),
+					cursor.getFloat(71),
+					cursor.getString(72),
+					( cursor.getInt(73) == 0 ? false : true),
 					cursor.getFloat(74),
 					cursor.getFloat(75),
-					( ( cursor.getString(76).equals("P") ) ? "S" : "N" ),
+					cursor.getFloat(76),
 					( ( cursor.getString(77).equals("P") ) ? "S" : "N" ),
-					cursor.getString(78)
+					( ( cursor.getString(78).equals("P") ) ? "S" : "N" ),
+					cursor.getString(79)
+
 					);
 
 
@@ -677,6 +680,7 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
 				+ "ifnull(pedidodetmb.politicabase,tabprecodet.politicabase),  "
 				+ "ifnull(pedidodetmb.custooper,tabprecodet.custooper),  "
 				+ "ifnull(pedidodetmb.bdi,tabprecodet.bdi),  "
+				+ "ifnull(pedidodetmb.permax,0),  "
                 + "ifnull(produto.descricao,''),"
                 + "ifnull(verba.descricao,''),  "
                 + "ifnull(verba2.descricao,''), "
@@ -770,6 +774,7 @@ public class PedidoDetMbDAO  extends DAO2 implements IDao2<PedidoDetMb> {
 				+ "ifnull(pedidodetmb.vlrdescarga2,0),  "
 				+ "ifnull(pedidodetmb.custooper,0),  "
 				+ "ifnull(pedidodetmb.bdi,0),  "
+				+ "ifnull(pedidodetmb.permax,0),  "
 				+ "ifnull(produto.descricao,''),"
 				+ "ifnull(verba.descricao,''),  "
 				+ "ifnull(verba2.descricao,''), "

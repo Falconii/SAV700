@@ -428,9 +428,11 @@ public class TabPrecoCabecDAO  extends DAO2 implements IDao2<TabPrecoCabec> {
 							cursor.getFloat(53),
 							cursor.getFloat(54),
 							cursor.getFloat(55),
-							cursor.getFloat(56)
+							cursor.getFloat(56),
+							cursor.getFloat(57)
 
-					);
+
+							);
 
 					det.set_Produto(cursor.getString(52));
 					det.set_Grupo(cursor.getString(53));

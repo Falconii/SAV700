@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import br.com.brotolegal.savdatabase.database.ObjRegister;
 
 public class Politica extends ObjRegister {
-	
+
 
 	protected String CODIGO;
 	protected String LOJA;
@@ -21,6 +21,8 @@ public class Politica extends ObjRegister {
 	protected String SUPER;
 	protected String GEREN;
 	protected String REDE;
+	protected Float  DESCLIM;
+
 
 
 	protected static final String _OBJETO = "br.com.brotolegal.savdatabase.entities.Politica";
@@ -45,7 +47,7 @@ public class Politica extends ObjRegister {
 	public Politica( String cODIGO, String lOJA,
 			String cANAL, String rEGIAO, String pRODUTO, String gRUPO,
 			String mARCA, Float vLRMIN, Float dESCONTO, String tIPOPOL,
-			String vEND, String sUPER, String gEREN, String rEDE) {
+			String vEND, String sUPER, String gEREN, String rEDE, Float dESCLIM) {
 		super(_OBJETO,"POLITICA");
 
 		CODIGO = cODIGO;
@@ -62,6 +64,7 @@ public class Politica extends ObjRegister {
 		SUPER = sUPER;
 		GEREN = gEREN;
 		REDE = rEDE;
+		DESCLIM = dESCLIM;
 
 		loadColunas();
 
@@ -343,10 +346,13 @@ public class Politica extends ObjRegister {
 	}
 
 
+	public Float getDESCLIM() {
+		return DESCLIM;
+	}
 
-
-
-
+	public void setDESCLIM(Float DESCLIM) {
+		this.DESCLIM = DESCLIM;
+	}
 
 	@Override
 	public void loadColunas() {
@@ -366,7 +372,9 @@ public class Politica extends ObjRegister {
 		_colunas.add("SUPER");
 		_colunas.add("GEREN");
 		_colunas.add("REDE");
-		
+		_colunas.add("DESCLIM");
+
+
 	}
 
 	

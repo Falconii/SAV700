@@ -70,7 +70,7 @@ public class PedidoDetMB_fast {
     protected Float POLITICABASE;
     protected Float CUSTOOPER;
     protected Float BDI;
-
+    protected Float PERMAX;
 
 
 
@@ -107,7 +107,7 @@ public class PedidoDetMB_fast {
     protected Map<String,String> lsStatus = new TreeMap<String, String >();
     protected Map<Float,Float> lsFreste = new TreeMap<Float, Float >();
     protected List<Boolean> _isValid;
-    protected int   _maxcol = 57;
+    protected int   _maxcol = 58;
     protected String _tipo  = "";
 
 
@@ -173,6 +173,7 @@ public class PedidoDetMB_fast {
                             Float POLITICABASE,
                             Float CUSTOOPER,
                             Float BDI,
+                            Float PERMAX,
                             String _Produto,
                             String _Verba,
                             String _Verba2,
@@ -253,6 +254,7 @@ public class PedidoDetMB_fast {
         this.POLITICABASE = POLITICABASE;
         this.CUSTOOPER    = CUSTOOPER;
         this.BDI          = BDI;
+        this.PERMAX       = PERMAX;
 
         //
         this._Produto     = _Produto;
@@ -951,6 +953,14 @@ public class PedidoDetMB_fast {
 
     public void set_MotDev(String _MotDev) {
         this._MotDev = _MotDev;
+    }
+
+    public Float getPERMAX() {
+        return PERMAX;
+    }
+
+    public void setPERMAX(Float PERMAX) {
+        this.PERMAX = PERMAX;
     }
 
     public void _ValidaOK(){

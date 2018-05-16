@@ -71,7 +71,7 @@ public class DBUser extends SQLiteOpenHelper {
     private static final String TAG =  "DBUser";
 
     /* Data Base */
-    private static final int           DATABASE_VERSION = 105;
+    private static final int           DATABASE_VERSION = 107;
     private static final String        DATABASE_NAME    = "dados";
     private static       String        DATABASE_PATH    = Environment.getExternalStorageDirectory().getPath();
 
@@ -117,7 +117,7 @@ public class DBUser extends SQLiteOpenHelper {
         lsTabelas.add(new Tabela(new int[] {0,1,2}      , "", new NotaFiscalCab()));
         lsTabelas.add(new Tabela(new int[] {0,1,2,6}    , "", new NotaFiscalDet()));
         lsTabelas.add(new Tabela(new int[] {0,1,2,3,4,5,6,7,8,9}    , "", new Meta()));
-        lsTabelas.add(new Tabela(new int[] {0,}         , "", new Negociacao()));
+        lsTabelas.add(new Tabela(new int[] {0,}                     , "", new Negociacao()));
         lsTabelas.add(new Tabela(new int[] {0,1,2,3,4,5,6,7}        , "", new Campanha()));
         lsTabelas.add(new Tabela(new int[] {0}          , "", new Cota()));
         //Gamefication

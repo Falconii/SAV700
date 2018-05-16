@@ -1,6 +1,7 @@
 package br.com.brotolegal.sav700;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -8,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -76,6 +79,7 @@ import br.com.brotolegal.savdatabase.entities.Motivo;
 import br.com.brotolegal.savdatabase.entities.NoData;
 import br.com.brotolegal.savdatabase.eventbus.NotificationPedido;
 import br.com.brotolegal.savdatabase.eventbus.NotificationPedidoGeral;
+import br.com.brotolegal.savdatabase.internet.AccessWebInfo;
 import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionValidadeAgendamentoAtrasado;
 import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionValidadeTabelaPreco;
 
@@ -149,6 +153,9 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
     private String LOJA      = "";
 
     private String LOG       = "LANCAPEDIDO";
+
+    private Dialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1750,6 +1757,8 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
 
     }
 
+
+
     private class defaultAdapter extends ArrayAdapter {
 
         private int escolha = 0;
@@ -1979,13 +1988,11 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
 
             dialog.setTitle("JUSTIFICATIVAS");
 
-            final Spinner spPeriodo = (Spinner) dialog.findViewById(R.id.edit_periodo_117);
-
-
+            final Spinner spPeriodo     = (Spinner) dialog.findViewById(R.id.edit_periodo_117);
 
             final RadioButton rb_visita = (RadioButton) dialog.findViewById(R.id.radio_nao_visita_117);
 
-            RadioButton rb_venda  = (RadioButton) dialog.findViewById(R.id.radio_nao_venda_117);
+            RadioButton rb_venda        = (RadioButton) dialog.findViewById(R.id.radio_nao_venda_117);
 
             rb_visita.setOnClickListener(new View.OnClickListener() {
 
@@ -2209,7 +2216,6 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
 
                         agenda.setLONGITUDE(longitude);
 
-
                         AgendamentoDAO dao = new AgendamentoDAO();
 
                         dao.open();
@@ -2246,6 +2252,8 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
                             adapter.setCliente(cliente);
 
                         }
+
+
 
                     } catch (Exception e) {
 

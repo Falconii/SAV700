@@ -1,6 +1,7 @@
 package br.com.brotolegal.sav700;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -8,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -76,6 +79,7 @@ import br.com.brotolegal.savdatabase.entities.Cliente_fast;
 import br.com.brotolegal.savdatabase.entities.Motivo;
 import br.com.brotolegal.savdatabase.entities.NoData;
 import br.com.brotolegal.savdatabase.eventbus.NotificationPedido;
+import br.com.brotolegal.savdatabase.internet.AccessWebInfo;
 import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionValidadeAgendamentoAtrasado;
 import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionValidadeTabelaPreco;
 
@@ -151,6 +155,8 @@ public class PedidosAgendaActivity extends AppCompatActivity implements
     private String DATAAGENDA = App.getHoje();
 
     private String LOG       = "AGENDA";
+
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1081,6 +1087,132 @@ public class PedidosAgendaActivity extends AppCompatActivity implements
 
 
     }
+
+
+    private Handler mHandlerTrasmissao = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            Boolean processado = false;
+
+            try {
+
+                if (!msg.getData().containsKey("CERRO") || !msg.getData().containsKey("CMSGERRO")) {
+
+                    toast("NAO CONTEM AS CHAVES..");
+
+                    return;
+
+                }
+
+                if (msg.getData().getString("CERRO").equals("---")) {
+
+                    dialog = ProgressDialog.show(PedidosAgendaActivity.this, msg.getData().getString("CMSGERRO"), "Acessando Servidores.Aguarde !!", false, true);
+                    dialog.setCancelable(false);
+                    dialog.show();
+
+                    processado = true;
+                }
+
+
+                if (msg.getData().getString("CERRO").equals("MMM")) {
+
+                    if ((dialog != null)) {
+
+                        if (dialog.isShowing()) {
+
+                            dialog.setTitle(msg.getData().getString("CMSGERRO"));
+
+                        }
+
+                    }
+
+                    processado = true;
+
+                }
+
+
+                if ((msg.getData().getString("CERRO").equals("000"))) {
+
+                    if ((dialog != null)) {
+
+                        if (dialog.isShowing()) {
+
+                            dialog.dismiss();
+
+                        }
+
+                    }
+
+                    if (!msg.getData().getString("CMSGERRO").isEmpty()) {
+
+                        toast(msg.getData().getString("CMSGERRO"));
+
+                    }
+
+
+                    processado = true;
+                }
+
+                if ((msg.getData().getString("CERRO").equals("FEC"))) {
+
+                    if ((dialog != null)) {
+
+                        if (dialog.isShowing()) {
+
+                            dialog.dismiss();
+
+                        }
+
+                    }
+
+                    if (!msg.getData().getString("CMSGERRO").isEmpty()) {
+
+                        toast(msg.getData().getString("CMSGERRO"));
+
+                    }
+
+
+                    processado = true;
+                }
+
+
+                if (!processado) {
+
+
+                    toast("Erro:" + msg.getData().getString("CERRO") + " " + msg.getData().getString("CMSGERRO"));
+
+                    if ((dialog != null)) {
+
+                        if (dialog.isShowing()) {
+
+                            dialog.dismiss();
+
+                        }
+                    }
+
+
+                }
+
+            } catch (Exception E) {
+
+                if ((dialog != null)) {
+
+                    if (dialog.isShowing()) {
+
+                        dialog.dismiss();
+
+                    }
+                }
+
+                toast("Erro Handler: " + E.getMessage());
+
+            }
+        }
+
+
+    };
 
     private class Adapter extends BaseAdapter {
 
@@ -2267,7 +2399,19 @@ public class PedidosAgendaActivity extends AppCompatActivity implements
 
                             adapter.setCliente(cliente);
 
+                        }
 
+                        try {
+
+                            AccessWebInfo acessoWeb = new AccessWebInfo(mHandlerTrasmissao, getBaseContext(), App.user, "PUTAGENDAMENTOS", "PUTAGENDAMENTOS", AccessWebInfo.RETORNO_TIPO_ESTUTURADO, AccessWebInfo.PROCESSO_AGENDAMENTO_UNICO, null, null, -1);
+
+                            acessoWeb.setCODIGO(agenda.getID());
+
+                            acessoWeb.start();
+
+                        } catch (Exception e){
+
+                            Toast(e.getMessage());
                         }
 
                     } catch (Exception e) {

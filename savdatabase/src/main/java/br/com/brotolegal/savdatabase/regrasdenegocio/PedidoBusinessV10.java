@@ -492,6 +492,7 @@ public class PedidoBusinessV10 {
         String statusdet = "3";
         String msgerror  = "";
 
+        Log.i("TEMVERBA","COMECEI A VALIDAÇÃO");
 
         if (!"1,2,3".contains(cabec.getSTATUS())) {
 
@@ -692,6 +693,8 @@ public class PedidoBusinessV10 {
 
                         if (det.getNRO().isEmpty()) continue;
 
+                        Log.i("TEMVERBA","PONTO A => "+det.getCODVERBA()+"-"+det.getCODVERBA()+"-"+det.get_Verba());
+
                         det._ValidaOK();
 
                         det.setMENSAGEM("");
@@ -720,6 +723,8 @@ public class PedidoBusinessV10 {
                             det.setSTATUS("2");
 
                         }
+
+                        Log.i("TEMVERBA","PONTO B => "+det.getCODVERBA()+"-"+det.getCODVERBA()+"-"+det.get_Verba());
 
                         //troca
                         if (this.getCabec().getTIPO().equals("005") || this.getCabec().getTIPO().equals("006")) {
@@ -1080,6 +1085,8 @@ public class PedidoBusinessV10 {
                                 }
                             }
 
+                            Log.i("TEMVERBA","PONTO C => "+det.getCODVERBA()+"-"+det.get_Verba());
+
                             //Verba
                             if (!det.getCODVERBA().trim().equals("")) {
 
@@ -1087,19 +1094,30 @@ public class PedidoBusinessV10 {
 
                                 if (ver != null) {
 
-                                    if (det.get_UsaPoliticaV().equals("S")) {
+                                    if (TemVerba(det.getDESCONTOPOL(),det.getPERMAX(),det.getDESCON())){
 
-                                        if (getCabec().getSALDOAPROVEITAMENTO().compareTo(0f) < 0) {
 
-                                            det.set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), false);
-                                            det.set_Verba("SALDO NEGATIVO APROV. POLÍTCA");
+                                        det.set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), true);
+                                        det.set_Verba(ver.getCODIGO() + "-" + ver.getDESCRICAO());
 
-                                        } else {
 
-                                            det.set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), true);
-                                            det.set_Verba(ver.getCODIGO() + "-" + ver.getDESCRICAO());
+                                    } else {
 
+                                        if (det.get_UsaPoliticaV().equals("S")) {
+
+                                            if (getCabec().getSALDOAPROVEITAMENTO().compareTo(0f) < 0) {
+
+                                                det.set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), false);
+                                                det.set_Verba("SALDO NEGATIVO APROV. POLÍTCA");
+
+                                            } else {
+
+                                                det.set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), true);
+                                                det.set_Verba(ver.getCODIGO() + "-" + ver.getDESCRICAO());
+
+                                            }
                                         }
+
                                     }
                                 } else {
 
@@ -1122,6 +1140,8 @@ public class PedidoBusinessV10 {
 
                             }
 
+
+                            Log.i("TEMVERBA","PONTO D => "+det.getCODVERBA()+"-"+det.get_Verba());
 
                             //Verba bonificacao
 
@@ -1188,6 +1208,8 @@ public class PedidoBusinessV10 {
                                 }
                             }
 
+
+                            Log.i("TEMVERBA","PONTO E => "+det.getCODVERBA()+"-"+det.get_Verba());
                             //Vendas
                             //Valida descontos
 
@@ -1225,7 +1247,10 @@ public class PedidoBusinessV10 {
 
                                 det.setDESCVER(descVerba);
 
-                                if (Float.compare(det.getDESCVER(), 0) == 0) {
+
+
+
+                                if ( (!TemVerba(det.getDESCONTOPOL(),det.getPERMAX(),det.getDESCON())) && (Float.compare(det.getDESCVER(), 0) == 0)) {
 
                                     det.setCODVERBA("");
                                     det.set_Verba("");
@@ -1238,6 +1263,7 @@ public class PedidoBusinessV10 {
                                 }
                             }
 
+                            Log.i("TEMVERBA","PONTO F => "+det.getCODVERBA()+"-"+det.get_Verba());
 
                             //Verba
                             if (det.getDESCVER() > 0) {
@@ -2909,8 +2935,6 @@ public class PedidoBusinessV10 {
 
                     }
 
-                    //outros pedidos este campo é obrigatorio
-                    //qtd venda é obrigatorio
 
                     //outros pedidos este campo é obrigatorio
                     //qtd venda é obrigatorio
@@ -3283,78 +3307,106 @@ public class PedidoBusinessV10 {
 
                     getEdicao().setDESCVER(descVerba);
 
-                    if (Float.compare(getEdicao().getDESCVER(), 0) == 0) {
+                    if (TemVerba(getEdicao().getDESCONTOPOL(),getEdicao().getPERMAX(),getEdicao().getDESCON())) {
 
-                        getEdicao().setCODVERBA("");
-                        getEdicao().set_Verba("");
-                        getEdicao().setACORDO("");
-                        getEdicao().set_Acordo("");
+                        Log.i("TEMVERBA","Verba Sem Fundamento");
 
-                        getEdicao().set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), true);
-                        getEdicao().set_isValid(Edicao.getIndiceByNameColunas("ACORDO"), true);
-                        msgerror = "";
+                        getEdicao().setCODVERBA("900000");
 
+                    } else {
+
+                        if (getEdicao().getCODVERBA().trim().equals("900000")){
+
+                            getEdicao().setCODVERBA("");
+                            getEdicao().set_Verba("");
+
+                        }
 
                     }
+
+                    Log.i("TEMVERBA","VERBA ASSOCIADA: "+det.getCODVERBA()+"-"+det.get_Verba());
+
+                    if ( (!TemVerba(getEdicao().getDESCONTOPOL(),getEdicao().getPERMAX(),getEdicao().getDESCON())) && (Float.compare(getEdicao().getDESCVER(), 0) == 0)) {
+
+                            getEdicao().setCODVERBA("");
+                            getEdicao().set_Verba("");
+                            getEdicao().setACORDO("");
+                            getEdicao().set_Acordo("");
+
+                            getEdicao().set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), true);
+                            getEdicao().set_isValid(Edicao.getIndiceByNameColunas("ACORDO"), true);
+                            msgerror = "";
+
+
+                        }
+                    }
+
+                    Log.i("TEMVERBA","VERBA ASSOCIADA: "+det.getCODVERBA()+"-"+det.get_Verba());
+
+                    //Verba
+                    if (getEdicao().getDESCVER() > 0) {
+
+
+                        if (getEdicao().getCODVERBA().trim().equals("900000")){
+
+                            getEdicao().setCODVERBA("");
+                            getEdicao().set_Verba("");
+
+                        }
+
+                        if (getEdicao().getCODVERBA().trim().equals("")) {
+
+                            getEdicao().setMENSAGEM("Favor Justificar O desconto Com Uma verba !!!");
+                            getEdicao().set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), false);
+                            getEdicao().set_isValid(Edicao.getIndiceByNameColunas("ACORDO"), false);
+                            msgerror += "Favor Justificar O desconto Com Uma Verba de Venda E Ou Acordo.\n";
+
+                        }
+
+
+                        if ((getEdicao().getCODVERBA().trim().equals("")) && (getEdicao().getACORDO().trim().equals(""))) {
+
+                            getEdicao().setMENSAGEM("Favor Justificar O desconto Com Um Acordo !!!");
+                            getEdicao().set_isValid(Edicao.getIndiceByNameColunas("ACORDO"), false);
+
+                        }
+
+                    }
+
+                     Log.i("TEMVERBA","VERBA ASSOCIADA: "+det.getCODVERBA()+"-"+det.get_Verba());
+                }
+                if (!getEdicao().getNRO().isEmpty()) {
+
+                    getEdicao().setSTATUS();
+
+                } else {
+
+                    getEdicao().setSTATUS("2");
                 }
 
+                if (!msgerror.isEmpty()) Toast.makeText(App.getCustomAppContext(),msgerror, Toast.LENGTH_SHORT).show();
 
-                //Verba
-                if (getEdicao().getDESCVER() > 0) {
-
-
-                    if (getEdicao().getCODVERBA().trim().equals("")) {
-
-                        getEdicao().setMENSAGEM("Favor Justificar O desconto Com Uma verba !!!");
-                        getEdicao().set_isValid(Edicao.getIndiceByNameColunas("CODVERBA"), false);
-                        getEdicao().set_isValid(Edicao.getIndiceByNameColunas("ACORDO"), false);
-                        msgerror += "Favor Justificar O desconto Com Uma Verba de Venda E Ou Acordo.\n";
-
-                    }
-
-
-                    if ((getEdicao().getCODVERBA().trim().equals("")) && (getEdicao().getACORDO().trim().equals(""))) {
-
-                        getEdicao().setMENSAGEM("Favor Justificar O desconto Com Um Acordo !!!");
-                        getEdicao().set_isValid(Edicao.getIndiceByNameColunas("ACORDO"), false);
-
-                    }
-
-                }
-
-            }
-            if (!getEdicao().getNRO().isEmpty()) {
-
-                getEdicao().setSTATUS();
-
-            } else {
+            } catch (Exception e){
 
                 getEdicao().setSTATUS("2");
+
             }
-
-            if (!msgerror.isEmpty()) Toast.makeText(App.getCustomAppContext(),msgerror, Toast.LENGTH_SHORT).show();
-
-        } catch (Exception e){
-
-            getEdicao().setSTATUS("2");
-
-        }
         finally {
 
 
-            produtodao.close();
+                produtodao.close();
 
-            verbadao.close();
+                verbadao.close();
 
-            acordodao.close();
+                acordodao.close();
 
-            simuladordao.close();
+                simuladordao.close();
+
+
+            }
 
 
         }
-
-
-    }
 
     public void AdicionaProdutoAnterior(List<PedidoDetMB_fast> old_values, int opcaoRecalculo) throws Exception {
 
@@ -3366,7 +3418,7 @@ public class PedidoBusinessV10 {
 
         for(PedidoDetMB_fast old : old_values){
 
-            for(int x = 0 ; x < lsDetalhe.size() ; x++ ){
+            for(int x = 0 ; x < lsDetalhe.size() ; x++){
 
                 if (lsDetalhe.get(x).getPRODUTO().equals(old.getPRODUTO())){
 
@@ -3734,22 +3786,27 @@ public class PedidoBusinessV10 {
 
                         //TAXA FINANCEIRA
 
-                        if (lsDetalhe.get(pos).getUSATAXAFIN().equals("SIM")) {
+                        try {
+                            if (lsDetalhe.get(pos).getUSATAXAFIN().equals("SIM")) {
 
-                            if (tabpreco.getTIPOFRETE().equals("C")) {
+                                if (tabpreco.getTIPOFRETE().equals("C")) {
 
-                                preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - condpagto.getJuros2().floatValue() - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
+                                    preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - condpagto.getJuros2().floatValue() - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
 
+                                } else {
+
+                                    preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - tabpreco.getPERPRAZO().floatValue() - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
+
+                                }
                             } else {
 
-                                preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - tabpreco.getPERPRAZO().floatValue() - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
-
+                                preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
                             }
-                        } else {
+                        } catch (Exception e){
 
-                            preco = (prcbase.floatValue()) / ((Float.valueOf(lsDetalhe.get(pos).getFATOR()) - lsDetalhe.get(pos).getDESCCONTRATO() - lsDetalhe.get(pos).getIMPOSTO()) / 100);
+                            preco = 0f;
+
                         }
-
                         preco = preco / (1 - (lsDetalhe.get(pos).getPOLITICABASE() / 100));
 
                         BigDecimal tot3 = new BigDecimal(Float.toString(preco));
@@ -3813,10 +3870,12 @@ public class PedidoBusinessV10 {
                             if (politica == null) {
 
                                 lsDetalhe.get(pos).setDESCONTOPOL(0f);
+                                lsDetalhe.get(pos).setPERMAX(0f);
 
                             } else {
 
                                 lsDetalhe.get(pos).setDESCONTOPOL(politica.getDESCONTO());
+                                lsDetalhe.get(pos).setPERMAX(politica.getDESCLIM());
 
                             }
                         }
@@ -4023,6 +4082,7 @@ public class PedidoBusinessV10 {
                     if (App.TotvsSIMNAO(tabpreco.getFLAGDESCCANAL()).equals("NÃO")){
 
                         lsDetalhe.get(pos).setDESCONTOPOL(0f);
+                        lsDetalhe.get(pos).setPERMAX(0f);
 
                     } else {
 
@@ -4049,10 +4109,12 @@ public class PedidoBusinessV10 {
                         if (politica == null) {
 
                             lsDetalhe.get(pos).setDESCONTOPOL(0f);
+                            lsDetalhe.get(pos).setPERMAX(0f);
 
                         } else {
 
                             lsDetalhe.get(pos).setDESCONTOPOL(politica.getDESCONTO());
+                            lsDetalhe.get(pos).setPERMAX(politica.getDESCLIM());
 
                         }
                     }
@@ -4455,5 +4517,50 @@ public class PedidoBusinessV10 {
 
         return retorno;
 
+    }
+
+    public Boolean TemVerba(Float perc, Float percLim, Float percDesconto){
+
+        Boolean retorno = true;
+
+        Float Limite = 0f;
+
+
+        //Nao tem desconto no item
+        if (percDesconto.compareTo(0f) == 0) {
+
+            return false;
+
+        }
+
+        //Caiu na verba
+        if (Float.compare(perc,percDesconto) < 0) {
+
+            return false;
+
+
+        }
+        try {
+
+            Limite = perc * (percLim / 100);
+
+            if (Float.compare(percDesconto,Limite)  > 0){
+
+                retorno = true;
+
+            } else {
+
+                retorno = false;
+
+            }
+
+
+        } catch (Exception e){
+
+            retorno = false;
+
+        }
+
+        return retorno;
     }
 }
