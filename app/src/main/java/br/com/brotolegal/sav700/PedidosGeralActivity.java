@@ -1018,6 +1018,117 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
     }
 
 
+    private Handler mHandlerTrasmissao=new Handler(){
+
+        @Override
+        public void handleMessage(Message msg){
+
+            Boolean processado = false;
+
+            try {
+
+                if (!msg.getData().containsKey("CERRO") || !msg.getData().containsKey("CMSGERRO")) {
+
+                    Log.i(LOG, "NAO CONTEM AS CHAVES..");
+
+                    return;
+
+                }
+
+                if (msg.getData().getString("CERRO").equals("---")) {
+
+                    dialog = ProgressDialog.show(PedidosGeralActivity.this, msg.getData().getString("CMSGERRO"), "Acessando Servidores.Aguarde !!", false, true);
+                    dialog.setCancelable(false);
+                    dialog.show();
+
+                    processado = true;
+                }
+
+
+                if (msg.getData().getString("CERRO").equals("MMM")) {
+
+                    if ((dialog != null)) {
+
+                        if (dialog.isShowing()) {
+
+                            dialog.setTitle(msg.getData().getString("CMSGERRO"));
+
+                        }
+
+                    }
+
+                    processado = true;
+
+                }
+
+
+
+                //ERRO 10 - Dispositivo Não Cadastrado
+
+                if ((msg.getData().getString("CERRO").equals("010"))) {
+
+                    if ((dialog != null)) {
+
+                        if (dialog.isShowing()) {
+
+                            dialog.dismiss();
+
+                        }
+
+                    }
+
+
+                    processado = true;
+                }
+
+
+                if ((msg.getData().getString("CERRO").equals("FEC"))) {
+
+                    if ((dialog != null)) {
+
+                        if (dialog.isShowing()) {
+
+                            dialog.dismiss();
+
+                        }
+
+                    }
+
+                    if (!msg.getData().getString("CMSGERRO").isEmpty()) {
+
+                        Toast.makeText(PedidosGeralActivity.this, "Erro: " + msg.getData().getString("CMSGERRO"), Toast.LENGTH_LONG).show();
+
+                    }
+
+                    //LoadPedidos();
+
+                    processado = true;
+                }
+
+
+                if (!processado) {
+
+
+                    Toast.makeText(PedidosGeralActivity.this, "Erro: ???" + msg.getData().getString("CMSGERRO"), Toast.LENGTH_LONG).show();
+
+
+                }
+
+            } catch (Exception E) {
+
+                Log.d(LOG, "MENSAGEM", E);
+
+                toast("Erro Handler: " + E.getMessage());
+
+            }
+        }
+
+
+
+
+    };
+
+
     private class Adapter extends BaseAdapter {
 
         DecimalFormat format_02 = new DecimalFormat(",##0.00");
@@ -2253,6 +2364,15 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
 
                         }
 
+
+
+                        AccessWebInfo acessoWeb = new AccessWebInfo(mHandlerTrasmissao, getBaseContext(), App.user, "PUTAGENDAMENTOS", "PUTAGENDAMENTOS", AccessWebInfo.RETORNO_TIPO_ESTUTURADO, AccessWebInfo.PROCESSO_AGENDAMENTO_JUSTIFICATICAS, null, null, -1);
+
+                        acessoWeb.setCODIGO(obj.getCODIGO());
+
+                        acessoWeb.setLOJA(obj.getLOJA());
+
+                        acessoWeb.start();
 
 
                     } catch (Exception e) {
