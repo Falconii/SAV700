@@ -3247,7 +3247,9 @@ public class AccessWebInfo  extends Thread {
 
                 case PROCESSO_AGENDAMENTO_JUSTIFICATICAS:
 
-                    lsLista = dao.getAllAvulsoToSinc();
+                    //lsLista = dao.getAllAvulsoToSinc();
+
+                    lsLista = dao.getAllByByStatus(CODIGO,LOJA,"T");
 
                     break;
 
@@ -3324,7 +3326,7 @@ public class AccessWebInfo  extends Thread {
 
             for (Agendamento agendamento : lsLista) {
 
-                if (agendamento.getMOBILE().trim().equals("")) {
+                if ( !(agendamento.getMOBILE().trim().equals(""))) {
 
                     PedidoCabMb ped = pedidosdao.seek(new String[]{agendamento.getMOBILE()});
 
