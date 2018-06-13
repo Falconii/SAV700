@@ -104,6 +104,10 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
 
     private GoogleApiClient mGoogleApiClient;
 
+    private String ClientePos = "";
+
+    private String LojaPos    = "";
+
     Boolean OrdemRefresh = true;
 
     Toolbar toolbar;
@@ -1100,7 +1104,34 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
 
                     }
 
-                    //LoadPedidos();
+                    try {
+
+                        if ( !ClientePos.isEmpty()) {
+
+                            ClienteDAO daoCliente = new ClienteDAO();
+
+                            daoCliente.open();
+
+                            Cliente_fast cliente = daoCliente.seek_fast(ClientePos, LojaPos, App.getHoje());
+
+                            daoCliente.close();
+
+                            ClientePos = "";
+
+                            LojaPos = "";
+
+                            if (cliente != null) {
+
+                                adapter.setCliente(cliente);
+
+                            }
+                        }
+
+                    } catch (Exception e){
+
+                        Toast.makeText(PedidosGeralActivity.this, "Não Atualizei o Status Do Agendamento !", Toast.LENGTH_LONG).show();
+
+                    }
 
                     processado = true;
                 }
@@ -2358,22 +2389,39 @@ public class PedidosGeralActivity extends AppCompatActivity  implements
 
                         daoCliente.close();
 
+
+                        ClientePos = "";
+
+                        LojaPos    = "";
+
                         if (cliente != null) {
+
+
+                            ClientePos = obj.getCODIGO();
+
+                            LojaPos    = obj.getLOJA();
 
                             adapter.setCliente(cliente);
 
                         }
 
+                         /* Grava o Agendamento na hora do lançamento */
 
+                         try {
 
-                        AccessWebInfo acessoWeb = new AccessWebInfo(mHandlerTrasmissao, getBaseContext(), App.user, "PUTAGENDAMENTOS", "PUTAGENDAMENTOS", AccessWebInfo.RETORNO_TIPO_ESTUTURADO, AccessWebInfo.PROCESSO_AGENDAMENTO_JUSTIFICATICAS, null, null, -1);
+                             AccessWebInfo acessoWeb = new AccessWebInfo(mHandlerTrasmissao, getBaseContext(), App.user, "PUTAGENDAMENTOS", "PUTAGENDAMENTOS", AccessWebInfo.RETORNO_TIPO_ESTUTURADO, AccessWebInfo.PROCESSO_AGENDAMENTO_JUSTIFICATICAS, null, null, -1);
 
-                        acessoWeb.setCODIGO(obj.getCODIGO());
+                             acessoWeb.setCODIGO(obj.getCODIGO());
 
-                        acessoWeb.setLOJA(obj.getLOJA());
+                             acessoWeb.setLOJA(obj.getLOJA());
 
-                        acessoWeb.start();
+                             acessoWeb.start();
 
+                         } catch (Exception e){
+
+                             Toast("Não Consegui Enviar O Agendamento. Favor Enviar Mais Tarde!");
+
+                         }
 
                     } catch (Exception e) {
 

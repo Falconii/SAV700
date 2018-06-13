@@ -3222,7 +3222,7 @@ public class AccessWebInfo  extends Thread {
 
         String METHOD_NAME = "PUTAGENDAMENTOS";
 
-        if (this.tipoProcesso == PROCESSO_AGENDAMENTO_ATRASADO || this.tipoProcesso == PROCESSO_AGENDAMENTO_JUSTIFICATICAS) {
+        if (this.tipoProcesso == PROCESSO_AGENDAMENTO_UNICO || this.tipoProcesso == PROCESSO_AGENDAMENTO_ATRASADO || this.tipoProcesso == PROCESSO_AGENDAMENTO_JUSTIFICATICAS) {
 
             params.putString("CERRO", "---");
 
@@ -3246,8 +3246,6 @@ public class AccessWebInfo  extends Thread {
             switch (this.tipoProcesso){
 
                 case PROCESSO_AGENDAMENTO_JUSTIFICATICAS:
-
-                    //lsLista = dao.getAllAvulsoToSinc();
 
                     lsLista = dao.getAllByByStatus(CODIGO,LOJA,"T");
 
@@ -3292,7 +3290,7 @@ public class AccessWebInfo  extends Thread {
 
             }
 
-            if (this.tipoProcesso == PROCESSO_AGENDAMENTO_ATRASADO || this.tipoProcesso == PROCESSO_AGENDAMENTO_JUSTIFICATICAS) {
+            if (this.tipoProcesso == PROCESSO_AGENDAMENTO_UNICO || this.tipoProcesso == PROCESSO_AGENDAMENTO_ATRASADO || this.tipoProcesso == PROCESSO_AGENDAMENTO_JUSTIFICATICAS) {
 
                 params.putString("CERRO", "MMM");
 
@@ -3468,9 +3466,21 @@ public class AccessWebInfo  extends Thread {
 
             }
 
+            if (this.tipoProcesso == PROCESSO_AGENDAMENTO_UNICO || this.tipoProcesso == PROCESSO_AGENDAMENTO_ATRASADO || this.tipoProcesso == PROCESSO_AGENDAMENTO_JUSTIFICATICAS) {
+
+                params.putString("CERRO", "MMM");
+
+                params.putString("CMSGERRO", "Não Foi Possível Enviar Agora. Tente Mais Tarde.");
+
+                sendmsg(params);
+
+                pausa(2000);
+
+            }
+
         }
 
-        if (this.tipoProcesso == PROCESSO_AGENDAMENTO_ATRASADO || this.tipoProcesso == PROCESSO_AGENDAMENTO_JUSTIFICATICAS) {
+        if (this.tipoProcesso == PROCESSO_AGENDAMENTO_UNICO ||this.tipoProcesso == PROCESSO_AGENDAMENTO_ATRASADO || this.tipoProcesso == PROCESSO_AGENDAMENTO_JUSTIFICATICAS) {
 
             params.putString("CERRO", "FEC");
 

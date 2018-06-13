@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
+import android.os.SystemClock;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -68,11 +69,13 @@ import br.com.brotolegal.sav700.firebase.FireBaseDataBase;
 import br.com.brotolegal.sav700.fragments.DashBoard_Frag;
 import br.com.brotolegal.savdatabase.app.App;
 import br.com.brotolegal.savdatabase.config.HelpInformation;
+import br.com.brotolegal.savdatabase.dao.AgendamentoDAO;
 import br.com.brotolegal.savdatabase.dao.ConfigDAO;
 import br.com.brotolegal.savdatabase.dao.DispositivoDAO;
 import br.com.brotolegal.savdatabase.dao.MarcaDAO;
 import br.com.brotolegal.savdatabase.dao.StatusDAO;
 import br.com.brotolegal.savdatabase.dao.UsuarioDAO;
+import br.com.brotolegal.savdatabase.entities.Agendamento;
 import br.com.brotolegal.savdatabase.entities.Config;
 import br.com.brotolegal.savdatabase.entities.Dispositivo;
 import br.com.brotolegal.savdatabase.entities.Marca;
@@ -84,6 +87,8 @@ import br.com.brotolegal.savdatabase.eventbus.NotificationConexao;
 import br.com.brotolegal.savdatabase.eventbus.NotificationPedido;
 import br.com.brotolegal.savdatabase.eventbus.NotificationSincronizacao;
 import br.com.brotolegal.savdatabase.regrasdenegocio.Empresa;
+import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionValidadeAgendamentoAtrasado;
+import br.com.brotolegal.savdatabase.regrasdenegocio.ExceptionValidadeTabelaPreco;
 import br.com.brotolegal.savdatabase.regrasdenegocio.PedidoBusinessV10;
 import br.com.brotolegal.savdatabase.regrasdenegocio.UsuarioTST;
 import br.com.brotolegal.savdatabase.util.Filtro_Categoria;
@@ -1279,6 +1284,80 @@ public class SAVActivity extends AppCompatActivity {
                             params.putString("LOJA"     , "");
                             intent.putExtras(params);
                             startActivityForResult(intent, CARGA);
+
+//                            try
+//
+//                            {
+//                                //Verifica se existem agendamentos a transmitir
+//
+//                                Boolean fechar = true;
+//
+//                                List<Agendamento> lsLista = new ArrayList<>();
+//
+//                                AgendamentoDAO dao = new AgendamentoDAO();
+//
+//                                //BUSCA agendamentos
+//                                try {
+//
+//                                    dao.open();
+//
+//                                    lsLista = dao.getAllByByStatus("", "", "T");
+//
+//                                    dao.close();
+//
+//                                    if (lsLista.size() == 0) {
+//
+//                                        fechar = false;
+//
+//                                    }
+//                                } catch (Exception e) {
+//
+//                                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+//                                }
+//
+//                                if (fechar){
+//
+//                                    Toast.makeText(getApplicationContext(), "Existem Agendamentos A TRANSMITIR\nTransmita-os Primeiro Por Favor !", Toast.LENGTH_LONG).show();
+//
+//
+//                                } else {
+//
+//
+//                                    try {
+//
+//                                        App.tabelaValida();
+//
+//                                    }
+//                                    catch (ExceptionValidadeAgendamentoAtrasado e) {
+//
+//                                        Intent intent = new Intent(SAVActivity.this,AgendamentosAtrasadosActivity.class);
+//
+//                                        startActivity(intent);
+//
+//                                        return;
+//
+//                                    } catch (Exception e) {
+//
+//                                        Toast.makeText(SAVActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
+//
+//                                        return;
+//
+//                                    }
+//
+//                                    Intent intent = new Intent(SAVActivity.this, CargaActivity.class);
+//                                    Bundle params = new Bundle();
+//                                    params.putString("CODIGO"   , "");
+//                                    params.putString("LOJA"     , "");
+//                                    intent.putExtras(params);
+//                                    startActivityForResult(intent, CARGA);
+//
+//                                }
+//
+//                            } catch (Exception e){
+//
+//                                Toast.makeText(SAVActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
+//
+//                            }
 
 
                         }

@@ -104,6 +104,11 @@ public class PedidosAgendaActivity extends AppCompatActivity implements
 
     private GoogleApiClient mGoogleApiClient;
 
+    private String ClientePos = "";
+
+    private String LojaPos    = "";
+
+
     Boolean OrdemRefresh = true;
 
     Toolbar toolbar;
@@ -1170,6 +1175,35 @@ public class PedidosAgendaActivity extends AppCompatActivity implements
                     if (!msg.getData().getString("CMSGERRO").isEmpty()) {
 
                         toast(msg.getData().getString("CMSGERRO"));
+
+                    }
+
+                    try {
+
+                        if ( !ClientePos.isEmpty()) {
+
+                            ClienteDAO daoCliente = new ClienteDAO();
+
+                            daoCliente.open();
+
+                            Cliente_fast cliente = daoCliente.seek_fast(ClientePos, LojaPos, App.getHoje());
+
+                            daoCliente.close();
+
+                            ClientePos = "";
+
+                            LojaPos = "";
+
+                            if (cliente != null) {
+
+                                adapter.setCliente(cliente);
+
+                            }
+                        }
+
+                    } catch (Exception e){
+
+                        Toast.makeText(PedidosAgendaActivity.this, "Não Atualizei o Status Do Agendamento !", Toast.LENGTH_LONG).show();
 
                     }
 
@@ -2395,7 +2429,17 @@ public class PedidosAgendaActivity extends AppCompatActivity implements
 
                         daoCliente.close();
 
+
+                        ClientePos = "";
+
+                        LojaPos    = "";
+
+
                         if (cliente != null) {
+
+                            ClientePos = obj.getCODIGO();
+
+                            LojaPos    = obj.getLOJA();
 
                             adapter.setCliente(cliente);
 
@@ -2411,7 +2455,7 @@ public class PedidosAgendaActivity extends AppCompatActivity implements
 
                         } catch (Exception e){
 
-                            Toast(e.getMessage());
+                            Toast("Não Consegui Enviar O Agendamento. Favor Enviar Mais Tarde!");
                         }
 
                     } catch (Exception e) {

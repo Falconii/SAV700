@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -46,11 +47,14 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import br.com.brotolegal.sav700.util.MyToast;
 import br.com.brotolegal.savdatabase.app.App;
+import br.com.brotolegal.savdatabase.dao.AgendamentoDAO;
 import br.com.brotolegal.savdatabase.dao.ConfigDAO;
 import br.com.brotolegal.savdatabase.dao.OcorrenciaDAO;
 import br.com.brotolegal.savdatabase.dao.StatusDAO;
 import br.com.brotolegal.savdatabase.dao.TaskDAO;
+import br.com.brotolegal.savdatabase.entities.Agendamento;
 import br.com.brotolegal.savdatabase.entities.Config;
 import br.com.brotolegal.savdatabase.entities.NoData;
 import br.com.brotolegal.savdatabase.entities.Ocorrencia;
@@ -311,6 +315,8 @@ public class CargaActivity extends AppCompatActivity {
 
 
             spConexao.setSelection(IndiceConexao);
+
+
 
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();

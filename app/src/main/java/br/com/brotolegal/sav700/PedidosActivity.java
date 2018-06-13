@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -407,7 +408,6 @@ public class PedidosActivity extends AppCompatActivity {
 
 
 
-
         } catch (Exception e) {
 
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -553,7 +553,7 @@ public class PedidosActivity extends AppCompatActivity {
 
                 daoAge.open();
 
-                agendamentos = daoAge.getAllAvulsoToSinc();
+                agendamentos = daoAge.getAllByByStatus("","","T");
 
                 daoAge.close();
 
