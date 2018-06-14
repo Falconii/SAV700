@@ -78,6 +78,9 @@ public class Receber_View_Activity extends AppCompatActivity {
         toolbar.setTitle(getResources().getString(R.string.app_razao));
         toolbar.setLogo(R.mipmap.ic_launcher);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         toolbar.inflateMenu(R.menu.menu_financeiro);
@@ -209,6 +212,7 @@ public class Receber_View_Activity extends AppCompatActivity {
                 finish();
 
                 break;
+
             case R.id.menu_financeiro_cancelar:
 
                 finish();

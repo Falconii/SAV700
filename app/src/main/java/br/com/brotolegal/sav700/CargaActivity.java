@@ -1189,7 +1189,81 @@ public class CargaActivity extends AppCompatActivity {
 
                                     try {
 
-                                        carga01(obj);
+
+                                        if (!"000001#000008".contains(obj.getCODIGO())) {
+
+                                            carga01(obj);
+
+                                        } else {
+
+                                            if (temAgendamentoPedente()){
+
+                                                try {
+
+                                                    final Dialog dialog = new Dialog(CargaActivity.this);
+
+                                                    dialog.setContentView(R.layout.dlglibped);
+
+                                                    dialog.setTitle("AVISO Importante !");
+
+                                                    final Button confirmar = (Button) dialog.findViewById(R.id.btn_040_ok);
+                                                    final Button cancelar = (Button) dialog.findViewById(R.id.btn_040_can);
+                                                    final TextView tvtexto1 = (TextView) dialog.findViewById(R.id.txt_040_texto1);
+                                                    final TextView tvtexto2 = (TextView) dialog.findViewById(R.id.txt_040_texto2);
+
+                                                    tvtexto1.setText("Existem Justificativas e Agendamentos Não Trasmitidos");
+                                                    tvtexto2.setText("Se Fizer A Carga, Perderá Esses Dados. Deseja Continuar ?");
+
+                                                    cancelar.setOnClickListener(new View.OnClickListener() {
+
+                                                        public void onClick(View v) {
+
+                                                            dialog.dismiss();
+
+                                                        }
+                                                    });
+
+                                                    confirmar.setOnClickListener(new View.OnClickListener() {
+
+                                                        public void onClick(View v) {
+
+                                                            try {
+
+                                                                carga01(obj);
+
+                                                            } catch (Exception e) {
+
+                                                                toast(e.getMessage());
+
+                                                            }
+
+                                                            dialog.dismiss();
+
+
+                                                        }
+
+                                                    });
+
+
+                                                    dialog.show();
+
+
+                                                } catch (Exception e) {
+
+                                                    toast(e.getMessage());
+
+                                                }
+
+                                            } else {
+
+                                                carga01(obj);
+
+                                            }
+
+                                        }
+
+
+
 
                                     } catch (Exception e) {
 
@@ -1283,6 +1357,44 @@ public class CargaActivity extends AppCompatActivity {
 
         }
 
+        private boolean temAgendamentoPedente() {
+
+            Boolean tem = false;
+
+            try {
+
+                List<Agendamento> lsLista = new ArrayList<>();
+
+                AgendamentoDAO dao = new AgendamentoDAO();
+
+                //BUSCA agendamentos
+                try {
+
+                    dao.open();
+
+                    lsLista = dao.getAllByByStatus("", "", "T");
+
+                    dao.close();
+
+                    if (lsLista.size() > 0) {
+
+                        tem = true;
+
+                    }
+
+                } catch (Exception e) {
+
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+
+            return tem;
+        }
 
         public void toast(String msg) {
 

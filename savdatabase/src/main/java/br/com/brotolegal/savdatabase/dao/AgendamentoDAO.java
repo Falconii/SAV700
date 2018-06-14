@@ -470,8 +470,8 @@ public class AgendamentoDAO extends DAO2 implements IDao2<Agendamento> {
             sql = "select agendamento.*, cliente.razaopa ,ifnull (nven.descricao,'') ,ifnull (nvis.descricao,'') "+
                      "from agendamento " +
                      "left join cliente on cliente.codigo = agendamento.cliente and cliente.loja = agendamento.loja " +
-                     "left join motivo nven on nven.tipo = 'NAONVENDA'  and agendamento.motivonvenda =  nven.codigo " +
-                     "left join motivo nvis on nvis.tipo = 'NAONVISITA'  and agendamento.motivonvisita =  nvis.codigo " +
+                     "left join motivo nven on nven.tipo = 'NAOVENDA'  and agendamento.motivonvenda =  trim(nven.codigo) " +
+                     "left join motivo nvis on nvis.tipo = 'NAOVISITA'  and agendamento.motivonvisita =  trim(nvis.codigo) " +
                      "where data = '"+Data+"' order by agendamento.hora";
 
 
